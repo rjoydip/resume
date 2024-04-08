@@ -1,278 +1,314 @@
 import {
-  AmbitLogo,
-  BarepapersLogo,
-  BimLogo,
-  CDGOLogo,
-  ClevertechLogo,
-  ConsultlyLogo,
-  EvercastLogo,
-  Howdy,
-  JarockiMeLogo,
-  JojoMobileLogo,
-  Minimal,
-  MobileVikingsLogo,
-  MonitoLogo,
-  NSNLogo,
-  ParabolLogo,
-  TastyCloudLogo,
-  YearProgressLogo,
-} from "@/images/logos";
-import { GitHubIcon, LinkedInIcon, XIcon } from "@/components/icons";
+  Ascentspark,
+  GitHub,
+  Infosys,
+  LinkedIn,
+  TechMahindra,
+  Webskitters,
+  X,
+} from "@/components/icons";
 
 export const RESUME_DATA = {
-  name: "Bartosz Jarocki",
-  initials: "BJ",
-  location: "Wrocław, Poland, CET",
-  locationLink: "https://www.google.com/maps/place/Wrocław",
+  name: "Joydip Roy",
+  initials: "JR",
+  location: "Kolkata, India",
+  locationLink: "https://maps.app.goo.gl/9uaiMJMPsHU4inX7A",
   about:
-    "Full Stack Engineer focused on building products with extra attention to detail",
+    "Detail-oriented Full Stack Engineer dedicated to crafting high-quality products with meticulous precision.",
   summary:
-    "As a Full Stack Engineer, I have successfully taken multiple products from 0 to 1. I lead teams effectively, ensuring an environment where people can do their best work. Currently, I work mostly with TypeScript, React, Node.js, and GraphQL. I have over 8 years of experience in working remotely with companies all around the world.",
-  avatarUrl: "https://avatars.githubusercontent.com/u/1017620?v=4",
-  personalWebsiteUrl: "https://jarocki.me",
+    "As a seasoned Full Stack Engineer, I've adeptly guided numerous projects from conception to fruition. My leadership fosters collaborative teams, cultivating an atmosphere conducive to peak performance. Proficient in TypeScript, JavaScript, and Node.js, I bring over 8+ years of invaluable expertise gained through tenure with esteemed IT companies.",
+  avatarUrl: "https://avatars.githubusercontent.com/u/112172822?v=4",
+  personalWebsiteUrl: "https://rjoydip.me",
   contact: {
-    email: "bartosz.jarocki@hey.com",
-    tel: "+48530213401",
+    email: "joydipand@gmail.com",
+    tel: "+91-8697411233",
     social: [
       {
         name: "GitHub",
-        url: "https://github.com/BartoszJarocki",
-        icon: GitHubIcon,
+        url: "https://github.com/rjoydip",
+        icon: GitHub,
       },
       {
         name: "LinkedIn",
-        url: "https://www.linkedin.com/in/bjarocki/",
-        icon: LinkedInIcon,
+        url: "https://www.linkedin.com/in/rjoydip/",
+        icon: LinkedIn,
       },
       {
         name: "X",
-        url: "https://x.com/BartoszJarocki",
-        icon: XIcon,
+        url: "https://x.com/rjoydip11",
+        icon: X,
       },
     ],
   },
   education: [
     {
-      school: "Wrocław University of Technology",
-      degree: "Bachelor's Degree in Control systems engineering and Robotics",
-      start: "2007",
-      end: "2010",
+      school: "Narula Institute Of Technology",
+      degree: "Bachelor of Technology (W.B.U.T/M.A.K.A.U.T)",
+      aggregate: "",
+      cgpa: "7.84",
+      location: "Kolkata, India",
+      start: "2012",
+      end: "2016",
+    },
+    {
+      school: "Madhyamgram High School",
+      degree: "Higher Secondary Education (12 th) (W.B.C.H.S.E)",
+      aggregate: "63.80%",
+      location: "Kolkata, India",
+      start: "2010",
+      end: "2012",
+    },
+    {
+      school: "Madhyamgram High School",
+      degree: "Secondary Education (10 th) (W.B.B.S.E)",
+      aggregate: "70.50%",
+      location: "Kolkata, India",
+      start: "2010",
+      end: "2012",
     },
   ],
   work: [
     {
-      company: "Parabol",
-      link: "https://parabol.co",
-      badges: ["Remote"],
-      title: "Senior Full Stack Developer",
-      logo: ParabolLogo,
-      start: "2021",
-      end: "2024",
-      description:
-        "Implemented new features, led squad, worked on improving the way developers ship the code, started migration from Emotion to Tailwind CSS and more. Technologies: React, TypeScript, GraphQL",
+      company: "Tech Mahindra",
+      link: "https://www.techmahindra.com/",
+      badges: ["Work from Home", "Hybrid"],
+      title: "Associate Tech Specialist",
+      logo: <TechMahindra />,
+      start: "2022",
+      end: null,
+      description: "",
+      technologies: [
+        "Node.js",
+        "Jenkins",
+        "JavaScript",
+        "Snyk",
+        "React.js",
+        "Instana",
+        "Jira",
+        "Docker",
+        "Docker Compose",
+        "Jest",
+        "Cucumber",
+        "Gherkins",
+      ],
     },
     {
-      company: "Clevertech",
-      link: "https://clevertech.biz",
-      badges: ["Remote"],
-      title: "Lead Android Developer → Full Stack Developer",
-      logo: ClevertechLogo,
-      start: "2015",
-      end: "2021",
-      description:
-        "Created Android mobile apps and led teams for companies like Vision Media, DKMS, or AAA. Built live streaming application for Evercast from scratch. Technologies: Android, Kotlin, React, TypeScript, GraphQL",
+      company: "Infosys",
+      link: "https://www.infosys.com/",
+      badges: ["Office", "Work from Home"],
+      title: "Consultant",
+      logo: <Infosys />,
+      start: "2019",
+      end: "2022",
+      description: "",
+      technologies: [
+        "JavaScript",
+        "Node.js (Microservice)",
+        "SpringBoot Batch",
+        "Kafka",
+        "GitLab",
+        "GMC Automation",
+        "React.js",
+        "ETL (Support work)",
+        "Docker",
+        "Docker Compose",
+        "Cucumber",
+        "Gherkins",
+      ],
     },
     {
-      company: "Jojo Mobile",
-      link: "https://bsgroup.eu/",
-      badges: [],
-      title: "Android Developer → Lead Android Developer",
-      logo: JojoMobileLogo,
-      start: "2012",
-      end: "2015",
-      description:
-        "Built an Android team, created Android apps for biggest Polish companies like LOT, Polskie Radio, Agora, PolskaPress",
+      company: "Webskitters Technology Solutions Pvt. Ltd",
+      link: "https://www.webskitters.com/",
+      badges: ["Office"],
+      title: "Software Developer",
+      logo: <Webskitters />,
+      start: "2017",
+      end: "2019",
+      description: "Building web and hybrid application along with the backend",
+      technologies: [
+        "JavaScript",
+        "Angular",
+        "Node.js",
+        "React.js",
+        "Mongodb",
+        "Typescript",
+        "GitLab",
+      ],
     },
     {
-      company: "Nokia Siemens Networks",
-      link: "https://www.nokia.com",
-      badges: [],
-      title: "C/C++ Developer",
-      logo: NSNLogo,
-      start: "2010",
-      end: "2012",
-      description: "Creating and testing software for LTE base stations",
+      company: "Techmancer Web Development Pvt. Ltd (Ascentspark)",
+      link: "https://www.ascentspark.com/",
+      badges: ["Office"],
+      title: "Junior Web Developer",
+      logo: <Ascentspark />,
+      start: "2016",
+      end: "2017",
+      description: "Building web and hybrid application along with the backend",
+      technologies: ["Laravel", "Angular.js", "Ionic", "JavaScript", "Github"],
     },
   ],
   skills: [
-    "JavaScript",
-    "TypeScript",
-    "React/Next.js/Remix",
-    "Node.js",
-    "GraphQL",
-    "Relay",
-    "WebRTC",
+    {
+      Languages: [
+        "JavaScript",
+        "TypeScript",
+        "React/Next.js",
+        "Node.js",
+        "Angular",
+        "Deno",
+      ],
+    },
+    {
+      Cloud: ["Vercel", "AWS Lambda"],
+    },
+    {
+      DevOps: ["Docker", "Docker Compose", "Jenkins"],
+    },
+    { Database: ["MongoDB", "PostgresSQL", "MySQL", "SQLite", "Prisma"] },
+    { Test: ["Cucumber", "Gherkins", "Jest", "Cypress", "Playwright"] },
+    {
+      Tools: [
+        "Snyk",
+        "Instana",
+        "REST",
+        "JIRA",
+        "GMC Automation",
+        "GraphQL",
+        "Kafka",
+      ],
+    },
   ],
   projects: [
     {
-      title: "Consultly",
-      techStack: [
-        "Side Project",
-        "TypeScript",
-        "Next.js",
-        "Vite",
-        "GraphQL",
-        "WebRTC",
+      title: "Bridge Boffin",
+      description: "Learning bridge game for kids",
+      technologies: ["Laravel", "Bootstrap"],
+      links: [
+        {
+          type: "web",
+          label: "bridgeboffin.com",
+          href: "https://www.bridgeboffin.com",
+        },
       ],
-      description: "A platform to build and grow your online business",
-      logo: ConsultlyLogo,
-      link: {
-        label: "consultly.com",
-        href: "https://consultly.com/",
-      },
+      tags: ['web', 'backend', 'api']
     },
     {
-      title: "Monito",
-      techStack: ["Side Project", "TypeScript", "Next.js", "Browser Extension"],
+      title: "Menu Pulse",
       description:
-        "Browser extension that records everything happening in a web application",
-      logo: MonitoLogo,
-      link: {
-        label: "monito.dev",
-        href: "https://monito.dev/",
-      },
+        "The Restaurant-Based Social Network & Menu Wiki. Menu Pulse is a web and smartphone application-based platform for restaurants, menus, pictures, and reviews launching.",
+      technologies: ["Laravel", "Bootstrap", "Ionic", "Angular.js"],
+      links: [
+        {
+          type: "web",
+          label: "menupulse.com",
+          href: "https://www.menupulse.com",
+        },
+        {
+          type: "mobile",
+          label: "Menupulse",
+          href: "https://play.google.com/store/apps/details?id=com.Menupulse.Menupulse",
+        },
+      ],
+      tags: ['web', 'mobile', 'backend', 'api']
     },
     {
-      title: "Jarocki.me",
-      techStack: ["Side Project", "Next.js", "MDX"],
+      title: "Inagrab",
       description:
-        "My personal website and blog. Built with Next.js and Notion API",
-      logo: JarockiMeLogo,
-      link: {
-        label: "github.com",
-        href: "https://jarocki.me/",
-      },
+        "Inagrab is the best deal search engine that allows you to make the best possible decision in the shortest possible time.",
+      technologies: ["Angular.js", "Ionic", "Typescript"],
+      links: [
+        {
+          type: "mobile",
+          label: "inagrab",
+          href: "https://play.google.com/store/apps/details?id=in.youstart.inagrab",
+        },
+      ],
+      tags: ['mobile', 'backend', 'api']
     },
     {
-      title: "Minimal",
-      techStack: ["Side Project", "Next.js", "Puppeteer"],
+      title: "Tapp - Drinking App",
       description:
-        "Minimalist calendars, habit trackers and planners generator",
-      logo: Minimal,
-      link: {
-        label: "useminimal.com",
-        href: "https://useminimal.com/",
-      },
+        "The drinking game played by superheroes. Open Tapp App and your drinking destiny will be in the palm of your hands. No need to know the rules, hey create your own and let the drinks spill.",
+      technologies: ["Angular.js", "Ionic"],
+      links: [
+        {
+          type: "mobile",
+          label: "tapp",
+          href: "https://play.google.com/store/apps/details?id=com.dat.tapp",
+        },
+      ],
+      tags: ['mobile']
     },
     {
-      title: "Barepapers",
-      techStack: ["Side Project", "Next.js", "Puppeteer"],
+      title: "Classified",
+      description: "Post advertisement application",
+      technologies: ["Angular.js", "Ionic", "Firebase"],
+      links: [{
+        type: 'mobile',
+        label: 'classifieds',
+        href: 'https://play.google.com/store/apps/details?id=com.classifieds.universe'
+      }],
+      tags: ['mobile']
+    },
+    {
+      title: "The Scope App",
       description:
-        "Generates beautiful wallpapers using random shapes and gradients",
-      logo: BarepapersLogo,
-      link: {
-        label: "barepapers.com",
-        href: "https://barepapers.com/",
-      },
+        "MEDICAL NEWS. RESIDENCY HUMOR. The Scope offers the week's best in evidence-based medicine, written in plain language for a nationwide audience of young physicians. This app features all of our fresh takes on medical journal articles in an easy-to-read, easy-to-search format. It's perfect for rotation prep and research presentations.",
+      links: [
+        {
+          type: "mobile",
+          label: "thescope",
+          href: "https://play.google.com/store/apps/details?id=com.thescope",
+        },
+      ],
+      technologies: ["Node.js", "Express", "Mongodb", "RESTful web services"],
+      tags: ['backend', 'api']
     },
     {
-      title: "Year progress",
-      techStack: ["Side Project", "TypeScript", "Next.js"],
-      description: "Tracks current year progress and displays a countdown",
-      logo: YearProgressLogo,
-      link: {
-        label: "getyearprogress.com",
-        href: "https://getyearprogress.com/",
-      },
-    },
-    {
-      title: "Parabol",
-      techStack: [
-        "Full Stack Developer",
-        "TypeScript",
-        "React",
+      title: "Mizizi",
+      description:
+        "The Mizizi will allow users to locate and find a stylist, barbers, nail technician, eyebrow and eyelash technicians all over the world.",
+      technologies: [
         "Node.js",
-        "GraphQL",
+        "Express",
+        "Mongodb",
+        "Angular 4",
+        "RESTful web services",
       ],
-      description:
-        "The Agile meeting co-pilot that delivers better meetings with less effort",
-      logo: ParabolLogo,
-      link: {
-        label: "github.com",
-        href: "https://parabol.co/",
-      },
+      links: [
+        {
+          type: "mobile",
+          label: "miziziapp.com",
+          href: "https://miziziapp.com",
+          App: "https://play.google.com/store/apps/details?id=com.mizizi",
+        },
+        {
+          type: "web",
+          label: "mizizi",
+          href: "https://play.google.com/store/apps/details?id=com.mizizi",
+        },
+      ],
+      tags: ['web', 'backend', 'api']
     },
     {
-      title: "Evercast",
-      techStack: [
-        "Lead Frontend Developer",
-
-        "TypeScript",
-        "React",
+      title: "LetsEat",
+      description:
+        "Order delicious home-cooked meals. See who's cooking in your neighborhood.",
+      technologies: [
         "Node.js",
-        "GraphQL",
+        "Express",
+        "Mongodb",
+        "RESTful web services",
+        "Angular 6",
       ],
-      description:
-        "Creative collaboration platform that combines video conferencing and HD media streaming",
-      logo: EvercastLogo,
-      link: {
-        label: "evercast.us",
-        href: "https://www.evercast.us/",
-      },
+      tags: ['web', 'backend', 'api']
     },
     {
-      title: "Mobile Vikings",
-      techStack: ["Lead Android Developer", "Android", "Kotlin"],
+      title: "Card sort",
       description:
-        "Android application for leading virtual mobile operator in Poland",
-      logo: MobileVikingsLogo,
-      link: {
-        label: "mobilevikings.pl",
-        href: "https://mobilevikings.pl/",
-      },
-    },
-    {
-      title: "Howdy",
-      techStack: ["Lead Android Developer", "Android", "Kotlin"],
-      description:
-        "Howdy is a place for you to join communities you care about",
-      logo: Howdy,
-      link: {
-        label: "play.google.com",
-        href: "https://howdy.co/",
-      },
-    },
-    {
-      title: "Tastycloud",
-      techStack: ["Lead Android Developer", "Android", "Kotlin"],
-      description:
-        "Android application for managing and displaying restaurant menus in kiosk mode",
-      logo: TastyCloudLogo,
-      link: {
-        label: "tastycloud.fr",
-        href: "https://www.tastycloud.fr/",
-      },
-    },
-    {
-      title: "Ambit",
-      techStack: ["Lead Android Developer", "Android", "Kotlin"],
-      description:
-        "Android application that helps with sharing your contact details",
-      logo: AmbitLogo,
-    },
-    {
-      title: "Bim",
-      techStack: ["Lead Android Developer", "Android", "Kotlin"],
-      description:
-        "Android application that helps with booking a table in a restaurants",
-      logo: BimLogo,
-    },
-    {
-      title: "Canal Digital GO",
-      techStack: ["Lead Android Developer", "Android", "Kotlin"],
-      description:
-        "Video streaming mobile application for Canal Digital subscribers",
-      logo: CDGOLogo,
+        "Realtime data analytics application by collecting users activity data and admin manageable.",
+      technologies: ["Angular 7", "Firebase"],
+      tags: ['web', 'backend', 'api']
     },
   ],
 } as const;

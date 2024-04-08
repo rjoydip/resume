@@ -1,5 +1,10 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CommandMenu } from "@/components/command-menu";
 import { Metadata } from "next";
@@ -8,6 +13,7 @@ import { GlobeIcon, MailIcon, PhoneIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RESUME_DATA } from "@/data/resume-data";
 import { ProjectCard } from "@/components/project-card";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 
 export const metadata: Metadata = {
   title: `${RESUME_DATA.name} | ${RESUME_DATA.about}`,
@@ -16,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 print:p-12 md:p-16">
+    <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 md:p-16 print:p-12">
       <section className="mx-auto w-full max-w-2xl space-y-8 bg-white print:space-y-6">
         <div className="flex items-center justify-between">
           <div className="flex-1 space-y-1.5">
@@ -86,18 +92,19 @@ export default function Page() {
               ) : null}
             </div>
           </div>
-
           <Avatar className="size-28">
             <AvatarImage alt={RESUME_DATA.name} src={RESUME_DATA.avatarUrl} />
             <AvatarFallback>{RESUME_DATA.initials}</AvatarFallback>
           </Avatar>
         </div>
+        {/* About */}
         <Section>
           <h2 className="text-xl font-bold">About</h2>
           <p className="text-pretty font-mono text-sm text-muted-foreground">
             {RESUME_DATA.summary}
           </p>
         </Section>
+        {/* Work Experience */}
         <Section>
           <h2 className="text-xl font-bold">Work Experience</h2>
           {RESUME_DATA.work.map((work) => {
@@ -106,17 +113,18 @@ export default function Page() {
                 <CardHeader>
                   <div className="flex items-center justify-between gap-x-2 text-base">
                     <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold leading-none">
+                      {/* <Avatar>
+                        <AvatarImage asChild>
+                          {work.logo}
+                        </AvatarImage>
+                        <AvatarFallback>OF</AvatarFallback>
+                      </Avatar> */}
                       <a className="hover:underline" href={work.link}>
                         {work.company}
                       </a>
-
                       <span className="inline-flex gap-x-1">
                         {work.badges.map((badge) => (
-                          <Badge
-                            variant="secondary"
-                            className="align-middle text-xs"
-                            key={badge}
-                          >
+                          <Badge className="align-middle text-[12px]" key={badge}>
                             {badge}
                           </Badge>
                         ))}
@@ -126,7 +134,6 @@ export default function Page() {
                       {work.start} - {work.end ?? "Present"}
                     </div>
                   </div>
-
                   <h4 className="font-mono text-sm leading-none">
                     {work.title}
                   </h4>
@@ -134,10 +141,22 @@ export default function Page() {
                 <CardContent className="mt-2 text-xs">
                   {work.description}
                 </CardContent>
+                <CardFooter className="flex-wrap">
+                  {work.technologies.map((tech) => (
+                    <Badge
+                      className="px-1 py-0 text-[10px]"
+                      variant="secondary"
+                      key={tech}
+                    >
+                      {tech}
+                    </Badge>
+                  ))}
+                </CardFooter>
               </Card>
             );
           })}
         </Section>
+        {/* Education */}
         <Section>
           <h2 className="text-xl font-bold">Education</h2>
           {RESUME_DATA.education.map((education) => {
@@ -158,26 +177,49 @@ export default function Page() {
             );
           })}
         </Section>
+        {/* Skills */}
         <Section>
           <h2 className="text-xl font-bold">Skills</h2>
-          <div className="flex flex-wrap gap-1">
-            {RESUME_DATA.skills.map((skill) => {
-              return <Badge key={skill}>{skill}</Badge>;
-            })}
+          <div className="flex flex-wrap gap-2">
+            <Table>
+              <TableBody>
+                {RESUME_DATA.skills.map((skillCategory) =>
+                  Object.entries(skillCategory).map((skills) => {
+                    return (
+                      <TableRow key={skills[0]} className="border-none">
+                        <TableCell className="p-1 font-medium">
+                          {skills[0]}:
+                        </TableCell>
+                        <TableCell className="p-1">
+                          {skills[1].map((skill: string) => {
+                            return (
+                              <Badge key={skill} className="mx-0.5">
+                                {skill}
+                              </Badge>
+                            );
+                          })}
+                        </TableCell>
+                      </TableRow>
+                    );
+                  }),
+                )}
+              </TableBody>
+            </Table>
           </div>
         </Section>
 
         <Section className="print-force-new-page scroll-mb-16">
           <h2 className="text-xl font-bold">Projects</h2>
-          <div className="-mx-3 grid grid-cols-1 gap-3 print:grid-cols-3 print:gap-2 md:grid-cols-2 lg:grid-cols-3">
+          <div className="-mx-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
             {RESUME_DATA.projects.map((project) => {
               return (
                 <ProjectCard
                   key={project.title}
                   title={project.title}
                   description={project.description}
-                  tags={project.techStack}
-                  link={"link" in project ? project.link.href : undefined}
+                  technologies={project.technologies}
+                  tags={"tags" in project ? project.tags : []}
+                  links={"links" in project ? project.links : []}
                 />
               );
             })}

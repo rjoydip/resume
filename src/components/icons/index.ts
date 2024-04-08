@@ -1,5 +1,11 @@
-import { GitHubIcon } from "./GitHubIcon";
-import { LinkedInIcon } from "./LinkedInIcon";
-import { XIcon } from "./XIcon";
+import { Ascentspark } from "./Ascentspark";
+import { Infosys } from "./Infosys";
+import { GitHub } from "./GitHub";
+import { LinkedIn } from "./LinkedIn";
+import { TechMahindra } from "./TechMahindra";
+import { X } from "./X";
+import { Webskitters } from "./Webskitters";
+import { Laravel } from "./language"
+import { getIcon } from "./getIcon"
 
-export { GitHubIcon, LinkedInIcon, XIcon };
+export { Ascentspark, GitHub, Infosys, Laravel, LinkedIn, TechMahindra, X, Webskitters, getIcon };
