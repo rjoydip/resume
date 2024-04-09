@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Card,
@@ -11,12 +12,13 @@ import { Metadata } from "next";
 import { Section } from "@/components/ui/section";
 import { GlobeIcon, MailIcon, PhoneIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { RESUME_DATA } from "@/data/resume-data";
+import { RESUME_DATA } from "@/data/resume";
 import { ProjectCard } from "@/components/project-card";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { IconType, getIcon } from "@/components/icons/getIcon";
 
 export const metadata: Metadata = {
-  title: `${RESUME_DATA.name} | ${RESUME_DATA.about}`,
+  title: `${RESUME_DATA.name} - ${RESUME_DATA.initials}`,
   description: RESUME_DATA.summary,
 };
 
@@ -93,7 +95,11 @@ export default function Page() {
             </div>
           </div>
           <Avatar className="size-28">
-            <AvatarImage alt={RESUME_DATA.name} src={RESUME_DATA.avatarUrl} />
+            <AvatarImage
+              alt={RESUME_DATA.name}
+              src={RESUME_DATA.avatarUrl}
+              className="rounded-full"
+            />
             <AvatarFallback>{RESUME_DATA.initials}</AvatarFallback>
           </Avatar>
         </div>
@@ -113,18 +119,15 @@ export default function Page() {
                 <CardHeader>
                   <div className="flex items-center justify-between gap-x-2 text-base">
                     <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold leading-none">
-                      {/* <Avatar>
-                        <AvatarImage asChild>
-                          {work.logo}
-                        </AvatarImage>
-                        <AvatarFallback>OF</AvatarFallback>
-                      </Avatar> */}
                       <a className="hover:underline" href={work.link}>
                         {work.company}
                       </a>
                       <span className="inline-flex gap-x-1">
                         {work.badges.map((badge) => (
-                          <Badge className="align-middle text-[12px]" key={badge}>
+                          <Badge
+                            className="align-middle text-[12px]"
+                            key={badge}
+                          >
                             {badge}
                           </Badge>
                         ))}
@@ -142,14 +145,12 @@ export default function Page() {
                   {work.description}
                 </CardContent>
                 <CardFooter className="flex-wrap">
-                  {work.technologies.map((tech) => (
-                    <Badge
-                      className="px-1 py-0 text-[10px]"
-                      variant="secondary"
-                      key={tech}
-                    >
-                      {tech}
-                    </Badge>
+                  {work.technologies.map((tech, index) => (
+                    <div key={index} className="mx-0.5">
+                      {getIcon(tech as IconType, {
+                        className: "size-3.5 rounded-full",
+                      })}
+                    </div>
                   ))}
                 </CardFooter>
               </Card>
@@ -190,12 +191,14 @@ export default function Page() {
                         <TableCell className="p-1 font-medium">
                           {skills[0]}:
                         </TableCell>
-                        <TableCell className="p-1">
-                          {skills[1].map((skill: string) => {
+                        <TableCell className="flex flex-wrap p-1">
+                          {skills[1].map((skill: string, index: number) => {
                             return (
-                              <Badge key={skill} className="mx-0.5">
-                                {skill}
-                              </Badge>
+                              <div key={index} className="mx-0.5">
+                                {getIcon(skill as IconType, {
+                                  className: "size-3.5 rounded-full",
+                                })}
+                              </div>
                             );
                           })}
                         </TableCell>
@@ -218,7 +221,6 @@ export default function Page() {
                   title={project.title}
                   description={project.description}
                   technologies={project.technologies}
-                  tags={"tags" in project ? project.tags : []}
                   links={"links" in project ? project.links : []}
                 />
               );

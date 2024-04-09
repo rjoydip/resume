@@ -1,1 +1,0 @@
-export { Laravel } from "./Laravel"

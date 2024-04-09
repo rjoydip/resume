@@ -78,18 +78,17 @@ export const RESUME_DATA = {
       end: null,
       description: "",
       technologies: [
-        "Node.js",
+        "Nodejs",
+        "NPM",
         "Jenkins",
         "JavaScript",
-        "Snyk",
-        "React.js",
-        "Instana",
+        "reactjs",
         "Jira",
-        "Docker",
-        "Docker Compose",
+        "docker",
         "Jest",
         "Cucumber",
-        "Gherkins",
+        "Snyk",
+        "Instana",
       ],
     },
     {
@@ -103,17 +102,16 @@ export const RESUME_DATA = {
       description: "",
       technologies: [
         "JavaScript",
-        "Node.js (Microservice)",
-        "SpringBoot Batch",
+        "Nodejs",
+        "SpringBoot",
         "Kafka",
-        "GitLab",
-        "GMC Automation",
-        "React.js",
-        "ETL (Support work)",
-        "Docker",
-        "Docker Compose",
+        "aws",
+        "Reactjs",
+        "Jira",
+        "docker",
         "Cucumber",
-        "Gherkins",
+        "GitLab",
+        "ETL",
       ],
     },
     {
@@ -128,8 +126,8 @@ export const RESUME_DATA = {
       technologies: [
         "JavaScript",
         "Angular",
-        "Node.js",
-        "React.js",
+        "Nodejs",
+        "Reactjs",
         "Mongodb",
         "Typescript",
         "GitLab",
@@ -144,7 +142,7 @@ export const RESUME_DATA = {
       start: "2016",
       end: "2017",
       description: "Building web and hybrid application along with the backend",
-      technologies: ["Laravel", "Angular.js", "Ionic", "JavaScript", "Github"],
+      technologies: ["Laravel", "Angular", "Ionic", "JavaScript", "GitLab"],
     },
   ],
   skills: [
@@ -152,29 +150,38 @@ export const RESUME_DATA = {
       Languages: [
         "JavaScript",
         "TypeScript",
-        "React/Next.js",
-        "Node.js",
+        "React",
+        "Nextjs",
+        "Nodejs",
         "Angular",
         "Deno",
+        "bun"
       ],
     },
     {
-      Cloud: ["Vercel", "AWS Lambda"],
+      Cloud: ["Vercel", "AWS"],
     },
     {
-      DevOps: ["Docker", "Docker Compose", "Jenkins"],
+      DevOps: ["Docker", "Jenkins"],
     },
-    { Database: ["MongoDB", "PostgresSQL", "MySQL", "SQLite", "Prisma"] },
-    { Test: ["Cucumber", "Gherkins", "Jest", "Cypress", "Playwright"] },
+    { Database: ["MongoDB", "PostgreSQL", "MySQL"] },
+    { ORM: ["Prisma", "Mongoose"] },
+    { Test: ["Cucumber", "Jest", "Vitest", "Cypress", "Playwright"] },
+    {
+      OS: ["Windows", "Linux", "Mac"],
+    },
+    {
+      "Cross Platform": ["Ionic", "Electron"],
+    },
     {
       Tools: [
-        "Snyk",
-        "Instana",
-        "REST",
         "JIRA",
-        "GMC Automation",
         "GraphQL",
         "Kafka",
+        "Postman",
+        "Snyk",
+        "Instana",
+        "GMC Automation",
       ],
     },
   ],
@@ -182,7 +189,7 @@ export const RESUME_DATA = {
     {
       title: "Bridge Boffin",
       description: "Learning bridge game for kids",
-      technologies: ["Laravel", "Bootstrap"],
+      technologies: ["Laravel", "Bootstrap", "PHP", "gitlab", "javascript"],
       links: [
         {
           type: "web",
@@ -190,13 +197,12 @@ export const RESUME_DATA = {
           href: "https://www.bridgeboffin.com",
         },
       ],
-      tags: ['web', 'backend', 'api']
     },
     {
       title: "Menu Pulse",
       description:
         "The Restaurant-Based Social Network & Menu Wiki. Menu Pulse is a web and smartphone application-based platform for restaurants, menus, pictures, and reviews launching.",
-      technologies: ["Laravel", "Bootstrap", "Ionic", "Angular.js"],
+      technologies: ["Laravel", "Bootstrap", "Ionic", "angular", "gitlab", "javascript"],
       links: [
         {
           type: "web",
@@ -209,13 +215,19 @@ export const RESUME_DATA = {
           href: "https://play.google.com/store/apps/details?id=com.Menupulse.Menupulse",
         },
       ],
-      tags: ['web', 'mobile', 'backend', 'api']
     },
     {
       title: "Inagrab",
       description:
         "Inagrab is the best deal search engine that allows you to make the best possible decision in the shortest possible time.",
-      technologies: ["Angular.js", "Ionic", "Typescript"],
+      technologies: [
+        "angular",
+        "Ionic",
+        "Typescript",
+        "node",
+        "npm",
+        "gitlab",
+      ],
       links: [
         {
           type: "mobile",
@@ -223,13 +235,12 @@ export const RESUME_DATA = {
           href: "https://play.google.com/store/apps/details?id=in.youstart.inagrab",
         },
       ],
-      tags: ['mobile', 'backend', 'api']
     },
     {
       title: "Tapp - Drinking App",
       description:
         "The drinking game played by superheroes. Open Tapp App and your drinking destiny will be in the palm of your hands. No need to know the rules, hey create your own and let the drinks spill.",
-      technologies: ["Angular.js", "Ionic"],
+      technologies: ["angular", "Ionic", "node", "npm", "gitlab", "typescript"],
       links: [
         {
           type: "mobile",
@@ -237,18 +248,26 @@ export const RESUME_DATA = {
           href: "https://play.google.com/store/apps/details?id=com.dat.tapp",
         },
       ],
-      tags: ['mobile']
     },
     {
       title: "Classified",
       description: "Post advertisement application",
-      technologies: ["Angular.js", "Ionic", "Firebase"],
-      links: [{
-        type: 'mobile',
-        label: 'classifieds',
-        href: 'https://play.google.com/store/apps/details?id=com.classifieds.universe'
-      }],
-      tags: ['mobile']
+      technologies: [
+        "angular",
+        "Ionic",
+        "Firebase",
+        "node",
+        "npm",
+        "gitlab",
+        "typescript"
+      ],
+      links: [
+        {
+          type: "mobile",
+          label: "classifieds",
+          href: "https://play.google.com/store/apps/details?id=com.classifieds.universe",
+        },
+      ],
     },
     {
       title: "The Scope App",
@@ -261,19 +280,20 @@ export const RESUME_DATA = {
           href: "https://play.google.com/store/apps/details?id=com.thescope",
         },
       ],
-      technologies: ["Node.js", "Express", "Mongodb", "RESTful web services"],
-      tags: ['backend', 'api']
+      technologies: ["nodejs", "Express", "MongoDB", "npm", "gitlab", "typescript"],
     },
     {
       title: "Mizizi",
       description:
         "The Mizizi will allow users to locate and find a stylist, barbers, nail technician, eyebrow and eyelash technicians all over the world.",
       technologies: [
-        "Node.js",
+        "nodejs",
         "Express",
         "Mongodb",
-        "Angular 4",
-        "RESTful web services",
+        "Angular",
+        "npm",
+        "gitlab",
+        "typescript"
       ],
       links: [
         {
@@ -288,27 +308,25 @@ export const RESUME_DATA = {
           href: "https://play.google.com/store/apps/details?id=com.mizizi",
         },
       ],
-      tags: ['web', 'backend', 'api']
     },
     {
       title: "LetsEat",
       description:
         "Order delicious home-cooked meals. See who's cooking in your neighborhood.",
       technologies: [
-        "Node.js",
+        "nodejs",
         "Express",
         "Mongodb",
-        "RESTful web services",
-        "Angular 6",
+        "npm",
+        "gitlab",
+        "typescript"
       ],
-      tags: ['web', 'backend', 'api']
     },
     {
       title: "Card sort",
       description:
         "Realtime data analytics application by collecting users activity data and admin manageable.",
-      technologies: ["Angular 7", "Firebase"],
-      tags: ['web', 'backend', 'api']
+      technologies: ["Angular", "Firebase", "electron", "node", "npm", "gitlab", "typescript"],
     },
   ],
 } as const;

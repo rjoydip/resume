@@ -1,11 +1,5 @@
-import { Ascentspark } from "./Ascentspark";
-import { Infosys } from "./Infosys";
-import { GitHub } from "./GitHub";
-import { LinkedIn } from "./LinkedIn";
-import { TechMahindra } from "./TechMahindra";
-import { X } from "./X";
-import { Webskitters } from "./Webskitters";
-import { Laravel } from "./language"
+import { GitHub, LinkedIn, X } from "./social";
 import { getIcon } from "./getIcon"
+import { Ascentspark, Infosys, TechMahindra, Webskitters } from "./company";
 
-export { Ascentspark, GitHub, Infosys, Laravel, LinkedIn, TechMahindra, X, Webskitters, getIcon };
+export { Ascentspark, GitHub, Infosys, LinkedIn, TechMahindra, X, Webskitters, getIcon };

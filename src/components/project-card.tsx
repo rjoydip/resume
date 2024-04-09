@@ -14,7 +14,6 @@ interface Props {
   title: string;
   description: string;
   technologies: readonly string[];
-  tags: readonly string[];
   links?: readonly {
     type: "web" | "mobile";
     href: string;
@@ -27,10 +26,9 @@ export function ProjectCard({
   description,
   technologies,
   links = [],
-  tags = [],
 }: Props) {
   return (
-    <Card className="flex flex-col overflow-hidden border border-muted p-3">
+    <Card className="flex flex-col overflow-hidden border p-3">
       <CardHeader className="">
         <div className="space-y-1">
           <CardTitle className="text-base">
@@ -87,29 +85,11 @@ export function ProjectCard({
             <Label className="text-xs font-semibold">Technology: </Label>
           ) : null}
           {technologies.map((technology, index) => (
-            <Badge
-              className="px-1 py-0 text-[10px]"
-              variant="secondary"
-              key={index}
-            >
-              {technology}
-            </Badge>
-          ))}
-        </div>
-        <div className="mt-1 flex flex-wrap gap-1">
-          {tags && !!tags.length ? (
-            <Label className="text-xs font-semibold">Tags: </Label>
-          ) : null}
-          {tags.map((tag, index) => (
-            <Badge
-              className="rounded-full p-0 text-[10px]"
-              variant="secondary"
-              key={index}
-            >
-              {getIcon(tag as IconType, {
+            <div key={index}>
+              {getIcon(technology as IconType, {
                 className: "size-3.5 rounded-full",
               })}
-            </Badge>
+            </div>
           ))}
         </div>
       </CardContent>
