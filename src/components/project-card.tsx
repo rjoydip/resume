@@ -5,7 +5,6 @@ import {
   CardDescription,
   CardTitle,
 } from "./ui/card";
-import { Badge } from "./ui/badge";
 import { Label } from "./ui/label";
 import { getIcon } from "./icons";
 import { IconType } from "./icons/getIcon";
@@ -13,12 +12,12 @@ import { IconType } from "./icons/getIcon";
 interface Props {
   title: string;
   description: string;
-  techStacks: readonly string[];
-  links?: readonly {
+  techStacks: string[];
+  links?: {
     type: "web" | "mobile";
     href: string;
     label: string;
-  }[];
+  }[] | null;
 }
 
 export function ProjectCard({

@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 import { ResumeData } from "@/data/resume";
 
-import "./globals.css";
+import "../styles/globals.css";
 
 export const metadata: Metadata = {
   title: `${ResumeData.name}`,

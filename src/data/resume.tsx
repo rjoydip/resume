@@ -10,7 +10,7 @@ import {
 import { parse } from "valibot";
 import { ResumeDataSchema } from "./schema";
 
-export const ResumeData = {
+export const ResumeData = parse(ResumeDataSchema, {
   name: "Joydip Roy",
   initials: "JR",
   location: "Kolkata, India",
@@ -341,11 +341,4 @@ export const ResumeData = {
       ],
     },
   ],
-} as const;
-
-try {
-  const data = parse(ResumeDataSchema, ResumeData);
-  console.log(data);
-} catch (error) {
-  console.error(error);
-}
+})
