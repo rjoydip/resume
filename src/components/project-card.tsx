@@ -35,7 +35,7 @@ export function ProjectCard({
               <Label className="font-semibold leading-none">{title}</Label>
             </div>
           </CardTitle>
-          <CardDescription className="text-xs">
+          <CardDescription className="text-sm">
             {description}
           </CardDescription>
         </div>
@@ -43,7 +43,7 @@ export function ProjectCard({
       <CardContent className="mt-auto">
         <div className="mt-1 flex flex-wrap gap-1">
           {links && !!links.length ? (
-            <Label className="text-xs font-semibold">Links: </Label>
+            <Label className="text-sm font-semibold">Links: </Label>
           ) : null}
           {links && !!links.length
             ? links.map((link, index) =>
@@ -81,7 +81,7 @@ export function ProjectCard({
         </div>
         <div className="mt-2 flex flex-wrap gap-1">
           {techStacks && !!techStacks.length ? (
-            <Label className="text-xs font-semibold">Technology: </Label>
+            <Label className="text-sm font-semibold">Technology: </Label>
           ) : null}
           {techStacks.map((techStack, index) => (
             <div key={index}>

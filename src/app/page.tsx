@@ -31,10 +31,10 @@ export default function Page() {
         <div className="flex items-center justify-between">
           <div className="flex-1 space-y-1.5">
             <h1 className="text-2xl font-bold">{ResumeData.name}</h1>
-            <p className="max-w-md text-pretty text-sm">
+            <p className="max-w-md text-pretty text-base">
               {ResumeData.about}
             </p>
-            <p className="max-w-md items-center text-pretty text-xs">
+            <p className="max-w-md items-center text-pretty text-sm">
               <a
                 className="inline-flex gap-x-1.5 align-baseline leading-none hover:underline"
                 href={ResumeData.locationLink}
@@ -44,7 +44,7 @@ export default function Page() {
                 {ResumeData.location}
               </a>
             </p>
-            <div className="flex gap-x-1 pt-1 text-sm print:hidden">
+            <div className="flex gap-x-1 pt-1 text-base print:hidden">
               {ResumeData.contact.email ? (
                 <Button
                   className="size-8"
@@ -83,7 +83,7 @@ export default function Page() {
                 </Button>
               ))}
             </div>
-            <div className="hidden flex-col gap-x-1 text-sm print:flex">
+            <div className="hidden flex-col gap-x-1 text-base print:flex">
               {ResumeData.contact.email ? (
                 <a href={`mailto:${ResumeData.contact.email}`}>
                   <span className="underline">{ResumeData.contact.email}</span>
@@ -108,7 +108,7 @@ export default function Page() {
         {/* About */}
         <Section>
           <h2 className="text-xl font-bold">About</h2>
-          <p className="text-pretty text-sm">
+          <p className="text-pretty text-base">
             {ResumeData.summary}
           </p>
         </Section>
@@ -135,19 +135,19 @@ export default function Page() {
                         ))}
                       </span>
                     </h3>
-                    <div className="text-sm tabular-nums text-gray-500">
+                    <div className="text-base tabular-nums text-gray-500">
                       {work.start} - {work.end ?? "Present"}
                     </div>
                   </div>
-                  <h4 className="text-sm leading-none">
+                  <h4 className="text-base font-semibold text-blue-600">
                     {work.position}
                   </h4>
                 </CardHeader>
-                <CardContent className="mt-2 text-xs">
+                <CardContent className="mt-2 text-sm">
                   {work.description}
                 </CardContent>
                 <CardFooter className="flex-wrap gap-1 mt-2">
-                  <Label className="text-xs font-semibold">Skills: </Label>
+                  <Label className="text-sm font-semibold">Skills: </Label>
                   {work.techStacks.map((techStack, index) => (
                     <div key={index} className="mx-0.5">
                       {getIcon(techStack as IconType, {
@@ -171,14 +171,14 @@ export default function Page() {
                     <h3 className="font-semibold leading-none">
                       {education.school}
                     </h3>
-                    <div className="text-sm tabular-nums text-gray-500">
+                    <div className="text-base tabular-nums text-gray-500">
                       {education.start} - {education.end}
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="mt-2">{education.degree}</CardContent>
                 <CardFooter className="mt-2">
-                  <Label className="text-sm">
+                  <Label className="text-base font-semibold text-blue-600">
                     Aggregate: {education?.aggregate ?? education?.cgpa}
                   </Label>
                 </CardFooter>
@@ -196,7 +196,7 @@ export default function Page() {
                   ([skillCategory, skills]) => (
                     <TableRow key={skillCategory} className="border-none">
                       <TableCell className="p-1 font-medium">
-                        {humanizeString(skillCategory)}:
+                        {humanizeString(skillCategory)}
                       </TableCell>
                       <TableCell className="flex flex-wrap p-1">
                         {skills.map((skill, index) => {
