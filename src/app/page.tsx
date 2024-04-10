@@ -31,10 +31,10 @@ export default function Page() {
         <div className="flex items-center justify-between">
           <div className="flex-1 space-y-1.5">
             <h1 className="text-2xl font-bold">{ResumeData.name}</h1>
-            <p className="max-w-md text-pretty font-mono text-sm text-muted-foreground">
+            <p className="max-w-md text-pretty text-sm">
               {ResumeData.about}
             </p>
-            <p className="max-w-md items-center text-pretty font-mono text-xs text-muted-foreground">
+            <p className="max-w-md items-center text-pretty text-xs">
               <a
                 className="inline-flex gap-x-1.5 align-baseline leading-none hover:underline"
                 href={ResumeData.locationLink}
@@ -44,7 +44,7 @@ export default function Page() {
                 {ResumeData.location}
               </a>
             </p>
-            <div className="flex gap-x-1 pt-1 font-mono text-sm text-muted-foreground print:hidden">
+            <div className="flex gap-x-1 pt-1 text-sm print:hidden">
               {ResumeData.contact.email ? (
                 <Button
                   className="size-8"
@@ -83,7 +83,7 @@ export default function Page() {
                 </Button>
               ))}
             </div>
-            <div className="hidden flex-col gap-x-1 font-mono text-sm text-muted-foreground print:flex">
+            <div className="hidden flex-col gap-x-1 text-sm print:flex">
               {ResumeData.contact.email ? (
                 <a href={`mailto:${ResumeData.contact.email}`}>
                   <span className="underline">{ResumeData.contact.email}</span>
@@ -108,7 +108,7 @@ export default function Page() {
         {/* About */}
         <Section>
           <h2 className="text-xl font-bold">About</h2>
-          <p className="text-pretty font-mono text-sm text-muted-foreground">
+          <p className="text-pretty text-sm">
             {ResumeData.summary}
           </p>
         </Section>
@@ -139,7 +139,7 @@ export default function Page() {
                       {work.start} - {work.end ?? "Present"}
                     </div>
                   </div>
-                  <h4 className="font-mono text-sm leading-none">
+                  <h4 className="text-sm leading-none">
                     {work.position}
                   </h4>
                 </CardHeader>

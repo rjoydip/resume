@@ -35,7 +35,7 @@ export function ProjectCard({
               <Label className="font-semibold leading-none">{title}</Label>
             </div>
           </CardTitle>
-          <CardDescription className="font-mono text-xs">
+          <CardDescription className="text-xs">
             {description}
           </CardDescription>
         </div>
