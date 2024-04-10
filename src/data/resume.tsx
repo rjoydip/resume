@@ -7,16 +7,18 @@ import {
   Webskitters,
   X,
 } from "@/components/icons";
+import { parse } from "valibot";
+import { ResumeDataSchema } from "./schema";
 
-export const RESUME_DATA = {
+export const ResumeData = {
   name: "Joydip Roy",
   initials: "JR",
   location: "Kolkata, India",
   locationLink: "https://maps.app.goo.gl/9uaiMJMPsHU4inX7A",
   about:
-    "Detail-oriented Full Stack Engineer dedicated to crafting high-quality products with meticulous precision.",
+    "Full Stack Engineer who pays close attention to every detail, ensuring that the products I create are top-notch and carefully crafted.",
   summary:
-    "As a seasoned Full Stack Engineer, I've adeptly guided numerous projects from conception to fruition. My leadership fosters collaborative teams, cultivating an atmosphere conducive to peak performance. Proficient in TypeScript, JavaScript, and Node.js, I bring over 8+ years of invaluable expertise gained through tenure with esteemed IT companies.",
+    "As an experienced Full Stack Engineer, I've led many projects from start to finish with success. I'm good at bringing teams together and creating a positive environment for everyone to do their best work. I'm really skilled in using TypeScript, JavaScript, and Node.js, and I've been doing this for over 8 years with some really great companies.",
   avatarUrl: "https://avatars.githubusercontent.com/u/112172822?v=4",
   personalWebsiteUrl: "https://rjoydip.me",
   contact: {
@@ -44,27 +46,29 @@ export const RESUME_DATA = {
     {
       school: "Narula Institute Of Technology",
       degree: "Bachelor of Technology (W.B.U.T/M.A.K.A.U.T)",
-      aggregate: "",
-      cgpa: "7.84",
+      aggregate: null,
+      cgpa: 7.84,
       location: "Kolkata, India",
-      start: "2012",
-      end: "2016",
+      start: 2012,
+      end: 2016,
     },
     {
       school: "Madhyamgram High School",
       degree: "Higher Secondary Education (12 th) (W.B.C.H.S.E)",
       aggregate: "63.80%",
+      cgpa: null,
       location: "Kolkata, India",
-      start: "2010",
-      end: "2012",
+      start: 2010,
+      end: 2012,
     },
     {
       school: "Madhyamgram High School",
       degree: "Secondary Education (10 th) (W.B.B.S.E)",
       aggregate: "70.50%",
+      cgpa: null,
       location: "Kolkata, India",
-      start: "2010",
-      end: "2012",
+      start: 2005,
+      end: 2010,
     },
   ],
   work: [
@@ -72,124 +76,117 @@ export const RESUME_DATA = {
       company: "Tech Mahindra",
       link: "https://www.techmahindra.com/",
       badges: ["Work from Home", "Hybrid"],
-      title: "Associate Tech Specialist",
+      position: "Associate Tech Specialist",
       logo: <TechMahindra />,
       start: "2022",
       end: null,
-      description: "",
-      technologies: [
-        "Nodejs",
-        "NPM",
-        "Jenkins",
-        "JavaScript",
-        "reactjs",
-        "Jira",
+      description: "Tech Mahindra is a premier provider of digital transformation and consulting services. Specializing in innovative solutions, they help businesses adapt and thrive in the digital age, enhancing efficiency and competitiveness.",
+      techStacks: [
+        "bitbucket",
+        "cucumber",
         "docker",
-        "Jest",
-        "Cucumber",
-        "Snyk",
-        "Instana",
+        "instana",
+        "javascript",
+        "jenkins",
+        "jest",
+        "jira",
+        "nodejs",
+        "npm",
+        "reactjs",
+        "snyk",
       ],
     },
     {
       company: "Infosys",
       link: "https://www.infosys.com/",
       badges: ["Office", "Work from Home"],
-      title: "Consultant",
+      position: "Consultant",
       logo: <Infosys />,
-      start: "2019",
-      end: "2022",
-      description: "",
-      technologies: [
-        "JavaScript",
-        "Nodejs",
-        "SpringBoot",
-        "Kafka",
+      start: 2019,
+      end: 2022,
+      description: "Infosys is a global leader in consulting, technology, and outsourcing solutions. With a focus on driving digital innovation, Infosys helps clients navigate complex business challenges and achieve strategic goals. Their diverse portfolio of services spans across industries, delivering cutting-edge solutions tailored to meet the unique needs of each client.",
+      techStacks: [
         "aws",
-        "Reactjs",
-        "Jira",
+        "cucumber",
         "docker",
-        "Cucumber",
-        "GitLab",
-        "ETL",
+        "etl",
+        "gitlab",
+        "javascript",
+        "jira",
+        "kafka",
+        "nodejs",
+        "reactjs",
+        "springboot",
       ],
     },
     {
       company: "Webskitters Technology Solutions Pvt. Ltd",
       link: "https://www.webskitters.com/",
       badges: ["Office"],
-      title: "Software Developer",
+      position: "Software Developer",
       logo: <Webskitters />,
-      start: "2017",
-      end: "2019",
-      description: "Building web and hybrid application along with the backend",
-      technologies: [
-        "JavaScript",
-        "Angular",
-        "Nodejs",
-        "Reactjs",
-        "Mongodb",
-        "Typescript",
-        "GitLab",
+      start: 2017,
+      end: 2019,
+      description: "Webskitters is a dynamic web development and digital marketing agency, specializing in crafting innovative online solutions tailored to clients' needs. With a focus on creativity and efficiency, Webskitters helps businesses establish a strong online presence and drive growth through strategic digital initiatives.",
+      techStacks: [
+        "angular",
+        "gitlab",
+        "javascript",
+        "mongodb",
+        "nodejs",
+        "reactjs",
+        "typescript",
       ],
     },
     {
       company: "Techmancer Web Development Pvt. Ltd (Ascentspark)",
       link: "https://www.ascentspark.com/",
       badges: ["Office"],
-      title: "Junior Web Developer",
+      position: "Junior Web Developer",
       logo: <Ascentspark />,
-      start: "2016",
-      end: "2017",
-      description: "Building web and hybrid application along with the backend",
-      technologies: ["Laravel", "Angular", "Ionic", "JavaScript", "GitLab"],
+      start: 2016,
+      end: 2017,
+      description: "Ascent Spark: Elevating brands through strategic digital marketing solutionsAscent Spark is a boutique digital marketing agency focused on elevating brands through strategic online initiatives. With a commitment to creativity and results-driven solutions, Ascent Spark helps businesses stand out and succeed in the competitive digital realm.",
+      techStacks: ["angular", "ionic", "javascript", "laravel", "gitlab"],
     },
   ],
-  skills: [
-    {
-      Languages: [
-        "JavaScript",
-        "TypeScript",
-        "React",
-        "Nextjs",
-        "Nodejs",
-        "Angular",
-        "Deno",
-        "bun"
-      ],
-    },
-    {
-      Cloud: ["Vercel", "AWS"],
-    },
-    {
-      DevOps: ["Docker", "Jenkins"],
-    },
-    { Database: ["MongoDB", "PostgreSQL", "MySQL"] },
-    { ORM: ["Prisma", "Mongoose"] },
-    { Test: ["Cucumber", "Jest", "Vitest", "Cypress", "Playwright"] },
-    {
-      OS: ["Windows", "Linux", "Mac"],
-    },
-    {
-      "Cross Platform": ["Ionic", "Electron"],
-    },
-    {
-      Tools: [
-        "JIRA",
-        "GraphQL",
-        "Kafka",
-        "Postman",
-        "Snyk",
-        "Instana",
-        "GMC Automation",
-      ],
-    },
-  ],
+  skills: {
+    cloud: ["vercel", "aws"],
+    "cross-platform": ["ionic", "electron"],
+    devOps: ["docker", "jenkins"],
+    database: ["mongodb", "postgresql", "mysql"],
+    languages: [
+      "javascript",
+      "typescript",
+      "react",
+      "nextjs",
+      "nodejs",
+      "angular",
+      "deno",
+      "bun",
+    ],
+    "object-relational-mapping": ["prisma", "mongoose"],
+    "operating-system": ["linux", "mac", "windows"],
+    test: ["cucumber", "jest", "vitest", "cypress", "playwright"],
+    tools: [
+      "postman",
+      "jira",
+      "graphql",
+      "kafka",
+      "bitbucket",
+      "git",
+      "github",
+      "gitlab",
+      "github-actions",
+      "snyk",
+      "instana",
+    ],
+  },
   projects: [
     {
       title: "Bridge Boffin",
       description: "Learning bridge game for kids",
-      technologies: ["Laravel", "Bootstrap", "PHP", "gitlab", "javascript"],
+      techStacks: ["bootstrap", "gitlab", "javascript", "laravel", "php"],
       links: [
         {
           type: "web",
@@ -202,7 +199,14 @@ export const RESUME_DATA = {
       title: "Menu Pulse",
       description:
         "The Restaurant-Based Social Network & Menu Wiki. Menu Pulse is a web and smartphone application-based platform for restaurants, menus, pictures, and reviews launching.",
-      technologies: ["Laravel", "Bootstrap", "Ionic", "angular", "gitlab", "javascript"],
+      techStacks: [
+        "angular",
+        "bootstrap",
+        "gitlab",
+        "ionic",
+        "javascript",
+        "laravel",
+      ],
       links: [
         {
           type: "web",
@@ -220,14 +224,7 @@ export const RESUME_DATA = {
       title: "Inagrab",
       description:
         "Inagrab is the best deal search engine that allows you to make the best possible decision in the shortest possible time.",
-      technologies: [
-        "angular",
-        "Ionic",
-        "Typescript",
-        "node",
-        "npm",
-        "gitlab",
-      ],
+      techStacks: ["angular", "gitlab", "ionic", "nodejs", "npm", "typescript"],
       links: [
         {
           type: "mobile",
@@ -240,7 +237,7 @@ export const RESUME_DATA = {
       title: "Tapp - Drinking App",
       description:
         "The drinking game played by superheroes. Open Tapp App and your drinking destiny will be in the palm of your hands. No need to know the rules, hey create your own and let the drinks spill.",
-      technologies: ["angular", "Ionic", "node", "npm", "gitlab", "typescript"],
+      techStacks: ["angular", "gitlab", "ionic", "nodejs", "npm", "typescript"],
       links: [
         {
           type: "mobile",
@@ -252,14 +249,14 @@ export const RESUME_DATA = {
     {
       title: "Classified",
       description: "Post advertisement application",
-      technologies: [
+      techStacks: [
         "angular",
-        "Ionic",
-        "Firebase",
-        "node",
-        "npm",
+        "firebase",
         "gitlab",
-        "typescript"
+        "ionic",
+        "nodejs",
+        "npm",
+        "typescript",
       ],
       links: [
         {
@@ -280,20 +277,27 @@ export const RESUME_DATA = {
           href: "https://play.google.com/store/apps/details?id=com.thescope",
         },
       ],
-      technologies: ["nodejs", "Express", "MongoDB", "npm", "gitlab", "typescript"],
+      techStacks: [
+        "express",
+        "gitlab",
+        "mongodb",
+        "nodejs",
+        "npm",
+        "typescript",
+      ],
     },
     {
       title: "Mizizi",
       description:
         "The Mizizi will allow users to locate and find a stylist, barbers, nail technician, eyebrow and eyelash technicians all over the world.",
-      technologies: [
-        "nodejs",
-        "Express",
-        "Mongodb",
-        "Angular",
-        "npm",
+      techStacks: [
+        "angular",
+        "express",
         "gitlab",
-        "typescript"
+        "mongodb",
+        "nodejs",
+        "npm",
+        "typescript",
       ],
       links: [
         {
@@ -313,20 +317,35 @@ export const RESUME_DATA = {
       title: "LetsEat",
       description:
         "Order delicious home-cooked meals. See who's cooking in your neighborhood.",
-      technologies: [
-        "nodejs",
-        "Express",
-        "Mongodb",
-        "npm",
+      techStacks: [
+        "express",
         "gitlab",
-        "typescript"
+        "mongodb",
+        "nodejs",
+        "npm",
+        "typescript",
       ],
     },
     {
       title: "Card sort",
       description:
         "Realtime data analytics application by collecting users activity data and admin manageable.",
-      technologies: ["Angular", "Firebase", "electron", "node", "npm", "gitlab", "typescript"],
+      techStacks: [
+        "angular",
+        "electron",
+        "firebase",
+        "gitlab",
+        "nodejs",
+        "npm",
+        "typescript",
+      ],
     },
   ],
 } as const;
+
+try {
+  const data = parse(ResumeDataSchema, ResumeData);
+  console.log(data);
+} catch (error) {
+  console.error(error);
+}

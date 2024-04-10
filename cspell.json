@@ -1,5 +1,6 @@
 {
     "words": [
+        "antfu",
         "ascentspark",
         "ascentspark",
         "bridgeboffin",
@@ -21,6 +22,7 @@
         "nextjs",
         "nums",
         "playwrite",
+        "picklist",
         "prismaorm",
         "joydip",
         "kolkata",
@@ -32,9 +34,12 @@
         "svgs",
         "tapp",
         "tailwindcss",
-        "thescope",
+        "taze",
         "techmancer",
+        "thescope",
+        "titleize",
         "vaul",
+        "valibot",
         "webskitters"
     ]
 }

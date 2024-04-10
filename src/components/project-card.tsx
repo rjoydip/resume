@@ -13,7 +13,7 @@ import { IconType } from "./icons/getIcon";
 interface Props {
   title: string;
   description: string;
-  technologies: readonly string[];
+  techStacks: readonly string[];
   links?: readonly {
     type: "web" | "mobile";
     href: string;
@@ -24,7 +24,7 @@ interface Props {
 export function ProjectCard({
   title,
   description,
-  technologies,
+  techStacks,
   links = [],
 }: Props) {
   return (
@@ -56,7 +56,7 @@ export function ProjectCard({
                     rel="noopener noreferrer"
                   >
                     {getIcon("web", {
-                      className: "size-3.5 rounded-full",
+                      className: "size-4 rounded-full",
                       color: "green",
                       colorwidth: "600",
                       href: link.href,
@@ -70,7 +70,7 @@ export function ProjectCard({
                     rel="noopener noreferrer"
                   >
                     {getIcon("smartphone", {
-                      className: "size-3.5 rounded-full",
+                      className: "size-4 rounded-full",
                       color: "blue",
                       colorwidth: "600",
                       href: link.href,
@@ -81,13 +81,13 @@ export function ProjectCard({
             : null}
         </div>
         <div className="mt-2 flex flex-wrap gap-1">
-          {technologies && !!technologies.length ? (
+          {techStacks && !!techStacks.length ? (
             <Label className="text-xs font-semibold">Technology: </Label>
           ) : null}
-          {technologies.map((technology, index) => (
+          {techStacks.map((techStack, index) => (
             <div key={index}>
-              {getIcon(technology as IconType, {
-                className: "size-3.5 rounded-full",
+              {getIcon(techStack as IconType, {
+                className: "size-4 rounded-full",
               })}
             </div>
           ))}

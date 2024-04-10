@@ -2,13 +2,13 @@ import React from "react";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
-import { RESUME_DATA } from "@/data/resume";
+import { ResumeData } from "@/data/resume";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: `${RESUME_DATA.name} - ${RESUME_DATA.initials}`,
-  description: RESUME_DATA.summary,
+  title: `${ResumeData.name}`,
+  description: ResumeData.summary,
 };
 
 // If loading a variable font, you don't need to specify the font weight

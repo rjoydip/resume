@@ -1,9 +1,10 @@
-import { Globe, Server, Smartphone } from "lucide-react";
+import { Github, Globe, Server, Smartphone } from "lucide-react";
 import defu from "defu";
 import clsx from "clsx";
 import {
   AWS,
   Angular,
+  Bitbucket,
   Bootstrap,
   Bun,
   Cucumber,
@@ -13,6 +14,8 @@ import {
   Electron,
   Express,
   Firebase,
+  Git,
+  GithubActions,
   Gitlab,
   GraphQL,
   Ionic,
@@ -43,6 +46,7 @@ import {
   Windows,
 } from "./svg";
 import { Badge } from "../ui/badge";
+import humanizeString from "humanize-string";
 
 export type IconType =
   | "api"
@@ -55,6 +59,7 @@ export type IconType =
   // Programming languages
   | "angular"
   | "aws"
+  | "bitbucket"
   | "bootstrap"
   | "bun"
   | "cucumber"
@@ -64,6 +69,9 @@ export type IconType =
   | "electron"
   | "express"
   | "firebase"
+  | "git"
+  | "github"
+  | "github-actions"
   | "gitlab"
   | "graphql"
   | "ionic"
@@ -132,6 +140,8 @@ export function getIcon(icon: IconType = null, $props: IconProps = {}) {
       return <Angular {...props} />;
     case "aws":
       return <AWS {...props} />;
+    case "bitbucket":
+      return <Bitbucket {...props} />;
     case "bootstrap":
       return <Bootstrap {...props} />;
     case "bun":
@@ -150,6 +160,12 @@ export function getIcon(icon: IconType = null, $props: IconProps = {}) {
       return <Express {...props} />;
     case "firebase":
       return <Firebase {...props} />;
+    case "git":
+      return <Git {...props} />;
+    case "github":
+      return <Github {...props} />;
+    case "github-actions":
+      return <GithubActions {...props} />;
     case "gitlab":
       return <Gitlab {...props} />;
     case "graphql":
@@ -211,9 +227,9 @@ export function getIcon(icon: IconType = null, $props: IconProps = {}) {
       return <Windows {...props} />;
     default:
       return (
-        <Badge className="px-1 py-0 text-[10px]" variant="secondary">
-          {icon}
-        </Badge>
+        icon ? <Badge className="px-1 py-0 text-[10px]" variant="secondary">
+          {humanizeString(icon.toString())}
+        </Badge> : null
       );
   }
 }
