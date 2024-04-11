@@ -56,7 +56,7 @@ const ProjectCard = ({
               <Label className="text-sm font-semibold">Links: </Label>
             ) : null}
             {links && !!links.length
-              ? links.map((link, index) =>
+              ? links.sort().map((link, index) =>
                   link.type === "web" ? (
                     <a
                       key={index}
@@ -93,7 +93,7 @@ const ProjectCard = ({
             {techStacks && !!techStacks.length ? (
               <Label className="text-sm font-semibold">Technology: </Label>
             ) : null}
-            {techStacks.map((techStack, index) => (
+            {techStacks.sort().map((techStack, index) => (
               <div key={index} className="flex justify-center items-center ">
                 {getIcon(techStack as IconType, {
                   className: "size-4 rounded-full",
@@ -125,7 +125,7 @@ const Contact = ({ data }: { data: ContactType }) => {
             </a>
           </Button>
         ) : null}
-        {data.social.map((social) => (
+        {data.social.sort().map((social) => (
           <Button
             key={social.name}
             className="size-8"
@@ -219,7 +219,7 @@ const Skills = ({ data }: { data: SkillsType }) => {
                   {humanizeString(skillCategory)}
                 </TableCell>
                 <TableCell className="flex flex-wrap p-1">
-                  {skills.map((skill, index) => {
+                  {skills.sort().map((skill, index) => {
                     return (
                       <div key={index} className="mx-0.5">
                         {getIcon(skill as IconType, {
@@ -252,7 +252,7 @@ const Work = ({ data }: { data: WorkType }) => {
                     {work.company}
                   </a>
                   <span className="inline-flex gap-x-1">
-                    {work.mode.map((badge, index) => (
+                    {work.mode.sort().map((badge, index) => (
                       <Badge className="align-middle text-[12px]" key={index}>
                         {badge}
                       </Badge>
@@ -272,7 +272,7 @@ const Work = ({ data }: { data: WorkType }) => {
             </CardContent>
             <CardFooter className="mt-2 flex-wrap gap-1">
               <Label className="text-sm font-semibold">Skills: </Label>
-              {work.techStacks.map((techStack, index) => (
+              {work.techStacks.sort().map((techStack, index) => (
                 <div key={index} className="mx-0.5">
                   {getIcon(techStack as IconType, {
                     className: "size-5 rounded-full",
@@ -337,7 +337,7 @@ export default function Page() {
             url: data.personalWebsiteUrl,
             title: "Personal Website",
           },
-          ...data.contact.social.map((socialMediaLink) => ({
+          ...data.contact.social.sort().map((socialMediaLink) => ({
             url: socialMediaLink.url,
             title: socialMediaLink.name,
           })),
