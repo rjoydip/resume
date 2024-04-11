@@ -6,11 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint && eslint .",
+    "lint": "next lint",
     "deps:update": "taze -r -w -i -f -l"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^2.13.2",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "^2.0.2",

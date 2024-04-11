@@ -84,7 +84,7 @@ export const workSchema = array(object({
     position: string(),
     description: string(),
     link: string([url()]),
-    badges: array(picklist(['Work from Home', 'Hybrid', 'Office'])),
+    mode: array(picklist(['Work from Home', 'Hybrid', 'Office'])),
     logo: any(),
     techStacks: techStackSchema,
     start: union([

@@ -9,12 +9,12 @@ export type SkillsType = Output<typeof skillsSchema>
 export type ProjectType = Output<typeof projectsSchema>
 
 export interface ProjectCardProps {
-    title: string;
-    description: string;
-    techStacks: string[];
-    links?: {
-      type: "web" | "mobile";
-      href: string;
-      label: string;
-    }[] | null;
+  title: string;
+  description: string;
+  techStacks: string[];
+  links?: {
+    type: "web" | "mobile";
+    href: string;
+    label: string;
+  }[] | null;
 }

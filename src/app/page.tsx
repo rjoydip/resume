@@ -41,68 +41,68 @@ const ProjectCard = ({
 }: ProjectCardProps) => {
   return (
     <Card className="flex flex-col overflow-hidden border p-3">
-      <CardHeader className="">
-        <div className="space-y-1">
-          <CardTitle className="text-base">
-            <div className="flex flex-wrap space-x-0.5">
-              <Label className="font-semibold leading-none">{title}</Label>
-            </div>
-          </CardTitle>
-          <CardDescription className="text-sm">{description}</CardDescription>
-        </div>
+      <CardHeader>
+        <CardTitle className="space-y-1 text-base">
+          <div className="flex flex-wrap space-x-0.5">
+            <Label className="font-semibold leading-none">{title}</Label>
+          </div>
+        </CardTitle>
       </CardHeader>
-      <CardContent className="mt-auto">
-        <div className="mt-1 flex flex-wrap gap-1">
-          {links && !!links.length ? (
-            <Label className="text-sm font-semibold">Links: </Label>
-          ) : null}
-          {links && !!links.length
-            ? links.map((link, index) =>
-                link.type === "web" ? (
-                  <a
-                    key={index}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {getIcon("web", {
-                      className: "size-4 rounded-full",
-                      color: "green",
-                      colorwidth: "600",
-                      href: link.href,
-                    })}
-                  </a>
-                ) : link.type === "mobile" ? (
-                  <a
-                    key={index}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {getIcon("smartphone", {
-                      className: "size-4 rounded-full",
-                      color: "blue",
-                      colorwidth: "600",
-                      href: link.href,
-                    })}
-                  </a>
-                ) : null,
-              )
-            : null}
+      <CardContent className="mt-2 text-sm">{description}</CardContent>
+      <CardFooter className="mt-2">
+        <div>
+          <div className="flex flex-wrap gap-1">
+            {links && !!links.length ? (
+              <Label className="text-sm font-semibold">Links: </Label>
+            ) : null}
+            {links && !!links.length
+              ? links.map((link, index) =>
+                  link.type === "web" ? (
+                    <a
+                      key={index}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {getIcon("web", {
+                        className: "size-4 rounded-full",
+                        color: "green",
+                        colorwidth: "600",
+                        href: link.href,
+                      })}
+                    </a>
+                  ) : link.type === "mobile" ? (
+                    <a
+                      key={index}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {getIcon("smartphone", {
+                        className: "size-4 rounded-full",
+                        color: "blue",
+                        colorwidth: "600",
+                        href: link.href,
+                      })}
+                    </a>
+                  ) : null,
+                )
+              : null}
+          </div>
+          <div className="flex flex-wrap gap-1">
+            {techStacks && !!techStacks.length ? (
+              <Label className="text-sm font-semibold">Technology: </Label>
+            ) : null}
+            {techStacks.map((techStack, index) => (
+              <div key={index} className="flex justify-center items-center ">
+                {getIcon(techStack as IconType, {
+                  className: "size-4 rounded-full",
+                })}
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="mt-2 flex flex-wrap gap-1">
-          {techStacks && !!techStacks.length ? (
-            <Label className="text-sm font-semibold">Technology: </Label>
-          ) : null}
-          {techStacks.map((techStack, index) => (
-            <div key={index}>
-              {getIcon(techStack as IconType, {
-                className: "size-4 rounded-full",
-              })}
-            </div>
-          ))}
-        </div>
-      </CardContent>
+      </CardFooter>
     </Card>
   );
 };
@@ -252,7 +252,7 @@ const Work = ({ data }: { data: WorkType }) => {
                     {work.company}
                   </a>
                   <span className="inline-flex gap-x-1">
-                    {work.badges.map((badge, index) => (
+                    {work.mode.map((badge, index) => (
                       <Badge className="align-middle text-[12px]" key={index}>
                         {badge}
                       </Badge>

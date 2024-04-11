@@ -14,7 +14,7 @@ const data = parse(ResumeDataSchema, {
   about:
     "Full Stack Engineer who pays close attention to every detail, ensuring that the products I create are top-notch and carefully crafted.",
   summary:
-    "As an experienced Full Stack Engineer, I've led many projects from start to finish with success. I'm good at bringing teams together and creating a positive environment for everyone to do their best work. I'm really skilled in using TypeScript, JavaScript, and Node.js, and I've been doing this for over 8 years with some really great companies.",
+    "As an experienced Full Stack Engineer, I've led many projects from start to finish with success. I'm good at bringing teams together and creating a positive environment for everyone to do their best work. I'm really skilled in using TypeScript, JavaScript, and Node.js, and I've been doing this for over 8+ years with some really great companies.",
   avatarUrl: "https://avatars.githubusercontent.com/u/112172822?v=4",
   personalWebsiteUrl: "https://rjoydip.me",
   contact: {
@@ -71,7 +71,7 @@ const data = parse(ResumeDataSchema, {
     {
       company: "Tech Mahindra",
       link: "https://www.techmahindra.com/",
-      badges: ["Work from Home", "Hybrid"],
+      mode: ["Work from Home", "Hybrid"],
       position: "Associate Tech Specialist",
       logo: null,
       start: "2022",
@@ -95,7 +95,7 @@ const data = parse(ResumeDataSchema, {
     {
       company: "Infosys",
       link: "https://www.infosys.com/",
-      badges: ["Office", "Work from Home"],
+      mode: ["Office", "Work from Home"],
       position: "Consultant",
       logo: null,
       start: 2019,
@@ -118,7 +118,7 @@ const data = parse(ResumeDataSchema, {
     {
       company: "Webskitters Technology Solutions Pvt. Ltd",
       link: "https://www.webskitters.com/",
-      badges: ["Office"],
+      mode: ["Office"],
       position: "Software Developer",
       logo: null,
       start: 2017,
@@ -137,7 +137,7 @@ const data = parse(ResumeDataSchema, {
     {
       company: "Techmancer Web Development Pvt. Ltd (Ascentspark)",
       link: "https://www.ascentspark.com/",
-      badges: ["Office"],
+      mode: ["Office"],
       position: "Junior Web Developer",
       logo: null,
       start: 2016,
