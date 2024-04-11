@@ -1,16 +1,12 @@
 import {
-  Ascentspark,
   GitHub,
-  Infosys,
   LinkedIn,
-  TechMahindra,
-  Webskitters,
   X,
 } from "@/components/icons";
 import { parse } from "valibot";
 import { ResumeDataSchema } from "./schema";
 
-export const ResumeData = parse(ResumeDataSchema, {
+const data = parse(ResumeDataSchema, {
   name: "Joydip Roy",
   initials: "JR",
   location: "Kolkata, India",
@@ -77,7 +73,7 @@ export const ResumeData = parse(ResumeDataSchema, {
       link: "https://www.techmahindra.com/",
       badges: ["Work from Home", "Hybrid"],
       position: "Associate Tech Specialist",
-      logo: <TechMahindra />,
+      logo: null,
       start: "2022",
       end: null,
       description: "Tech Mahindra is a premier provider of digital transformation and consulting services. Specializing in innovative solutions, they help businesses adapt and thrive in the digital age, enhancing efficiency and competitiveness.",
@@ -101,7 +97,7 @@ export const ResumeData = parse(ResumeDataSchema, {
       link: "https://www.infosys.com/",
       badges: ["Office", "Work from Home"],
       position: "Consultant",
-      logo: <Infosys />,
+      logo: null,
       start: 2019,
       end: 2022,
       description: "Infosys is a global leader in consulting, technology, and outsourcing solutions. With a focus on driving digital innovation, Infosys helps clients navigate complex business challenges and achieve strategic goals. Their diverse portfolio of services spans across industries, delivering cutting-edge solutions tailored to meet the unique needs of each client.",
@@ -124,7 +120,7 @@ export const ResumeData = parse(ResumeDataSchema, {
       link: "https://www.webskitters.com/",
       badges: ["Office"],
       position: "Software Developer",
-      logo: <Webskitters />,
+      logo: null,
       start: 2017,
       end: 2019,
       description: "Webskitters is a dynamic web development and digital marketing agency, specializing in crafting innovative online solutions tailored to clients' needs. With a focus on creativity and efficiency, Webskitters helps businesses establish a strong online presence and drive growth through strategic digital initiatives.",
@@ -143,7 +139,7 @@ export const ResumeData = parse(ResumeDataSchema, {
       link: "https://www.ascentspark.com/",
       badges: ["Office"],
       position: "Junior Web Developer",
-      logo: <Ascentspark />,
+      logo: null,
       start: 2016,
       end: 2017,
       description: "Ascent Spark: Elevating brands through strategic digital marketing solutionsAscent Spark is a boutique digital marketing agency focused on elevating brands through strategic online initiatives. With a commitment to creativity and results-driven solutions, Ascent Spark helps businesses stand out and succeed in the competitive digital realm.",
@@ -342,3 +338,5 @@ export const ResumeData = parse(ResumeDataSchema, {
     },
   ],
 })
+
+export default data
