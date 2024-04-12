@@ -1,6 +1,4 @@
-import { Github, Globe, Server, Smartphone } from "lucide-react";
-import defu from "defu";
-import clsx from "clsx";
+import { Github, Globe, MapPin, Server, Smartphone } from "lucide-react";
 import {
   AWS,
   Angular,
@@ -51,6 +49,7 @@ import humanizeString from "humanize-string";
 export type IconType =
   | "api"
   | "web"
+  | "map"
   | "smartphone"
   | "mobile"
   | "phone"
@@ -110,21 +109,9 @@ export type IconType =
 interface IconProps {
   className?: string;
   href?: string;
-  color?: string;
-  colorwidth?: string;
 }
 
-export function getIcon(icon: IconType = null, $props: IconProps = {}) {
-  const props = defu(
-    {
-      className: clsx(
-        $props.className,
-        `text-${$props.color ?? "black"}-${$props.colorwidth ?? "900"}`,
-      ),
-    },
-    $props,
-  );
-
+export function getIcon(icon: IconType = null, props: IconProps = {}) {
   switch (icon?.toLowerCase()) {
     case "backend":
     case "server":
@@ -135,6 +122,8 @@ export function getIcon(icon: IconType = null, $props: IconProps = {}) {
       return <Smartphone {...props} />;
     case "web":
       return <Globe {...props} />;
+    case "map":
+      return <MapPin {...props} />
     // Programming Language
     case "angular":
       return <Angular {...props} />;

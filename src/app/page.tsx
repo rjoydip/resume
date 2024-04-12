@@ -13,10 +13,9 @@ import { Badge } from "@/components/ui/badge";
 import { CommandMenu } from "@/components/command-menu";
 import { Metadata } from "next";
 import { Section } from "@/components/ui/section";
-import { GlobeIcon, MailIcon, PhoneIcon } from "lucide-react";
+import { MailIcon, PhoneIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import data from "@/data";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { IconType, getIcon } from "@/components/icons/getIcon";
 import { Label } from "@/components/ui/label";
 import {
@@ -27,6 +26,7 @@ import {
   SkillsType,
   WorkType,
 } from "@/types";
+import ThemeChange from "@/components/theme-change";
 
 export const metadata: Metadata = {
   title: `${data.about?.name}`,
@@ -42,11 +42,11 @@ const About = ({
 }) => {
   return (
     <Section>
-      <Card className="border p-3">
+      <Card className="border p-3 print:border-none">
         <CardHeader>
           <h1 className="text-2xl font-bold">{data.name}</h1>
         </CardHeader>
-        <CardDescription className="flex-1 space-y-1.5">
+        <CardContent className="flex-1 space-y-1.5">
           <div className="flex items-center justify-between">
             <div className="max-w-md text-pretty text-base">{data.about}</div>
             <Avatar className="size-28">
@@ -58,23 +58,29 @@ const About = ({
               <AvatarFallback>{data.initials}</AvatarFallback>
             </Avatar>
           </div>
-        </CardDescription>
+        </CardContent>
         <CardFooter className="flex items-center justify-between gap-x-2">
           <Contact data={contact} />
-          <div className="max-w-md items-center text-pretty text-base leading-none">
+          <div className="max-w-md items-center text-pretty text-base">
+            {getIcon("map", {
+              className:
+                "size-4 rounded-full inline-flex hover:underline text-green-600",
+              href: data.locationLink,
+            })}
             <a
-              className="inline-flex gap-x-1.5 hover:underline"
+              className="inline-flex hover:point"
               href={data.locationLink}
               target="_blank"
             >
-              <GlobeIcon className="size-3" />
               {data.location}
             </a>
           </div>
         </CardFooter>
       </Card>
-      <div className="text-xl font-bold">About</div>
-      <Card className="border p-3">
+      <Label className="text-xl font-bold">
+        About
+      </Label>
+      <Card className="border p-3 print:border-none">
         <CardHeader>
           <CardTitle></CardTitle>
           <CardDescription className="text-pretty text-base">
@@ -137,10 +143,10 @@ const Contact = ({ data }: { data: ContactType }) => {
 const Education = ({ data }: { data: EducationType }) => {
   return (
     <Section>
-      <h2 className="text-xl font-bold">Education</h2>
+      <Label className="text-xl font-bold">Education</Label>
       {data.map((education) => {
         return (
-          <Card key={education.school} className="border p-3">
+          <Card key={education.school} className="border p-3 print:border-none">
             <CardHeader>
               <div className="flex flex-wrap items-center justify-between text-base">
                 <h3 className="font-semibold leading-none">
@@ -153,7 +159,7 @@ const Education = ({ data }: { data: EducationType }) => {
             </CardHeader>
             <CardContent className="mt-2">{education.degree}</CardContent>
             <CardFooter className="mt-2">
-              <Label className="text-base font-semibold text-blue-600">
+              <Label className="text-base font-semibold dark:text-primary text-primary">
                 Aggregate: {education?.aggregate ?? education?.cgpa}
               </Label>
             </CardFooter>
@@ -167,19 +173,19 @@ const Education = ({ data }: { data: EducationType }) => {
 const Project = ({ data }: { data: ProjectType }) => {
   return (
     <Section>
-      <h2 className="text-xl font-bold">Projects</h2>
+      <Label className="text-xl font-bold">Projects</Label>
       <div className="print-force-new-page scroll-mb-16">
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
           {data.map((project, index) => {
             return (
               <Card
-                className="flex flex-col overflow-hidden border p-3"
+                className="flex flex-col overflow-hidden border p-3 print:border-none"
                 key={index}
               >
                 <CardHeader>
                   <CardTitle className="space-y-1">
                     <div className="flex flex-wrap space-x-0.5">
-                      <Label className="font-semibold leading-none">
+                      <Label className="font-semibold text-primary dark:text-primary">
                         {project.title}
                       </Label>
                     </div>
@@ -204,9 +210,7 @@ const Project = ({ data }: { data: ProjectType }) => {
                                 rel="noopener noreferrer"
                               >
                                 {getIcon("web", {
-                                  className: "size-4 rounded-full",
-                                  color: "green",
-                                  colorwidth: "600",
+                                  className: "size-4 rounded-full text-green-600",
                                   href: link.href,
                                 })}
                               </a>
@@ -218,9 +222,7 @@ const Project = ({ data }: { data: ProjectType }) => {
                                 rel="noopener noreferrer"
                               >
                                 {getIcon("smartphone", {
-                                  className: "size-4 rounded-full",
-                                  color: "blue",
-                                  colorwidth: "600",
+                                  className: "size-4 rounded-full text-red-600",
                                   href: link.href,
                                 })}
                               </a>
@@ -259,10 +261,13 @@ const Project = ({ data }: { data: ProjectType }) => {
 const Skills = ({ data }: { data: SkillsType }) => {
   return (
     <Section>
-      <h2 className="text-xl font-bold">Skills</h2>
-      <Card className="border p-3">
+      <Label className="text-xl font-bold">Skills</Label>
+      <Card className="border p-3 print:border-none">
         {Object.entries(data).map(([skillCategory, skills]) => (
-          <div key={skillCategory} className="flex flex-wrap items-center justify-between">
+          <div
+            key={skillCategory}
+            className="flex flex-wrap items-center justify-between"
+          >
             <div className="p-1 font-medium">
               {humanizeString(skillCategory)}
             </div>
@@ -279,28 +284,6 @@ const Skills = ({ data }: { data: SkillsType }) => {
             </div>
           </div>
         ))}
-        {/* <Table className="flex flex-wrap gap-2">
-          <TableBody>
-            {Object.entries(data).map(([skillCategory, skills]) => (
-              <TableRow key={skillCategory} className="border-none">
-                <TableCell className="p-1 font-medium">
-                  {humanizeString(skillCategory)}
-                </TableCell>
-                <TableCell className="flex flex-wrap p-1">
-                  {skills.sort().map((skill, index) => {
-                    return (
-                      <div key={index} className="mx-0.5">
-                        {getIcon(skill as IconType, {
-                          className: "size-6 rounded-full",
-                        })}
-                      </div>
-                    );
-                  })}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table> */}
       </Card>
     </Section>
   );
@@ -309,10 +292,10 @@ const Skills = ({ data }: { data: SkillsType }) => {
 const Work = ({ data }: { data: WorkType }) => {
   return (
     <Section>
-      <h2 className="text-xl font-bold">Work Experience</h2>
+      <Label className="text-xl font-bold">Work Experience</Label>
       {data.map((work) => {
         return (
-          <Card key={work.company} className="border p-3">
+          <Card key={work.company} className="border p-3 print:border-none">
             <CardHeader>
               <div className="flex flex-wrap items-center justify-between gap-x-2 text-base">
                 <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold leading-none">
@@ -331,7 +314,7 @@ const Work = ({ data }: { data: WorkType }) => {
                   {work.start} - {work.end ?? "Present"}
                 </div>
               </div>
-              <h4 className="text-base font-semibold text-blue-600">
+              <h4 className="text-base font-semibold dark:text-primary text-primary text-sm">
                 {work.position}
               </h4>
             </CardHeader>
@@ -358,31 +341,29 @@ const Work = ({ data }: { data: WorkType }) => {
 export default function Page() {
   return (
     <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 md:p-16 print:p-12">
-      <section className="mx-auto w-full max-w-2xl space-y-8 bg-white print:space-y-6">
-        {/* About */}
+      <section className="mx-auto w-full max-w-2xl space-y-4 print:space-y-6">
         <About data={data.about} contact={data.contact} />
-        {/* Work */}
         <Work data={data.work} />
-        {/* Education */}
         <Education data={data.education} />
-        {/* Skills */}
         <Skills data={data.skills} />
-        {/* Project */}
         <Project data={data.projects} />
       </section>
 
-      <CommandMenu
-        links={[
-          {
-            url: data.about.personalWebsiteUrl,
-            title: "Personal Website",
-          },
-          ...data.contact.social.sort().map((socialMediaLink) => ({
-            url: socialMediaLink.url,
-            title: socialMediaLink.name,
-          })),
-        ]}
-      />
+      <section>
+        <ThemeChange />
+        <CommandMenu
+          links={[
+            {
+              url: data.about.personalWebsiteUrl,
+              title: "Personal Website",
+            },
+            ...data.contact.social.sort().map((socialMediaLink) => ({
+              url: socialMediaLink.url,
+              title: socialMediaLink.name,
+            })),
+          ]}
+        />
+      </section>
     </main>
   );
 }
