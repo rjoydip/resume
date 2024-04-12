@@ -140,7 +140,7 @@ export const contactSchema = object({
     })),
 })
 
-export const ResumeDataSchema = object({
+export const aboutSchema = object({
     name: string([minLength(4)]),
     initials: string([minLength(1), maxLength(4)]),
     location: string(),
@@ -149,7 +149,11 @@ export const ResumeDataSchema = object({
     personalWebsiteUrl: string([url()]),
     about: string([maxLength(1000)]),
     summary: string([]),
+})
+
+export const ResumeDataSchema = object({
     contact: contactSchema,
+    about: aboutSchema,
     education: educationSchema,
     work: workSchema,
     skills: skillsSchema,

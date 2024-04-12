@@ -7,16 +7,18 @@ import { parse } from "valibot";
 import { ResumeDataSchema } from "./schema";
 
 const data = parse(ResumeDataSchema, {
-  name: "Joydip Roy",
-  initials: "JR",
-  location: "Kolkata, India",
-  locationLink: "https://maps.app.goo.gl/9uaiMJMPsHU4inX7A",
-  about:
-    "Full Stack Engineer who pays close attention to every detail, ensuring that the products I create are top-notch and carefully crafted.",
-  summary:
-    "As an experienced Full Stack Engineer, I've led many projects from start to finish with success. I'm good at bringing teams together and creating a positive environment for everyone to do their best work. I'm really skilled in using TypeScript, JavaScript, and Node.js, and I've been doing this for over 8+ years with some really great companies.",
-  avatarUrl: "https://avatars.githubusercontent.com/u/112172822?v=4",
-  personalWebsiteUrl: "https://rjoydip.me",
+  about: {
+    name: "Joydip Roy",
+    initials: "JR",
+    location: "Kolkata, India",
+    locationLink: "https://maps.app.goo.gl/9uaiMJMPsHU4inX7A",
+    about:
+      "Full Stack Engineer who pays close attention to every detail, ensuring that the products I create are top-notch and carefully crafted.",
+    summary:
+      "As an experienced Full Stack Engineer, I've led many projects from start to finish with success. I'm good at bringing teams together and creating a positive environment for everyone to do their best work. I'm really skilled in using TypeScript, JavaScript, and Node.js, and I've been doing this for over 8+ years with some really great companies.",
+    avatarUrl: "https://avatars.githubusercontent.com/u/112172822?v=4",
+    personalWebsiteUrl: "https://rjoydip.me",
+  },
   contact: {
     email: "joydipand@gmail.com",
     tel: "+91-8697411233",
