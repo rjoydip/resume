@@ -13,12 +13,10 @@ import {
 } from "@/components/ui/command";
 import { Button } from "./ui/button";
 import { CommandIcon } from "lucide-react";
+import { CommandMenuProps } from "@/types";
+import { ColorPalette } from "./color-palette";
 
-interface Props {
-  links: { url: string; title: string }[];
-}
-
-export const CommandMenu = ({ links }: Props) => {
+export const CommandMenu = ({ links }: CommandMenuProps) => {
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
@@ -64,6 +62,11 @@ export const CommandMenu = ({ links }: Props) => {
               <span>Print</span>
             </CommandItem>
           </CommandGroup>
+
+          <CommandGroup heading="Colors">
+            <ColorPalette />
+          </CommandGroup>
+
           <CommandGroup heading="Links">
             {links.map(({ url, title }) => (
               <CommandItem

@@ -19,3 +19,9 @@ export interface ProjectCardProps {
     label: string;
   }[] | null;
 }
+
+export interface CommandMenuProps {
+  links: { url: string; title: string }[];
+}
+
+export type ColorType = 'yellow' | 'blue' | 'gray' | 'green' | 'red' | 'violet' | 'zinc' | 'orange' | 'rose' |  'slate' | 'light' | 'dark'

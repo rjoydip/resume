@@ -5,6 +5,7 @@ import {
 } from "@/components/icons";
 import { parse } from "valibot";
 import { ResumeDataSchema } from "./schema";
+import { ColorType } from "./types";
 
 const data = parse(ResumeDataSchema, {
   about: {
@@ -17,7 +18,7 @@ const data = parse(ResumeDataSchema, {
     summary:
       "As an experienced Full Stack Engineer, I've led many projects from start to finish with success. I'm good at bringing teams together and creating a positive environment for everyone to do their best work. I'm really skilled in using TypeScript, JavaScript, and Node.js, and I've been doing this for over 8+ years with some really great companies.",
     avatarUrl: "https://avatars.githubusercontent.com/u/112172822?v=4",
-    personalWebsiteUrl: "https://rjoydip.me",
+    website: "https://rjoydip.me",
   },
   contact: {
     email: "joydipand@gmail.com",
@@ -342,3 +343,7 @@ const data = parse(ResumeDataSchema, {
 })
 
 export default data
+
+export function getColors(): ColorType[] {
+  return ['yellow', 'blue', 'green', 'gray', 'red', 'violet', 'zinc', 'orange', 'rose', 'slate', 'light', 'dark']
+}

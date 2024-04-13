@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import data from "@/data";
+import data, { getColors } from "@/data";
 
 import "@/styles/globals.css";
 
@@ -30,6 +30,7 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          themes={getColors()}
         >
           {children}
         </NextThemesProvider>

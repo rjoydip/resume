@@ -146,7 +146,7 @@ export const aboutSchema = object({
     location: string(),
     locationLink: string([url()]),
     avatarUrl: string([url()]),
-    personalWebsiteUrl: string([url()]),
+    website: string([url()]),
     about: string([maxLength(1000)]),
     summary: string([]),
 })

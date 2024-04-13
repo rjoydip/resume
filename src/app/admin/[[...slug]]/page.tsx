@@ -1,69 +1,67 @@
-import * as React from "react";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Section } from "@/components/ui/section";
 
-export default function Page({
-  params,
-}: {
-  params: {
-    slug: string;
-  };
-}) {
+export default function Page() {
   return (
     <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 md:p-16 print:p-12">
       <section className="mx-auto w-full max-w-2xl space-y-8 bg-white print:space-y-6">
-        <Section>
-          <Card className="w-[350px]">
-            <CardHeader>
-              <CardTitle>{params.slug ?? "Create"} project</CardTitle>
-              <CardDescription>Create your resume data by own.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form>
-                <div className="grid w-full items-center gap-4">
-                  <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="name">Name</Label>
-                    <Input id="name" placeholder="Name of your project" />
-                  </div>
-                  <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="framework">Framework</Label>
-                    <Select>
-                      <SelectTrigger id="framework">
-                        <SelectValue placeholder="Select" />
-                      </SelectTrigger>
-                      <SelectContent position="popper">
-                        <SelectItem value="next">Next.js</SelectItem>
-                        <SelectItem value="sveltekit">SvelteKit</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
+        <Card className="mx-auto max-w-sm">
+          <CardHeader>
+            <CardTitle className="text-xl">Sign Up</CardTitle>
+            <CardDescription>
+              Enter your information to create an account
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="grid gap-2">
+                  <Label htmlFor="first-name">First name</Label>
+                  <Input id="first-name" placeholder="Max" required />
                 </div>
-              </form>
-            </CardContent>
-            <CardFooter className="flex justify-between">
-              <Button variant="outline">Cancel</Button>
-              <Button>Deploy</Button>
-            </CardFooter>
-          </Card>
-        </Section>
+                <div className="grid gap-2">
+                  <Label htmlFor="last-name">Last name</Label>
+                  <Input id="last-name" placeholder="Robinson" required />
+                </div>
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="m@example.com"
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="password">Password</Label>
+                <Input id="password" type="password" />
+              </div>
+              <Button type="submit" className="w-full">
+                Create an account
+              </Button>
+              <Button variant="outline" className="w-full">
+                Sign up with GitHub
+              </Button>
+            </div>
+            <div className="mt-4 text-center text-sm">
+              Already have an account?{" "}
+              <Link href="#" className="underline">
+                Sign in
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
       </section>
     </main>
   );

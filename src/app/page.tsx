@@ -44,11 +44,15 @@ const About = ({
     <Section>
       <Card className="border p-3 print:border-none">
         <CardHeader>
-          <h1 className="text-2xl font-bold">{data.name}</h1>
+          <h1 className="text-primary text-2xl font-bold">
+            {data.name}
+          </h1>
         </CardHeader>
         <CardContent className="flex-1 space-y-1.5">
           <div className="flex items-center justify-between">
-            <div className="max-w-md text-pretty text-base">{data.about}</div>
+            <div className="max-w-md text-pretty text-base text-sm">
+              {data.about}
+            </div>
             <Avatar className="size-28">
               <AvatarImage
                 alt={data.name}
@@ -68,7 +72,7 @@ const About = ({
               href: data.locationLink,
             })}
             <a
-              className="inline-flex hover:point"
+              className="hover:point inline-flex"
               href={data.locationLink}
               target="_blank"
             >
@@ -77,13 +81,11 @@ const About = ({
           </div>
         </CardFooter>
       </Card>
-      <Label className="text-xl font-bold">
-        About
-      </Label>
+      <Label className="text-xl font-bold">About</Label>
       <Card className="border p-3 print:border-none">
         <CardHeader>
           <CardTitle></CardTitle>
-          <CardDescription className="text-pretty text-base">
+          <CardDescription className="text-pretty text-sm">
             {data.summary}
           </CardDescription>
         </CardHeader>
@@ -159,7 +161,7 @@ const Education = ({ data }: { data: EducationType }) => {
             </CardHeader>
             <CardContent className="mt-2">{education.degree}</CardContent>
             <CardFooter className="mt-2">
-              <Label className="text-base font-semibold dark:text-primary text-primary">
+              <Label className="text-base font-semibold text-primary dark:text-primary">
                 Aggregate: {education?.aggregate ?? education?.cgpa}
               </Label>
             </CardFooter>
@@ -210,7 +212,8 @@ const Project = ({ data }: { data: ProjectType }) => {
                                 rel="noopener noreferrer"
                               >
                                 {getIcon("web", {
-                                  className: "size-4 rounded-full text-green-600",
+                                  className:
+                                    "size-4 rounded-full text-green-600",
                                   href: link.href,
                                 })}
                               </a>
@@ -314,7 +317,7 @@ const Work = ({ data }: { data: WorkType }) => {
                   {work.start} - {work.end ?? "Present"}
                 </div>
               </div>
-              <h4 className="text-base font-semibold dark:text-primary text-primary text-sm">
+              <h4 className="text-base text-sm font-semibold text-primary dark:text-primary">
                 {work.position}
               </h4>
             </CardHeader>
@@ -354,8 +357,8 @@ export default function Page() {
         <CommandMenu
           links={[
             {
-              url: data.about.personalWebsiteUrl,
-              title: "Personal Website",
+              url: data.about.website,
+              title: "Website",
             },
             ...data.contact.social.sort().map((socialMediaLink) => ({
               url: socialMediaLink.url,
