@@ -2,7 +2,8 @@ import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import data, { getColors } from "@/data";
+import data, { getDarkThemeColors, getLightThemeColors } from "@/data";
+import { Toaster } from "@/components/ui/toaster"
 
 import "@/styles/globals.css";
 
@@ -30,10 +31,11 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-          themes={getColors()}
+          themes={[...getLightThemeColors(), ...getDarkThemeColors()]}
         >
           {children}
         </NextThemesProvider>
+        <Toaster />
       </body>
     </html>
   );

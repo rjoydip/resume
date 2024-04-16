@@ -5,7 +5,7 @@ import {
 } from "@/components/icons";
 import { parse } from "valibot";
 import { ResumeDataSchema } from "./schema";
-import { ColorType } from "./types";
+import { DarkColorType, LightColorType } from "./types";
 
 const data = parse(ResumeDataSchema, {
   about: {
@@ -344,6 +344,10 @@ const data = parse(ResumeDataSchema, {
 
 export default data
 
-export function getColors(): ColorType[] {
-  return ['yellow', 'blue', 'green', 'gray', 'red', 'violet', 'zinc', 'orange', 'rose', 'slate', 'light', 'dark']
+export function getLightThemeColors(): LightColorType[] {
+  return ['yellow', 'blue', 'green', 'red', 'violet', 'zinc', 'orange', 'rose', 'slate', 'light']
+}
+
+export function getDarkThemeColors(): DarkColorType[] {
+  return ['yellow-dark', 'blue-dark', 'green-dark', 'red-dark', 'violet-dark', 'zinc-dark', 'orange-dark', 'rose-dark', 'slate-dark', 'dark']
 }

@@ -24,4 +24,5 @@ export interface CommandMenuProps {
   links: { url: string; title: string }[];
 }
 
-export type ColorType = 'yellow' | 'blue' | 'gray' | 'green' | 'red' | 'violet' | 'zinc' | 'orange' | 'rose' |  'slate' | 'light' | 'dark'
+export type LightColorType = 'yellow' | 'blue' | 'green' | 'red' | 'violet' | 'zinc' | 'orange' | 'rose' | 'slate' | 'slate' | 'light'
+export type DarkColorType = 'yellow-dark' | 'blue-dark' | 'green-dark' | 'red-dark' | 'violet-dark' | 'zinc-dark' | 'orange-dark' | 'rose-dark' | 'slate-dark' | 'dark'
