@@ -1,6 +1,13 @@
-import { any, array, email, maxLength, maxValue, minLength, minValue, nullable, nullish, number, object, Output, picklist, regex, startsWith, string, transform, union, url } from 'valibot'
+import { any, array, boolean, email, literal, maxLength, maxValue, minLength, minValue, nullable, nullish, number, object, Output, picklist, regex, startsWith, string, transform, union, url } from 'valibot'
 
 const today = new Date()
+const companies = union([
+    literal("Ascentspark"),
+    literal("Infosys"),
+    literal("Tech Mahindra"),
+    literal("Webskitters"),
+])
+
 const techStackSchema = array(picklist([
     "angular",
     "aws",
@@ -19,6 +26,7 @@ const techStackSchema = array(picklist([
     "github",
     "github-actions",
     "gitlab",
+    "gmc",
     "graphql",
     "instana",
     "ionic",
@@ -51,6 +59,16 @@ const techStackSchema = array(picklist([
     "windows",
 ]))
 
+export const keySkillsSchema = array(picklist([
+    "Full Stack Development",
+    "Project Leadership",
+    "Team Building and Leadership",
+    "Collaboration and Communication",
+    "TypeScript",
+    "JavaScript",
+    "Node.js"
+]))
+
 export const educationSchema = array(object({
     school: string(),
     degree: string(),
@@ -61,7 +79,7 @@ export const educationSchema = array(object({
     ]), str => `${parseFloat(str.slice(0, -1)) / 100}`)),
     start: union([
         number([
-            minValue(2005), 
+            minValue(2005),
             maxValue(2016),
         ]),
         string([
@@ -80,7 +98,7 @@ export const educationSchema = array(object({
 }))
 
 export const workSchema = array(object({
-    company: string(),
+    company: companies,
     position: string(),
     description: string(),
     link: string([url()]),
@@ -127,7 +145,10 @@ export const projectsSchema = array(object({
         type: picklist(["web", "mobile"]),
         label: string(),
         href: string([url()]),
-    })))
+    }))),
+    company: companies,
+    isClient: nullish(boolean()),
+    client_country: nullish(string())
 }))
 
 export const contactSchema = object({
@@ -147,15 +168,16 @@ export const aboutSchema = object({
     locationLink: string([url()]),
     avatarUrl: string([url()]),
     website: string([url()]),
-    about: string([maxLength(1000)]),
-    summary: string([]),
+    description: string([maxLength(1000)]),
+    professional_summary: string(),
 })
 
-export const ResumeDataSchema = object({
+export default object({
     contact: contactSchema,
     about: aboutSchema,
     education: educationSchema,
     work: workSchema,
     skills: skillsSchema,
+    key_skills: keySkillsSchema,
     projects: projectsSchema
 })

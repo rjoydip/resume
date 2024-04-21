@@ -1,4 +1,4 @@
-import { Github, Globe, MapPin, Server, Smartphone } from "lucide-react";
+import { BadgeCheck, CircleDot, Github, Globe, MailIcon, MapPin, PhoneIcon, Server, Smartphone } from "lucide-react";
 import {
   AWS,
   Angular,
@@ -50,11 +50,15 @@ export type IconType =
   | "api"
   | "web"
   | "map"
+  | "email"
+  | "mail"
   | "smartphone"
   | "mobile"
   | "phone"
   | "server"
   | "backend"
+  | "circle-dot"
+  | "badge-check"
   // Programming languages
   | "angular"
   | "aws"
@@ -116,14 +120,22 @@ export function getIcon(icon: IconType = null, props: IconProps = {}) {
     case "backend":
     case "server":
       return <Server {...props} />;
+    case "email":
+    case "mail":
+      return <MailIcon {...props} />
     case "mobile":
     case "phone":
+      return <PhoneIcon {...props} />
     case "smartphone":
       return <Smartphone {...props} />;
     case "web":
       return <Globe {...props} />;
     case "map":
       return <MapPin {...props} />
+    case "circle-dot":
+      return <CircleDot {...props} />
+    case "badge-check":
+      return <BadgeCheck {...props} />
     // Programming Language
     case "angular":
       return <Angular {...props} />;

@@ -4,19 +4,19 @@ import {
   X,
 } from "@/components/icons";
 import { parse } from "valibot";
-import { ResumeDataSchema } from "./schema";
+import schema from "./schema";
 import { DarkColorType, LightColorType } from "./types";
 
-const data = parse(ResumeDataSchema, {
+const payload = {
   about: {
     name: "Joydip Roy",
     initials: "JR",
     location: "Kolkata, India",
     locationLink: "https://maps.app.goo.gl/9uaiMJMPsHU4inX7A",
-    about:
+    description:
       "Full Stack Engineer who pays close attention to every detail, ensuring that the products I create are top-notch and carefully crafted.",
-    summary:
-      "As an experienced Full Stack Engineer, I've led many projects from start to finish with success. I'm good at bringing teams together and creating a positive environment for everyone to do their best work. I'm really skilled in using TypeScript, JavaScript, and Node.js, and I've been doing this for over 8+ years with some really great companies.",
+    professional_summary:
+      "Experienced Full Stack Engineer with a proven track record of successfully leading multiple projects from inception to completion. Skilled in fostering collaborative team environments and adept at bringing out the best in team members. Demonstrated ability to build and lead teams, contributing to organizational growth. Proficient in TypeScript, JavaScript, and Node.js, with over 8 years of hands-on experience in esteemed companies.",
     avatarUrl: "https://avatars.githubusercontent.com/u/112172822?v=4",
     website: "https://rjoydip.me",
   },
@@ -110,6 +110,7 @@ const data = parse(ResumeDataSchema, {
         "docker",
         "etl",
         "gitlab",
+        "gmc",
         "javascript",
         "jira",
         "kafka",
@@ -119,7 +120,7 @@ const data = parse(ResumeDataSchema, {
       ],
     },
     {
-      company: "Webskitters Technology Solutions Pvt. Ltd",
+      company: "Webskitters",
       link: "https://www.webskitters.com/",
       mode: ["Office"],
       position: "Software Developer",
@@ -138,7 +139,7 @@ const data = parse(ResumeDataSchema, {
       ],
     },
     {
-      company: "Techmancer Web Development Pvt. Ltd (Ascentspark)",
+      company: "Ascentspark",
       link: "https://www.ascentspark.com/",
       mode: ["Office"],
       position: "Junior Web Developer",
@@ -181,6 +182,15 @@ const data = parse(ResumeDataSchema, {
       "instana",
     ],
   },
+  key_skills: [
+    "Full Stack Development",
+    "Project Leadership",
+    "Team Building and Leadership",
+    "Collaboration and Communication",
+    "TypeScript",
+    "JavaScript",
+    "Node.js"
+  ],
   projects: [
     {
       title: "Bridge Boffin",
@@ -193,6 +203,7 @@ const data = parse(ResumeDataSchema, {
           href: "https://www.bridgeboffin.com",
         },
       ],
+      company: "Ascentspark",
     },
     {
       title: "Menu Pulse",
@@ -218,6 +229,7 @@ const data = parse(ResumeDataSchema, {
           href: "https://play.google.com/store/apps/details?id=com.Menupulse.Menupulse",
         },
       ],
+      company: "Ascentspark",
     },
     {
       title: "Inagrab",
@@ -231,6 +243,7 @@ const data = parse(ResumeDataSchema, {
           href: "https://play.google.com/store/apps/details?id=in.youstart.inagrab",
         },
       ],
+      company: "Webskitters",
     },
     {
       title: "Tapp - Drinking App",
@@ -244,6 +257,7 @@ const data = parse(ResumeDataSchema, {
           href: "https://play.google.com/store/apps/details?id=com.dat.tapp",
         },
       ],
+      company: "Webskitters",
     },
     {
       title: "Classified",
@@ -264,18 +278,12 @@ const data = parse(ResumeDataSchema, {
           href: "https://play.google.com/store/apps/details?id=com.classifieds.universe",
         },
       ],
+      company: "Webskitters",
     },
     {
       title: "The Scope App",
       description:
         "MEDICAL NEWS. RESIDENCY HUMOR. The Scope offers the week's best in evidence-based medicine, written in plain language for a nationwide audience of young physicians. This app features all of our fresh takes on medical journal articles in an easy-to-read, easy-to-search format. It's perfect for rotation prep and research presentations.",
-      links: [
-        {
-          type: "mobile",
-          label: "thescope",
-          href: "https://play.google.com/store/apps/details?id=com.thescope",
-        },
-      ],
       techStacks: [
         "express",
         "gitlab",
@@ -284,6 +292,14 @@ const data = parse(ResumeDataSchema, {
         "npm",
         "typescript",
       ],
+      links: [
+        {
+          type: "mobile",
+          label: "thescope",
+          href: "https://play.google.com/store/apps/details?id=com.thescope",
+        },
+      ],
+      company: "Webskitters",
     },
     {
       title: "Mizizi",
@@ -311,6 +327,7 @@ const data = parse(ResumeDataSchema, {
           href: "https://play.google.com/store/apps/details?id=com.mizizi",
         },
       ],
+      company: "Webskitters",
     },
     {
       title: "LetsEat",
@@ -324,6 +341,7 @@ const data = parse(ResumeDataSchema, {
         "npm",
         "typescript",
       ],
+      company: "Webskitters",
     },
     {
       title: "Card sort",
@@ -338,11 +356,53 @@ const data = parse(ResumeDataSchema, {
         "npm",
         "typescript",
       ],
+      company: "Webskitters",
     },
+    {
+      title: "CVS",
+      description: "CVS Health, established in 1963, is a leading American healthcare company with over 9,900 retail locations nationwide. Offering a wide range of services including pharmacies, clinics, and digital health solutions, CVS aims to provide accessible and affordable healthcare for all.",
+      techStacks: [
+        "gmc",
+      ],
+      link: [],
+      isClient: true,
+      company: "Infosys",
+      client_country: 'Canada'
+    },
+    {
+      title: "Northwestern Mutual",
+      description: "Northwestern Mutual, founded in 1857, is a leading U.S.-based financial services company. Specializing in life insurance, it offers a range of services including investment management and retirement planning, prioritizing personalized financial guidance for its clients' long-term security",
+      techStacks: [
+        "etl",
+        "gitlab",
+        "kafka",
+        "jenkins",
+        "nodejs",
+        "springboot",
+      ],
+      link: [],
+      isClient: true,
+      company: "Infosys",
+      client_country: 'USA'
+    },
+    {
+      title: "Macmillan",
+      description: "Macmillan Learning is a leading educational publisher, offering textbooks and digital tools for higher education. Committed to innovation, it provides resources to empower educators and students alike",
+      techStacks: [
+        "nodejs",
+        "typescript",
+        "jenkins",
+        "bitbucket",
+      ],
+      link: [],
+      isClient: true,
+      company: "Tech Mahindra",
+      client_country: 'USA'
+    }
   ],
-})
+}
 
-export default data
+export default parse(schema, payload)
 
 export function getLightThemeColors(): LightColorType[] {
   return ['yellow', 'blue', 'green', 'red', 'violet', 'zinc', 'orange', 'rose', 'slate', 'light']

@@ -8,8 +8,8 @@ import { Toaster } from "@/components/ui/toaster"
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  title: `${data.about?.name}`,
-  description: data.about?.summary,
+  title: data.about?.name,
+  description: data.about?.description,
 };
 
 // If loading a variable font, you don't need to specify the font weight
