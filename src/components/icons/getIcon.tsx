@@ -1,4 +1,4 @@
-import { BadgeCheck, CircleDot, Github, Globe, MailIcon, MapPin, PhoneIcon, Server, Smartphone } from "lucide-react";
+import { BadgeCheck, CircleDot, Dot, Github, Globe, MailIcon, MapPin, PhoneIcon, Server, Smartphone } from "lucide-react";
 import {
   AWS,
   Angular,
@@ -48,6 +48,7 @@ import humanizeString from "humanize-string";
 
 export type IconType =
   | "api"
+  | "dot"
   | "web"
   | "map"
   | "email"
@@ -113,10 +114,13 @@ export type IconType =
 interface IconProps {
   className?: string;
   href?: string;
+  strokeWidth?: number;
 }
 
 export function getIcon(icon: IconType = null, props: IconProps = {}) {
   switch (icon?.toLowerCase()) {
+    case "dot":
+      return <Dot {...props} />;
     case "backend":
     case "server":
       return <Server {...props} />;

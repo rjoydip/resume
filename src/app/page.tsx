@@ -43,13 +43,13 @@ const About = ({
 }) => {
   return (
     <Section>
-      <Card className="border p-3 print:border-none">
+      <Card className="border p-3">
         <CardHeader>
           <h1 className="text-2xl font-bold text-primary">{data.name}</h1>
         </CardHeader>
         <CardContent className="flex-1 space-y-1.5">
           <div className="flex items-center justify-between">
-            <div className="max-w-md text-pretty text-base text-sm">
+            <div className="max-w-md text-pretty">
               {data.description}
             </div>
             <Avatar className="size-28">
@@ -80,11 +80,11 @@ const About = ({
           </div>
         </CardFooter>
       </Card>
-      <Label className="text-xl font-bold">Professional Summary</Label>
-      <Card className="border p-3 print:border-none">
+      <Label className="text-primary">Professional Summary</Label>
+      <Card className="border p-3">
         <CardHeader>
           <CardTitle></CardTitle>
-          <CardDescription className="text-pretty text-sm">
+          <CardDescription className="text-pretty">
             {data.professional_summary}
           </CardDescription>
         </CardHeader>
@@ -96,7 +96,7 @@ const About = ({
 const Contact = ({ data }: { data: ContactType }) => {
   return (
     <Section>
-      <div className="flex gap-x-1 pt-1 text-base print:hidden">
+      <div className="flex gap-x-1 pt-1 print:hidden">
         {data.email ? (
           <Button className="size-8" variant="outline" size="icon" asChild>
             <a href={`mailto:${data.email}`}>
@@ -129,7 +129,7 @@ const Contact = ({ data }: { data: ContactType }) => {
           </Button>
         ))}
       </div>
-      <div className="hidden flex-col gap-x-1 text-base print:flex">
+      <div className="hidden flex-col gap-x-1 print:flex">
         {data.email ? (
           <a href={`mailto:${data.email}`}>
             <span className="underline">{data.email}</span>
@@ -153,7 +153,10 @@ const Education = ({ data }: { data: EducationType }) => {
         <div className="space-y-8">
           {data.map((education, index) => (
             <div className="relative pl-6" key={index}>
-              <div className="absolute -left-[6px] top-2 h-3 w-3 rounded-full bg-gray-900 dark:bg-gray-50 print:bg-gray-700" />
+              {getIcon("dot", {
+                className: "absolute -left-[12px] top-0",
+                strokeWidth: 8,
+              })}
               <div className="flex flex-wrap items-center justify-between text-base">
                 <h3 className="font-semibold leading-none">
                   {education.school}
@@ -162,8 +165,8 @@ const Education = ({ data }: { data: EducationType }) => {
                   {education.start} - {education.end}
                 </div>
               </div>
-              <div className="mt-2">{education.degree}</div>
-              <div className="text-base text-sm">
+              <p>{education.degree}</p>
+              <div className="text-sm font-semibold">
                 Aggregate: {education?.aggregate ?? education?.cgpa}
               </div>
             </div>
@@ -184,7 +187,7 @@ const Project = ({ data }: { data: ProjectType }) => {
             return (
               <Card
                 className={clsx(
-                  "flex flex-col overflow-hidden p-3 print:border",
+                  "flex flex-col overflow-hidden p-3",
                   project.isClient ? "border-2 border-green-500" : "border",
                 )}
                 key={index}
@@ -300,23 +303,23 @@ const Skills = ({ data }: { data: SkillsType }) => {
   return (
     <Section>
       <Label className="text-xl font-bold">Skills</Label>
-      <Card className="border p-3 print:border-none">
+      <Card className="border p-3">
         <ul className="space-y-4 text-left">
           {Object.entries(data).map(([skillCategory, skills]) => (
             <li key={skillCategory}>
-              <div className="flex">
+              <div className="flex items-baseline">
                 {getIcon("circle-dot", {
-                  className: "h-4 w-4 rounded-full text-green-500 mt-2",
+                  className: "h-4 w-4 text-green-500 mt-2",
                 })}
                 <p className="m-0.5 ml-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
                   {humanizeString(skillCategory)}:{""}
                 </p>
                 {skills.sort().map((skill, index) => (
-                  <div key={index}>
+                  <span key={index}>
                     {getIcon(skill as IconType, {
-                      className: "mx-0.5 size-6 rounded-full",
+                      className: "mx-0.5 size-4",
                     })}
-                  </div>
+                  </span>
                 ))}
               </div>
             </li>
@@ -331,7 +334,7 @@ const KeySkills = ({ data }: { data: KeySkillsType }) => {
   return (
     <Section>
       <Label className="text-xl font-bold">Key Skills</Label>
-      <Card className="border p-3 print:border-none">
+      <Card className="border p-3">
         <ul className="space-y-4 text-left">
           {data.map((kSkills, index) => (
             <li
@@ -341,7 +344,7 @@ const KeySkills = ({ data }: { data: KeySkillsType }) => {
               {getIcon("badge-check", {
                 className: "mr-1 h-4 w-4 text-green-500",
               })}
-              <div className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              <div className="mx-0.5 text-lg font-semibold text-gray-900 dark:text-gray-100">
                 {kSkills}
               </div>
             </li>
@@ -360,8 +363,11 @@ const Work = ({ data }: { data: WorkType }) => {
         <div className="space-y-8">
           {data.map((work, index) => (
             <div key={index} className="relative pl-6">
-              <div className="absolute -left-[6px] top-2 h-3 w-3 rounded-full bg-gray-900 dark:bg-gray-50 print:bg-gray-900" />
-              <div className="flex flex-wrap items-center justify-between gap-x-2 text-base">
+              {getIcon("dot", {
+                className: "absolute -left-[12px] top-0",
+                strokeWidth: 8,
+              })}
+              <div className="flex flex-wrap items-center justify-between gap-x-2">
                 <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold leading-none">
                   <a className="hover:underline" href={work.link}>
                     {work.company}
@@ -374,22 +380,20 @@ const Work = ({ data }: { data: WorkType }) => {
                     ))}
                   </span>
                 </h3>
-                <div className="text-base tabular-nums text-gray-500">
+                <div className="tabular-nums text-gray-500">
                   {work.start} - {work.end ?? "Present"}
                 </div>
               </div>
-              <div className="text-base text-primary dark:text-primary">
-                <h4 className="text-sm font-semibold">{work.position}</h4>
-                <p className="mt-2 text-gray-700 dark:text-gray-300">
-                  {work.description}
-                </p>
-              </div>
-              <div className="mt-2 flex flex-wrap gap-1">
-                <Label className="text-sm font-semibold">Skills: </Label>
+              <h4 className="text-sm font-semibold">{work.position}</h4>
+              <p className="mt-2 text-pretty text-gray-700 dark:text-gray-300">
+                {work.description}
+              </p>
+              <div className="mt-2 flex items-baseline">
+                <div className="text-sm font-semibold">Skills: </div>
                 {work.techStacks.sort().map((techStack, index) => (
                   <div key={index} className="mx-0.5">
                     {getIcon(techStack as IconType, {
-                      className: "size-5 rounded-full",
+                      className: "size-4",
                     })}
                   </div>
                 ))}
