@@ -1,7 +1,7 @@
 import { Output } from "valibot";
-import { ResumeDataSchema, aboutSchema, contactSchema, educationSchema, keySkillsSchema, projectsSchema, skillsSchema, workSchema } from "./schema";
+import schema, { aboutSchema, contactSchema, educationSchema, keySkillsSchema, projectsSchema, skillsSchema, workSchema } from "./schema";
 
-export type ResumeDataType = Output<typeof ResumeDataSchema>
+export type ResumeDataType = Output<typeof schema>
 export type EducationType = Output<typeof educationSchema>
 export type AboutType = Output<typeof aboutSchema>
 export type ContactType = Output<typeof contactSchema>
