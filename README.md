@@ -58,7 +58,7 @@ docker compose up -d
 Stop the Container
 
 ```sh
-docker compose down 
+docker compose down
 ```
 
 ## License

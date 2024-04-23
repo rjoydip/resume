@@ -1,27 +1,27 @@
-import React from "react";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
-import data, { getDarkThemeColors, getLightThemeColors } from "@/data";
-import { Toaster } from "@/components/ui/toaster"
+import React from 'react'
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import { ThemeProvider as NextThemesProvider } from 'next-themes'
+import data, { getDarkThemeColors, getLightThemeColors } from '@/data'
+import { Toaster } from '@/components/ui/toaster'
 
-import "@/styles/globals.css";
+import '@/styles/globals.css'
 
 export const metadata: Metadata = {
   title: data.about?.name,
   description: data.about?.description,
-};
+}
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-});
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
@@ -38,5 +38,5 @@ export default function RootLayout({
         <Toaster />
       </body>
     </html>
-  );
+  )
 }

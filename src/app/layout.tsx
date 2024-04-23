@@ -1,7 +1,7 @@
-import RootLayout from "@/components/root-layout";
+import RootLayout from '@/components/root-layout'
 
-const Layout = ({ children }: { children: React.ReactNode }) => (
-  <RootLayout>{children}</RootLayout>
-);
+function Layout({ children }: { children: React.ReactNode }) {
+  return <RootLayout>{children}</RootLayout>
+}
 
-export default Layout;
+export default Layout

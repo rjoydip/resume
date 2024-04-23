@@ -1,8 +1,13 @@
-"use client";
+'use client'
 
-import * as React from "react";
-import { useScrollData } from "scroll-data-hook";
+import * as React from 'react'
+import { useScrollData } from 'scroll-data-hook'
 
+import { CommandIcon } from 'lucide-react'
+import { Button } from './ui/button'
+import { ColorPalette } from './color-palette'
+import { Label } from './ui/label'
+import type { CommandMenuProps } from '@/types'
 import {
   CommandDialog,
   CommandEmpty,
@@ -11,40 +16,35 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/components/ui/command";
-import { Button } from "./ui/button";
-import { CommandIcon } from "lucide-react";
-import { CommandMenuProps } from "@/types";
-import { ColorPalette } from "./color-palette";
-import { Label } from "./ui/label";
+} from '@/components/ui/command'
 
-export const CommandMenu = ({ links }: CommandMenuProps) => {
-  const [open, setOpen] = React.useState(false);
+export function CommandMenu({ links }: CommandMenuProps) {
+  const [open, setOpen] = React.useState(false)
   const { scrolling } = useScrollData({
     onScrollStart: () => {
-      console.log("Started scrolling");
+      /* console.log('Started scrolling') */
     },
     onScrollEnd: () => {
-      console.log("Finished scrolling");
+      /* console.log('Finished scrolling') */
     },
-  });
+  })
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen((open) => !open);
+      if (e.key === 'j' && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault()
+        setOpen(open => !open)
       }
-    };
+    }
 
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, []);
+    document.addEventListener('keydown', down)
+    return () => document.removeEventListener('keydown', down)
+  }, [])
 
   return (
     <>
       <Button
-        onClick={() => setOpen((open) => !open)}
+        onClick={() => setOpen(open => !open)}
         variant="outline"
         size="icon"
         className="fixed bottom-4 right-4 flex rounded-full shadow-2xl print:hidden"
@@ -53,10 +53,12 @@ export const CommandMenu = ({ links }: CommandMenuProps) => {
       </Button>
       {!scrolling && (
         <Label className="fixed bottom-0 left-0 right-0 p-1 text-center text-sm xl:block print:hidden">
-          Press{" "}
+          Press
+          {' '}
           <kbd className="border-1 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded bg-muted px-1.5 text-[10px] font-medium opacity-100">
             <span className="text-xs font-semibold">⌘ J</span>
-          </kbd>{" "}
+          </kbd>
+          {' '}
           to open the command menu
         </Label>
       )}
@@ -67,8 +69,8 @@ export const CommandMenu = ({ links }: CommandMenuProps) => {
           <CommandGroup heading="Actions">
             <CommandItem
               onSelect={() => {
-                setOpen(false);
-                window.print();
+                setOpen(false)
+                window.print()
               }}
             >
               <span>Print</span>
@@ -84,8 +86,8 @@ export const CommandMenu = ({ links }: CommandMenuProps) => {
               <CommandItem
                 key={url}
                 onSelect={() => {
-                  setOpen(false);
-                  window.open(url, "_blank");
+                  setOpen(false)
+                  window.open(url, '_blank')
                 }}
               >
                 <span>{title}</span>
@@ -96,5 +98,5 @@ export const CommandMenu = ({ links }: CommandMenuProps) => {
         </CommandList>
       </CommandDialog>
     </>
-  );
-};
+  )
+}

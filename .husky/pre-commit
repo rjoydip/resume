@@ -1,0 +1,2 @@
+pnpm deps:update
+pnpm lint
