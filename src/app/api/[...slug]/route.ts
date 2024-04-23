@@ -1,5 +1,5 @@
-import data from "@/data"
+import data from '@/data'
 
-export const GET = async () => {
-    return Response.json(data)
+export async function GET() {
+  return Response.json(data)
 }

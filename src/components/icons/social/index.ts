@@ -1,3 +1,3 @@
-export * from "./GitHub"
-export * from "./LinkedIn"
-export * from "./X"
+export * from './GitHub'
+export * from './LinkedIn'
+export * from './X'

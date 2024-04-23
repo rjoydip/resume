@@ -1,5 +1,6 @@
-import { Output } from "valibot";
-import schema, { aboutSchema, contactSchema, educationSchema, keySkillsSchema, projectsSchema, skillsSchema, workSchema } from "./schema";
+import type { Output } from 'valibot'
+import type { aboutSchema, contactSchema, educationSchema, keySkillsSchema, projectsSchema, skillsSchema, workSchema } from './schema'
+import type schema from './schema'
 
 export type ResumeDataType = Output<typeof schema>
 export type EducationType = Output<typeof educationSchema>
@@ -11,18 +12,18 @@ export type KeySkillsType = Output<typeof keySkillsSchema>
 export type ProjectType = Output<typeof projectsSchema>
 
 export interface ProjectCardProps {
-  title: string;
-  description: string;
-  techStacks: string[];
+  title: string
+  description: string
+  techStacks: string[]
   links?: {
-    type: "web" | "mobile";
-    href: string;
-    label: string;
-  }[] | null;
+    type: 'web' | 'mobile'
+    href: string
+    label: string
+  }[] | null
 }
 
 export interface CommandMenuProps {
-  links: { url: string; title: string }[];
+  links: { url: string, title: string }[]
 }
 
 export type LightColorType = 'yellow' | 'blue' | 'green' | 'red' | 'violet' | 'zinc' | 'orange' | 'rose' | 'slate' | 'slate' | 'light'
