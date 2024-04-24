@@ -45,20 +45,21 @@ const About = ({
     <Section>
       <Card className="border p-3">
         <CardHeader>
-          <h1 className="text-2xl font-bold text-primary">{data.name}</h1>
+          <div data-cy="about_name" className="text-2xl font-bold text-primary">{data.name}</div>
         </CardHeader>
         <CardContent className="flex-1 space-y-1.5">
           <div className="flex items-center justify-between">
-            <div className="max-w-md text-pretty">
+            <div data-cy="about_description" className="max-w-md text-pretty">
               {data.description}
             </div>
             <Avatar className="size-28">
               <AvatarImage
+                data-cy="about_avatar_url"
                 alt={data.name}
-                src={data.avatarUrl}
+                src={data.avatar_url}
                 className="rounded-full"
               />
-              <AvatarFallback>{data.initials}</AvatarFallback>
+              <AvatarFallback data-cy="about_initials">{data.initials}</AvatarFallback>
             </Avatar>
           </div>
         </CardContent>
@@ -66,25 +67,25 @@ const About = ({
           <Contact data={contact} />
           <div className="max-w-md items-center text-pretty text-base">
             <a
+              data-cy="about_location_link"
               className="hover:point inline-flex"
-              href={data.locationLink}
+              href={data.location_link}
               target="_blank"
             >
               {getIcon("map", {
                 className:
                   "h-6 w-6 rounded-full inline-flex hover:underline text-green-500",
-                href: data.locationLink,
+                href: data.location_link,
               })}
-              <span className="text-base">{data.location}</span>
+              <span data-cy="about_location" className="text-base">{data.location}</span>
             </a>
           </div>
         </CardFooter>
       </Card>
-      <Label className="text-primary">Professional Summary</Label>
+      <Label data-cy="about_prof_summery_title" className="text-primary">Professional Summary</Label>
       <Card className="border p-3">
         <CardHeader>
-          <CardTitle></CardTitle>
-          <CardDescription className="text-pretty">
+          <CardDescription data-cy="about_prof_summery" className="text-pretty">
             {data.professional_summary}
           </CardDescription>
         </CardHeader>
