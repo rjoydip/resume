@@ -22,6 +22,7 @@ const techStackSchema = array(picklist([
   'etl',
   'express',
   'firebase',
+  'fastify',
   'git',
   'github',
   'github-actions',
@@ -44,6 +45,7 @@ const techStackSchema = array(picklist([
   'nextjs',
   'nodejs',
   'npm',
+  'pnpm',
   'php',
   'playwright',
   'postgresql',
@@ -57,6 +59,7 @@ const techStackSchema = array(picklist([
   'vercel',
   'vitest',
   'windows',
+  'yarn',
 ]))
 
 export const keySkillsSchema = array(picklist([
@@ -134,9 +137,11 @@ export const skillsSchema = object({
   'cross-platform': techStackSchema,
   'devOps': techStackSchema,
   'database': techStackSchema,
+  'framework': techStackSchema,
   'languages': techStackSchema,
   'object-relational-mapping': techStackSchema,
   'operating-system': techStackSchema,
+  'package-manager': techStackSchema,
   'test': techStackSchema,
   'tools': techStackSchema,
 })
