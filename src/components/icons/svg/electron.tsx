@@ -1,10 +1,10 @@
-import { twMerge } from "tailwind-merge";
+import { twMerge } from 'tailwind-merge'
 
 interface ElectronProps {
-  className?: string;
+  className?: string
 }
 
-const Electron = ({ className }: ElectronProps) => {
+function Electron({ className }: ElectronProps) {
   return (
     <svg
       viewBox="0 0 128 128"
@@ -15,7 +15,7 @@ const Electron = ({ className }: ElectronProps) => {
       y="0px"
       width="512"
       height="512"
-      className={twMerge("h-20 w-20", className)}
+      className={twMerge('h-20 w-20', className)}
     >
       <g fill="#47848f">
         <path d="M49.07 32.66c-14.37-2.62-25.72.12-30.25 8-3.38 5.85-2.41 13.61 2.34 21.9a1.47 1.47 0 002.56-1.47c-4.28-7.47-5.12-14.17-2.35-19 3.76-6.51 13.89-9 27.17-6.54a1.47 1.47 0 10.53-2.9zM28.63 72.61a92.2 92.2 0 0022 17.34c20.84 12 43 15.25 54 7.79a1.47 1.47 0 00-1.66-2.43C93.11 102 72 98.92 52.07 87.39a89.27 89.27 0 01-21.26-16.77 1.47 1.47 0 00-2.18 2z"></path>
@@ -24,7 +24,7 @@ const Electron = ({ className }: ElectronProps) => {
         <path d="M64.05 23.13A7.05 7.05 0 1057 16.08a7.05 7.05 0 007.05 7.05zm0-2.95a4.1 4.1 0 114.1-4.1 4.1 4.1 0 01-4.1 4.1zM65.13 71.77A5.1 5.1 0 1169 65.71a5.1 5.1 0 01-3.87 6.06z"></path>
       </g>
     </svg>
-  );
-};
+  )
+}
 
-export { Electron };
+export { Electron }

@@ -1,23 +1,25 @@
-import humanizeString from "humanize-string";
+import humanizeString from 'humanize-string'
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import type { Metadata } from 'next'
+import { clsx } from 'clsx'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
   Card,
-  CardHeader,
   CardContent,
-  CardFooter,
-  CardTitle,
   CardDescription,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { CommandMenu } from "@/components/command-menu";
-import { Metadata } from "next";
-import { Section } from "@/components/ui/section";
-import { Button } from "@/components/ui/button";
-import data from "@/data";
-import { IconType, getIcon } from "@/components/icons/getIcon";
-import { Label } from "@/components/ui/label";
-import {
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { CommandMenu } from '@/components/command-menu'
+import { Section } from '@/components/ui/section'
+import { Button } from '@/components/ui/button'
+import data from '@/data'
+import type { IconType } from '@/components/icons/getIcon'
+import { getIcon } from '@/components/icons/getIcon'
+import { Label } from '@/components/ui/label'
+import type {
   AboutType,
   ContactType,
   EducationType,
@@ -25,22 +27,21 @@ import {
   ProjectType,
   SkillsType,
   WorkType,
-} from "@/types";
-import ThemeChange from "@/components/theme-change";
-import { clsx } from "clsx";
+} from '@/types'
+import ThemeChange from '@/components/theme-change'
 
 export const metadata: Metadata = {
   title: `${data.about?.name}`,
   description: data.about?.description,
-};
+}
 
-const About = ({
+function About({
   data,
   contact,
 }: {
-  data: AboutType;
-  contact: ContactType;
-}) => {
+  data: AboutType
+  contact: ContactType
+}) {
   return (
     <Section>
       <Card className="border p-3">
@@ -72,7 +73,7 @@ const About = ({
               href={data.location_link}
               target="_blank"
             >
-              {getIcon("map", {
+              {getIcon('map', {
                 className:
                   "h-6 w-6 rounded-full inline-flex hover:underline text-green-500",
                 href: data.location_link,
@@ -91,32 +92,36 @@ const About = ({
         </CardHeader>
       </Card>
     </Section>
-  );
-};
+  )
+}
 
-const Contact = ({ data }: { data: ContactType }) => {
+function Contact({ data }: { data: ContactType }) {
   return (
     <Section>
       <div className="flex gap-x-1 pt-1 print:hidden">
-        {data.email ? (
-          <Button className="size-8" variant="outline" size="icon" asChild>
-            <a href={`mailto:${data.email}`}>
-              {getIcon("mail", {
-                className: "size-4",
-              })}
-            </a>
-          </Button>
-        ) : null}
-        {data.tel ? (
-          <Button className="size-8" variant="outline" size="icon" asChild>
-            <a href={`tel:${data.tel}`}>
-              {getIcon("phone", {
-                className: "size-4",
-              })}
-            </a>
-          </Button>
-        ) : null}
-        {data.social.sort().map((social) => (
+        {data.email
+          ? (
+            <Button className="size-8" variant="outline" size="icon" asChild>
+              <a href={`mailto:${data.email}`}>
+                {getIcon('mail', {
+                  className: 'size-4',
+                })}
+              </a>
+            </Button>
+            )
+          : null}
+        {data.tel
+          ? (
+            <Button className="size-8" variant="outline" size="icon" asChild>
+              <a href={`tel:${data.tel}`}>
+                {getIcon('phone', {
+                  className: 'size-4',
+                })}
+              </a>
+            </Button>
+            )
+          : null}
+        {data.social.sort().map(social => (
           <Button
             key={social.name}
             className="size-8"
@@ -131,22 +136,26 @@ const Contact = ({ data }: { data: ContactType }) => {
         ))}
       </div>
       <div className="hidden flex-col gap-x-1 print:flex">
-        {data.email ? (
-          <a href={`mailto:${data.email}`}>
-            <span className="underline">{data.email}</span>
-          </a>
-        ) : null}
-        {data.tel ? (
-          <a href={`tel:${data.tel}`}>
-            <span className="underline">{data.tel}</span>
-          </a>
-        ) : null}
+        {data.email
+          ? (
+            <a href={`mailto:${data.email}`}>
+              <span className="underline">{data.email}</span>
+            </a>
+            )
+          : null}
+        {data.tel
+          ? (
+            <a href={`tel:${data.tel}`}>
+              <span className="underline">{data.tel}</span>
+            </a>
+            )
+          : null}
       </div>
     </Section>
-  );
-};
+  )
+}
 
-const Education = ({ data }: { data: EducationType }) => {
+function Education({ data }: { data: EducationType }) {
   return (
     <Section>
       <Label className="text-xl font-bold">Education</Label>
@@ -154,8 +163,8 @@ const Education = ({ data }: { data: EducationType }) => {
         <div className="space-y-8">
           {data.map((education, index) => (
             <div className="relative pl-6" key={index}>
-              {getIcon("dot", {
-                className: "absolute -left-[12px] top-0",
+              {getIcon('dot', {
+                className: 'absolute -left-[12px] top-0',
                 strokeWidth: 8,
               })}
               <div className="flex flex-wrap items-center justify-between text-base">
@@ -163,22 +172,27 @@ const Education = ({ data }: { data: EducationType }) => {
                   {education.school}
                 </h3>
                 <div className="tabular-nums text-gray-500">
-                  {education.start} - {education.end}
+                  {education.start}
+                  {' '}
+                  -
+                  {education.end}
                 </div>
               </div>
               <p>{education.degree}</p>
               <div className="text-sm font-semibold">
-                Aggregate: {education?.aggregate ?? education?.cgpa}
+                Aggregate:
+                {' '}
+                {education?.aggregate ?? education?.cgpa}
               </div>
             </div>
           ))}
         </div>
       </div>
     </Section>
-  );
-};
+  )
+}
 
-const Project = ({ data }: { data: ProjectType }) => {
+function Project({ data }: { data: ProjectType }) {
   return (
     <Section>
       <Label className="text-xl font-bold">Projects</Label>
@@ -188,8 +202,8 @@ const Project = ({ data }: { data: ProjectType }) => {
             return (
               <Card
                 className={clsx(
-                  "flex flex-col overflow-hidden p-3",
-                  project.isClient ? "border-2 border-green-500" : "border",
+                  'flex flex-col overflow-hidden p-3',
+                  project.isClient ? 'border-2 border-green-500' : 'border',
                 )}
                 key={index}
               >
@@ -208,64 +222,77 @@ const Project = ({ data }: { data: ProjectType }) => {
                 <CardContent className="mt-auto flex">
                   <div className="mt-2">
                     <div className="flex flex-wrap gap-1">
-                      {project.isClient ? (
-                        <>
-                          <Label className="text-sm font-semibold">
-                            Client:{" "}
-                          </Label>
-                          <div
-                            key={index}
-                            className="flex items-center justify-center "
-                          >
-                            {project.isClient ? "Yes" : "No"}{" "}
-                            {project.client_country
-                              ? `(${project.client_country})`
-                              : ""}
-                          </div>
-                        </>
-                      ) : null}
-                    </div>
-                    <div className="flex flex-wrap gap-1">
-                      {project.links && !!project.links.length ? (
-                        <Label className="text-sm font-semibold">Links: </Label>
-                      ) : null}
-                      {project.links && !!project.links.length
-                        ? project.links.sort().map((link, index) =>
-                            link.type === "web" ? (
-                              <a
-                                key={index}
-                                href={link.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                {getIcon("web", {
-                                  className:
-                                    "size-4 rounded-full text-green-500",
-                                  href: link.href,
-                                })}
-                              </a>
-                            ) : link.type === "mobile" ? (
-                              <a
-                                key={index}
-                                href={link.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                {getIcon("smartphone", {
-                                  className: "size-4 rounded-full text-red-600",
-                                  href: link.href,
-                                })}
-                              </a>
-                            ) : null,
+                      {project.isClient
+                        ? (
+                          <>
+                            <Label className="text-sm font-semibold">
+                              Client:
+                              {' '}
+                            </Label>
+                            <div
+                              key={index}
+                              className="flex items-center justify-center "
+                            >
+                              {project.isClient ? 'Yes' : 'No'}
+                              {' '}
+                              {project.client_country
+                                ? `(${project.client_country})`
+                                : ''}
+                            </div>
+                          </>
                           )
                         : null}
                     </div>
                     <div className="flex flex-wrap gap-1">
-                      {project.company ? (
-                        <Label className="text-sm font-semibold">
-                          Company:{" "}
-                        </Label>
-                      ) : null}
+                      {project.links && !!project.links.length
+                        ? (
+                          <Label className="text-sm font-semibold">Links: </Label>
+                          )
+                        : null}
+                      {project.links && !!project.links.length
+                        ? project.links.sort().map((link, index) =>
+                          link.type === 'web'
+                            ? (
+                              <a
+                                key={index}
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {getIcon('web', {
+                                  className:
+                                    'size-4 rounded-full text-green-500',
+                                  href: link.href,
+                                })}
+                              </a>
+                              )
+                            : link.type === 'mobile'
+                              ? (
+                                <a
+                                  key={index}
+                                  href={link.href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  {getIcon('smartphone', {
+                                    className: 'size-4 rounded-full text-red-600',
+                                    href: link.href,
+                                  })}
+                                </a>
+                                )
+                              : null,
+                        )
+                        : null}
+                    </div>
+                    <div className="flex flex-wrap gap-1">
+                      {project.company
+                        ? (
+                          <Label className="text-sm font-semibold">
+                            Company:
+                            {' '}
+                          </Label>
+                          )
+                        : null}
                       <div className="flex items-center justify-center ">
                         <Badge variant="secondary" className="text-xs">
                           {project.company}
@@ -273,18 +300,21 @@ const Project = ({ data }: { data: ProjectType }) => {
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-1">
-                      {project.techStacks && !!project.techStacks.length ? (
-                        <Label className="text-sm font-semibold">
-                          Technology:{" "}
-                        </Label>
-                      ) : null}
+                      {project.techStacks && !!project.techStacks.length
+                        ? (
+                          <Label className="text-sm font-semibold">
+                            Technology:
+                            {' '}
+                          </Label>
+                          )
+                        : null}
                       {project.techStacks.sort().map((techStack, index) => (
                         <div
                           key={index}
                           className="flex items-center justify-center "
                         >
                           {getIcon(techStack as IconType, {
-                            className: "size-4 rounded-full",
+                            className: 'size-4 rounded-full',
                           })}
                         </div>
                       ))}
@@ -292,15 +322,15 @@ const Project = ({ data }: { data: ProjectType }) => {
                   </div>
                 </CardContent>
               </Card>
-            );
+            )
           })}
         </div>
       </div>
     </Section>
-  );
-};
+  )
+}
 
-const Skills = ({ data }: { data: SkillsType }) => {
+function Skills({ data }: { data: SkillsType }) {
   return (
     <Section>
       <Label className="text-xl font-bold">Skills</Label>
@@ -309,16 +339,18 @@ const Skills = ({ data }: { data: SkillsType }) => {
           {Object.entries(data).map(([skillCategory, skills]) => (
             <li key={skillCategory}>
               <div className="flex items-baseline">
-                {getIcon("circle-dot", {
-                  className: "h-4 w-4 text-green-500 mt-2",
+                {getIcon('circle-dot', {
+                  className: 'h-4 w-4 text-green-500 mt-2',
                 })}
                 <p className="m-0.5 ml-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
-                  {humanizeString(skillCategory)}:{""}
+                  {humanizeString(skillCategory)}
+                  :
+
                 </p>
                 {skills.sort().map((skill, index) => (
                   <span key={index}>
                     {getIcon(skill as IconType, {
-                      className: "mx-0.5 size-4",
+                      className: 'mx-0.5 size-4',
                     })}
                   </span>
                 ))}
@@ -328,10 +360,10 @@ const Skills = ({ data }: { data: SkillsType }) => {
         </ul>
       </Card>
     </Section>
-  );
-};
+  )
+}
 
-const KeySkills = ({ data }: { data: KeySkillsType }) => {
+function KeySkills({ data }: { data: KeySkillsType }) {
   return (
     <Section>
       <Label className="text-xl font-bold">Key Skills</Label>
@@ -342,8 +374,8 @@ const KeySkills = ({ data }: { data: KeySkillsType }) => {
               key={index}
               className="flex flex-wrap items-start items-baseline"
             >
-              {getIcon("badge-check", {
-                className: "mr-1 h-4 w-4 text-green-500",
+              {getIcon('badge-check', {
+                className: 'mr-1 h-4 w-4 text-green-500',
               })}
               <div className="mx-0.5 text-lg font-semibold text-gray-900 dark:text-gray-100">
                 {kSkills}
@@ -353,10 +385,10 @@ const KeySkills = ({ data }: { data: KeySkillsType }) => {
         </ul>
       </Card>
     </Section>
-  );
-};
+  )
+}
 
-const Work = ({ data }: { data: WorkType }) => {
+function Work({ data }: { data: WorkType }) {
   return (
     <Section>
       <Label className="text-xl font-bold">Work Experience</Label>
@@ -364,8 +396,8 @@ const Work = ({ data }: { data: WorkType }) => {
         <div className="space-y-8">
           {data.map((work, index) => (
             <div key={index} className="relative pl-6">
-              {getIcon("dot", {
-                className: "absolute -left-[12px] top-0",
+              {getIcon('dot', {
+                className: 'absolute -left-[12px] top-0',
                 strokeWidth: 8,
               })}
               <div className="flex flex-wrap items-center justify-between gap-x-2">
@@ -382,7 +414,10 @@ const Work = ({ data }: { data: WorkType }) => {
                   </span>
                 </h3>
                 <div className="tabular-nums text-gray-500">
-                  {work.start} - {work.end ?? "Present"}
+                  {work.start}
+                  {' '}
+                  -
+                  {work.end ?? 'Present'}
                 </div>
               </div>
               <h4 className="text-sm font-semibold">{work.position}</h4>
@@ -394,7 +429,7 @@ const Work = ({ data }: { data: WorkType }) => {
                 {work.techStacks.sort().map((techStack, index) => (
                   <div key={index} className="mx-0.5">
                     {getIcon(techStack as IconType, {
-                      className: "size-4",
+                      className: 'size-4',
                     })}
                   </div>
                 ))}
@@ -404,8 +439,8 @@ const Work = ({ data }: { data: WorkType }) => {
         </div>
       </div>
     </Section>
-  );
-};
+  )
+}
 
 export default function Page() {
   return (
@@ -425,9 +460,9 @@ export default function Page() {
           links={[
             {
               url: data.about.website,
-              title: "Website",
+              title: 'Website',
             },
-            ...data.contact.social.sort().map((socialMediaLink) => ({
+            ...data.contact.social.sort().map(socialMediaLink => ({
               url: socialMediaLink.url,
               title: socialMediaLink.name,
             })),
@@ -435,5 +470,5 @@ export default function Page() {
         />
       </section>
     </main>
-  );
+  )
 }

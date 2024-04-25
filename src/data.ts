@@ -1,11 +1,11 @@
+import { parse } from 'valibot'
+import schema from './schema'
+import type { DarkColorType, LightColorType } from './types'
 import {
   GitHub,
   LinkedIn,
   X,
-} from "@/components/icons";
-import { parse } from "valibot";
-import schema from "./schema";
-import { DarkColorType, LightColorType } from "./types";
+} from '@/components/icons'
 
 export const about = {
   name: "Joydip Roy",

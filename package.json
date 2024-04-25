@@ -7,10 +7,12 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "deps:update": "taze -r -w -i -f -l"
+    "lint": "eslint . --fix",
+    "deps:update": "taze -r -w -i -f -l",
+    "prepare": "husky"
   },
   "dependencies": {
+    "@antfu/eslint-config": "^2.15.0",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "^2.0.2",
@@ -19,7 +21,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-tooltip": "^1.0.7",
     "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.0",
+    "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
     "humanize-string": "^3.0.0",
     "lucide-react": "^0.372.0",
@@ -41,7 +43,7 @@
     "autoprefixer": "^10.4.19",
     "cypress": "^13.8.0",
     "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.2",
+    "husky": "^9.0.11",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",

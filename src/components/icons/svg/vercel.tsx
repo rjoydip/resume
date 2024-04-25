@@ -1,10 +1,10 @@
-import { twMerge } from "tailwind-merge";
+import { twMerge } from 'tailwind-merge'
 
 interface VercelProps {
-  className?: string;
+  className?: string
 }
 
-const Vercel = ({ className }: VercelProps) => {
+function Vercel({ className }: VercelProps) {
   return (
     <svg
       viewBox="0 0 128 128"
@@ -15,11 +15,11 @@ const Vercel = ({ className }: VercelProps) => {
       y="0px"
       width="512"
       height="512"
-      className={twMerge("h-20 w-20", className)}
+      className={twMerge('h-20 w-20', className)}
     >
       <path d="M64.002 8.576 128 119.424H0Zm0 0"></path>
     </svg>
-  );
-};
+  )
+}
 
-export { Vercel };
+export { Vercel }
