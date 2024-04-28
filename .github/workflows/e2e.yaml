@@ -41,7 +41,7 @@ jobs:
         with:
           # Disable running of tests within install job
           runTests: false
-          build: npm run build
+          build: pnpm run build
 
       - name: Save .next folder
         uses: actions/upload-artifact@v4
@@ -102,5 +102,7 @@ jobs:
           parallel: true
           group: UI-Chrome
           browser: chrome
-          start: npm run start
+          start: pnpm run start
           wait-on: 'http://localhost:3000'
+          command: pnpm run e2e:ci
+          install-command: pnpm install --no-frozen-lockfile
