@@ -102,7 +102,7 @@ export const educationSchema = array(object({
   ]),
 }))
 
-export const workSchema = array(object({
+export const worksSchema = array(object({
   company: companies,
   position: string(),
   description: string(),
@@ -164,28 +164,27 @@ export const contactSchema = object({
   email: string([email()]),
   tel: string([startsWith('+')]),
   social: array(object({
-    name: string(),
     url: string([url()]),
-    icon: any(),
+    name: picklist(['gitHub', 'linkedIn', 'x']),
   })),
 })
 
 export const aboutSchema = object({
-    name: string([minLength(4)]),
-    initials: string([minLength(1), maxLength(4)]),
-    location: string(),
-    location_link: string([url()]),
-    avatar_url: string([url()]),
-    website: string([url()]),
-    description: string([maxLength(1000)]),
-    professional_summary: string(),
+  name: string([minLength(4)]),
+  initials: string([minLength(1), maxLength(4)]),
+  location: string(),
+  location_link: string([url()]),
+  avatar_url: string([url()]),
+  website: string([url()]),
+  description: string([maxLength(1000)]),
+  professional_summary: string(),
+  contact: contactSchema,
 })
 
 export default object({
-  contact: contactSchema,
   about: aboutSchema,
   education: educationSchema,
-  work: workSchema,
+  works: worksSchema,
   skills: skillsSchema,
   key_skills: keySkillsSchema,
   projects: projectsSchema,

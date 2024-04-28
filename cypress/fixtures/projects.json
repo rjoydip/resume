@@ -1,208 +1,205 @@
 [
-    {
-      "title": "Bridge Boffin",
-      "description": "Learning bridge game for kids",
-      "techStacks": ["bootstrap", "gitlab", "javascript", "laravel", "php"],
-      "links": [
-        {
-          "type": "web",
-          "label": "bridgeboffin.com",
-          "href": "https://www.bridgeboffin.com"
-        }
-      ],
-      "company": "Ascentspark"
-    },
-    {
-      "title": "Menu Pulse",
-      "description":
-        "The Restaurant-Based Social Network & Menu Wiki. Menu Pulse is a web and smartphone application-based platform for restaurants, menus, pictures, and reviews launching.",
-      "techStacks": [
-        "angular",
-        "bootstrap",
-        "gitlab",
-        "ionic",
-        "javascript",
-        "laravel"
-      ],
-      "links": [
-        {
-          "type": "web",
-          "label": "menupulse.com",
-          "href": "https://www.menupulse.com"
-        },
-        {
-          "type": "mobile",
-          "label": "Menupulse",
-          "href": "https://play.google.com/store/apps/details?id=com.Menupulse.Menupulse"
-        }
-      ],
-      "company": "Ascentspark"
-    },
-    {
-      "title": "Inagrab",
-      "description":
+  {
+    "title": "CVS",
+    "description": "CVS Health, established in 1963, is a leading American healthcare 'company' with over 9,900 retail locations nationwide. Offering a wide range of services including pharmacies, clinics, and digital health solutions, CVS aims to provide accessible and affordable healthcare for all.",
+    "techStacks": [
+      "gmc"
+    ],
+    "isClient": true,
+    "company": "Infosys",
+    "client_country": "Canada"
+  },
+  {
+    "title": "Northwestern Mutual",
+    "description": "Northwestern Mutual, founded in 1857, is a leading U.S.-based financial services 'company'. Specializing in life insurance, it offers a range of services including investment management and retirement planning, prioritizing personalized financial guidance for its clients' long-term security",
+    "techStacks": [
+      "etl",
+      "gitlab",
+      "kafka",
+      "jenkins",
+      "nodejs",
+      "springboot"
+    ],
+    "isClient": true,
+    "company": "Infosys",
+    "client_country": "USA"
+  },
+  {
+    "title": "Macmillan",
+    "description": "Macmillan Learning is a leading educational publisher, offering textbooks and digital tools for higher education. Committed to innovation, it provides resources to empower educators and students alike",
+    "techStacks": [
+      "nodejs",
+      "typescript",
+      "jenkins",
+      "bitbucket"
+    ],
+    "isClient": true,
+    "company": "Tech Mahindra",
+    "client_country": "USA"
+  },
+  {
+    "title": "Inagrab",
+    "description":
         "Inagrab is the best deal search engine that allows you to make the best possible decision in the shortest possible time.",
-      "techStacks": ["angular", "gitlab", "ionic", "nodejs", "npm", "typescript"],
-      "links": [
-        {
-          "type": "mobile",
-          "label": "inagrab",
-          "href": "https://play.google.com/store/apps/details?id=in.youstart.inagrab"
-        }
-      ],
-      "company": "Webskitters"
-    },
-    {
-      "title": "Tapp - Drinking App",
-      "description":
+    "techStacks": ["angular", "gitlab", "ionic", "nodejs", "npm", "typescript"],
+    "links": [
+      {
+        "type": "mobile",
+        "label": "inagrab",
+        "href": "https://play.google.com/store/apps/details?id=in.youstart.inagrab"
+      }
+    ],
+    "company": "Webskitters"
+  },
+  {
+    "title": "Tapp - Drinking App",
+    "description":
         "The drinking game played by superheroes. Open Tapp App and your drinking destiny will be in the palm of your hands. No need to know the rules, hey create your own and let the drinks spill.",
-      "techStacks": ["angular", "gitlab", "ionic", "nodejs", "npm", "typescript"],
-      "links": [
-        {
-          "type": "mobile",
-          "label": "tapp",
-          "href": "https://play.google.com/store/apps/details?id=com.dat.tapp"
-        }
-      ],
-      "company": "Webskitters"
-    },
-    {
-      "title": "Classified",
-      "description": "Post advertisement application",
-      "techStacks": [
-        "angular",
-        "firebase",
-        "gitlab",
-        "ionic",
-        "nodejs",
-        "npm",
-        "typescript"
-      ],
-      "links": [
-        {
-          "type": "mobile",
-          "label": "classifieds",
-          "href": "https://play.google.com/store/apps/details?id=com.classifieds.universe"
-        }
-      ],
-      "company": "Webskitters"
-    },
-    {
-      "title": "The Scope App",
-      "description":
+    "techStacks": ["angular", "gitlab", "ionic", "nodejs", "npm", "typescript"],
+    "links": [
+      {
+        "type": "mobile",
+        "label": "tapp",
+        "href": "https://play.google.com/store/apps/details?id=com.dat.tapp"
+      }
+    ],
+    "company": "Webskitters"
+  },
+  {
+    "title": "Classified",
+    "description": "Post advertisement application",
+    "techStacks": [
+      "angular",
+      "firebase",
+      "gitlab",
+      "ionic",
+      "nodejs",
+      "npm",
+      "typescript"
+    ],
+    "links": [
+      {
+        "type": "mobile",
+        "label": "classifieds",
+        "href": "https://play.google.com/store/apps/details?id=com.classifieds.universe"
+      }
+    ],
+    "company": "Webskitters"
+  },
+  {
+    "title": "The Scope App",
+    "description":
         "MEDICAL NEWS. RESIDENCY HUMOR. The Scope offers the week's best in evidence-based medicine, written in plain language for a nationwide audience of young physicians. This app features all of our fresh takes on medical journal articles in an easy-to-read, easy-to-search format. It's perfect for rotation prep and research presentations.",
-      "techStacks": [
-        "express",
-        "gitlab",
-        "mongodb",
-        "nodejs",
-        "npm",
-        "typescript"
-      ],
-      "links": [
-        {
-          "type": "mobile",
-          "label": "thescope",
-          "href": "https://play.google.com/store/apps/details?id=com.thescope"
-        }
-      ],
-      "company": "Webskitters"
-    },
-    {
-      "title": "Mizizi",
-      "description":
+    "techStacks": [
+      "express",
+      "gitlab",
+      "mongodb",
+      "nodejs",
+      "npm",
+      "typescript"
+    ],
+    "links": [
+      {
+        "type": "mobile",
+        "label": "thescope",
+        "href": "https://play.google.com/store/apps/details?id=com.thescope"
+      }
+    ],
+    "company": "Webskitters"
+  },
+  {
+    "title": "Mizizi",
+    "description":
         "The Mizizi will allow users to locate and find a stylist, barbers, nail technician, eyebrow and eyelash technicians all over the world.",
-      "techStacks": [
-        "angular",
-        "express",
-        "gitlab",
-        "mongodb",
-        "nodejs",
-        "npm",
-        "typescript"
-      ],
-      "links": [
-        {
-          "type": "mobile",
-          "label": "miziziapp.com",
-          "href": "https://play.google.com/store/apps/details?id=com.mizizi"
-        },
-        {
-          "type": "web",
-          "label": "mizizi",
-          "href": "https://miziziapp.com"
-        }
-      ],
-      "company": "Webskitters"
-    },
-    {
-      "title": "LetsEat",
-      "description":
+    "techStacks": [
+      "angular",
+      "express",
+      "gitlab",
+      "mongodb",
+      "nodejs",
+      "npm",
+      "typescript"
+    ],
+    "links": [
+      {
+        "type": "mobile",
+        "label": "miziziapp.com",
+        "href": "https://play.google.com/store/apps/details?id=com.mizizi"
+      },
+      {
+        "type": "web",
+        "label": "mizizi",
+        "href": "https://miziziapp.com"
+      }
+    ],
+    "company": "Webskitters"
+  },
+  {
+    "title": "LetsEat",
+    "description":
         "Order delicious home-cooked meals. See who's cooking in your neighborhood.",
-      "techStacks": [
-        "express",
-        "gitlab",
-        "mongodb",
-        "nodejs",
-        "npm",
-        "typescript"
-      ],
-      "company": "Webskitters"
-    },
-    {
-      "title": "Card sort",
-      "description":
+    "techStacks": [
+      "express",
+      "gitlab",
+      "mongodb",
+      "nodejs",
+      "npm",
+      "typescript"
+    ],
+    "company": "Webskitters"
+  },
+  {
+    "title": "Card sort",
+    "description":
         "Realtime data analytics application by collecting users activity data and admin manageable.",
-      "techStacks": [
-        "angular",
-        "electron",
-        "firebase",
-        "gitlab",
-        "nodejs",
-        "npm",
-        "typescript"
-      ],
-      "company": "Webskitters"
-    },
-    {
-      "title": "CVS",
-      "description": "CVS Health, established in 1963, is a leading American healthcare 'company' with over 9,900 retail locations nationwide. Offering a wide range of services including pharmacies, clinics, and digital health solutions, CVS aims to provide accessible and affordable healthcare for all.",
-      "techStacks": [
-        "gmc"
-      ],
-      "link": [],
-      "isClient": true,
-      "company": "Infosys",
-      "client_country": "Canada"
-    },
-    {
-      "title": "Northwestern Mutual",
-      "description": "Northwestern Mutual, founded in 1857, is a leading U.S.-based financial services 'company'. Specializing in life insurance, it offers a range of services including investment management and retirement planning, prioritizing personalized financial guidance for its clients' long-term security",
-      "techStacks": [
-        "etl",
-        "gitlab",
-        "kafka",
-        "jenkins",
-        "nodejs",
-        "springboot"
-      ],
-      "link": [],
-      "isClient": true,
-      "company": "Infosys",
-      "client_country": "USA"
-    },
-    {
-      "title": "Macmillan",
-      "description": "Macmillan Learning is a leading educational publisher, offering textbooks and digital tools for higher education. Committed to innovation, it provides resources to empower educators and students alike",
-      "techStacks": [
-        "nodejs",
-        "typescript",
-        "jenkins",
-        "bitbucket"
-      ],
-      "link": [],
-      "isClient": true,
-      "company": "Tech Mahindra",
-      "client_country": "USA"
-    }
-  ]
+    "techStacks": [
+      "angular",
+      "electron",
+      "firebase",
+      "gitlab",
+      "nodejs",
+      "npm",
+      "typescript"
+    ],
+    "company": "Webskitters"
+  },
+  {
+    "title": "Bridge Boffin",
+    "description": "Learning bridge game for kids",
+    "techStacks": ["bootstrap", "gitlab", "javascript", "laravel", "php"],
+    "links": [
+      {
+        "type": "web",
+        "label": "bridgeboffin.com",
+        "href": "https://www.bridgeboffin.com"
+      }
+    ],
+    "company": "Ascentspark"
+  },
+  {
+    "title": "Menu Pulse",
+    "description":
+        "The Restaurant-Based Social Network & Menu Wiki. Menu Pulse is a web and smartphone application-based platform for restaurants, menus, pictures, and reviews launching.",
+    "techStacks": [
+      "angular",
+      "bootstrap",
+      "gitlab",
+      "ionic",
+      "javascript",
+      "laravel"
+    ],
+    "links": [
+      {
+        "type": "web",
+        "label": "menupulse.com",
+        "href": "https://www.menupulse.com"
+      },
+      {
+        "type": "mobile",
+        "label": "Menupulse",
+        "href": "https://play.google.com/store/apps/details?id=com.Menupulse.Menupulse"
+      }
+    ],
+    "company": "Ascentspark"
+  }
+]

@@ -1,57 +1,28 @@
 import { parse } from 'valibot'
 import schema from './schema'
-import type { DarkColorType, LightColorType } from './types'
-import {
-  GitHub,
-  LinkedIn,
-  X,
-} from '@/components/icons'
+import type { DarkColorType, LightColorType, ResumeDataType } from './types'
 import { getFixturesAsync } from './lib/utils'
 
-export const contact = {
-  email: "joydipand@gmail.com",
-  tel: "+91-8697411233",
-  social: [
-    {
-      name: "GitHub",
-      url: "https://github.com/rjoydip",
-      icon: GitHub,
-    },
-    {
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/in/rjoydip/",
-      icon: LinkedIn,
-    },
-    {
-      name: "X",
-      url: "https://x.com/rjoydip11",
-      icon: X,
-    },
-  ],
-}
-
-export default async function getDataAsync() {
+export async function getDataAsync(): Promise<ResumeDataType> {
   const about = await getFixturesAsync('about', 'prof_summery_title')
   const education = await getFixturesAsync('education')
-  const work = await getFixturesAsync('work')
+  const works = await getFixturesAsync('works')
   const skills = await getFixturesAsync('skills')
   const key_skills = await getFixturesAsync('key_skills')
   const projects = await getFixturesAsync('projects')
-  const payload = {
+  return parse(schema, {
     about,
-    contact,
     education,
-    work,
+    works,
     skills,
     key_skills,
     projects,
-  }
-  return parse(schema, payload)
+  })
 }
 
 export const metadata = {
   name: 'Joydip Roy',
-  description: 'JR'
+  description: 'JR',
 }
 
 export function getLightThemeColors(): LightColorType[] {

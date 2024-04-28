@@ -9,5 +9,23 @@
     "Experienced Full Stack Engineer with a proven track record of successfully leading multiple projects from inception to completion. Skilled in fostering collaborative team environments and adept at bringing out the best in team members. Demonstrated ability to build and lead teams, contributing to organizational growth. Proficient in TypeScript, JavaScript, and Node.js, with over 8 years of hands-on experience in esteemed companies.",
   "avatar_url": "https://avatars.githubusercontent.com/u/112172822?v=4",
   "website": "https://rjoydip.me",
-  "prof_summery_title": "Professional Summary"
+  "prof_summery_title": "Professional Summary",
+  "contact": {
+    "email": "joydipand@gmail.com",
+    "tel": "+91-8697411233",
+    "social": [
+      {
+        "name": "gitHub",
+        "url": "https://github.com/rjoydip"
+      },
+      {
+        "name": "linkedIn",
+        "url": "https://www.linkedin.com/in/rjoydip/"
+      },
+      {
+        "name": "x",
+        "url": "https://x.com/rjoydip11"
+      }
+    ]
+  }
 }

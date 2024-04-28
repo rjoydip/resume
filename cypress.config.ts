@@ -1,10 +1,21 @@
-import { defineConfig } from "cypress";
+import { defineConfig } from 'cypress'
+import { env, isDevelopment, isProduction } from 'std-env'
 
 export default defineConfig({
-  e2e: {
-    baseUrl: "http://localhost:3000",
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
+  env: {
+    isDevelopment,
+    isProduction,
+    ...env,
   },
-});
+  component: {
+    devServer: {
+      framework: 'next',
+      bundler: 'webpack',
+    },
+    supportFile: 'cypress/support/component.ts',
+  },
+  e2e: {
+    baseUrl: 'http://localhost:3000',
+    supportFile: 'cypress/support/commands.ts',
+  },
+})
