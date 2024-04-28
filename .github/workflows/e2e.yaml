@@ -54,10 +54,8 @@ jobs:
     runs-on: ubuntu-22.04
     needs: install
     strategy:
-      # don't fail the entire matrix on failure
       fail-fast: false
       matrix:
-        # run copies of the current job in parallel
         containers: [1, 2, 3, 4, 5]
     steps:
       - name: Checkout
@@ -100,9 +98,9 @@ jobs:
         with:
           record: true
           parallel: true
+          component: true
           group: UI-Chrome
           browser: chrome
           start: pnpm run start
-          wait-on: 'http://localhost:3000'
           command: pnpm run e2e:ci
           install-command: pnpm install --no-frozen-lockfile
