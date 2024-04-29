@@ -97,11 +97,5 @@ jobs:
           start: pnpm start
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
-          browser: chrome
-          record: false
-          parallel: true
-          install: false
-          group: "UI - Chrome"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEBUG: "cypress:server:args"
