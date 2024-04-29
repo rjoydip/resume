@@ -49,12 +49,12 @@ jobs:
           key: cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
 
       - run: pnpm install --no-frozen-lockfile
-      - run: pnpm cypress info
       - run: pnpm build
 
       - name: "E2E Tests"
         uses: cypress-io/github-action@v6
         with:
+          build: pnpm cypress info
           start: pnpm start
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
@@ -64,6 +64,7 @@ jobs:
       - name: "UI Tests"
         uses: cypress-io/github-action@v6
         with:
+          build: pnpm cypress info
           start: pnpm start
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
