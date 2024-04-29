@@ -87,11 +87,14 @@ jobs:
         with:
           version: 8
 
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
       - name: "E2E Tests - Chrome"
         uses: cypress-io/github-action@v6
         with:
           build: npx cypress info
-          start: pnpm start --prefix ./
+          start: pnpm start --dir ./
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           browser: chrome
