@@ -107,7 +107,7 @@ jobs:
           group: UI-Chrome
           browser: chrome
           working-directory: ./
-          start: npx next start
+          start: npx next dev
           wait-on: npx wait-on http://localhost:3000
           wait-on-timeout: 120
           command: npx start-server-and-test start 3000 "npx cypress run --e2e && npx cypress run --component"
