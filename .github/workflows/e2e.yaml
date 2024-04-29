@@ -1,6 +1,12 @@
 name: E2E Tests
 
-on: push
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+  workflow_dispatch:
+
 
 jobs:
   install:
@@ -102,5 +108,5 @@ jobs:
           group: UI-Chrome
           browser: chrome
           start: pnpm run start
-          command: pnpm run e2e:ci
           install-command: pnpm install --no-frozen-lockfile
+          ci-build-id: '${{ github.sha }}-${{ github.workflow }}-${{ github.event_name }}'
