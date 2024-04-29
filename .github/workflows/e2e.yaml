@@ -48,7 +48,7 @@ jobs:
           # Disable running of tests within install job
           runTests: false
           build: pnpm run build
-          install-command: cypress install
+          install-command: npx cypress install
 
       - name: Save .next folder
         uses: actions/upload-artifact@v4
