@@ -1,5 +1,3 @@
-# .github/workflows/release.yml
-
 name: Release
 
 permissions:
@@ -9,10 +7,15 @@ on:
   push:
     tags:
       - 'v*'
-
+  workflow_run:
+    workflows: ["ci.yaml", "e2e.yaml"]
+    types:
+      - completed
+    
 jobs:
   release:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.name == 'ci.yaml' && github.event.workflow_run.name == 'e2e.yaml' }}
     steps:
       - uses: actions/checkout@v3
         with:

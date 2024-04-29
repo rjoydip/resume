@@ -1,14 +1,22 @@
 name: Preview
+
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
 on:
   push:
     branches-ignore:
       - main
+  workflow_run:
+    workflows: ["ci.yaml", "e2e.yaml"]
+    types:
+      - completed
+
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.name == 'ci.yaml' && github.event.workflow_run.name == 'e2e.yaml' }}
     steps:
       - uses: actions/checkout@v3
         with:
