@@ -110,5 +110,6 @@ jobs:
           start: npx next dev
           wait-on: npx wait-on http://localhost:3000/api/health
           wait-on-timeout: 120
+          install-command: pnpm install --no-frozen-lockfile
           command: npx start-server-and-test start 3000 "npx cypress run --e2e && npx cypress run --component"
           ci-build-id: '${{ github.sha }}-${{ github.workflow }}-${{ github.event_name }}'
