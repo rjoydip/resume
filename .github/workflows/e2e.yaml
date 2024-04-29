@@ -58,20 +58,13 @@ jobs:
       - run: pnpm build
       - run: pnpm start
 
-      - name: "E2E Tests"
-        uses: cypress-io/github-action@v6
-        with:
-          wait-on: "http://localhost:3000"
-          wait-on-timeout: 120
-        env:
-          DEBUG: "cypress:server:args"
-
-      - name: "UI Tests"
+      - name: "E2E & UI Tests"
         uses: cypress-io/github-action@v6
         with:
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           browser: chrome
           component: true
+          command: pnpm cypress run --e2e && pnpm cypress run --component
         env:
           DEBUG: "cypress:server:args"
