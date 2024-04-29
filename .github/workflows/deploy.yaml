@@ -8,14 +8,10 @@ on:
   push:
     branches:
       - main
-  workflow_run:
-    workflows: [ci.yaml, e2e.yaml]
-    types:
-      - completed
+
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.name == 'ci.yaml' && github.event.workflow_run.name == 'e2e.yaml' }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -23,7 +19,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 20.x
+          node-version: 20
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
