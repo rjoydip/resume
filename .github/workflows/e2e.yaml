@@ -52,7 +52,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           runTests: false
-
+          
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm cypress info
       - run: pnpm build
