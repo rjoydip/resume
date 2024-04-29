@@ -140,7 +140,7 @@ export function About({ data }: { data: AboutType }) {
           </div>
         </CardFooter>
       </Card>
-      <Label data-cy="about_prof_summery_title" className="text-primary">
+      <Label data-cy="about_prof_summery_title" className="text-xl font-bold">
         Professional Summary
       </Label>
       <Card className="border p-3">
