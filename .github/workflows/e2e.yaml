@@ -5,13 +5,17 @@ on:
     branches:
       - master
   pull_request:
-
+  workflow_run:
+    workflows: [ci.yaml]
+    types:
+      - completed
 env:
   STORE_PATH: ${{ vars.STORE_PATH }}
 
 jobs:
   install:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.name == 'ci.yaml' }}
     container:
       image: cypress/browsers:node-20.12.0-chrome-123.0.6312.86-1-ff-124.0.2-edge-123.0.2420.65-1
       options: --user 1001
@@ -39,9 +43,7 @@ jobs:
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
@@ -52,7 +54,6 @@ jobs:
           runTests: false
 
       - run: pnpm cypress info
-      - run: node --version
       - run: pnpm build
 
       - name: Save build folder
@@ -82,19 +83,20 @@ jobs:
           name: build
           path: .next/
 
-      - name: __e Dir
-        run: ls /__e
+      - name: Dir
+        run: ls 
 
-      - name: "UI Tests - Chrome"
+      - name: "E2E Tests - Chrome"
         uses: cypress-io/github-action@v6
         with:
           build: pnpm cypress info
-          start: pnpm start
-          wait-on: "http://localhost:3000/api/health"
+          start: pnpm --dir ./ start
+          wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           browser: chrome
           record: true
           parallel: true
+          install: false
           group: "UI - Chrome"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
