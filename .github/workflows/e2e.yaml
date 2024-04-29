@@ -21,7 +21,7 @@ jobs:
       options: --user 1001
     strategy:
       matrix:
-        containers: [1, 2]
+        containers: [1]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -48,21 +48,22 @@ jobs:
           path: ${{ env.STORE_PATH }}
           key: cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
 
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
-
-      - name: Cypress install
-        uses: cypress-io/github-action@v6
-        with:
-          runTests: false
-
+      - run: pnpm install --no-frozen-lockfile
       - run: pnpm cypress info
       - run: pnpm build
 
       - name: "E2E Tests"
         uses: cypress-io/github-action@v6
         with:
-          build: npx cypress info
+          start: pnpm start
+          wait-on: "http://localhost:3000"
+          wait-on-timeout: 120
+        env:
+          DEBUG: "cypress:server:args"
+
+      - name: "UI Tests"
+        uses: cypress-io/github-action@v6
+        with:
           start: pnpm start
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
@@ -70,14 +71,3 @@ jobs:
           component: true
         env:
           DEBUG: "cypress:server:args"
-
-      # - name: "UI Tests"
-      #   uses: cypress-io/github-action@v6
-      #   with:
-      #     build: npx cypress info
-      #     start: pnpm start
-      #     wait-on: "http://localhost:3000"
-      #     wait-on-timeout: 120
-      #     browser: chrome
-      #   env:
-      #     DEBUG: "cypress:server:args"
