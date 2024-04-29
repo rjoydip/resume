@@ -3,7 +3,7 @@ name: E2E Tests
 on:
   push:
     branches:
-      - 'master'
+      - master
   pull_request:
   workflow_dispatch:
 
@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
@@ -94,9 +94,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
-
       - name: Download the .next folder
         uses: actions/download-artifact@v4
         with:
@@ -110,7 +107,7 @@ jobs:
           component: true
           group: UI-Chrome
           browser: chrome
-          start: pnpm run start
           working-directory: ./
+          command: npm run e2e:ci
           install-command: pnpm install --no-frozen-lockfile
           ci-build-id: '${{ github.sha }}-${{ github.workflow }}-${{ github.event_name }}'
