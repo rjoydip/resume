@@ -82,13 +82,10 @@ jobs:
           name: build
           path: .next/
 
-      - name: Dir
-        run: ls 
-
       - name: "E2E Tests - Chrome"
         uses: cypress-io/github-action@v6
         with:
-          build: pnpm cypress info
+          build: cypress info
           start: pnpm --dir ./ start
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
