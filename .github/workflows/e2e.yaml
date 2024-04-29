@@ -7,6 +7,8 @@ on:
   pull_request:
   workflow_dispatch:
 
+env:
+  STORE_PATH: ${{ vars.STORE_PATH }}
 
 jobs:
   install:
@@ -109,5 +111,6 @@ jobs:
           group: UI-Chrome
           browser: chrome
           start: pnpm run start
+          working-directory: ./
           install-command: pnpm install --no-frozen-lockfile
           ci-build-id: '${{ github.sha }}-${{ github.workflow }}-${{ github.event_name }}'
