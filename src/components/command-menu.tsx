@@ -5,9 +5,8 @@ import { useScrollData } from 'scroll-data-hook'
 
 import { CommandIcon } from 'lucide-react'
 import { Button } from './ui/button'
-import { ColorPalette } from './color-palette'
+import { ColorPalette } from './color/color-palette'
 import { Label } from './ui/label'
-import type { CommandMenuProps } from '@/types'
 import {
   CommandDialog,
   CommandEmpty,
@@ -15,10 +14,9 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
 } from '@/components/ui/command'
 
-export function CommandMenu({ links }: CommandMenuProps) {
+export function CommandMenu() {
   const [open, setOpen] = React.useState(false)
   const { scrolling } = useScrollData({
     onScrollStart: () => {
@@ -81,20 +79,7 @@ export function CommandMenu({ links }: CommandMenuProps) {
             <ColorPalette />
           </CommandGroup>
 
-          <CommandGroup heading="Links">
-            {links.map(({ url, title }) => (
-              <CommandItem
-                key={url}
-                onSelect={() => {
-                  setOpen(false)
-                  window.open(url, '_blank')
-                }}
-              >
-                <span>{title}</span>
-              </CommandItem>
-            ))}
-          </CommandGroup>
-          <CommandSeparator />
+          <div className="space-y-2"></div>
         </CommandList>
       </CommandDialog>
     </>

@@ -6,4 +6,9 @@ module.exports = antfu({
   json: true,
   markdown: true,
   yaml: true,
+}, {
+  rules: {
+    'ts/method-signature-style': ['off', 'never'],
+    'no-unused-expressions': ['off', 'never'],
+  },
 })

@@ -2,14 +2,14 @@ import React from 'react'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
-import data, { getDarkThemeColors, getLightThemeColors } from '@/data'
+import { getDarkThemeColors, getLightThemeColors, metadata as meta } from '@/data'
 import { Toaster } from '@/components/ui/toaster'
 
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: data.about?.name,
-  description: data.about?.description,
+  title: `${meta.name}`,
+  description: meta.description,
 }
 
 // If loading a variable font, you don't need to specify the font weight

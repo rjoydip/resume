@@ -1,0 +1,83 @@
+name: E2E Tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_run:
+    workflows: [ci.yaml]
+    types:
+      - completed
+env:
+  STORE_PATH: ${{ vars.STORE_PATH }}
+
+jobs:
+  cypress-run:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    container:
+      image: cypress/browsers:node-20.12.0-chrome-123.0.6312.86-1-ff-124.0.2-edge-123.0.2420.65-1
+      options: --user 1001
+    # strategy:
+    #   matrix:
+    #     containers: [1]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: pnpm/action-setup@v3
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+            ${{ env.STORE_PATH }}
+          key: |
+            cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+
+      - name: Cypress install
+        uses: cypress-io/github-action@v6
+        with:
+          runTests: false
+          
+      - run: pnpm install --no-frozen-lockfile
+      - run: pnpm cypress info
+      - run: pnpm build
+
+      - name: "E2E & UI Tests"
+        uses: cypress-io/github-action@v6
+        with:
+          start: pnpm start
+          wait-on: "http://localhost:3000"
+          wait-on-timeout: 120
+          browser: chrome
+          component: true
+          command: pnpm e2e:ci
+        env:
+          DEBUG: "cypress:server:args"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cypress-report
+          path: cypress/report
+          if-no-files-found: ignore

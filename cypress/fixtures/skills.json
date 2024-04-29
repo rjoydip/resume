@@ -1,0 +1,36 @@
+{
+  "cloud": ["vercel", "aws"],
+  "cross-platform": ["ionic", "electron"],
+  "devOps": ["docker", "jenkins"],
+  "database": ["mongodb", "postgresql", "mysql"],
+  "framework": [
+    "angular",
+    "fastify",
+    "react",
+    "nextjs"
+  ],
+  "languages": [
+    "javascript",
+    "typescript",
+    "nodejs",
+    "deno",
+    "bun"
+  ],
+  "object-relational-mapping": ["prisma", "mongoose"],
+  "operating-system": ["linux", "mac", "windows"],
+  "package-manager": ["pnpm", "npm", "yarn"],
+  "test": ["cucumber", "jest", "vitest", "cypress", "playwright"],
+  "tools": [
+    "postman",
+    "jira",
+    "graphql",
+    "kafka",
+    "bitbucket",
+    "git",
+    "github",
+    "gitlab",
+    "github-actions",
+    "snyk",
+    "instana"
+  ]
+}
