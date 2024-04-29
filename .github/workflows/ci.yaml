@@ -13,6 +13,9 @@ permissions:
   contents: write
   pull-requests: write
 
+env:
+  STORE_PATH: ${{ vars.STORE_PATH }}
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -50,3 +53,6 @@ jobs:
 
       - name: 👕 Lint
         run: pnpm lint
+
+      - name: 🛠️ Build
+        run: pnpm build
