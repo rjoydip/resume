@@ -13,7 +13,7 @@ env:
   STORE_PATH: ${{ vars.STORE_PATH }}
 
 jobs:
-  ui-chrome-tests:
+  cypress-run:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     container:
@@ -48,14 +48,19 @@ jobs:
           path: ${{ env.STORE_PATH }}
           key: cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
 
+      - name: Cypress install
+        uses: cypress-io/github-action@v6
+        with:
+          runTests: false
+
       - run: pnpm install --no-frozen-lockfile
+      - run: pnpm cypress info
       - run: pnpm build
+      - run: pnpm start
 
       - name: "E2E Tests"
         uses: cypress-io/github-action@v6
         with:
-          build: pnpm cypress info
-          start: pnpm start
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
         env:
@@ -64,8 +69,6 @@ jobs:
       - name: "UI Tests"
         uses: cypress-io/github-action@v6
         with:
-          build: pnpm cypress info
-          start: pnpm start
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           browser: chrome
