@@ -13,11 +13,15 @@ env:
   STORE_PATH: ${{ vars.STORE_PATH }}
 
 jobs:
-  install:
+  ui-chrome-tests:
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     container:
       image: cypress/browsers:node-20.12.0-chrome-123.0.6312.86-1-ff-124.0.2-edge-123.0.2420.65-1
       options: --user 1001
+    strategy:
+      matrix:
+        containers: [1, 2]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -55,47 +59,25 @@ jobs:
       - run: pnpm cypress info
       - run: pnpm build
 
-      - name: Save build folder
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          if-no-files-found: error
-          path: .next/
-
-  ui-chrome-tests:
-    timeout-minutes: 15
-    runs-on: ubuntu-latest
-    container:
-      image: cypress/browsers:node-20.12.0-chrome-123.0.6312.86-1-ff-124.0.2-edge-123.0.2420.65-1
-      options: --user 1001
-    needs: install
-    strategy:
-      matrix:
-        containers: [1, 2, 3, 4, 5]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Download the build folders
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: .next/
-
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          version: 8
-
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
-
-      - name: "E2E Tests - Chrome"
+      - name: "E2E Tests"
         uses: cypress-io/github-action@v6
         with:
           build: npx cypress info
           start: pnpm start
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
+          browser: chrome
+          component: true
         env:
           DEBUG: "cypress:server:args"
+
+      # - name: "UI Tests"
+      #   uses: cypress-io/github-action@v6
+      #   with:
+      #     build: npx cypress info
+      #     start: pnpm start
+      #     wait-on: "http://localhost:3000"
+      #     wait-on-timeout: 120
+      #     browser: chrome
+      #   env:
+      #     DEBUG: "cypress:server:args"
