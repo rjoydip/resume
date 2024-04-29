@@ -75,3 +75,9 @@ jobs:
           command: pnpm e2e:ci
         env:
           DEBUG: "cypress:server:args"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cypress-report
+          path: cypress/report
+          if-no-files-found: ignore

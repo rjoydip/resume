@@ -7,6 +7,13 @@ export default defineConfig({
     isProduction,
     ...env,
   },
+  reporter: 'mochawesome',
+  reporterOptions: {
+    reportDir: 'cypress/report',
+    overwrite: false,
+    html: false,
+    json: true,
+  },
   component: {
     devServer: {
       framework: 'next',
