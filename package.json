@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --fix",
+    "e2e:ci": "cypress run --e2e && cypress run --component",
     "e2e:dev": "start-server-and-test dev http://localhost:3000 \"cypress open\"",
     "deps:update": "taze -r -w -i -f -l",
     "prepare": "husky"

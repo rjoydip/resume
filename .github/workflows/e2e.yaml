@@ -45,8 +45,15 @@ jobs:
       - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
-          path: ${{ env.STORE_PATH }}
-          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+            ${{ env.STORE_PATH }}
+          key: |
+            cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
 
       - name: Cypress install
         uses: cypress-io/github-action@v6
@@ -65,6 +72,6 @@ jobs:
           wait-on-timeout: 120
           browser: chrome
           component: true
-          command: pnpm cypress run --e2e && pnpm cypress run --component
+          command: pnpm e2e:ci
         env:
           DEBUG: "cypress:server:args"
