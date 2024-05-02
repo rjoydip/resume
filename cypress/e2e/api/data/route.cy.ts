@@ -1,4 +1,4 @@
-import type { AboutType, EducationType, KeySkillsType, ProjectsType, SkillsType, WorksType } from '@/types'
+import type { AboutType, EducationsType, KeySkillsType, ProjectsType, SkillsType, WorksType } from '@/types'
 
 const dataEndpoint = '/api/data'
 
@@ -28,7 +28,7 @@ describe('should validate data routes', () => {
   })
 
   it('should validate valid routes \'/education\'', () => {
-    cy.request(`${dataEndpoint}/educations/`).then((response: { status: number, body: EducationType }) => {
+    cy.request(`${dataEndpoint}/educations/`).then((response: { status: number, body: EducationsType }) => {
       expect(response.status).to.eq(200)
       expect(response.body).to.be.not.empty
       response.body.forEach((e) => {

@@ -1,9 +1,9 @@
 import type { Output } from 'valibot'
-import type { aboutSchema, contactSchema, educationSchema, keySkillsSchema, projectsSchema, skillsSchema, worksSchema } from './schema'
+import type { aboutSchema, contactSchema, educationsSchema, keySkillsSchema, projectsSchema, skillsSchema, worksSchema } from './schema'
 import type schema from './schema'
 
 export type ResumeDataType = Output<typeof schema>
-export type EducationType = Output<typeof educationSchema>
+export type EducationsType = Output<typeof educationsSchema>
 export type AboutType = Output<typeof aboutSchema>
 export type ContactType = Output<typeof contactSchema>
 export type WorksType = Output<typeof worksSchema>

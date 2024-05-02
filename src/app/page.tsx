@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
+import { list } from '@vercel/blob'
+import { parse } from 'valibot'
+import { env } from 'std-env'
 import { CommandMenu } from '@/components/command-menu'
-import { getData, metadata as meta } from '@/data'
+import { metadata as meta } from '@/data'
 import { ThemeChange } from '@/components/color'
 import {
   About,
@@ -10,6 +13,9 @@ import {
   Skills,
   Works,
 } from '@/components/pages'
+import { fetchData } from '@/lib/utils'
+import schema from '@/schema'
+import { AboutType, WorksType, EducationsType, SkillsType, KeySkillsType, ProjectsType } from '@/types'
 
 export const metadata: Metadata = {
   title: `${meta.name}`,
@@ -17,16 +23,32 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  const { about, works, education, skills, keySkills, projects } = await getData()
+  const { blobs } = await list({
+    token: env.BLOB_READ_WRITE_TOKEN
+  })
+  const about$: AboutType = await fetchData(blobs, 'about')
+  const works$: WorksType = await fetchData(blobs, 'works')
+  const educations$: EducationsType = await fetchData(blobs, 'educations')
+  const skills$: SkillsType = await fetchData(blobs, 'skills')
+  const keySkills$: KeySkillsType = await fetchData(blobs, 'key-skills')
+  const projects$: ProjectsType = await fetchData(blobs, 'projects')
+  const data = parse(schema, {
+    about: about$,
+    educations: educations$,
+    works: works$,
+    skills: skills$,
+    keySkills: keySkills$,
+    projects: projects$,
+  })
   return (
     <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 md:p-16 print:p-12">
       <section className="mx-auto w-full max-w-2xl space-y-4 print:space-y-6">
-        <About data={about} />
-        <Works data={works} />
-        <Education data={education} />
-        <Skills data={skills} />
-        <KeySkills data={keySkills} />
-        <Projects data={projects} />
+        <About data={data.about} />
+        <Works data={data.works} />
+        <Education data={data.educations} />
+        <Skills data={data.skills} />
+        <KeySkills data={data.keySkills} />
+        <Projects data={data.projects} />
       </section>
 
       <section>

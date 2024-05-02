@@ -72,7 +72,7 @@ export const keySkillsSchema = array(picklist([
   'Node.js',
 ]))
 
-export const educationSchema = array(object({
+export const educationsSchema = array(object({
   school: string(),
   degree: string(),
   location: string(),
@@ -183,7 +183,7 @@ export const aboutSchema = object({
 
 export default object({
   about: aboutSchema,
-  education: educationSchema,
+  educations: educationsSchema,
   works: worksSchema,
   skills: skillsSchema,
   keySkills: keySkillsSchema,
