@@ -1,4 +1,5 @@
 import React from 'react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
@@ -36,6 +37,7 @@ export default function RootLayout({
           {children}
         </NextThemesProvider>
         <Toaster />
+        <SpeedInsights />
       </body>
     </html>
   )

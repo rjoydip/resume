@@ -56,3 +56,6 @@ jobs:
 
       - name: 🛠️ Build
         run: pnpm build
+
+      - name: 🧪 Unit test
+        run: pnpm test:run

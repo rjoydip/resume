@@ -10,11 +10,11 @@ import type { IconType, SkillsType } from '@/types'
 export function Skills({ data }: { data: SkillsType }) {
   return (
     <Section>
-      <Label data-cy="skills_title" className="text-xl font-bold">
+      <Label data-testid="skills_title" className="text-xl font-bold">
         Skills
       </Label>
       <Card className="border p-3">
-        <ul data-cy="skills_list" className="space-y-4 text-left">
+        <ul data-testid="skills_list" className="space-y-4 text-left">
           {Object.entries(data).map(([skillCategory, skills]) => (
             <li key={skillCategory}>
               <div className="flex items-baseline">

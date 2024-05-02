@@ -186,6 +186,6 @@ export default object({
   education: educationSchema,
   works: worksSchema,
   skills: skillsSchema,
-  key_skills: keySkillsSchema,
+  keySkills: keySkillsSchema,
   projects: projectsSchema,
 })

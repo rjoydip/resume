@@ -1,21 +1,23 @@
 import { parse } from 'valibot'
+import { list } from '@vercel/blob'
 import schema from './schema'
-import type { DarkColorType, LightColorType, ResumeDataType } from './types'
-import { getFixturesAsync } from './lib/utils'
+import type { AboutType, DarkColorType, EducationType, KeySkillsType, LightColorType, ProjectsType, ResumeDataType, SkillsType, WorksType } from '@/types'
+import { fetchData } from '@/lib/utils'
 
-export async function getDataAsync(): Promise<ResumeDataType> {
-  const about = await getFixturesAsync('about', 'prof_summery_title')
-  const education = await getFixturesAsync('education')
-  const works = await getFixturesAsync('works')
-  const skills = await getFixturesAsync('skills')
-  const key_skills = await getFixturesAsync('key_skills')
-  const projects = await getFixturesAsync('projects')
+export async function getData(): Promise<ResumeDataType> {
+  const { blobs } = await list()
+  const about: AboutType = await fetchData(blobs, 'about')
+  const works: WorksType = await fetchData(blobs, 'works')
+  const education: EducationType = await fetchData(blobs, 'educations')
+  const skills: SkillsType = await fetchData(blobs, 'skills')
+  const keySkills: KeySkillsType = await fetchData(blobs, 'key-skills')
+  const projects: ProjectsType = await fetchData(blobs, 'projects')
   return parse(schema, {
     about,
     education,
     works,
     skills,
-    key_skills,
+    keySkills,
     projects,
   })
 }

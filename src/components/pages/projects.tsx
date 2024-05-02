@@ -12,12 +12,12 @@ import {
 } from '../ui/card'
 import { Section } from '../ui/section'
 import { Label } from '../ui/label'
-import type { IconType, ProjectType } from '@/types'
+import type { IconType, ProjectsType } from '@/types'
 
-export function Projects({ data }: { data: ProjectType }) {
+export function Projects({ data }: { data: ProjectsType }) {
   return (
     <Section>
-      <Label data-cy="project_title" className="text-xl font-bold">
+      <Label data-testid="project_title" className="text-xl font-bold">
         Projects
       </Label>
       <div className="print-force-new-page scroll-mb-16">
@@ -35,7 +35,7 @@ export function Projects({ data }: { data: ProjectType }) {
                   <CardTitle className="space-y-1">
                     <div className="flex flex-wrap space-x-0.5">
                       <Label
-                        data-cy={`project_title_index_${index}`}
+                        data-testid={`project_title_index_${index}`}
                         className="font-semibold text-primary dark:text-primary"
                       >
                         {project.title}
@@ -43,7 +43,7 @@ export function Projects({ data }: { data: ProjectType }) {
                     </div>
                   </CardTitle>
                   <CardDescription
-                    data-cy={`project_description_index_${index}`}
+                    data-testid={`project_description_index_${index}`}
                     className="text-pretty text-sm"
                   >
                     {project.description}
@@ -52,7 +52,7 @@ export function Projects({ data }: { data: ProjectType }) {
                 <CardContent className="mt-auto flex">
                   <div className="mt-2">
                     <div
-                      data-cy={`project_client_index_${index}`}
+                      data-testid={`project_client_index_${index}`}
                       className="flex flex-wrap gap-1"
                     >
                       {project.isClient
@@ -77,7 +77,7 @@ export function Projects({ data }: { data: ProjectType }) {
                         : null}
                     </div>
                     <div
-                      data-cy={`project_client_index_${index}`}
+                      data-testid={`project_links_index_${index}`}
                       className="flex flex-wrap gap-1"
                     >
                       {project.links && !!project.links.length
@@ -105,7 +105,7 @@ export function Projects({ data }: { data: ProjectType }) {
                         : null}
                     </div>
                     <div
-                      data-cy={`project_company_index_${index}`}
+                      data-testid={`project_company_index_${index}`}
                       className="flex flex-wrap gap-1"
                     >
                       {project.company
@@ -124,7 +124,7 @@ export function Projects({ data }: { data: ProjectType }) {
                       </Badge>
                     </div>
                     <div
-                      data-cy={`project_tech_stacks_index_${index}`}
+                      data-testid={`project_tech_stacks_index_${index}`}
                       className="flex flex-wrap gap-1"
                     >
                       {project.techStacks && !!project.techStacks.length

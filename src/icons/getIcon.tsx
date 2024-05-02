@@ -192,12 +192,12 @@ export function getIcon(icon: IconType = null, props: IconProps = {}) {
     case 'yarn':
       return <Yarn {...props} />
     default:
-      return icon
-        ? (
+      return (
+        icon && (
           <Badge className="px-1 py-0 text-[10px]" variant="secondary">
             {humanizeString(icon.toString())}
           </Badge>
-          )
-        : null
+        )
+      )
   }
 }

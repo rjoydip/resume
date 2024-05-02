@@ -8,7 +8,7 @@ import type { EducationType } from '@/types'
 export function Education({ data }: { data: EducationType }) {
   return (
     <Section>
-      <Label data-cy="education_title" className="text-xl font-bold">
+      <Label data-testid="education_title" className="text-xl font-bold">
         Education
       </Label>
       <div className="relative border-l border-gray-200 dark:border-gray-700">
@@ -21,13 +21,13 @@ export function Education({ data }: { data: EducationType }) {
               })}
               <div className="flex flex-wrap items-center justify-between text-base">
                 <div
-                  data-cy={`education_school_index_${index}`}
+                  data-testid={`education_school_index_${index}`}
                   className="font-semibold leading-none"
                 >
                   {education.school}
                 </div>
                 <div
-                  data-cy={`education_start_end_index_${index}`}
+                  data-testid={`education_start_end_index_${index}`}
                   className="tabular-nums text-gray-500"
                 >
                   {education.start}
@@ -37,11 +37,11 @@ export function Education({ data }: { data: EducationType }) {
                   {education.end}
                 </div>
               </div>
-              <div data-cy={`education_degree_index_${index}`}>
+              <div data-testid={`education_degree_index_${index}`}>
                 {education.degree}
               </div>
               <div
-                data-cy={`education_aggregate_index_${index}`}
+                data-testid={`education_aggregate_index_${index}`}
                 className="text-sm font-semibold"
               >
                 Aggregate:

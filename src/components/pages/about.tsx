@@ -18,13 +18,13 @@ export function Contact({ data }: { data: ContactType }) {
   return (
     <Section>
       <div
-        data-cy="about_contact_visible"
+        data-testid="about_contact_visible"
         className="flex gap-x-1 pt-1 print:hidden"
       >
         {data.email
           ? (
             <Button className="size-8" variant="outline" size="icon" asChild>
-              <a data-cy="about_contact_email" href={`mailto:${data.email}`}>
+              <a data-testid="about_contact_email" href={`mailto:${data.email}`}>
                 {getIcon('mail', {
                   className: 'size-4',
                 })}
@@ -35,7 +35,7 @@ export function Contact({ data }: { data: ContactType }) {
         {data.tel
           ? (
             <Button className="size-8" variant="outline" size="icon" asChild>
-              <a data-cy="about_contact_tel" href={`tel:${data.tel}`}>
+              <a data-testid="about_contact_tel" href={`tel:${data.tel}`}>
                 {getIcon('phone', {
                   className: 'size-4',
                 })}
@@ -45,7 +45,7 @@ export function Contact({ data }: { data: ContactType }) {
           : null}
         {data.social.map((social, index) => (
           <Button
-            data-cy={`about_contact_social_${social.name}`}
+            data-testid={`about_contact_social_${social.name}`}
             key={index}
             className="size-8"
             variant="outline"
@@ -61,19 +61,19 @@ export function Contact({ data }: { data: ContactType }) {
         ))}
       </div>
       <div
-        data-cy="about_contact_hidden"
+        data-testid="about_contact_hidden"
         className="hidden flex-col gap-x-1 print:flex"
       >
         {data.email
           ? (
-            <a data-cy="about_contact_email_hidden" href={`mailto:${data.email}`}>
+            <a data-testid="about_contact_email_hidden" href={`mailto:${data.email}`}>
               <span>{data.email}</span>
             </a>
             )
           : null}
         {data.tel
           ? (
-            <a data-cy="about_contact_tel_hidden" href={`tel:${data.tel}`}>
+            <a data-testid="about_contact_tel_hidden" href={`tel:${data.tel}`}>
               <span>{data.tel}</span>
             </a>
             )
@@ -82,7 +82,7 @@ export function Contact({ data }: { data: ContactType }) {
           ? data.social.map((social, index) => (
             <a
               key={index}
-              data-cy={`about_contact_social_${social.name}_hidden`}
+              data-testid={`about_contact_social_${social.name}_hidden`}
               href={social.url}
             >
               <span>{social.url}</span>
@@ -99,18 +99,18 @@ export function About({ data }: { data: AboutType }) {
     <Section>
       <Card className="border p-3">
         <CardHeader>
-          <div data-cy="about_name" className="text-2xl font-bold text-primary">
+          <div data-testid="about_name" className="text-2xl font-bold text-primary">
             {data.name}
           </div>
         </CardHeader>
         <CardContent className="flex-1 space-y-1.5">
           <div className="flex items-center justify-between">
-            <div data-cy="about_description" className="max-w-md text-pretty">
+            <div data-testid="about_description" className="max-w-md text-pretty">
               {data.description}
             </div>
             <Avatar className="size-28">
               <AvatarImage
-                data-cy="about_avatar_url"
+                data-testid="about_avatar_url"
                 alt={data.name}
                 src={data.avatar_url}
                 className="rounded-full"
@@ -123,7 +123,7 @@ export function About({ data }: { data: AboutType }) {
           <Contact data={data.contact} />
           <div className="max-w-md items-center text-pretty text-base">
             <a
-              data-cy="about_location_link"
+              data-testid="about_location_link"
               className="hover:point inline-flex"
               href={data.location_link}
               target="_blank"
@@ -133,19 +133,19 @@ export function About({ data }: { data: AboutType }) {
                   'h-6 w-6 rounded-full inline-flex hover:underline text-green-500',
                 href: data.location_link,
               })}
-              <span data-cy="about_location" className="text-base">
+              <span data-testid="about_location" className="text-base">
                 {data.location}
               </span>
             </a>
           </div>
         </CardFooter>
       </Card>
-      <Label data-cy="about_prof_summery_title" className="text-xl font-bold">
+      <Label data-testid="about_prof_summery_title" className="text-xl font-bold">
         Professional Summary
       </Label>
       <Card className="border p-3">
         <CardHeader>
-          <CardDescription data-cy="about_prof_summery" className="text-pretty">
+          <CardDescription data-testid="about_prof_summery" className="text-pretty">
             {data.professional_summary}
           </CardDescription>
         </CardHeader>

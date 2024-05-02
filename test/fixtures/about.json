@@ -1,0 +1,29 @@
+{
+  "name": "John Doe",
+  "initials": "JD",
+  "location": "California, USA",
+  "location_link": "https://maps.app.goo.gl/random",
+  "description": "sample description",
+  "professional_summary": "sample professional summary",
+  "avatar_url": "https://avatars.githubusercontent.com/u/121221334?v=4",
+  "website": "https://john.doe.com",
+  "prof_summery_title": "Professional Summary",
+  "contact": {
+    "email": "john.doe@gmail.com",
+    "tel": "+91-1122334455",
+    "social": [
+      {
+        "name": "gitHub",
+        "url": "https://github.com/foo_bar"
+      },
+      {
+        "name": "linkedIn",
+        "url": "https://www.linkedin.com/in/foo_bar/"
+      },
+      {
+        "name": "x",
+        "url": "https://x.com/foo_bar"
+      }
+    ]
+  }
+}

@@ -1,19 +1,16 @@
-import { readFile } from 'node:fs/promises'
-import { resolve } from 'node:path'
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import type { ListBlobResultBlob } from '@vercel/blob'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-const cypressFixturePath = resolve('cypress', 'fixtures')
-
 interface ObjType<T> {
   [key: string]: T
 }
 
-function filterObject<T>(obj: ObjType<T>, deleteKey: string | string[]): ObjType<T> {
+export function filterObject<T>(obj: ObjType<T>, deleteKey: string | string[]): ObjType<T> {
   return Object.keys(obj)
     .filter(key => typeof deleteKey === 'string' ? key !== deleteKey : deleteKey.includes(key))
     .reduce((result, current) => {
@@ -22,7 +19,19 @@ function filterObject<T>(obj: ObjType<T>, deleteKey: string | string[]): ObjType
     }, {} as ObjType<T>)
 }
 
-export async function getFixturesAsync(name: string, omitKey?: string) {
-  const jsonData = await readFile(`${cypressFixturePath}/${name}.json`)
-  return omitKey ? filterObject(JSON.parse(jsonData.toString()), omitKey) : JSON.parse(jsonData.toString())
+export async function fetchData(blobs: ListBlobResultBlob[], name: string) {
+  const blob = blobs
+    .filter(i => i.pathname.replace(/\.[^/.]+$/, '') === name)
+    .pop()
+  if (blob) {
+    const res = await fetch(blob.url)
+
+    if (!res.ok)
+      throw new Error('Failed to fetch data')
+
+    return await res.json()
+  }
+  else {
+    return {}
+  }
 }

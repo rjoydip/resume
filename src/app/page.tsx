@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { CommandMenu } from '@/components/command-menu'
-import { getDataAsync, metadata as meta } from '@/data'
+import { getData, metadata as meta } from '@/data'
 import { ThemeChange } from '@/components/color'
 import {
   About,
@@ -17,8 +17,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  const { about, works, education, skills, key_skills, projects }
-    = await getDataAsync()
+  const { about, works, education, skills, keySkills, projects } = await getData()
   return (
     <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 md:p-16 print:p-12">
       <section className="mx-auto w-full max-w-2xl space-y-4 print:space-y-6">
@@ -26,7 +25,7 @@ export default async function Page() {
         <Works data={works} />
         <Education data={education} />
         <Skills data={skills} />
-        <KeySkills data={key_skills} />
+        <KeySkills data={keySkills} />
         <Projects data={projects} />
       </section>
 

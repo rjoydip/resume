@@ -1,15 +1,10 @@
-import type { AboutType, EducationType, KeySkillsType, ProjectType, SkillsType, WorksType } from '@/types'
+import type { AboutType, EducationType, KeySkillsType, ProjectsType, SkillsType, WorksType } from '@/types'
 
-describe('should validate invalid routes', () => {
-  it('should validate invalid routes', () => {
-    cy.request('/api/hello/').then((response) => {
-      expect(response.status).to.eq(200)
-      expect(response.body).to.be.empty
-    })
-  })
+const dataEndpoint = '/api/data'
 
+describe('should validate data routes', () => {
   it('should validate valid routes \'/about\'', () => {
-    cy.request('/api/about/').then((response: { status: number, body: AboutType }) => {
+    cy.request(`${dataEndpoint}/about/`).then((response: { status: number, body: AboutType }) => {
       expect(response.status).to.eq(200)
       expect(response.body).to.be.not.empty
       expect(response.body).to.have.property('name', 'Joydip Roy')
@@ -33,7 +28,7 @@ describe('should validate invalid routes', () => {
   })
 
   it('should validate valid routes \'/education\'', () => {
-    cy.request('/api/education/').then((response: { status: number, body: EducationType }) => {
+    cy.request(`${dataEndpoint}/educations/`).then((response: { status: number, body: EducationType }) => {
       expect(response.status).to.eq(200)
       expect(response.body).to.be.not.empty
       response.body.forEach((e) => {
@@ -51,7 +46,7 @@ describe('should validate invalid routes', () => {
   })
 
   it('should validate valid routes \'/key_skills\'', () => {
-    cy.request('/api/key_skills/').then((response: { status: number, body: KeySkillsType }) => {
+    cy.request(`${dataEndpoint}/key-skills/`).then((response: { status: number, body: KeySkillsType }) => {
       expect(response.status).to.eq(200)
       expect(response.body).to.be.not.empty
       expect(response.body).to.have.lengthOf(7)
@@ -61,7 +56,7 @@ describe('should validate invalid routes', () => {
   })
 
   it('should validate valid routes \'/projects\'', () => {
-    cy.request('/api/projects/').then((response: { status: number, body: ProjectType }) => {
+    cy.request(`${dataEndpoint}/projects/`).then((response: { status: number, body: ProjectsType }) => {
       expect(response.status).to.eq(200)
       expect(response.body).to.be.not.empty
       expect(response.body).to.have.lengthOf(12)
@@ -86,7 +81,7 @@ describe('should validate invalid routes', () => {
   })
 
   it('should validate valid routes \'/skills\'', () => {
-    cy.request('/api/skills/').then((response: { status: number, body: SkillsType }) => {
+    cy.request(`${dataEndpoint}/skills/`).then((response: { status: number, body: SkillsType }) => {
       expect(response.status).to.eq(200)
       expect(response.body).to.be.not.empty
       expect(response.body).to.have.property('cloud')
@@ -137,7 +132,7 @@ describe('should validate invalid routes', () => {
     })
   })
   it('should validate valid routes \'/works\'', () => {
-    cy.request('/api/works/').then((response: { status: number, body: WorksType }) => {
+    cy.request(`${dataEndpoint}/works/`).then((response: { status: number, body: WorksType }) => {
       expect(response.status).to.eq(200)
       expect(response.body).to.be.not.empty
       expect(response.body).to.have.lengthOf(4)
