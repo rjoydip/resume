@@ -6,7 +6,7 @@ module.exports = antfu({
     '.next',
     '.turbo',
     'reports',
-    "**/fixtures/**",
+    '**/fixtures/**',
     'node_modules',
   ],
   stylistic: true,

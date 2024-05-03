@@ -1,4 +1,4 @@
 pnpm deps:update
-git add .
 pnpm lint
 pnpm test:run
+git add .
