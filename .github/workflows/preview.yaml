@@ -48,7 +48,12 @@ jobs:
         run: pnpm dlx vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
-        run: pnpm dlx vercel build --token=${{ secrets.VERCEL_TOKEN }}
+        run: |
+          pnpm dlx vercel link --token=${{ secrets.VERCEL_TOKEN }} --yes
+          pnpm dlx vercel env pull .env.local --token=${{ secrets.VERCEL_TOKEN }}
+          echo 'BLOB_READ_WRITE_TOKEN="${{ secrets.BLOB_READ_WRITE_TOKEN }}"' >> .env.local
+          pnpm dlx vercel build --token=${{ secrets.VERCEL_TOKEN }}
+          rm -rf .env.local
 
       - name: Deploy Project Artifacts to Vercel
         run: pnpm dlx vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
