@@ -62,7 +62,12 @@ jobs:
 
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm cypress info
-      - run: pnpm build
+      - run: |
+          pnpm dlx vercel link --token=${{ secrets.VERCEL_TOKEN }} --yes
+          pnpm dlx vercel env pull .env.local --token=${{ secrets.VERCEL_TOKEN }}
+          echo 'BLOB_READ_WRITE_TOKEN="${{ secrets.BLOB_READ_WRITE_TOKEN }}"' >> .env.local
+          pnpm build
+          rm -rf .env.local
 
       - name: 'E2E & UI Tests'
         uses: cypress-io/github-action@v6
