@@ -13,9 +13,6 @@ permissions:
   contents: write
   pull-requests: write
 
-env:
-  STORE_PATH: ${{ vars.STORE_PATH }}
-
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -43,7 +40,7 @@ jobs:
       - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
-          path: ${{ env.STORE_PATH }}
+          path: ${{ vars.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
