@@ -15,7 +15,7 @@ import {
 } from '@/components/pages'
 import { fetchData } from '@/lib/utils'
 import schema from '@/schema'
-import { AboutType, WorksType, EducationsType, SkillsType, KeySkillsType, ProjectsType } from '@/types'
+import type { AboutType, EducationsType, KeySkillsType, ProjectsType, SkillsType, WorksType } from '@/types'
 
 export const metadata: Metadata = {
   title: `${meta.name}`,
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const { blobs } = await list({
-    token: env.BLOB_READ_WRITE_TOKEN
+    token: env.BLOB_READ_WRITE_TOKEN,
   })
   const about$: AboutType = await fetchData(blobs, 'about')
   const works$: WorksType = await fetchData(blobs, 'works')
