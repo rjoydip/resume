@@ -56,8 +56,8 @@ jobs:
 
       - name: 🛠️ Build
         run: |
-          npx vercel env pull .env.local --token ${{ env.VERCEL_TOKEN }}
-          echo 'BLOB_READ_WRITE_TOKEN="${{ env.BLOB_READ_WRITE_TOKEN }}"' >> .env.local
+          npx vercel env pull .env.local --token=${{ secrets.VERCEL_TOKEN }}
+          echo 'BLOB_READ_WRITE_TOKEN="${{ secrets.BLOB_READ_WRITE_TOKEN }}"' >> .env.local
           pnpm build
           rm -rf .env.local
 
