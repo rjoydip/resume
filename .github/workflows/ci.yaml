@@ -88,4 +88,4 @@ jobs:
           owner: rjoydip
           repo: resume
           workflow_file_name: preview.yaml
-          github_token: ${{ secrets.GITHUBS_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
