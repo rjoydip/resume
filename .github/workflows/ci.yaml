@@ -5,6 +5,8 @@ on:
     branches: [main]
   pull_request:
 
+permissions: write-all
+
 concurrency:
   group: ci-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
@@ -63,8 +65,3 @@ jobs:
           name: cypress-report
           path: cypress/report
           if-no-files-found: ignore
-
-      - name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v3
-        with:
-          event-type: ${{ github.ref == 'refs/heads/main' && 'peploy' || 'preview' }}
