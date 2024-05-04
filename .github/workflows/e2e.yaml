@@ -5,7 +5,8 @@ on:
     branches:
       - master
   workflow_run:
-    workflows: [ci.yaml]
+    workflows:
+      - ci
     types:
       - completed
 
