@@ -5,16 +5,11 @@ on:
     branches: [main]
   pull_request:
 
+permissions: write-all
+
 concurrency:
   group: ci-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
-
-permissions:
-  contents: write
-  pull-requests: write
-
-env:
-  STORE_PATH: ${{ vars.STORE_PATH }}
 
 jobs:
   lint:
@@ -35,24 +30,38 @@ jobs:
           version: 8
           run_install: false
 
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
       - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          key: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+            ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: |
+            node_modules
+            ${{ runner.os }}/.next/cache
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: |
+          pnpm install --no-frozen-lockfile
 
       - name: 👕 Lint
         run: pnpm lint
 
       - name: 🛠️ Build
-        run: pnpm build
+        run: |
+          pnpm dlx vercel link --yes --token=${{ secrets.VERCEL_TOKEN }}
+          pnpm dlx vercel env pull .env.local --token=${{ secrets.VERCEL_TOKEN }}
+          echo 'BLOB_READ_WRITE_TOKEN="${{ secrets.BLOB_READ_WRITE_TOKEN }}"' >> .env.local
+          pnpm build
+
+      - name: 🧪 Unit test
+        run: pnpm test:run
+
+      - name: Clean ENV file
+        run: rm -rf .env.local
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cypress-report
+          path: cypress/report
+          if-no-files-found: ignore

@@ -9,17 +9,10 @@ export default defineConfig({
   },
   reporter: 'mochawesome',
   reporterOptions: {
-    reportDir: 'cypress/report',
+    reportDir: 'reports/cypress',
     overwrite: false,
     html: false,
     json: true,
-  },
-  component: {
-    devServer: {
-      framework: 'next',
-      bundler: 'webpack',
-    },
-    supportFile: 'cypress/support/component.ts',
   },
   e2e: {
     baseUrl: 'http://localhost:3000',

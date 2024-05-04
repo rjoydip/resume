@@ -1,6 +1,14 @@
 const { antfu } = require('@antfu/eslint-config')
 
 module.exports = antfu({
+  ignores: [
+    '.vercel',
+    '.next',
+    '.turbo',
+    'reports',
+    '**/fixtures/**',
+    'node_modules',
+  ],
   stylistic: true,
   typescript: true,
   json: true,

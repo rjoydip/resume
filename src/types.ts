@@ -1,15 +1,15 @@
 import type { Output } from 'valibot'
-import type { aboutSchema, contactSchema, educationSchema, keySkillsSchema, projectsSchema, skillsSchema, worksSchema } from './schema'
+import type { aboutSchema, contactSchema, educationsSchema, keySkillsSchema, projectsSchema, skillsSchema, worksSchema } from './schema'
 import type schema from './schema'
 
 export type ResumeDataType = Output<typeof schema>
-export type EducationType = Output<typeof educationSchema>
+export type EducationsType = Output<typeof educationsSchema>
 export type AboutType = Output<typeof aboutSchema>
 export type ContactType = Output<typeof contactSchema>
 export type WorksType = Output<typeof worksSchema>
 export type SkillsType = Output<typeof skillsSchema>
 export type KeySkillsType = Output<typeof keySkillsSchema>
-export type ProjectType = Output<typeof projectsSchema>
+export type ProjectsType = Output<typeof projectsSchema>
 
 export interface ProjectCardProps {
   title: string
@@ -94,3 +94,7 @@ export type IconType =
   | null
 export type LightColorType = 'yellow' | 'blue' | 'green' | 'red' | 'violet' | 'zinc' | 'orange' | 'rose' | 'slate' | 'slate' | 'light'
 export type DarkColorType = 'yellow-dark' | 'blue-dark' | 'green-dark' | 'red-dark' | 'violet-dark' | 'zinc-dark' | 'orange-dark' | 'rose-dark' | 'slate-dark' | 'dark'
+
+export interface FeatureFlagType {
+  FF_SHOW_PROFILE_IMAGE: boolean
+}

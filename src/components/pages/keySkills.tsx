@@ -9,9 +9,9 @@ import type { KeySkillsType } from '@/types'
 export function KeySkills({ data }: { data: KeySkillsType }) {
   return (
     <Section>
-      <Label data-cy="key_skills_title" className="text-xl font-bold">Key Skills</Label>
+      <Label data-testid="key_skills_title" className="text-xl font-bold">Key Skills</Label>
       <Card className="border p-3">
-        <ul data-cy="key_skills_list" className="space-y-4 text-left">
+        <ul data-testid="key_skills_list" className="space-y-4 text-left">
           {data.map((kSkills, index) => (
             <li
               key={index}

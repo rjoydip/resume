@@ -1,5 +1,5 @@
 export async function GET(_: Request) {
-    return Response.json({
-        status: 'up'
-    })
+  return Response.json({
+    status: 'up',
+  })
 }

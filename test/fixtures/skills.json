@@ -1,0 +1,24 @@
+{
+  "cloud": ["a", "b"],
+  "cross-platform": ["c", "d"],
+  "devOps": ["e", "f"],
+  "database": ["g", "h", "i"],
+  "framework": [
+    "j",
+    "k"
+  ],
+  "languages": [
+    "m",
+    "n"
+  ],
+  "object-relational-mapping": ["o", "p"],
+  "operating-system": ["q", "r", "s"],
+  "package-manager": ["t", "u", "v"],
+  "test": ["w", "x", "y", "z", "aa"],
+  "tools": [
+    "bb",
+    "cc",
+    "dd",
+    "ee"
+  ]
+}
