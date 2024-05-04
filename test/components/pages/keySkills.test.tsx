@@ -8,7 +8,7 @@ describe('<KeySkills />', () => {
   let keySkills: KeySkillsType
 
   beforeAll(async () => {
-    keySkills = await getTestFixturesAsync('key_skills')
+    keySkills = await getTestFixturesAsync('key-skills')
     await render(<KeySkills data={keySkills} />)
   })
 

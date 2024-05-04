@@ -53,15 +53,13 @@ jobs:
           pnpm dlx vercel env pull .env.local --token=${{ secrets.VERCEL_TOKEN }}
           echo 'BLOB_READ_WRITE_TOKEN="${{ secrets.BLOB_READ_WRITE_TOKEN }}"' >> .env.local
           pnpm build
+          rm -rf .env.local
 
       - name: 🧪 Unit test
-        run: pnpm test:run
-
-      - name: Clean ENV file
-        run: rm -rf .env.local
+        run: pnpm test:ci
 
       - uses: actions/upload-artifact@v4
         with:
-          name: cypress-report
-          path: cypress/report
+          name: reports
+          path: reports
           if-no-files-found: ignore

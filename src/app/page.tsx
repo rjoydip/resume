@@ -7,7 +7,7 @@ import { metadata as meta } from '@/data'
 import { ThemeChange } from '@/components/color'
 import {
   About,
-  Education,
+  Educations,
   KeySkills,
   Projects,
   Skills,
@@ -45,7 +45,7 @@ export default async function Page() {
       <section className="mx-auto w-full max-w-2xl space-y-4 print:space-y-6">
         <About data={data.about} />
         <Works data={data.works} />
-        <Education data={data.educations} />
+        <Educations data={data.educations} />
         <Skills data={data.skills} />
         <KeySkills data={data.keySkills} />
         <Projects data={data.projects} />

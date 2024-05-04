@@ -11,5 +11,6 @@ export default defineConfig({
         singleFork: true,
       },
     },
+    setupFiles: ['./test/vitest.setup.ts']
   },
 })
