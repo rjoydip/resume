@@ -82,8 +82,3 @@ jobs:
           name: cypress-report
           path: cypress/report
           if-no-files-found: ignore
-
-      - name: Invoke Preview workflow
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: ${{ github.ref == 'refs/heads/main' && 'deploy.yaml' || 'preview.yaml' }}
