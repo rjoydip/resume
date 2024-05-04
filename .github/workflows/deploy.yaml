@@ -4,11 +4,15 @@ on:
   push:
     branches:
       - main
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
 
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest
-    if: false
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v3
         with:

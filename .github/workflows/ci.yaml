@@ -40,13 +40,22 @@ jobs:
       - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
-          path: ${{ vars.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: |
+            cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+            ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+            ${{ vars.STORE_PATH }}
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: |
+          pnpm install --no-frozen-lockfile
+          pnpm cypress info
 
       - name: 👕 Lint
         run: pnpm lint
@@ -61,3 +70,23 @@ jobs:
 
       - name: 🧪 Unit test
         run: pnpm test:run
+
+      - name: E2E Tests
+        uses: cypress-io/github-action@v6
+        with:
+          start: pnpm start
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 120
+          browser: chrome
+          component: true
+          command: |
+            pnpm e2e:ci
+            rm -rf .env.*
+        env:
+          DEBUG: 'cypress:server:args'
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cypress-report
+          path: cypress/report
+          if-no-files-found: ignore
