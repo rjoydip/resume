@@ -56,7 +56,9 @@ jobs:
       - name: Build Project Artifacts
         run: |
           pnpm dlx vercel build --token=${{ secrets.VERCEL_TOKEN }}
-          rm -rf .env.*
 
       - name: Deploy Project Artifacts to Vercel
         run: pnpm dlx vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Clean ENV file
+        run: rm -rf .env.local
