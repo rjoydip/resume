@@ -1,15 +1,19 @@
-name: E2E Tests
+name: E2E
 
 on:
   push:
-    branches:
-      - master
-  pull_request:
+    branches-ignore:
+      - main
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
 
 jobs:
   cypress-run:
     timeout-minutes: 15
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     container:
       image: cypress/browsers:node-20.12.0-chrome-123.0.6312.86-1-ff-124.0.2-edge-123.0.2420.65-1
       options: --user 1001
@@ -60,9 +64,8 @@ jobs:
           pnpm dlx vercel pull --yes --token=${{ secrets.VERCEL_TOKEN }}
           echo 'BLOB_READ_WRITE_TOKEN="${{ secrets.BLOB_READ_WRITE_TOKEN }}"' >> .env.local
           pnpm build
-          rm -rf .env.*
 
-      - name: 'E2E & UI Tests'
+      - name: 'E2E Tests'
         uses: cypress-io/github-action@v6
         with:
           start: pnpm start
@@ -70,7 +73,9 @@ jobs:
           wait-on-timeout: 120
           browser: chrome
           component: true
-          command: pnpm e2e:ci
+          command: |
+            pnpm e2e:ci
+            rm -rf .env.*
         env:
           DEBUG: 'cypress:server:args'
 
