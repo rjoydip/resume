@@ -8,6 +8,7 @@ on:
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest
+    if: false
     steps:
       - uses: actions/checkout@v3
         with:
@@ -41,15 +42,12 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Pull Vercel Environment Information
-        run: pnpm dlx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        run: pnpm dlx vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
         run: |
-          pnpm dlx vercel link --token=${{ secrets.VERCEL_TOKEN }} --yes
-          pnpm dlx vercel env pull .env.local --token=${{ secrets.VERCEL_TOKEN }}
-          echo 'BLOB_READ_WRITE_TOKEN="${{ secrets.BLOB_READ_WRITE_TOKEN }}"' >> .env.local
           pnpm dlx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-          rm -rf .env.local
+          rm -rf .env.*
 
       - name: Deploy Project Artifacts to Vercel
         run: pnpm dlx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}

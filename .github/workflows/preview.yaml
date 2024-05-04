@@ -12,6 +12,7 @@ on:
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
+    if: false
     steps:
       - uses: actions/checkout@v3
         with:
@@ -49,11 +50,8 @@ jobs:
 
       - name: Build Project Artifacts
         run: |
-          pnpm dlx vercel link --token=${{ secrets.VERCEL_TOKEN }} --yes
-          pnpm dlx vercel env pull .env.local --token=${{ secrets.VERCEL_TOKEN }}
-          echo 'BLOB_READ_WRITE_TOKEN="${{ secrets.BLOB_READ_WRITE_TOKEN }}"' >> .env.local
           pnpm dlx vercel build --token=${{ secrets.VERCEL_TOKEN }}
-          rm -rf .env.local
+          rm -rf .env.*
 
       - name: Deploy Project Artifacts to Vercel
         run: pnpm dlx vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
