@@ -4,9 +4,8 @@ on:
   push:
     branches-ignore:
       - main
-  workflow_run:
-    workflows: ['CI']
-    types: [completed]
+  repository_dispatch:
+    types: ['preview']
 
 jobs:
   Preview:

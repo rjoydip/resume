@@ -82,3 +82,8 @@ jobs:
           name: cypress-report
           path: cypress/report
           if-no-files-found: ignore
+
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          event-type: preview
