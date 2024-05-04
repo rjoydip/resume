@@ -83,8 +83,7 @@ jobs:
           path: cypress/report
           if-no-files-found: ignore
 
-      - name: Invoke Preview
+      - name: Invoke Preview workflow
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: preview.yaml
-          repo: rjoydip/resume
