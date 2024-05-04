@@ -1,4 +1,4 @@
-name: E2E Tests
+name: E2E
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
   workflow_run:
     workflows:
-      - ci
+      - CI
     types:
       - completed
 
