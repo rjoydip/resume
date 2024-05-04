@@ -10,7 +10,7 @@ on:
       - completed
 
 jobs:
-  Deploy-Preview:
+  Preview:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
@@ -37,7 +37,7 @@ jobs:
       - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
-          path: ${{ vars.STORE_PATH }}
+          path: ${{ runner.os }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-

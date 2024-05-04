@@ -9,10 +9,6 @@ concurrency:
   group: ci-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
-permissions:
-  contents: write
-  pull-requests: write
-
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -32,25 +28,21 @@ jobs:
           version: 8
           run_install: false
 
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
       - uses: actions/cache@v4
         name: Setup pnpm cache
         with:
           key: |
-            cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+            ${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
             ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
+            ${{ runner.os }}-cypress-
+            ${{ runner.os }}-nextjs-
             ${{ runner.os }}-pnpm-store-
           path: |
-            ~/.npm
-            ${{ github.workspace }}/.next/cache
-            ${{ vars.STORE_PATH }}
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+            node_modules
+            ${{ runner.os }}/.next/cache
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
 
       - name: Install dependencies
         run: |
@@ -66,7 +58,6 @@ jobs:
           pnpm dlx vercel env pull .env.local --token=${{ secrets.VERCEL_TOKEN }}
           echo 'BLOB_READ_WRITE_TOKEN="${{ secrets.BLOB_READ_WRITE_TOKEN }}"' >> .env.local
           pnpm build
-          rm -rf .env.local
 
       - name: 🧪 Unit test
         run: pnpm test:run
@@ -79,11 +70,14 @@ jobs:
           wait-on-timeout: 120
           browser: chrome
           component: true
-          command: |
-            pnpm e2e:ci
-            rm -rf .env.*
+          command: pnpm e2e:ci
         env:
           DEBUG: 'cypress:server:args'
+
+      - name: Cleanup
+        run: |
+          rm -rf .env.local
+          ls -al
 
       - uses: actions/upload-artifact@v4
         with:
