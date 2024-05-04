@@ -4,13 +4,10 @@ on:
   push:
     branches:
       - master
-  pull_request:
   workflow_run:
     workflows: [ci.yaml]
     types:
       - completed
-env:
-  STORE_PATH: ${{ vars.STORE_PATH }}
 
 jobs:
   cypress-run:
@@ -48,7 +45,7 @@ jobs:
           path: |
             ~/.npm
             ${{ github.workspace }}/.next/cache
-            ${{ env.STORE_PATH }}
+            ${{ vars.STORE_PATH }}
           key: |
             cypress-${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}

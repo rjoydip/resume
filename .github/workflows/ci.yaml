@@ -53,7 +53,7 @@ jobs:
 
       - name: 🛠️ Build
         run: |
-          pnpm dlx vercel link --token=${{ secrets.VERCEL_TOKEN }} --yes
+          pnpm dlx vercel link --yes --token=${{ secrets.VERCEL_TOKEN }}
           pnpm dlx vercel env pull .env.local --token=${{ secrets.VERCEL_TOKEN }}
           echo 'BLOB_READ_WRITE_TOKEN="${{ secrets.BLOB_READ_WRITE_TOKEN }}"' >> .env.local
           pnpm build
