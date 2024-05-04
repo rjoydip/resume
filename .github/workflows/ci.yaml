@@ -83,7 +83,9 @@ jobs:
           path: cypress/report
           if-no-files-found: ignore
 
-      - name: Invoke Preview workflow
-        uses: benc-uk/workflow-dispatch@v1
+      - uses: convictional/trigger-workflow-and-wait@v1.6.1
         with:
-          workflow: preview.yaml
+          owner: rjoydip
+          repo: resume
+          workflow_file_name: preview.yaml
+          github_token: ${{ secrets.GITHUBS_TOKEN }}
