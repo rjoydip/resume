@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 describe('should validate feature-flag routes', () => {
   it('should validate valid feature-flag routes', async () => {
@@ -7,7 +7,7 @@ describe('should validate feature-flag routes', () => {
     expect(status).toBe(200)
     expect(data).toBeDefined()
     expect(data).toStrictEqual({
-      FF_SHOW_PROFILE_IMAGE: true
+      FF_SHOW_PROFILE_IMAGE: true,
     })
   })
 })

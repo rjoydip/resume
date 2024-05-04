@@ -1,10 +1,11 @@
+import { cwd } from 'node:process'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { setupServer } from 'msw/node'
-import { http, HttpResponse } from 'msw'
-import { beforeAll, afterEach, afterAll } from 'vitest'
+import { HttpResponse, http } from 'msw'
+import { consola } from 'consola'
+import { afterAll, afterEach, beforeAll } from 'vitest'
 import parse from 'fast-json-parse'
-import { cwd } from 'node:process'
 
 const getJSONFixturePath = (name: string) => resolve(cwd(), 'test', 'fixtures', `${name}.json`)
 const fixturesData = {
@@ -23,38 +24,29 @@ const restHandlers = [
   http.get('/api/data/skills', () => HttpResponse.json(parse(fixturesData.skills), { status: 200 })),
   http.get('/api/data/works', () => HttpResponse.json(parse(fixturesData.works), { status: 200 })),
   http.get('/api/data/feature-flag', () => HttpResponse.json({
-    FF_SHOW_PROFILE_IMAGE: true
+    FF_SHOW_PROFILE_IMAGE: true,
   }, { status: 200 })),
   http.get('/api/health', () => HttpResponse.json({ status: 'up' }, { status: 200 })),
-  http.get('/api/invalid-route', () => HttpResponse.error())
+  http.get('/api/invalid-route', () => HttpResponse.error()),
 ]
 
 const server = setupServer(...restHandlers)
 
-server.events.on("request:start", ({ request }) => {
-  console.log('MSW intercepted:', request.method, request.url)
+server.events.on('request:start', ({ request }) => {
+  consola.log('MSW intercepted:', request.method, request.url)
 })
-server.events.on("request:match", ({ request }) => {
-  console.log(request.method, request.url)
+server.events.on('request:match', ({ request }) => {
+  consola.log(request.method, request.url)
 })
-server.events.on("request:unhandled", ({ request }) => {
-  console.log(request.method, request.url)
+server.events.on('request:unhandled', ({ request }) => {
+  consola.log(request.method, request.url)
 })
 
 // Start server before all tests
-beforeAll
-  (() => server
-    .listen({
-      onUnhandledRequest
-        : 'error'
-    }))
+beforeAll(() => server.listen({ onUnhandledRequest: 'error' }))
 
 //  Close server after all tests
-afterAll
-  (() => server
-    .close())
+afterAll(() => server.close())
 
 // Reset handlers after each test `important for test isolation`
-afterEach
-  (() => server
-    .resetHandlers())
+afterEach(() => server.resetHandlers())

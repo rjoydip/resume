@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 describe('should validate health routes', () => {
   it('should validate invalid routes', async () => {
@@ -10,7 +10,7 @@ describe('should validate health routes', () => {
     expect(status).toBe(200)
     expect(data).toBeDefined()
     expect(data).toStrictEqual({
-      status: 'up'
+      status: 'up',
     })
   })
 })

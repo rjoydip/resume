@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import type { AboutType, EducationsType, KeySkillsType, ProjectsType, SkillsType, WorksType } from '@/types'
 
 const dataEndpoint = '/api/data'
