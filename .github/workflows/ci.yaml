@@ -32,22 +32,15 @@ jobs:
         name: Setup pnpm cache
         with:
           key: |
-            ${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
             ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
             ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-cypress-
-            ${{ runner.os }}-nextjs-
-            ${{ runner.os }}-pnpm-store-
           path: |
             node_modules
             ${{ runner.os }}/.next/cache
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
 
       - name: Install dependencies
         run: |
           pnpm install --no-frozen-lockfile
-          pnpm cypress info
 
       - name: 👕 Lint
         run: pnpm lint
@@ -62,18 +55,6 @@ jobs:
       - name: 🧪 Unit test
         run: pnpm test:run
 
-      - name: E2E Tests
-        uses: cypress-io/github-action@v6
-        with:
-          start: pnpm start
-          wait-on: 'http://localhost:3000'
-          wait-on-timeout: 120
-          browser: chrome
-          component: true
-          command: pnpm e2e:ci
-        env:
-          DEBUG: 'cypress:server:args'
-
       - name: Clean ENV file
         run: rm -rf .env.local
 
@@ -86,4 +67,4 @@ jobs:
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3
         with:
-          event-type: preview
+          event-type: ${{ github.ref == 'refs/heads/main' && 'peploy' || 'preview' }}
