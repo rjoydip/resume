@@ -89,7 +89,7 @@ describe('types and Interfaces', () => {
         'yarn',
         'x',
       ]
-      expectTypeOf(validIcons).toEqualTypeOf<IconType>
+      expectTypeOf(validIcons).toEqualTypeOf<IconType[]>
     })
   })
 
@@ -108,7 +108,7 @@ describe('types and Interfaces', () => {
         'slate',
         'light',
       ]
-      expectTypeOf(validColors).toEqualTypeOf<LightColorType>
+      expectTypeOf(validColors).toEqualTypeOf<LightColorType[]>
     })
   })
 
@@ -126,7 +126,7 @@ describe('types and Interfaces', () => {
         'slate-dark',
         'dark',
       ]
-      expect(validColors).toEqual(expect.arrayContaining(Object.values(DarkColorType)))
+      expectTypeOf(validColors).toEqualTypeOf<DarkColorType[]>()
     })
   })
 
@@ -140,7 +140,7 @@ describe('types and Interfaces', () => {
           FF_SHOW_PROFILE_IMAGE: false,
         },
       ]
-      expect(validFlags).toEqual(expect.arrayContaining(Object.values(FeatureFlagType)))
+      expectTypeOf(validFlags).toEqualTypeOf<FeatureFlagType[]>()
     })
   })
 })

@@ -12,7 +12,7 @@ interface ObjType<T> {
 
 export function filterObject<T>(obj: ObjType<T>, deleteKey: string | string[]): ObjType<T> {
   return Object.keys(obj)
-    .filter(key => typeof deleteKey === 'string' ? key !== deleteKey : deleteKey.includes(key))
+    .filter(key => typeof deleteKey === 'string' ? key !== deleteKey : !deleteKey.includes(key))
     .reduce((result, current) => {
       result[current] = obj[current]
       return result
