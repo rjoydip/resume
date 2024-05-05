@@ -1,20 +1,20 @@
 import { describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { getTestFixturesAsync } from 'test/test-utils'
-import { Education } from '@/components/pages'
+import { Educations } from '@/components/pages'
 import type { EducationsType } from '@/types'
 
-describe('<Education />', () => {
+describe('<Educations />', () => {
   it('should validate education title', async () => {
-    const education = await getTestFixturesAsync('education')
-    await render(<Education data={education} />)
+    const educations = await getTestFixturesAsync('educations')
+    await render(<Educations data={educations} />)
     const aboutNameEle = screen.getByTestId('education_title')
     expect(aboutNameEle.textContent).toBeDefined()
     expect(aboutNameEle.textContent).toBe('Education')
   })
 
   describe('should validate education items', async () => {
-    const education: EducationsType = await getTestFixturesAsync('education')
+    const education: EducationsType = await getTestFixturesAsync('educations')
     education.forEach((ed, index: number) => {
       it('should validate school', () => {
         const aboutNameEle = screen.getByTestId(

@@ -5,7 +5,7 @@ import { Section } from '../ui/section'
 import { getIcon } from '../../icons/getIcon'
 import type { EducationsType } from '@/types'
 
-export function Education({ data }: { data: EducationsType }) {
+export function Educations({ data }: { data: EducationsType }) {
   return (
     <Section>
       <Label data-testid="education_title" className="text-xl font-bold">
