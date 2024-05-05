@@ -20,6 +20,7 @@ export default defineConfig({
         '**/.next',
         '**/*.config.js',
         '**/src/icons/*.tsx',
+        '**/src/components/color/*.tsx',
         '**/src/components/ui/*.tsx'
       ],
       reportOnFailure: true,

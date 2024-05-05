@@ -1,5 +1,5 @@
 import { describe, expect, expectTypeOf, it } from 'vitest';
-import { cn, filterObject, fetchData } from '../../src/lib/utils';
+import { cn, filterObject, fetchData } from '@/lib/utils';
 import { ListBlobResultBlob } from '@vercel/blob';
 import { LightColorType } from '@/types';
 
