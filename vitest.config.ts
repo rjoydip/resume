@@ -15,7 +15,7 @@ export default defineConfig({
     setupFiles: ['./test/vitest.setup.ts'],
     reporters: env.GITHUB_ACTIONS ? ['dot', 'github-actions'] : ['dot'],
     coverage: {
-      reporter: ['text', 'json-summary', 'json', 'lcov'],
+      reporter: ['text', 'lcov'],
       exclude: [
         '**/.next',
         '**/*.config.js',

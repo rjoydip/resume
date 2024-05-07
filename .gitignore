@@ -7,7 +7,7 @@
 .yarn/install-state.gz
 
 # testing
-/coverage
+**/lcov-report
 /reports
 /cypress/screenshots
 
