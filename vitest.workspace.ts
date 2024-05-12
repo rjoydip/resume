@@ -6,7 +6,7 @@ const config: UserConfig['test'] = {
   coverage: {
     enabled: true,
     provider: 'istanbul',
-    reporter: ['text', 'lcov'],
+    reporter: ['text', 'lcov', 'json-summary'],
     exclude: [
       '**/.next',
       '**/*.config.js',
