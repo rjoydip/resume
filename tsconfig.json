@@ -8,7 +8,7 @@
       "dom.iterable",
       "esnext"
     ],
-    "baseUrl": ".",
+    "baseUrl": "./",
     "module": "esnext",
     "moduleResolution": "bundler",
     "paths": {
@@ -17,6 +17,10 @@
       ]
     },
     "resolveJsonModule": true,
+    "types": [
+      "vitest/globals",
+      "vitest/jsdom"
+    ],
     "allowImportingTsExtensions": true,
     "allowJs": true,
     "strict": true,
@@ -31,15 +35,11 @@
     ]
   },
   "include": [
-    "app.d.ts",
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "src/images/logos/*.*"
+    "**/*.{unit,browser,edge}.ts"
   ],
   "exclude": [
-    "node_modules",
-    "cypress"
+    "node_modules"
   ]
 }

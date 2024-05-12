@@ -9,12 +9,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --fix",
-    "test": "vitest --typecheck --coverage.enabled",
-    "test:ci": "vitest run --typecheck --coverage.enabled",
+    "test": "vitest --typecheck",
+    "test:ci": "vitest run --typecheck",
     "deps:update": "taze -r -w -i -f -l"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^2.16.1",
+    "@antfu/eslint-config": "^2.17.0",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "^2.0.2",
@@ -41,22 +41,23 @@
     "tailwindcss-animate": "^1.0.7",
     "taze": "^0.13.8",
     "valibot": "^0.30.0",
-    "vaul": "^0.9.0"
+    "vaul": "^0.9.1"
   },
   "devDependencies": {
-    "@testing-library/react": "^15.0.6",
-    "@types/node": "^20.12.8",
-    "@types/react": "^18.3.1",
+    "@testing-library/react": "^15.0.7",
+    "@types/node": "^20.12.11",
+    "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.2.1",
-    "@vitest/coverage-v8": "^1.6.0",
+    "@vitest/browser": "^1.6.0",
+    "@vitest/coverage-istanbul": "^1.6.0",
     "autoprefixer": "^10.4.19",
     "axios": "^1.6.8",
     "eslint": "^8.57.0",
     "fast-json-parse": "^1.0.3",
     "husky": "^9.0.11",
     "jsdom": "^24.0.0",
-    "msw": "^2.2.14",
+    "msw": "^2.3.0",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",
@@ -64,8 +65,15 @@
     "tailwindcss": "^3.4.3",
     "turbo": "^1.13.3",
     "typescript": "^5.4.5",
-    "vercel": "^34.1.8",
+    "vercel": "^34.1.11",
     "vite-tsconfig-paths": "^4.3.2",
-    "vitest": "^1.6.0"
+    "vitest": "^1.6.0",
+    "webdriverio": "^8.36.1"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public",
+      "test\\mocks"
+    ]
   }
 }

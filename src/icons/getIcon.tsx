@@ -1,3 +1,4 @@
+import * as React from 'react'
 import humanizeString from 'humanize-string'
 import {
   BadgeCheck,

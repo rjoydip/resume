@@ -1,6 +1,7 @@
+import * as React from 'react'
 import { describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { getTestFixturesAsync } from 'test/test-utils'
+import { getTestFixturesAsync } from '../../utils/test.unit'
 import { Educations } from '@/components/pages'
 import type { EducationsType } from '@/types'
 

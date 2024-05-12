@@ -1,9 +1,10 @@
-import { getTestFixturesAsync } from 'test/test-utils'
+import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import humanizeString from 'humanize-string'
-import type { SkillsType } from '@/types'
+import { getTestFixturesAsync } from '../../utils/test.unit'
 import { Skills } from '@/components/pages'
+import type { SkillsType } from '@/types'
 
 describe('<Skills />', () => {
   let container: HTMLElement

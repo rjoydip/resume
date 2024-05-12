@@ -1,8 +1,9 @@
 import axios from 'axios'
 import { describe, expect, it } from 'vitest'
+import { apiURL } from 'test/constant'
 import type { AboutType, EducationsType, KeySkillsType, ProjectsType, SkillsType, WorksType } from '@/types'
 
-const dataEndpoint = '/api/data'
+const dataEndpoint = `${apiURL}/data`
 
 describe('should validate data routes', () => {
   it('should validate valid routes \'/about\'', async () => {
