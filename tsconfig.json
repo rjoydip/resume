@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "incremental": true,
-    "target": "es5",
+    "target": "es6",
     "jsx": "preserve",
     "lib": [
       "dom",
@@ -37,9 +37,10 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "**/*.{unit,browser,edge}.ts"
+    "**/*.{unit,browser,edge}.ts",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
   ]
 }
