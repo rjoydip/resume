@@ -64,7 +64,7 @@ export default defineWorkspace([
           singleFork: true,
         },
       },
-      include: ['test/**/*.test.tsx'],
+      include: ['./test/**/*.test.tsx'],
       ...config,
     },
   },
@@ -72,7 +72,7 @@ export default defineWorkspace([
     test: {
       name: 'Node',
       environment: 'node',
-      include: ['test/**/*.node.ts'],
+      include: ['./test/**/*.node.ts'],
       ...config,
     },
   },
