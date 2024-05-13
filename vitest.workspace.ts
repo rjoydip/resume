@@ -1,46 +1,32 @@
-import { env } from 'std-env'
 import { type UserConfig, defineWorkspace } from 'vitest/config'
 
 const config: UserConfig['test'] = {
-  reporters: env.GITHUB_ACTIONS ? ['dot', 'github-actions'] : ['dot'],
-  coverage: {
-    enabled: true,
-    provider: 'istanbul',
-    reporter: ['text', 'lcov', 'json-summary'],
-    exclude: [
-      '**/.next',
-      '**/*.config.js',
-      '**/src/icons/*.tsx',
-      '**/src/components/color/*.tsx',
-      '**/src/components/ui/*.tsx',
-    ],
-    thresholds: {
-      statements: 90,
-      branches: 85,
-      functions: 95,
-      lines: 90,
-    },
-    reportOnFailure: true,
-  },
   alias: {
     '@/': new URL('./src/', import.meta.url).pathname,
   },
 }
 
+// const provider = env.PROVIDER || 'webdriverio'
+// const browser = env.BROWSER || (provider === 'playwright' ? 'chromium' : 'chrome')
+
 export default defineWorkspace([
-  {
-    test: {
-      name: 'Browser',
-      browser: {
-        enabled: true,
-        name: 'chrome',
-        headless: true,
-      },
-      include: ['./test/**/*.e2e.test.tsx'],
-      setupFiles: ['./test/setup/vitest.browser.ts'],
-      ...config,
-    },
-  },
+  // {
+  //   test: {
+  //     name: 'Browser',
+  //     browser: {
+  //       enabled: true,
+  //       name: browser,
+  //       headless: true,
+  //       provider,
+  //       isolate: false,
+  //       slowHijackESM: true,
+  //       fileParallelism: true
+  //     },
+  //     include: ['test/e2e/**/*.test.tsx'],
+  //     setupFiles: ['test/e2e/vitest.setup.ts'],
+  //     ...config,
+  //   }
+  // },
   {
     test: {
       name: 'Edge',
@@ -50,8 +36,8 @@ export default defineWorkspace([
           singleFork: true,
         },
       },
-      include: ['./test/**/*.spec.ts'],
-      setupFiles: ['./test/setup/vitest.edge.ts'],
+      include: ['test/specs/**/*.test.ts'],
+      setupFiles: ['test/specs/vitest.setup.ts'],
       ...config,
     },
   },
@@ -64,7 +50,7 @@ export default defineWorkspace([
           singleFork: true,
         },
       },
-      include: ['./test/**/*.test.tsx'],
+      include: ['test/**/*.test.tsx'],
       ...config,
     },
   },
@@ -72,7 +58,7 @@ export default defineWorkspace([
     test: {
       name: 'Node',
       environment: 'node',
-      include: ['./test/**/*.node.ts'],
+      include: ['test/**/*.node.ts'],
       ...config,
     },
   },

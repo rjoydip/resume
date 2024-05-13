@@ -1,7 +1,9 @@
 import { consola } from 'consola'
 import { afterAll, afterEach, beforeAll } from 'vitest'
+import { setupServer } from 'msw/node'
+import { handlers } from '../mocks/handlers'
 
-import { server } from '../mocks/server'
+const server = setupServer(...handlers)
 
 server.events.on('request:start', ({ request }) => {
   consola.log('MSW intercepted:', request.method, request.url)

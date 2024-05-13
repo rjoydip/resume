@@ -54,9 +54,9 @@
     "autoprefixer": "^10.4.19",
     "axios": "^1.6.8",
     "eslint": "^8.57.0",
-    "fast-json-parse": "^1.0.3",
     "husky": "^9.0.11",
     "jsdom": "^24.0.0",
+    "load-json-file": "^7.0.1",
     "msw": "^2.3.0",
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
@@ -72,7 +72,6 @@
   },
   "msw": {
     "workerDirectory": [
-      "public",
       "test\\mocks"
     ]
   }

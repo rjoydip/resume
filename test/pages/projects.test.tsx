@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { getTestFixturesAsync } from '../../utils/test.unit'
+import { getTestFixturesAsync } from '../utils/test.unit'
 import { Projects } from '@/components/pages'
 import type { ProjectsType } from '@/types'
 
