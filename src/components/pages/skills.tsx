@@ -1,5 +1,6 @@
 'use client'
 
+import * as React from 'react'
 import { Label } from '@radix-ui/react-label'
 import humanizeString from 'humanize-string'
 import { getIcon } from '../../icons/getIcon'

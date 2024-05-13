@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
     "incremental": true,
-    "target": "es5",
+    "target": "es6",
     "jsx": "preserve",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "baseUrl": ".",
+    "baseUrl": "./",
     "module": "esnext",
     "moduleResolution": "bundler",
     "paths": {
@@ -17,6 +17,10 @@
       ]
     },
     "resolveJsonModule": true,
+    "types": [
+      "vitest/globals",
+      "vitest/jsdom"
+    ],
     "allowImportingTsExtensions": true,
     "allowJs": true,
     "strict": true,
@@ -31,15 +35,12 @@
     ]
   },
   "include": [
-    "app.d.ts",
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "src/images/logos/*.*"
+    "test/{specs,e2e}/*.test.{ts,tsx}",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules",
-    "cypress"
+    "node_modules"
   ]
 }

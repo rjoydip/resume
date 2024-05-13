@@ -6,22 +6,16 @@ import { env } from 'std-env'
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   test: {
-    environment: 'jsdom',
-    poolOptions: {
-      forks: {
-        singleFork: true,
-      },
-    },
-    setupFiles: ['./test/vitest.setup.ts'],
     reporters: env.GITHUB_ACTIONS ? ['dot', 'github-actions'] : ['dot'],
     coverage: {
-      reporter: ['text', 'json-summary', 'json', 'lcov'],
+      enabled: true,
+      provider: 'istanbul',
+      reporter: ['lcov', 'json-summary'],
       exclude: [
         '**/.next',
-        '**/*.config.js',
-        '**/src/icons/*.tsx',
-        '**/src/components/color/*.tsx',
-        '**/src/components/ui/*.tsx'
+        '**/*.{config,setup}.{js,ts}',
+        'test/mocks/mockServiceWorker.js',
+        '**/src/{icons,components}/**/*.tsx',
       ],
       reportOnFailure: true,
     },
