@@ -4,7 +4,6 @@ import { parse } from 'valibot'
 import { env } from 'std-env'
 import { CommandMenu } from '@/components/command-menu'
 import { metadata as meta } from '@/data'
-import { ThemeChange } from '@/components/color'
 import {
   About,
   Educations,
@@ -52,7 +51,6 @@ export default async function Page() {
       </section>
 
       <section>
-        <ThemeChange />
         <CommandMenu />
       </section>
     </main>

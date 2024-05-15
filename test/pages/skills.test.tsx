@@ -29,13 +29,13 @@ describe('<Skills />', () => {
       it('should validate skill list', async () => {
         expect(
           container.querySelector(
-            `[data-testid='skills_list'] > li:nth-child(${index + 1}) > div > p`,
+            `[data-testid='skills_list'] > li:nth-child(${index + 1}) > p`,
           )?.textContent,
         ).toContain(humanizeString(key))
 
         expect(
           container.querySelector(
-              `[data-testid='skills_list'] > li:nth-child(${index + 1}) > div > span`,
+              `[data-testid='skills_list'] > li:nth-child(${index + 1}) > span`,
           )?.textContent,
         ).toBeDefined()
       })
