@@ -4,7 +4,7 @@ import * as React from 'react'
 import { useScrollData } from 'scroll-data-hook'
 import { CommandIcon, Moon, Sun } from 'lucide-react'
 import { Button } from './ui/button'
-import { ColorPalette } from './color/color-palette'
+import { ColorPalette } from './color-palette'
 
 import {
   CommandDialog,
