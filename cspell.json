@@ -35,6 +35,7 @@
     "kolkata",
     "reactjs",
     "rjoydip",
+    "screentype",
     "snyk",
     "springboot",
     "shadcn",
@@ -49,6 +50,7 @@
     "titleize",
     "vaul",
     "valibot",
-    "webskitters"
+    "webskitters",
+    "webdriverio"
   ]
 }

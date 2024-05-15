@@ -2,7 +2,6 @@
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/rjoydip/resume)
 [![Deploy](https://github.com/rjoydip/resume/actions/workflows/deploy.yaml/badge.svg)](https://github.com/rjoydip/resume/actions/workflows/deploy.yaml)
-[![Cypress.io](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)](https://www.cypress.io/)
 
 Simple web app that renders minimalist CV with print-friendly layout. Built with Next.js and shadcn/ui, deployed on Vercel.
 

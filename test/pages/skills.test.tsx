@@ -1,9 +1,10 @@
-import { getTestFixturesAsync } from 'test/test-utils'
+import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import humanizeString from 'humanize-string'
-import type { SkillsType } from '@/types'
+import { getTestFixturesAsync } from '../utils/test.unit'
 import { Skills } from '@/components/pages'
+import type { SkillsType } from '@/types'
 
 describe('<Skills />', () => {
   let container: HTMLElement
@@ -28,13 +29,13 @@ describe('<Skills />', () => {
       it('should validate skill list', async () => {
         expect(
           container.querySelector(
-            `[data-testid='skills_list'] > li:nth-child(${index + 1}) > div > p`,
+            `[data-testid='skills_list'] > li:nth-child(${index + 1}) > p`,
           )?.textContent,
         ).toContain(humanizeString(key))
 
         expect(
           container.querySelector(
-              `[data-testid='skills_list'] > li:nth-child(${index + 1}) > div > span`,
+              `[data-testid='skills_list'] > li:nth-child(${index + 1}) > span`,
           )?.textContent,
         ).toBeDefined()
       })

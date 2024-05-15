@@ -1,5 +1,6 @@
 'use client'
 
+import * as React from 'react'
 import { Label } from '@radix-ui/react-label'
 import { getIcon } from '../../icons/getIcon'
 import { Card } from '../ui/card'

@@ -1,5 +1,6 @@
 'use client'
 
+import * as React from 'react'
 import clsx from 'clsx'
 import { getIcon } from '../../icons/getIcon'
 import { Badge } from '../ui/badge'

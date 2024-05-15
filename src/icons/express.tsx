@@ -1,5 +1,5 @@
+import * as React from 'react'
 import type { SVGProps } from 'react'
-import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface ExpressProps extends SVGProps<SVGSVGElement> {
