@@ -2,11 +2,10 @@
 
 import * as React from 'react'
 import { useScrollData } from 'scroll-data-hook'
-
-import { CommandIcon } from 'lucide-react'
+import { CommandIcon, Moon, Sun } from 'lucide-react'
 import { Button } from './ui/button'
 import { ColorPalette } from './color/color-palette'
-import { Label } from './ui/label'
+
 import {
   CommandDialog,
   CommandEmpty,
@@ -15,9 +14,13 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command'
+import useHasMounted from '@/hooks/hasMounted'
+import useColorTheme from '@/hooks/useColorTheme'
 
 export function CommandMenu() {
   const [open, setOpen] = React.useState(false)
+  const hasMounter = useHasMounted()
+  const { theme, setColorTheme } = useColorTheme()
   const { scrolling } = useScrollData({
     onScrollStart: () => {
       /* console.log('Started scrolling') */
@@ -39,26 +42,47 @@ export function CommandMenu() {
     return () => document.removeEventListener('keydown', down)
   }, [])
 
+  const onToggle = () => {
+    setColorTheme(theme === 'dark' ? 'light' : 'dark')
+  }
   return (
     <>
+      <Button
+        onClick={onToggle}
+        variant="outline"
+        size="icon"
+        className="fixed bottom-16 right-4 flex rounded-full shadow-2xl sm:bottom-20 print:hidden"
+      >
+        {hasMounter && theme === 'dark'
+          ? (
+            <Sun className="h-4 w-4" />
+            )
+          : (
+            <Moon className="h-4 w-4" />
+            )}
+      </Button>
       <Button
         onClick={() => setOpen(open => !open)}
         variant="outline"
         size="icon"
-        className="fixed bottom-4 right-4 flex rounded-full shadow-2xl print:hidden"
+        className="fixed bottom-4 right-4 flex rounded-full shadow-2xl sm:bottom-8 print:hidden"
       >
         <CommandIcon className="h-4 w-4" />
       </Button>
       {!scrolling && (
-        <Label className="fixed bottom-0 left-0 right-0 p-1 text-center text-sm xl:block print:hidden">
+        <Button
+          onClick={() => void 0}
+          variant="outline"
+          className="fixed bottom-2 left-1/2 -translate-x-1/2 transform rounded-lg p-1.5 text-center text-xs shadow-2xl hidden sm:block print:hidden"
+        >
           Press
           {' '}
-          <kbd className="border-1 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded bg-muted px-1.5 text-[10px] font-medium opacity-100">
-            <span className="text-xs font-semibold">⌘ J</span>
+          <kbd className="border-1 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded bg-muted px-2 text-[10px] font-medium opacity-100">
+            <span className="text-xs font-bold text-primary">⌘ J</span>
           </kbd>
           {' '}
           to open the command menu
-        </Label>
+        </Button>
       )}
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />

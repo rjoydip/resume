@@ -67,7 +67,10 @@ export function Contact({ data }: { data: ContactType }) {
       >
         {data.email
           ? (
-            <a data-testid="about_contact_email_hidden" href={`mailto:${data.email}`}>
+            <a
+              data-testid="about_contact_email_hidden"
+              href={`mailto:${data.email}`}
+            >
               <span>{data.email}</span>
             </a>
             )
@@ -100,16 +103,39 @@ export function About({ data }: { data: AboutType }) {
     <Section>
       <Card className="border p-3">
         <CardHeader>
-          <div data-testid="about_name" className="text-2xl font-bold text-primary">
+          <div className="block flex flex-col items-center justify-center sm:hidden print:hidden">
+            <Avatar className="size-28">
+              <AvatarImage
+                data-testid="about_avatar_url"
+                alt={data.name}
+                src={data.avatar_url}
+                className="rounded-full"
+              />
+              <AvatarFallback>{data.initials}</AvatarFallback>
+            </Avatar>
+            <div
+              data-testid="about_name_small_screen"
+              className="text-2xl font-bold text-primary"
+            >
+              {data.name}
+            </div>
+          </div>
+          <div
+            data-testid="about_name"
+            className="hidden text-2xl font-bold text-primary sm:block"
+          >
             {data.name}
           </div>
         </CardHeader>
         <CardContent className="flex-1 space-y-1.5">
           <div className="flex items-center justify-between">
-            <div data-testid="about_description" className="max-w-md text-pretty">
+            <div
+              data-testid="about_description"
+              className="max-w-md text-pretty"
+            >
               {data.description}
             </div>
-            <Avatar className="size-28">
+            <Avatar className="hidden size-28 sm:block">
               <AvatarImage
                 data-testid="about_avatar_url"
                 alt={data.name}
@@ -141,12 +167,18 @@ export function About({ data }: { data: AboutType }) {
           </div>
         </CardFooter>
       </Card>
-      <Label data-testid="about_prof_summery_title" className="text-xl font-bold">
+      <Label
+        data-testid="about_prof_summery_title"
+        className="text-xl font-bold"
+      >
         Professional Summary
       </Label>
       <Card className="border p-3">
         <CardHeader>
-          <CardDescription data-testid="about_prof_summery" className="text-pretty">
+          <CardDescription
+            data-testid="about_prof_summery"
+            className="text-pretty"
+          >
             {data.professional_summary}
           </CardDescription>
         </CardHeader>
