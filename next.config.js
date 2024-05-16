@@ -2,11 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  async rewrites() {
-    return [{
-      source: '/coverage',
-      destination: '/coverage/lcov-report/index.html',
-    }]
+  cleanDistDir: true,
+  compress: true,
+  trailingSlash: true,
+  experimental: {
+    webVitalsAttribution: ['CLS', 'LCP']
   }
 }
 
