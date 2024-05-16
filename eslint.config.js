@@ -8,6 +8,7 @@ module.exports = antfu({
     'reports',
     '**/fixtures/**',
     'node_modules',
+    'public/*.js',
     '**/*mockServiceWorker.js',
   ],
   stylistic: true,

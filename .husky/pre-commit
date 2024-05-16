@@ -1,3 +1,4 @@
 pnpm deps:update
 pnpm lint
+pnpm build
 git add .
