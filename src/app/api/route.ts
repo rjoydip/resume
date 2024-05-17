@@ -6,10 +6,9 @@ const app = new Hono()
 app.get('*', async (c) => {
   return c.html(`
     <html>
-      <head>
-      </head>
+      <head</head>
       <body>
-        <h1>Welcome to Hono.js</h1>
+        <h1>Welcome to rjoydip resume API</h1>
       </body>
     </html>
   `)
