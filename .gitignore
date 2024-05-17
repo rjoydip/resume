@@ -7,9 +7,7 @@
 .yarn/install-state.gz
 
 # testing
-**/lcov-report
-/reports
-/cypress/screenshots
+/coverage
 
 # next.js
 /.next/
