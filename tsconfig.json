@@ -35,8 +35,8 @@
     ]
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx",
+    "**/*.{ts,tsx}",
+    "src/**/*.{ts,tsx}",
     "test/{specs,e2e}/*.test.{ts,tsx}",
     ".next/types/**/*.ts"
   ],
