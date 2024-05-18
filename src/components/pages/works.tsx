@@ -43,6 +43,7 @@ export function Works({ data }: { data: WorksType }) {
                 {work.start}
                 {' '}
                 -
+                {' '}
                 {work.end ?? 'Present'}
               </div>
             </div>

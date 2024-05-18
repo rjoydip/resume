@@ -10,7 +10,6 @@
     "start": "next start",
     "lint": "eslint . --fix",
     "test": "vitest --typecheck",
-    "test:e2e": "vitest run test/e2e --typecheck",
     "test:ci": "vitest run --typecheck",
     "deps:update": "taze -r -w -i -f -l"
   },
