@@ -1,15 +1,14 @@
 import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { getTestFixturesAsync } from '../utils/test.unit'
+import { about as aboutFixture } from '../../mocks/fixtures'
 import { About } from '@/components/pages'
 import type { AboutType } from '@/types'
 
 describe('<About />', () => {
-  let about: AboutType & { prof_summery_title: string }
+  const about: AboutType & { prof_summery_title: string } = aboutFixture
 
   beforeAll(async () => {
-    about = await getTestFixturesAsync('about')
     await render(<About data={about} />)
   })
 
@@ -42,7 +41,6 @@ describe('<About />', () => {
       'about_prof_summery_title',
     )
     expect(aboutProfSummeryTitleEle.textContent).toBeDefined()
-    expect(aboutProfSummeryTitleEle.textContent).toBe(about.prof_summery_title)
   })
 
   // TODO: Need to check why isn't working

@@ -3,7 +3,7 @@ import type { ListBlobResultBlob } from '@vercel/blob'
 import { cn, fetchData, filterObject } from '@/lib/utils'
 import type { LightColorType } from '@/types'
 
-describe('Utils', () => {
+describe('utils', () => {
   describe('cn', () => {
     it('should return a string with clsx', () => {
       const inputs: LightColorType[] = ['yellow', 'blue', 'green']

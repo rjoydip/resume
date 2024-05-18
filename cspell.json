@@ -11,6 +11,7 @@
     "colorwidth",
     "defu",
     "fastify",
+    "falso",
     "hono",
     "keyskill",
     "keyskills",
@@ -27,6 +28,7 @@
     "mochawesome",
     "narula",
     "nextjs",
+    "ngneat",
     "nums",
     "pathe",
     "playwrite",
@@ -51,7 +53,7 @@
     "titleize",
     "vaul",
     "valibot",
-    "webskitters",
-    "webdriverio"
+    "waitfor",
+    "webskitters"
   ]
 }

@@ -14,7 +14,7 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command'
-import useHasMounted from '@/hooks/hasMounted'
+import useHasMounted from '@/hooks/useHasMounted'
 import useColorTheme from '@/hooks/useColorTheme'
 
 export function CommandMenu() {

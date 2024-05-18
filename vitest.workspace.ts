@@ -1,3 +1,4 @@
+// import { env } from 'std-env'
 import { type UserConfig, defineWorkspace } from 'vitest/config'
 
 const config: UserConfig['test'] = {
@@ -6,24 +7,25 @@ const config: UserConfig['test'] = {
   },
 }
 
-// const provider = env.PROVIDER || 'webdriverio'
-// const browser = env.BROWSER || (provider === 'playwright' ? 'chromium' : 'chrome')
+// const provider = env.PROVIDER || 'playwright'
 
 export default defineWorkspace([
   // {
   //   test: {
   //     name: 'Browser',
+  //     environment: 'jsdom',
   //     browser: {
   //       enabled: true,
-  //       name: browser,
+  //       name: env.BROWSER || (provider === 'playwright' ? 'chromium' : 'chrome'),
   //       headless: true,
   //       provider,
   //       isolate: false,
   //       slowHijackESM: true,
-  //       fileParallelism: true
+  //       fileParallelism: true,
   //     },
   //     include: ['test/e2e/**/*.test.tsx'],
-  //     setupFiles: ['test/e2e/vitest.setup.ts'],
+  //     setupFiles: ['test/e2e/e2e-vitest.setup.ts'],
+  //     exclude: ['node_modules'],
   //     ...config,
   //   }
   // },
@@ -36,8 +38,8 @@ export default defineWorkspace([
           singleFork: true,
         },
       },
-      include: ['test/specs/**/*.test.ts'],
-      setupFiles: ['test/specs/vitest.setup.ts'],
+      include: ['test/edge/**/*.test.ts'],
+      setupFiles: ['test/edge/edge-vitest.setup.ts'],
       ...config,
     },
   },
@@ -50,7 +52,7 @@ export default defineWorkspace([
           singleFork: true,
         },
       },
-      include: ['test/**/*.test.tsx'],
+      include: ['test/jsdom/**/*.test.tsx'],
       ...config,
     },
   },
@@ -58,7 +60,7 @@ export default defineWorkspace([
     test: {
       name: 'Node',
       environment: 'node',
-      include: ['test/**/*.node.ts'],
+      include: ['test/node/**/*.test.ts'],
       ...config,
     },
   },

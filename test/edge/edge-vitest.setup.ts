@@ -16,9 +16,7 @@ server.events.on('request:unhandled', ({ request }) => {
 })
 
 // Start server before all tests
-beforeAll(() => server.listen({
-  onUnhandledRequest: 'bypass',
-}))
+beforeAll(() => server.listen())
 
 //  Close server after all tests
 afterAll(() => server.close())

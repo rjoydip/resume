@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { getTestFixturesAsync } from '../utils/test.unit'
+import { projects as projectsFixture } from '../../mocks/fixtures'
 import { Projects } from '@/components/pages'
 import type { ProjectsType } from '@/types'
 
 describe('<Projects />', () => {
   let container: HTMLElement
   beforeAll(async () => {
-    const projects: ProjectsType = await getTestFixturesAsync('projects')
+    const projects: ProjectsType = projectsFixture
     const render$ = await render(<Projects data={projects} />)
     container = render$.container
   })
@@ -17,7 +17,7 @@ describe('<Projects />', () => {
     expect(ksTitle.textContent).toBe('Projects')
   })
   describe('should validate projects items', async () => {
-    const projects: ProjectsType = await getTestFixturesAsync('projects')
+    const projects: ProjectsType = projectsFixture
     projects.forEach((p, index) => {
       it('should validate title', () => {
         const ele = screen.getByTestId(`project_title_index_${index}`)

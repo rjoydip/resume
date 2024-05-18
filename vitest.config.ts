@@ -19,5 +19,10 @@ export default defineConfig({
       ],
       reportOnFailure: true,
     },
+    environmentMatchGlobs: [
+      ['test/{jsdom,e2e}/**/*.test.tsx', 'jsdom'],
+      ['test/edge/**/*.test.ts', 'edge-runtime'],
+      ['test/node/**/*.test.ts', 'node'],
+    ]
   },
 })

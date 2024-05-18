@@ -1,76 +1,11 @@
-import { any, array, boolean, email, literal, maxLength, maxValue, minLength, minValue, nullable, nullish, number, object, picklist, regex, startsWith, string, transform, union, url } from 'valibot'
+import { any, array, boolean, email, maxLength, maxValue, minLength, minValue, nullable, nullish, number, object, picklist, regex, startsWith, string, transform, union, url } from 'valibot'
+import { companies, keySkills, projectLinkTypes, socialMedia, techStacks, workMode } from './data'
 
 const today = new Date()
-const companies = union([
-  literal('Ascentspark'),
-  literal('Infosys'),
-  literal('Tech Mahindra'),
-  literal('Webskitters'),
-])
 
-const techStackSchema = array(picklist([
-  'angular',
-  'aws',
-  'bitbucket',
-  'bootstrap',
-  'bun',
-  'cucumber',
-  'cypress',
-  'deno',
-  'docker',
-  'electron',
-  'etl',
-  'express',
-  'firebase',
-  'fastify',
-  'git',
-  'github',
-  'github-actions',
-  'gitlab',
-  'gmc',
-  'graphql',
-  'instana',
-  'ionic',
-  'javascript',
-  'jenkins',
-  'jest',
-  'jira',
-  'kafka',
-  'laravel',
-  'linux',
-  'mac',
-  'mongodb',
-  'mongoose',
-  'mysql',
-  'nextjs',
-  'nodejs',
-  'npm',
-  'pnpm',
-  'php',
-  'playwright',
-  'postgresql',
-  'postman',
-  'prisma',
-  'react',
-  'reactjs',
-  'snyk',
-  'springboot',
-  'typescript',
-  'vercel',
-  'vitest',
-  'windows',
-  'yarn',
-]))
+const techStackSchema = array(picklist(techStacks))
 
-export const keySkillsSchema = array(picklist([
-  'Full Stack Development',
-  'Project Leadership',
-  'Team Building and Leadership',
-  'Collaboration and Communication',
-  'TypeScript',
-  'JavaScript',
-  'Node.js',
-]))
+export const keySkillsSchema = array(picklist(keySkills))
 
 export const educationsSchema = array(object({
   school: string(),
@@ -103,11 +38,11 @@ export const educationsSchema = array(object({
 }))
 
 export const worksSchema = array(object({
-  company: companies,
+  company: picklist(companies),
   position: string(),
   description: string(),
   link: string([url()]),
-  mode: array(picklist(['Work from Home', 'Hybrid', 'Office'])),
+  mode: array(picklist(workMode)),
   logo: any(),
   techStacks: techStackSchema,
   start: union([
@@ -151,11 +86,11 @@ export const projectsSchema = array(object({
   description: string(),
   techStacks: techStackSchema,
   links: nullish(array(object({
-    type: picklist(['web', 'mobile']),
+    type: picklist(projectLinkTypes),
     label: string(),
     href: string([url()]),
   }))),
-  company: companies,
+  company: picklist(companies),
   isClient: nullish(boolean()),
   client_country: nullish(string()),
 }))
@@ -165,7 +100,7 @@ export const contactSchema = object({
   tel: string([startsWith('+')]),
   social: array(object({
     url: string([url()]),
-    name: picklist(['gitHub', 'linkedIn', 'x']),
+    name: picklist(socialMedia),
   })),
 })
 
