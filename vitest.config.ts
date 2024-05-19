@@ -22,12 +22,12 @@ export default defineConfig({
     coverage: {
       enabled: true,
       provider: 'istanbul',
-      reporter: ['lcov', 'json-summary'],
+      reporter: ['text', 'html'],
       exclude: [
-        '**/.next',
-        '**/*.{config,setup}.{js,ts}',
+        '**/{.next,public}',
+        '**/*.{config,setup,bench}.{js,ts}',
         'test/mocks/mockServiceWorker.js',
-        '**/src/{icons,components}/**/*.tsx',
+        '**/src/{app,components,icons}/**/*.{ts,tsx}',
       ],
       reportOnFailure: true,
     },
