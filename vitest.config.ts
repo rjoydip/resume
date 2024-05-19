@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => ({
       },
     },
     coverage: {
-      enabled: true,
+      enabled: mode === 'unit',
       provider: 'istanbul',
       reporter: ['text', 'html', 'json-summary'],
       exclude: [

@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import type { ListBlobResultBlob } from '@vercel/blob'
@@ -20,14 +21,14 @@ export async function fetchData(blobs: ListBlobResultBlob[], name: string) {
   const blob = blobs
     .filter(i => i.pathname.replace(/\.[^/.]+$/, '') === name)
     .pop()
-    
-  if (blob) {
-    const res = await fetch(blob.url)
 
-    if (!res.ok)
+  if (blob) {
+    const { data, status } = await axios.get(blob.url)
+
+    if (status !== 200)
       throw new Error('Failed to fetch data')
 
-    return await res.json()
+    return data
   }
   else {
     return {}
