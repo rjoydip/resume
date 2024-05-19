@@ -1,4 +1,4 @@
-import { describe, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { aboutSchema, educationsSchema, keySkillsSchema, projectsSchema, skillsSchema, worksSchema } from '@/schema' // Replace with the actual file path
 
 describe('schema', () => {
