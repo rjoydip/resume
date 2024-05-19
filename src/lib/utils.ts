@@ -20,6 +20,7 @@ export async function fetchData(blobs: ListBlobResultBlob[], name: string) {
   const blob = blobs
     .filter(i => i.pathname.replace(/\.[^/.]+$/, '') === name)
     .pop()
+    
   if (blob) {
     const res = await fetch(blob.url)
 

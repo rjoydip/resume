@@ -10,7 +10,8 @@
     "start": "next start",
     "lint": "eslint . --fix",
     "test": "vitest --typecheck",
-    "test:ci": "start-server-and-test 'nr start' http://localhost:3000 'vitest run --typecheck'",
+    "test:unit": "vitest run --typecheck --mode unit",
+    "test:e2e": "start-server-and-test 'nr start' http://localhost:3000 'vitest run --typecheck --mode e2e'",
     "test:bench": "vitest bench --run",
     "deps:update": "taze -r -w -i -f -l"
   },
