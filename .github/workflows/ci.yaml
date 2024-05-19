@@ -61,7 +61,7 @@ jobs:
         run: pnpm test:ci
 
       - name: 〽️ Benchmark
-        run: pnpm bench
+        run: pnpm test:bench
 
       - uses: actions/upload-artifact@v4
         with:
