@@ -1,7 +1,7 @@
 import { consola } from 'consola'
 import { afterAll, afterEach, beforeAll } from 'vitest'
 import { setupServer } from 'msw/node'
-import { handlers } from '../mocks/handlers'
+import { handlers } from './mocks/handlers'
 
 const server = setupServer(...handlers)
 

@@ -1,6 +1,6 @@
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
-import { describe, expect, it } from 'vitest'
+import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 describe('<Page />', () => {
   let browser: Browser

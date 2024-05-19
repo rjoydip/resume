@@ -18,9 +18,7 @@
     },
     "resolveJsonModule": true,
     "types": [
-      "vitest/globals",
-      "vitest/jsdom",
-      "@vitest/browser/providers/playwright"
+      "vitest/globals"
     ],
     "allowImportingTsExtensions": true,
     "allowJs": true,
