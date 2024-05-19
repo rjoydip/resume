@@ -2,7 +2,7 @@ import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import humanizeString from 'humanize-string'
-import { getTestFixturesAsync } from '../utils/test.unit'
+import { skills as skillsFixture } from '../../mocks/fixtures'
 import { Skills } from '@/components/pages'
 import type { SkillsType } from '@/types'
 
@@ -10,7 +10,7 @@ describe('<Skills />', () => {
   let container: HTMLElement
   let skills: SkillsType
   beforeAll(async () => {
-    skills = await getTestFixturesAsync('skills')
+    skills = skillsFixture
     const render$ = await render(<Skills data={skills} />)
     container = render$.container
   })
@@ -24,7 +24,7 @@ describe('<Skills />', () => {
     ).toBeDefined()
   })
   describe('should validate projects items', async () => {
-    const skills = await getTestFixturesAsync('skills')
+    const skills = skillsFixture
     Object.keys(skills).forEach((key, index) => {
       it('should validate skill list', async () => {
         expect(

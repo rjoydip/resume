@@ -1,7 +1,7 @@
 import { consola } from 'consola'
 import { afterAll, afterEach, beforeAll } from 'vitest'
 import { setupServer } from 'msw/node'
-import { handlers } from '../mocks/handlers'
+import { handlers } from './mocks/handlers'
 
 const server = setupServer(...handlers)
 
@@ -16,9 +16,7 @@ server.events.on('request:unhandled', ({ request }) => {
 })
 
 // Start server before all tests
-beforeAll(() => server.listen({
-  onUnhandledRequest: 'bypass',
-}))
+beforeAll(() => server.listen())
 
 //  Close server after all tests
 afterAll(() => server.close())

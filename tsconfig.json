@@ -18,8 +18,7 @@
     },
     "resolveJsonModule": true,
     "types": [
-      "vitest/globals",
-      "vitest/jsdom"
+      "vitest/globals"
     ],
     "allowImportingTsExtensions": true,
     "allowJs": true,
@@ -35,12 +34,14 @@
     ]
   },
   "include": [
-    "**/*.{ts,tsx}",
-    "src/**/*.{ts,tsx}",
-    "test/{specs,e2e}/*.test.{ts,tsx}",
+    "**/*.ts",
+    "**/*.tsx",
+    "test/node/*.test.ts",
+    "test/{edge,e2e,jsdom}/*.test.tsx",
     ".next/types/**/*.ts"
   ],
   "exclude": [
+    ".next",
     "node_modules"
   ]
 }

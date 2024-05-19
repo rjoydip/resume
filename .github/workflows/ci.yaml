@@ -21,19 +21,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Node.js
+      - name: ⌛ Install Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
       - uses: pnpm/action-setup@v3
-        name: Install pnpm
+        name: ⌛ Install pnpm
         with:
           version: 8
           run_install: false
 
       - uses: actions/cache@v4
-        name: Setup pnpm cache
+        name: ⚙️ Setup pnpm cache
         with:
           key: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
@@ -42,7 +42,7 @@ jobs:
             node_modules
             ${{ runner.os }}/.next/cache
 
-      - name: Install dependencies
+      - name: ⌛ Install deps
         run: |
           pnpm install --no-frozen-lockfile
 
@@ -58,7 +58,13 @@ jobs:
           rm -rf .env.local
 
       - name: 🧪 Unit test
-        run: pnpm test:ci
+        run: pnpm test:unit
+
+      - name: 📊 E2E test
+        run: pnpm test:e2e
+
+      - name: 〽️ Benchmark
+        run: pnpm test:bench
 
       - uses: actions/upload-artifact@v4
         with:
@@ -66,5 +72,5 @@ jobs:
           path: coverage
           if-no-files-found: ignore
 
-      - name: Unit test Coverage
+      - name: 📰 Test Coverage
         uses: davelosert/vitest-coverage-report-action@v2
