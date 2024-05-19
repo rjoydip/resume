@@ -60,6 +60,9 @@ jobs:
       - name: 🧪 Unit test
         run: pnpm test:ci
 
+      - name: 〽️ Benchmark
+        run: pnpm bench
+
       - uses: actions/upload-artifact@v4
         with:
           name: code-coverage

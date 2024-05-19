@@ -11,6 +11,10 @@ export type SkillsType = Output<typeof skillsSchema>
 export type KeySkillsType = Output<typeof keySkillsSchema>
 export type ProjectsType = Output<typeof projectsSchema>
 
+export interface FilterObjType<T> {
+  [key: string]: T
+}
+
 export interface ProjectCardProps {
   title: string
   description: string
