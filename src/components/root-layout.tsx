@@ -1,7 +1,9 @@
 import * as React from 'react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
+import { isEdgeLight } from 'std-env'
+import Head from 'next/head'
 import { Inter } from 'next/font/google'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import {
   getDarkThemeColors,
@@ -30,38 +32,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
-      <head>
-        <link rel="manifest" href="/manifest.json" />
+      <Head>
         <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
-        <link
-          rel="apple-touch-icon"
-          sizes="120x120"
-          href="/icons/icon-120x120.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="152x152"
-          href="/icons/icon-152x152.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="167x167"
-          href="/icons/icon-167x167.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/icons/icon-180x180.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="192x192"
-          href="/icons/apple-touch-icon.png"
-        />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="theme-color" content="#000000" />
-      </head>
+      </Head>
       <body>
         <NextThemesProvider
           attribute="class"
@@ -73,7 +48,7 @@ export default function RootLayout({
           {children}
         </NextThemesProvider>
         <Toaster />
-        <SpeedInsights />
+        {isEdgeLight && <SpeedInsights />}
       </body>
     </html>
   )
