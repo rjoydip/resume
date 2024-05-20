@@ -7,8 +7,11 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Resume - Joydip Roy',
     start_url: '/',
     display: 'standalone',
+    display_override: ['fullscreen', 'standalone', 'browser'],
     background_color: '#ffffff',
     theme_color: '#000000',
+    orientation: 'any',
+    categories: ['Resume', 'Curriculum Vitae', 'Profile', 'Portfolio'],
     icons: [
       {
         src: '/favicon.ico',

@@ -1,8 +1,9 @@
-const { env } = require('std-env')
+const { uid } = require('uid')
+const { isProduction, isDevelopment, env } = require('std-env')
 
 /** @type {import('next').NextConfig} */
 const withPWA = require('next-pwa')({
-  disable: env.NODE_ENV === 'development',
+  disable: isDevelopment,
 })
 
 module.exports = withPWA({
@@ -11,7 +12,18 @@ module.exports = withPWA({
   cleanDistDir: true,
   compress: true,
   trailingSlash: true,
+  poweredByHeader: false,
+  productionBrowserSourceMaps: isProduction,
+  onDemandEntries: {
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 2,
+  },
+  devIndicators: {
+    autoPrerender: isDevelopment,
+  },
+  generateBuildId: async () => env.GIT_HASH || uid(32),
   experimental: {
     webVitalsAttribution: ['CLS', 'LCP'],
+    optimizePackageImports: [],
   },
 })
