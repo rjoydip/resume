@@ -6,7 +6,7 @@ export const metadata = {
 }
 
 export function getLightThemeColors(): LightColorType[] {
-  return ['yellow', 'blue', 'green', 'red', 'violet', 'zinc', 'orange', 'rose', 'slate', 'light']
+  return ['yellow', 'blue', 'green', 'red', 'violet', 'zinc', 'orange', 'rose', 'slate', 'light', 'system']
 }
 
 export function getDarkThemeColors(): DarkColorType[] {

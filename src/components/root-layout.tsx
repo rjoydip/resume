@@ -1,8 +1,8 @@
 import * as React from 'react'
 import type { Metadata } from 'next'
 import { isEdgeLight } from 'std-env'
-import Head from 'next/head'
 import { Inter } from 'next/font/google'
+import Head from 'next/head'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import {

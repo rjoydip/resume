@@ -3,6 +3,8 @@ import { afterAll, afterEach, beforeAll } from 'vitest'
 import { setupServer } from 'msw/node'
 import { handlers } from './mocks/handlers'
 
+import 'vitest-dom/extend-expect'
+
 const server = setupServer(...handlers)
 
 server.events.on('request:start', ({ request }) => {
