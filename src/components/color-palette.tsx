@@ -13,8 +13,8 @@ import type { DarkColorType, LightColorType } from '@/types'
 export function ColorPalette() {
   const { setColorTheme } = useColorTheme()
 
-  const onToggle = ($color: LightColorType | DarkColorType) => {
-    setColorTheme($color)
+  const onToggle = (color: LightColorType | DarkColorType) => {
+    setColorTheme(color)
   }
 
   return (

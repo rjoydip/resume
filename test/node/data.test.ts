@@ -9,7 +9,7 @@ describe('data', () => {
   it('should validate getLightThemeColors', () => {
     const lightThemeColors = getLightThemeColors()
     expect(typeof lightThemeColors).toBe('object')
-    expect(lightThemeColors.length).toBe(10)
+    expect(lightThemeColors.length).toBe(11)
   })
   it('should validate getDarkThemeColors', () => {
     const darkThemeColors = getDarkThemeColors()

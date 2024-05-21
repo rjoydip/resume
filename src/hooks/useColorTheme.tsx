@@ -8,42 +8,34 @@ import { ToastAction } from '@/components/ui/toast'
 function useColorTheme() {
   const { toast } = useToast()
   const { theme, setTheme } = useTheme()
-  const previousTheme = theme
 
-  const setColorTheme = (
-    currentTheme: LightColorType | DarkColorType | 'system',
-  ) => {
-    if (currentTheme !== previousTheme) {
-      if (['light', 'dark', 'system'].includes(currentTheme)) {
-        setTheme(currentTheme)
-      }
-      else if (
-        getLightThemeColors().includes(currentTheme as LightColorType)
-        || previousTheme === 'light'
-        || previousTheme === 'system'
-      ) {
-        setTheme(currentTheme)
-      }
-      else if (
-        getDarkThemeColors().includes(currentTheme as DarkColorType)
-        || previousTheme?.includes('dark')
-      ) {
-        setTheme(`${currentTheme}-dark`)
-      }
-      else {
-        toast({
-          variant: 'destructive',
-          title: 'Uh oh!',
-          description: 'Not falling in any case.',
-          action: <ToastAction altText="Try again">Try again</ToastAction>,
-        })
-      }
+  const setColorTheme = (color: LightColorType | DarkColorType | 'system') => {
+    if (['light', 'dark', 'system'].includes(color)) {
+      setTheme(color)
+    }
+    else if (
+      getLightThemeColors().includes(color as LightColorType)
+      && (theme === 'light' || theme === 'system')
+    ) {
+      setTheme(color)
+    }
+    else if (
+      getDarkThemeColors().includes(color as DarkColorType)
+      && theme?.includes('dark')
+    ) {
+      setTheme(`${color}-dark`)
+    }
+    else if (
+      getLightThemeColors().includes(color as LightColorType)
+      && theme?.includes('dark')
+    ) {
+      setTheme(`${color}-dark`)
     }
     else {
       toast({
         variant: 'destructive',
         title: 'Uh oh!',
-        description: 'Previous and selected color are same.',
+        description: 'Not falling in any case.',
         action: <ToastAction altText="Try again">Try again</ToastAction>,
       })
     }

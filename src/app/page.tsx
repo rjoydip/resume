@@ -14,7 +14,14 @@ import {
 } from '@/components/pages'
 import { fetchData } from '@/lib/utils'
 import schema from '@/schema'
-import type { AboutType, EducationsType, KeySkillsType, ProjectsType, SkillsType, WorksType } from '@/types'
+import type {
+  AboutType,
+  EducationsType,
+  KeySkillsType,
+  ProjectsType,
+  SkillsType,
+  WorksType,
+} from '@/types'
 
 export const metadata: Metadata = {
   title: `${meta.name}`,
@@ -25,19 +32,19 @@ export default async function Page() {
   const { blobs } = await list({
     token: env.BLOB_READ_WRITE_TOKEN,
   })
-  const about$: AboutType = await fetchData(blobs, 'about')
-  const works$: WorksType = await fetchData(blobs, 'works')
-  const educations$: EducationsType = await fetchData(blobs, 'educations')
-  const skills$: SkillsType = await fetchData(blobs, 'skills')
-  const keySkills$: KeySkillsType = await fetchData(blobs, 'key-skills')
-  const projects$: ProjectsType = await fetchData(blobs, 'projects')
+  const about: AboutType = await fetchData(blobs, 'about')
+  const works: WorksType = await fetchData(blobs, 'works')
+  const educations: EducationsType = await fetchData(blobs, 'educations')
+  const skills: SkillsType = await fetchData(blobs, 'skills')
+  const keySkills: KeySkillsType = await fetchData(blobs, 'key-skills')
+  const projects: ProjectsType = await fetchData(blobs, 'projects')
   const data = parse(schema, {
-    about: about$,
-    educations: educations$,
-    works: works$,
-    skills: skills$,
-    keySkills: keySkills$,
-    projects: projects$,
+    about,
+    educations,
+    works,
+    skills,
+    keySkills,
+    projects,
   })
   return (
     <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 md:p-16 print:p-12">
