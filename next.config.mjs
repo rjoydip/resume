@@ -1,12 +1,10 @@
-const { uid } = require('uid')
-const { isProduction, isDevelopment, env } = require('std-env')
+import { uid } from 'uid'
+import { env, isDevelopment, isProduction } from 'std-env'
+import nextPWA from 'next-pwa'
+import MillionCompiler from '@million/lint'
 
 /** @type {import('next').NextConfig} */
-const withPWA = require('next-pwa')({
-  disable: isDevelopment,
-})
-
-module.exports = withPWA({
+export const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   cleanDistDir: true,
@@ -26,4 +24,10 @@ module.exports = withPWA({
     webVitalsAttribution: ['CLS', 'LCP'],
     optimizePackageImports: [],
   },
-})
+}
+
+export default MillionCompiler.next({
+  rsc: true,
+})(nextPWA({
+  disable: isDevelopment,
+})(nextConfig))
