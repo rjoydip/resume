@@ -25,7 +25,7 @@ export default defineConfig(({ mode }) => ({
       reporter: ['text', 'html', 'json-summary'],
       exclude: [
         '**/{.next,public,test}',
-        '**/*.{config,setup,bench}.{js,ts}',
+        '**/*.{config,setup,bench}.{mjs,js,ts}',
         'test/mocks/mockServiceWorker.js',
         '**/src/{app,components,icons}/**/*.{ts,tsx}',
       ],

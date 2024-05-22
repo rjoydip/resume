@@ -4,7 +4,7 @@ import { companies, getDarkThemeColors, getLightThemeColors, keySkills, metadata
 describe('data', () => {
   it('should validate metadata', () => {
     expect(typeof metadata).toBe('object')
-    expect(Object.keys(metadata)).toStrictEqual(['name', 'description'])
+    expect(Object.keys(metadata)).toStrictEqual(['name', 'description', 'generator'])
   })
   it('should validate getLightThemeColors', () => {
     const lightThemeColors = getLightThemeColors()

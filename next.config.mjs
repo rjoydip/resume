@@ -26,18 +26,8 @@ export const nextConfig = {
   },
 }
 
-// eslint-disable-next-line import/no-mutable-exports
-let nextApp = null
-
-if (isDevelopment) {
-  nextApp = MillionCompiler.next({
-    rsc: true,
-  })(nextConfig)
-}
-else {
-  nextApp = nextPWA({
-    disable: isDevelopment,
-  })(nextConfig)
-}
-
-export default nextApp
+export default MillionCompiler.next({
+  rsc: true,
+})(nextPWA({
+  disable: isDevelopment,
+})(nextConfig))

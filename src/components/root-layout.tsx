@@ -1,8 +1,7 @@
 import * as React from 'react'
 import type { Metadata } from 'next'
-import { isEdgeLight } from 'std-env'
+import { isDevelopment } from 'std-env'
 import { Inter } from 'next/font/google'
-import Head from 'next/head'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import {
@@ -15,8 +14,17 @@ import { Toaster } from '@/components/ui/toaster'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: `${meta.name}`,
+  title: meta.name,
   description: meta.description,
+  generator: meta.generator,
+  publisher: meta.name,
+  icons: [
+    { rel: 'apple-touch-icon', url: '/icons/icon-192x192.png' },
+  ],
+  appleWebApp: {
+    capable: true,
+    title: meta.name,
+  },
 }
 
 // If loading a variable font, you don't need to specify the font weight
@@ -32,11 +40,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
-      <Head>
-        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-      </Head>
       <body>
         <NextThemesProvider
           attribute="class"
@@ -48,7 +51,7 @@ export default function RootLayout({
           {children}
         </NextThemesProvider>
         <Toaster />
-        {isEdgeLight && <SpeedInsights />}
+        {!isDevelopment && <SpeedInsights />}
       </body>
     </html>
   )
