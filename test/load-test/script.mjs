@@ -4,7 +4,7 @@ import http from 'k6/http'
 const apiEndpoint = 'http://localhost:3000/api'
 
 export const options = {
-  vus: 50,
+  vus: 5000,
   duration: '10s',
 }
 
