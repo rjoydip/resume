@@ -13,6 +13,9 @@
 /.next/
 /out/
 
+# millionjs
+/.million/
+
 # production
 /build
 

@@ -39,6 +39,7 @@
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-virtuoso": "^4.7.10",
     "scroll-data-hook": "^1.0.4",
     "std-env": "^3.7.0",
     "tailwind-merge": "^2.3.0",
@@ -48,6 +49,7 @@
   },
   "devDependencies": {
     "@antfu/ni": "^0.21.12",
+    "@million/lint": "1.0.0-rc.1",
     "@ngneat/falso": "^7.2.0",
     "@testing-library/react": "^15.0.7",
     "@types/node": "^20.12.12",
