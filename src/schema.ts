@@ -7,7 +7,7 @@ const techStackSchema = array(picklist(techStacks))
 
 export const keySkillsSchema = array(picklist(keySkills))
 
-export const educationsSchema = array(object({
+export const educationSchema = object({
   school: string(),
   degree: string(),
   location: string(),
@@ -35,9 +35,10 @@ export const educationsSchema = array(object({
       maxValue('2016'),
     ]),
   ]),
-}))
+})
+export const educationsSchema = array(educationSchema)
 
-export const worksSchema = array(object({
+export const workSchema = object({
   company: picklist(companies),
   position: string(),
   description: string(),
@@ -65,7 +66,8 @@ export const worksSchema = array(object({
       maxValue(today.getFullYear().toString()),
     ]),
   ])),
-}))
+})
+export const worksSchema = array(workSchema)
 
 export const skillsSchema = object({
   'cloud': techStackSchema,
@@ -81,7 +83,7 @@ export const skillsSchema = object({
   'tools': techStackSchema,
 })
 
-export const projectsSchema = array(object({
+export const projectSchema = object({
   title: string(),
   description: string(),
   techStacks: techStackSchema,
@@ -93,7 +95,8 @@ export const projectsSchema = array(object({
   company: picklist(companies),
   isClient: nullish(boolean()),
   client_country: nullish(string()),
-}))
+})
+export const projectsSchema = array(projectSchema)
 
 export const contactSchema = object({
   email: string([email()]),

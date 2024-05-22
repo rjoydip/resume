@@ -3,6 +3,7 @@ import type { DarkColorType, LightColorType } from '@/types'
 export const metadata = {
   name: 'Joydip Roy',
   description: 'JR',
+  generator: 'nextjs, react, blog, rjoydip, resume',
 }
 
 export function getLightThemeColors(): LightColorType[] {
