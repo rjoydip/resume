@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => ({
     coverage: {
       enabled: mode === 'unit',
       provider: 'istanbul',
-      reporter: ['text', 'html', 'json-summary'],
+      reporter: ['text', 'html', 'json', 'json-summary'],
       exclude: [
         '**/{.next,public,test}',
         '**/*.{config,setup,bench}.{mjs,js,ts}',
