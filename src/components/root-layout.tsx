@@ -1,6 +1,6 @@
 import * as React from 'react'
 import type { Metadata } from 'next'
-import { isDevelopment } from 'std-env'
+import { isDevelopment, isTest } from 'std-env'
 import { Inter } from 'next/font/google'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
@@ -51,7 +51,7 @@ export default function RootLayout({
           {children}
         </NextThemesProvider>
         <Toaster />
-        {!isDevelopment && <SpeedInsights />}
+        {!isDevelopment && !isTest && <SpeedInsights />}
       </body>
     </html>
   )
