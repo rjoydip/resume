@@ -1,6 +1,7 @@
 import { Buffer } from 'node:buffer'
 import { existsSync } from 'node:fs'
 import { mkdir, writeFile } from 'node:fs/promises'
+import consola from 'consola'
 import type { Client } from 'autocannon'
 import autocannon from 'autocannon'
 
@@ -10,12 +11,12 @@ export const autocannonOptions: Omit<autocannon.Options, 'url'> = {
   duration: 10, // default
   workers: 5,
   setupClient: (client: Client) => {
-    client.on('response', console.log)
+    client.on('response', consola.log)
   },
 }
 
 export async function runBenchmark(url: string): Promise<autocannon.Result> {
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     const instance = autocannon({
       url,
       connections: 10, // Number of concurrent connections
@@ -26,8 +27,7 @@ export async function runBenchmark(url: string): Promise<autocannon.Result> {
       return resolve(result)
     })
 
-    const instance$ = await instance
-    autocannon.track(instance$, { renderProgressBar: false })
+    autocannon.track(instance, { renderProgressBar: false })
   })
 }
 
