@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => ({
     environmentMatchGlobs: [
       ['test/{dom,e2e}/**', 'happy-dom'],
       ['test/edge/**', 'edge-runtime'],
-      ['test/node/**', 'node'],
+      ['test/{node,benchmark}/**', 'node'],
     ],
     include: mode === 'unit' ? ['test/{node,dom,edge}/**/*.test.{ts,tsx}'] : mode === 'e2e' ? ['test/e2e/**/*.test.tsx'] : [],
     setupFiles: 'test/vitest.setup.ts',
@@ -25,8 +25,8 @@ export default defineConfig(({ mode }) => ({
       reporter: ['text', 'html', 'json', 'json-summary'],
       exclude: [
         '**/{.next,public,test}',
-        '**/*.{config,setup,bench}.{mjs,js,ts}',
-        'test/mocks/mockServiceWorker.js',
+        '**/*.{config,setup}.{mjs,js,ts,mts}',
+        'test/mocks/*.js',
         '**/src/{app,components,icons}/**/*.{ts,tsx}',
       ],
       reportOnFailure: true,
