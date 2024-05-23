@@ -9,7 +9,7 @@ export const nextConfig = {
   swcMinify: true,
   cleanDistDir: true,
   compress: true,
-  trailingSlash: true,
+  trailingSlash: false,
   poweredByHeader: false,
   productionBrowserSourceMaps: isProduction,
   onDemandEntries: {
