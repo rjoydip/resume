@@ -6,7 +6,7 @@ interface NPMProps extends SVGProps<SVGSVGElement> {
   className?: string
 }
 
-function NPM({ className }: NPMProps) {
+export function NPM({ className }: NPMProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22,5 +22,3 @@ function NPM({ className }: NPMProps) {
     </svg>
   )
 }
-
-export { NPM }

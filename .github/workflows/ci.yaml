@@ -21,13 +21,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: ⌛ Install Node
+      - name: 📦 Install Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
       - uses: pnpm/action-setup@v3
-        name: ⌛ Install pnpm
+        name: 📦 Install pnpm
         with:
           version: 8
           run_install: false
@@ -42,11 +42,11 @@ jobs:
             node_modules
             ${{ runner.os }}/.next/cache
 
-      - name: ⌛ Install deps
+      - name: 📦 Install deps
         run: |
           pnpm install --no-frozen-lockfile
 
-      - name: 👕 Lint
+      - name: ⛏️ Lint
         run: pnpm lint
 
       - name: 🛠️ Build
@@ -66,7 +66,7 @@ jobs:
       - name: 〽️ Benchmark
         run: pnpm test:bench
 
-      - name: ⏳ Load test
+      - name: 🏋️ Load test
         run: |
           curl https://github.com/grafana/k6/releases/download/v0.47.0/k6-v0.47.0-linux-amd64.tar.gz -L | tar xvz --strip-components 1
           npx start-server-and-test 'nr start' http://localhost:3000 './k6 run test/performance/script.mjs'

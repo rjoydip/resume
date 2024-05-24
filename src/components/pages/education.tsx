@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import { Label } from '@radix-ui/react-label'
+import { uid } from 'uid'
 import { Section } from '../ui/section'
 import { getIcon } from '../../icons/getIcon'
 import type { EducationsType } from '@/types'
@@ -15,7 +16,7 @@ export function Educations({ data }: { data: EducationsType }) {
       <div className="relative border-l border-gray-200 dark:border-gray-700">
         <div className="space-y-8">
           {data.map((education, index) => (
-            <div className="relative pl-6" key={index}>
+            <div className="relative pl-6" key={uid(32)}>
               {getIcon('dot', {
                 className: 'absolute -left-[12px] top-0',
                 strokeWidth: 8,

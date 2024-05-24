@@ -3,6 +3,7 @@
 import * as React from 'react'
 import { Label } from '@radix-ui/react-label'
 import humanizeString from 'humanize-string'
+import { uid } from 'uid'
 import { getIcon } from '../../icons/getIcon'
 import { Card } from '../ui/card'
 import { Section } from '../ui/section'
@@ -28,8 +29,8 @@ export function Skills({ data }: { data: SkillsType }) {
                 {humanizeString(skillCategory)}
                 :
               </p>
-              {skills.map((skill, index) => (
-                <span key={index}>
+              {skills.map(skill => (
+                <span key={uid(32)}>
                   {getIcon(skill as IconType, {
                     className: 'mx-0.5 size-4',
                   })}

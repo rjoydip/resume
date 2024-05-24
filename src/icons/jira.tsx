@@ -6,7 +6,7 @@ interface JIRAProps extends SVGProps<SVGSVGElement> {
   className?: string
 }
 
-function JIRA({ className }: JIRAProps) {
+export function JIRA({ className }: JIRAProps) {
   return (
     <svg
       viewBox="0 0 128 128"
@@ -63,5 +63,3 @@ function JIRA({ className }: JIRAProps) {
     </svg>
   )
 }
-
-export { JIRA }

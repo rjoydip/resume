@@ -1,4 +1,5 @@
 pnpm deps:update
 pnpm lint
+npx lint-staged
 pnpm build
-git add .
+git add . -u

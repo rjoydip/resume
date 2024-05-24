@@ -6,7 +6,7 @@ interface AWSProps extends SVGProps<SVGSVGElement> {
   className?: string
 }
 
-function AWS({ className }: AWSProps) {
+export function AWS({ className }: AWSProps) {
   return (
     <svg
       id="Layer_1"
@@ -39,5 +39,3 @@ function AWS({ className }: AWSProps) {
     </svg>
   )
 }
-
-export { AWS }

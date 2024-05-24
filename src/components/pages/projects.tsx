@@ -1,5 +1,6 @@
 import * as React from 'react'
 import clsx from 'clsx'
+import { uid } from 'uid'
 import { getIcon } from '../../icons/getIcon'
 import { Badge } from '../ui/badge'
 import {
@@ -21,7 +22,7 @@ const ProjectsListItem = React.memo(
           'flex flex-col overflow-hidden p-3',
           project.isClient ? 'border-2 border-green-500' : 'border',
         )}
-        key={index}
+        key={uid(32)}
       >
         <CardHeader>
           <CardTitle className="space-y-1">
@@ -73,9 +74,9 @@ const ProjectsListItem = React.memo(
                 : null}
               {project.links
               && !!project.links.length
-              && project.links.map((link, index) => (
+              && project.links.map(link => (
                 <a
-                  key={index}
+                  key={uid(32)}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -112,8 +113,8 @@ const ProjectsListItem = React.memo(
               )}
               {project.techStacks
               && !!project.techStacks.length
-              && project.techStacks.map((techStack, index) => (
-                <div key={index} className="flex items-center justify-center">
+              && project.techStacks.map(techStack => (
+                <div key={uid(32)} className="flex items-center justify-center">
                   {getIcon(techStack as IconType, {
                     className: 'size-4',
                   })}
@@ -136,7 +137,7 @@ export function Projects({ data }: { data: ProjectsType }) {
       <div className="print-force-new-page scroll-mb-16">
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
           {data.map((item, index) => (
-            <ProjectsListItem key={index} project={item} index={index} />
+            <ProjectsListItem key={uid(32)} project={item} index={index} />
           ))}
         </div>
       </div>

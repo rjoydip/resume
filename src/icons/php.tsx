@@ -6,7 +6,7 @@ interface PHPProps extends SVGProps<SVGSVGElement> {
   className?: string
 }
 
-function PHP({ className }: PHPProps) {
+export function PHP({ className }: PHPProps) {
   return (
     <svg
       viewBox="0 0 128 128"
@@ -65,5 +65,3 @@ function PHP({ className }: PHPProps) {
     </svg>
   )
 }
-
-export { PHP }
