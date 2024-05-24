@@ -1,3 +1,3 @@
-pnpm test:unit
-pnpm test:e2e
-pnpm test:bench
+pnpm run test:unit
+pnpm run test:e2e
+pnpm run test:bench

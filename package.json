@@ -10,9 +10,9 @@
     "start": "next start",
     "lint": "eslint . --fix && stylelint \"**/*.css\" --fix",
     "test:unit": "vitest run --typecheck --mode unit",
-    "test:e2e": "vitest run --typecheck --mode e2e",
-    "test:bench": "vitest bench --run && tsx ./test/benchmark/endpoints/index.ts",
-    "test:ci": "nr test:unit && start-server-and-test 'nr start' http://localhost:3000 'nr test:e2e && nr test:bench'",
+    "test:e2e": "start-server-and-test start http://localhost:3000 'vitest run --typecheck --mode e2e'",
+    "test:bench": "vitest bench --run && start-server-and-test start http://localhost:3000 'tsx test/benchmark/endpoints/index.ts'",
+    "test:all": "pnpm run test:unit && pnpm run test:e2e && pnpm run test:bench",
     "deps:update": "taze -r -w -i -f -l"
   },
   "dependencies": {
