@@ -6,7 +6,7 @@ interface PNPMProps extends SVGProps<SVGSVGElement> {
   className?: string
 }
 
-function PNPM({ className }: PNPMProps) {
+export function PNPM({ className }: PNPMProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -120,5 +120,3 @@ function PNPM({ className }: PNPMProps) {
     </svg>
   )
 }
-
-export { PNPM }

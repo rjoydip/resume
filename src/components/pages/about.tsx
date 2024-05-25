@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import { uid } from 'uid'
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
 import { Label } from '@radix-ui/react-label'
 import {
@@ -15,7 +16,7 @@ import { getIcon } from '../../icons/getIcon'
 import { Button } from '../ui/button'
 import type { AboutType, ContactType, IconType } from '@/types'
 
-export function Contact({ data }: { data: ContactType }) {
+function Contact({ data }: { data: ContactType }) {
   return (
     <Section>
       <div
@@ -44,10 +45,10 @@ export function Contact({ data }: { data: ContactType }) {
             </Button>
             )
           : null}
-        {data.social.map((social, index) => (
+        {data.social.map(social => (
           <Button
             data-testid={`about_contact_social_${social.name}`}
-            key={index}
+            key={uid(32)}
             className="size-8"
             variant="outline"
             size="icon"
@@ -83,11 +84,13 @@ export function Contact({ data }: { data: ContactType }) {
             )
           : null}
         {data.social
-          ? data.social.map((social, index) => (
+          ? data.social.map(social => (
             <a
-              key={index}
+              key={uid(32)}
               data-testid={`about_contact_social_${social.name}_hidden`}
               href={social.url}
+              target="_blank"
+              rel="noreferrer noopener"
             >
               <span>{social.url}</span>
             </a>
@@ -110,6 +113,7 @@ export function About({ data }: { data: AboutType }) {
                 alt={data.name}
                 src={data.avatar_url}
                 className="rounded-full"
+                rel="noreferrer noopener"
               />
               <AvatarFallback>{data.initials}</AvatarFallback>
             </Avatar>
@@ -154,6 +158,7 @@ export function About({ data }: { data: AboutType }) {
               className="hover:point inline-flex"
               href={data.location_link}
               target="_blank"
+              rel="noreferrer noopener"
             >
               {getIcon('map', {
                 className:

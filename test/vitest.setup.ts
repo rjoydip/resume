@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { consola } from 'consola'
 import { afterAll, afterEach, beforeAll } from 'vitest'
 import type { SetupServerApi } from 'msw/node'

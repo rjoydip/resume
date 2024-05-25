@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import { Label } from '@radix-ui/react-label'
+import { uid } from 'uid'
 import { getIcon } from '../../icons/getIcon'
 import { Card } from '../ui/card'
 import { Section } from '../ui/section'
@@ -13,9 +14,9 @@ export function KeySkills({ data }: { data: KeySkillsType }) {
       <Label data-testid="key_skills_title" className="text-xl font-bold">Key Skills</Label>
       <Card className="border p-3">
         <ul data-testid="key_skills_list" className="space-y-4 text-left">
-          {data.map((kSkills, index) => (
+          {data.map(kSkills => (
             <li
-              key={index}
+              key={uid(32)}
               className="flex flex-wrap items-start items-baseline"
             >
               {getIcon('badge-check', {

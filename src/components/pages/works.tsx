@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import { Label } from '@radix-ui/react-label'
+import { uid } from 'uid'
 import { getIcon } from '../../icons/getIcon'
 import { Badge } from '../ui/badge'
 import { Section } from '../ui/section'
@@ -18,7 +19,7 @@ export function Works({ data }: { data: WorksType }) {
         className="relative space-y-8 border-l border-gray-200 dark:border-gray-700"
       >
         {data.map((work, index) => (
-          <div key={index} className="relative pl-6">
+          <div key={uid(32)} className="relative pl-6">
             {getIcon('dot', {
               className: 'absolute -left-[12px] top-0',
               strokeWidth: 8,
@@ -32,8 +33,8 @@ export function Works({ data }: { data: WorksType }) {
                   {work.company}
                 </a>
                 <span className="inline-flex gap-x-1">
-                  {work.mode.map((badge, index) => (
-                    <Badge className="align-middle text-[12px]" key={index}>
+                  {work.mode.map(badge => (
+                    <Badge className="align-middle text-[12px]" key={uid(32)}>
                       {badge}
                     </Badge>
                   ))}
@@ -65,8 +66,8 @@ export function Works({ data }: { data: WorksType }) {
             >
               <div className="text-sm font-semibold">Skills: </div>
               {work.techStacks
-              && work.techStacks.map((techStack, i) => (
-                <div key={i} className="mx-0.5">
+              && work.techStacks.map(techStack => (
+                <div key={uid(32)} className="mx-0.5">
                   {getIcon(techStack as IconType, {
                     className: 'size-4',
                   })}
