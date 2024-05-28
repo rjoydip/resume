@@ -36,10 +36,14 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    "src/app/**/*.tsx",
     "test/node/*.test.ts",
     "test/benchmark/*.test.ts",
     "test/{edge,e2e,jsdom}/*.test.tsx",
-    ".next/types/**/*.ts", "test/benchmark/endpoints/api.test.ts", "test/benchmark/endpoints/index.ts", "test/benchmark/endpoints/health.test.ts"
+    ".next/types/**/*.ts",
+    "test/benchmark/endpoints/api.test.ts",
+    "test/benchmark/endpoints/index.ts",
+    "test/benchmark/endpoints/health.test.ts"
   ],
   "exclude": [
     ".next",

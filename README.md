@@ -7,9 +7,9 @@ Simple web app that renders minimalist CV with print-friendly layout. Built with
 
 ## Features
 
-- Setup only takes a few minutes [single config file](./src/data.ts)
 - Built using Next.js 14, React, Typescript, Shadcn/ui, TailwindCSS
 - Auto generated Layout
+- Authentication using [Clerk](https://clerk.com/)
 - Responsive for different devices
 - Optimized for Next.js and Vercel
 

@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { list } from '@vercel/blob'
 import { parse } from 'valibot'
-import { env } from 'std-env'
+import { env, isDevelopment, isTest } from 'std-env'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { CommandMenu } from '@/components/command-menu'
 import { metadata as meta } from '@/data'
 import {
@@ -22,6 +23,7 @@ import type {
   SkillsType,
   WorksType,
 } from '@/types'
+import { Toaster } from '@/components/ui/toaster'
 
 export const metadata: Metadata = {
   title: `${meta.name}`,
@@ -60,6 +62,8 @@ export default async function Page() {
       <section>
         <CommandMenu />
       </section>
+      <Toaster />
+      {!isDevelopment && !isTest && <SpeedInsights />}
     </main>
   )
 }
