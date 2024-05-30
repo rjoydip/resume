@@ -16,7 +16,7 @@
     "deps:update": "taze -r -w -i -f -l"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^2.19.0",
+    "@antfu/eslint-config": "^2.19.1",
     "@faker-js/faker": "^8.4.1",
     "@hookform/resolvers": "^3.4.2",
     "@radix-ui/react-avatar": "^1.0.4",
@@ -63,12 +63,12 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@million/lint": "1.0.0-rc.12",
+    "@million/lint": "1.0.0-rc.14",
     "@ngneat/falso": "^7.2.0",
     "@testing-library/react": "^15.0.7",
     "@types/autocannon": "^7.12.5",
     "@types/k6": "^0.51.0",
-    "@types/node": "^20.12.12",
+    "@types/node": "^20.12.13",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.0",
@@ -79,7 +79,7 @@
     "consola": "^3.2.3",
     "envinfo": "^7.13.0",
     "eslint": "^8.57.0",
-    "happy-dom": "^14.11.1",
+    "happy-dom": "^14.12.0",
     "husky": "^9.0.11",
     "msw": "^2.3.0",
     "playwright": "^1.44.1",
