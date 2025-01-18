@@ -1,5 +1,5 @@
-import { antfu } from '@antfu/eslint-config'
-import stylisticTs from '@stylistic/eslint-plugin-ts'
+const { antfu } = require('@antfu/eslint-config')
+const stylisticTs = require('@stylistic/eslint-plugin-ts')
 
 module.exports = antfu({
   gitignore: true,
