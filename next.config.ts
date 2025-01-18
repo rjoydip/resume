@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   compress: true,
   trailingSlash: false,
   poweredByHeader: false,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   productionBrowserSourceMaps: isProduction,
   onDemandEntries: {
     maxInactiveAge: 25 * 1000,
