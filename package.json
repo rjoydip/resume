@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "pnpm@9.15.4",
   "scripts": {
-    "prepare": "husky && playwright install-deps",
+    "prepare": "husky && playwright install",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
