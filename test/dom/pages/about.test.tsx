@@ -1,9 +1,9 @@
+import type { AboutType } from '@/types'
+import { About } from '@/components/pages'
+import { render, screen } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'
-import { render, screen } from '@testing-library/react'
 import { about as aboutFixture } from '../../mocks/fixtures'
-import { About } from '@/components/pages'
-import type { AboutType } from '@/types'
 
 describe('<About />', () => {
   const about: AboutType & { prof_summery_title: string } = aboutFixture
@@ -27,7 +27,7 @@ describe('<About />', () => {
   it('should validate location', async () => {
     const aboutLocEle = screen.getByTestId('about_location')
     expect(aboutLocEle.textContent).toBeDefined()
-    expect(aboutLocEle.textContent).toBe(about.location)
+    expect(aboutLocEle.textContent).toBe(`${about.location.city},${about.location.country}`)
   })
 
   it('should validate professional summery', async () => {
@@ -52,7 +52,7 @@ describe('<About />', () => {
   it('should validate location link', async () => {
     const aboutLocationLinkEle = screen.getByTestId('about_location_link')
     expect(aboutLocationLinkEle.textContent).toBeDefined()
-    expect(aboutLocationLinkEle.getAttribute('href')).toBe(about.location_link)
+    expect(aboutLocationLinkEle.getAttribute('href')).toBe(about.location.link)
   })
 
   it('should validate contact email', async () => {

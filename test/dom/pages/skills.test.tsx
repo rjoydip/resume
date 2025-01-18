@@ -1,10 +1,10 @@
-import * as React from 'react'
-import { beforeAll, describe, expect, it } from 'vitest'
-import { render, screen } from '@testing-library/react'
-import humanizeString from 'humanize-string'
-import { skills as skillsFixture } from '../../mocks/fixtures'
-import { Skills } from '@/components/pages'
 import type { SkillsType } from '@/types'
+import { Skills } from '@/components/pages'
+import { render, screen } from '@testing-library/react'
+import * as React from 'react'
+import titleize from 'titleize'
+import { beforeAll, describe, expect, it } from 'vitest'
+import { skills as skillsFixture } from '../../mocks/fixtures'
 
 describe('<Skills />', () => {
   let container: HTMLElement
@@ -31,13 +31,7 @@ describe('<Skills />', () => {
           container.querySelector(
             `[data-testid='skills_list'] > li:nth-child(${index + 1}) > p`,
           )?.textContent,
-        ).toContain(humanizeString(key))
-
-        expect(
-          container.querySelector(
-              `[data-testid='skills_list'] > li:nth-child(${index + 1}) > span`,
-          )?.textContent,
-        ).toBeDefined()
+        ).toContain(titleize(key))
       })
     })
   })

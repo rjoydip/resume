@@ -1,8 +1,8 @@
-import axios from 'axios'
-import { describe, expect, expectTypeOf, it, vi } from 'vitest'
+import type { LightColorType } from '@/types'
 import type { ListBlobResultBlob } from '@vercel/blob'
 import { cn, fetchData, filterObject } from '@/lib/utils'
-import type { LightColorType } from '@/types'
+import axios from 'axios'
+import { describe, expect, expectTypeOf, it, vi } from 'vitest'
 
 vi.mock('axios')
 

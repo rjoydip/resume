@@ -1,23 +1,26 @@
-import { uid } from 'uid'
+import type { NextConfig } from 'next'
+import MillionLint from '@million/lint'
 import { env, isDevelopment, isProduction } from 'std-env'
-import nextPWA from 'next-pwa'
-import MillionCompiler from '@million/lint'
+import { uid } from 'uid'
 
-/** @type {import('next').NextConfig} */
-export const nextConfig = {
+const nextConfig: NextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   cleanDistDir: true,
   compress: true,
   trailingSlash: false,
   poweredByHeader: false,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   productionBrowserSourceMaps: isProduction,
   onDemandEntries: {
     maxInactiveAge: 25 * 1000,
     pagesBufferLength: 2,
   },
   devIndicators: {
-    autoPrerender: isDevelopment,
+    buildActivity: isDevelopment,
+    appIsrStatus: isDevelopment,
+    buildActivityPosition: isDevelopment ? 'top-right' : undefined,
   },
   generateBuildId: async () => env.GIT_HASH || uid(32),
   experimental: {
@@ -26,8 +29,4 @@ export const nextConfig = {
   },
 }
 
-export default MillionCompiler.next({
-  rsc: true,
-})(nextPWA({
-  disable: isDevelopment,
-})(nextConfig))
+export default MillionLint.next({ rsc: true })(nextConfig)

@@ -1,9 +1,9 @@
+import type { WorksType } from '@/types'
+import { Works } from '@/components/pages'
+import { render, screen } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'
-import { render, screen } from '@testing-library/react'
 import { works as workFixture } from '../../mocks/fixtures'
-import { Works } from '@/components/pages'
-import type { WorksType } from '@/types'
 
 describe('<Works />', () => {
   let container: HTMLElement
@@ -73,7 +73,7 @@ describe('<Works />', () => {
         w.techStacks
         && w.techStacks.forEach((_, i) => {
           const ele = container.querySelector(
-              `[data-testid="work_skills_index_${index}"] > div:nth-child(${i + 2})`,
+            `[data-testid="work_skills_index_${index}"] > div:nth-child(${i + 2})`,
           )
           expect(ele?.textContent).toBeDefined()
         })

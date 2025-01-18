@@ -1,5 +1,6 @@
+import { companies, getDarkThemeColors, getLightThemeColors, metadata, projectLinkTypes, socialMedia, techStacks, workMode } from '@/data'
+import { keySkills } from 'test/mocks/fixtures'
 import { describe, expect, it } from 'vitest'
-import { companies, getDarkThemeColors, getLightThemeColors, keySkills, metadata, projectLinkTypes, socialMedia, techStacks, workMode } from '@/data'
 
 describe('data', () => {
   it('should validate metadata', () => {
@@ -31,8 +32,7 @@ describe('data', () => {
     expect(socialMedia).toStrictEqual(['gitHub', 'linkedIn', 'x'])
   })
   it('should validate keySkills', () => {
-    expect(typeof keySkills).toBe('object')
-    expect(keySkills.length).toBe(7)
+    expect(keySkills.length).toBe(3)
   })
   it('should validate workMode', () => {
     expect(typeof workMode).toBe('object')

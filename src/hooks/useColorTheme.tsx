@@ -1,9 +1,9 @@
-import { useTheme } from 'next-themes'
-import { getDarkThemeColors, getLightThemeColors } from '@/data'
 import type { DarkColorType, LightColorType } from '@/types'
-
-import { useToast } from '@/components/ui/use-toast'
 import { ToastAction } from '@/components/ui/toast'
+import { useToast } from '@/components/ui/use-toast'
+import { getDarkThemeColors, getLightThemeColors } from '@/data'
+
+import { useTheme } from 'next-themes'
 
 function useColorTheme() {
   const { toast } = useToast()

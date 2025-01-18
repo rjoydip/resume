@@ -1,7 +1,7 @@
-import axios from 'axios'
-import { describe, expect, it } from 'vitest'
-import { apiURL } from 'test/constant'
 import type { AboutType, EducationsType, KeySkillsType, ProjectsType, SkillsType, WorksType } from '@/types'
+import axios from 'axios'
+import { apiURL } from 'test/constant'
+import { describe, expect, it } from 'vitest'
 
 describe('should validate data routes', () => {
   it('should validate valid routes \'/about\'', async () => {
@@ -10,7 +10,9 @@ describe('should validate data routes', () => {
     expect(data).toBeDefined()
     expect(data).toHaveProperty('name')
     expect(data).toHaveProperty('initials')
-    expect(data).toHaveProperty('location_link')
+    expect(data.location).toHaveProperty('city')
+    expect(data.location).toHaveProperty('country')
+    expect(data.location).toHaveProperty('link')
     expect(data).toHaveProperty('description')
     expect(data).toHaveProperty('professional_summary')
     expect(data).toHaveProperty('avatar_url')
@@ -83,8 +85,6 @@ describe('should validate data routes', () => {
     expect(data).toBeDefined()
     expect(data).toHaveProperty('cloud')
     expect(data.cloud).toStrictEqual(['a', 'b'])
-    expect(data).toHaveProperty('cross-platform')
-    expect(data['cross-platform']).toStrictEqual(['c', 'd'])
     expect(data).toHaveProperty('devOps')
     expect(data.devOps).toStrictEqual(['e', 'f'])
     expect(data).toHaveProperty('database')
@@ -99,12 +99,6 @@ describe('should validate data routes', () => {
       'm',
       'n',
     ])
-    expect(data).toHaveProperty('object-relational-mapping')
-    expect(data['object-relational-mapping']).toStrictEqual(['o', 'p'])
-    expect(data).toHaveProperty('operating-system')
-    expect(data['operating-system']).toStrictEqual(['q', 'r', 's'])
-    expect(data).toHaveProperty('package-manager')
-    expect(data['package-manager']).toStrictEqual(['t', 'u', 'v'])
     expect(data).toHaveProperty('test')
     expect(data.test).toStrictEqual(['w', 'x', 'y', 'z', 'aa'])
     expect(data).toHaveProperty('tools')

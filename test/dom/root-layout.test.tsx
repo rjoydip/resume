@@ -1,7 +1,7 @@
-import { describe, expect, it, vi } from 'vitest'
+import RootLayout from '@/components/root-layout'
 import { render, screen } from '@testing-library/react'
 import { Inter } from 'next/font/google'
-import RootLayout from '@/components/root-layout'
+import { describe, expect, it, vi } from 'vitest'
 
 vi.mock('next/font/google', () => ({
   Inter: vi.fn(() => ({

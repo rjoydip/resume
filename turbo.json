@@ -1,7 +1,16 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "globalDependencies": [".env"],
+  "tasks": {
     "build": {
+      "env": ["EDGE_CONFIG", "BLOB_READ_WRITE_TOKEN"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.production.local",
+        ".env.local",
+        ".env.production",
+        ".env"
+      ],
       "outputs": [
         ".next/**",
         "!.next/cache/**"

@@ -1,13 +1,16 @@
-import { describe, expect, it } from 'vitest'
 import { aboutSchema, educationsSchema, keySkillsSchema, projectsSchema, skillsSchema, worksSchema } from '@/schema' // Replace with the actual file path
+import { describe, expect, it } from 'vitest'
 
 describe('schema', () => {
   it('aboutSchema validation', () => {
     const validData = {
       name: 'John Doe',
       initials: 'JD',
-      location: 'New York',
-      location_link: 'https://www.newyork.com',
+      location: {
+        city: 'New York',
+        country: 'USA',
+        link: 'https://maps.app.goo.gl/random',
+      },
       avatar_url: 'https://example.com/avatar.jpg',
       website: 'https://www.johndoe.com',
       description: 'Lorem ipsum dolor sit',
@@ -64,14 +67,11 @@ describe('schema', () => {
   it('skillsSchema validation', () => {
     const validData = {
       'cloud': ['aws'],
-      'cross-platform': ['ionic'],
       'devOps': ['docker'],
       'database': ['mysql', 'postgresql', 'mongodb'],
       'framework': ['express', 'laravel', 'nextjs'],
       'languages': ['javascript', 'typescript'],
-      'object-relational-mapping': ['mongoose', 'prisma'],
       'operating-system': ['linux', 'windows', 'mac'],
-      'package-manager': ['npm', 'yarn', 'pnpm'],
       'test': ['jest', 'vitest', 'cypress'],
       'tools': ['git', 'github', 'bitbucket'],
     }

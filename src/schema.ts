@@ -1,11 +1,9 @@
 import { any, array, boolean, email, maxLength, maxValue, minLength, minValue, nullable, nullish, number, object, picklist, regex, startsWith, string, transform, union, url } from 'valibot'
-import { companies, keySkills, projectLinkTypes, socialMedia, techStacks, workMode } from './data'
+import { companies, projectLinkTypes, socialMedia, techStacks, workMode } from './data'
 
 const today = new Date()
-
 const techStackSchema = array(picklist(techStacks))
-
-export const keySkillsSchema = array(picklist(keySkills))
+export const keySkillsSchema = array(string())
 
 export const educationSchema = object({
   school: string(),
@@ -71,14 +69,11 @@ export const worksSchema = array(workSchema)
 
 export const skillsSchema = object({
   'cloud': techStackSchema,
-  'cross-platform': techStackSchema,
   'devOps': techStackSchema,
   'database': techStackSchema,
   'framework': techStackSchema,
   'languages': techStackSchema,
-  'object-relational-mapping': techStackSchema,
   'operating-system': techStackSchema,
-  'package-manager': techStackSchema,
   'test': techStackSchema,
   'tools': techStackSchema,
 })
@@ -106,12 +101,15 @@ export const contactSchema = object({
     name: picklist(socialMedia),
   })),
 })
-
+export const locationSchema = object({
+  city: string(),
+  country: string(),
+  link: string([url()]),
+})
 export const aboutSchema = object({
   name: string([minLength(4)]),
   initials: string([minLength(1), maxLength(4)]),
-  location: string(),
-  location_link: string([url()]),
+  location: locationSchema,
   avatar_url: string([url()]),
   website: string([url()]),
   description: string([maxLength(1000)]),
