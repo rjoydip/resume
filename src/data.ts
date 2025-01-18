@@ -3,7 +3,7 @@ import type { DarkColorType, LightColorType } from '@/types'
 export const metadata = {
   name: 'Joydip Roy',
   description: 'JR',
-  generator: 'nextjs, react, blog, rjoydip, resume',
+  generator: 'blog, rjoydip, resume',
 }
 
 export function getLightThemeColors(): LightColorType[] {
@@ -22,14 +22,5 @@ export const companies = [
 ]
 export const projectLinkTypes = ['web', 'mobile']
 export const socialMedia = ['gitHub', 'linkedIn', 'x']
-export const keySkills = [
-  'Full Stack Development',
-  'Project Leadership',
-  'Team Building and Leadership',
-  'Collaboration and Communication',
-  'TypeScript',
-  'JavaScript',
-  'Node.js',
-]
 export const workMode = ['Work from Home', 'Hybrid', 'Office']
 export const techStacks = ['angular', 'aws', 'bitbucket', 'bootstrap', 'bun', 'cucumber', 'cypress', 'deno', 'docker', 'electron', 'etl', 'express', 'firebase', 'fastify', 'git', 'github', 'github-actions', 'gitlab', 'gmc', 'graphql', 'instana', 'ionic', 'javascript', 'jenkins', 'jest', 'jira', 'kafka', 'laravel', 'linux', 'mac', 'mongodb', 'mongoose', 'mysql', 'nextjs', 'nodejs', 'npm', 'pnpm', 'php', 'playwright', 'postgresql', 'postman', 'prisma', 'react', 'reactjs', 'snyk', 'springboot', 'typescript', 'vercel', 'vitest', 'windows', 'yarn']

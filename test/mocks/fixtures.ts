@@ -8,8 +8,11 @@ const generateTechStacks = () => generateArray(randNumber({ min: 1, max: 10 })).
 export const about: AboutType & { prof_summery_title: string } = {
   name: randFullName(),
   initials: randText({ charCount: 2 }).toString().toUpperCase(),
-  location: `${randCity()}, ${randCountry()}`,
-  location_link: 'https://maps.app.goo.gl/random',
+  location: {
+    city: randCity(),
+    country: randCountry(),
+    link: 'https://maps.app.goo.gl/random',
+  },
   description: randText(),
   professional_summary: randJobDescriptor(),
   avatar_url: randImg(),
@@ -62,7 +65,6 @@ export const projects: ProjectsType = generateArray(5).map(() => ({
 
 export const skills: SkillsType = {
   'cloud': ['a', 'b'],
-  'cross-platform': ['c', 'd'],
   'devOps': ['e', 'f'],
   'database': ['g', 'h', 'i'],
   'framework': [
@@ -73,9 +75,7 @@ export const skills: SkillsType = {
     'm',
     'n',
   ],
-  'object-relational-mapping': ['o', 'p'],
   'operating-system': ['q', 'r', 's'],
-  'package-manager': ['t', 'u', 'v'],
   'test': ['w', 'x', 'y', 'z', 'aa'],
   'tools': [
     'bb',

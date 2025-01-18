@@ -1,6 +1,6 @@
+import { render, screen } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'
-import { render, screen } from '@testing-library/react'
 import { projects as projectsFixture } from '../../mocks/fixtures'
 import { Projects } from '@/components/pages'
 import type { ProjectsType } from '@/types'

@@ -1,6 +1,6 @@
+import { render, screen } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'
-import { render, screen } from '@testing-library/react'
 import { works as workFixture } from '../../mocks/fixtures'
 import { Works } from '@/components/pages'
 import type { WorksType } from '@/types'
@@ -70,10 +70,11 @@ describe('<Works />', () => {
         expect(ele?.textContent).toBe('Skills: ')
       })
       it('should validate skills tech stacks', () => {
+        // eslint-disable-next-line ts/no-unused-expressions
         w.techStacks
         && w.techStacks.forEach((_, i) => {
           const ele = container.querySelector(
-              `[data-testid="work_skills_index_${index}"] > div:nth-child(${i + 2})`,
+            `[data-testid="work_skills_index_${index}"] > div:nth-child(${i + 2})`,
           )
           expect(ele?.textContent).toBeDefined()
         })

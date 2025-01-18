@@ -7,8 +7,8 @@ import {
   TooltipTrigger,
 } from '@radix-ui/react-tooltip'
 import clsx from 'clsx'
-import useColorTheme from '@/hooks/useColorTheme'
 import type { DarkColorType, LightColorType } from '@/types'
+import useColorTheme from '@/hooks/useColorTheme'
 
 export function ColorPalette() {
   const { setColorTheme } = useColorTheme()

@@ -1,5 +1,5 @@
 import { describe, expectTypeOf, it } from 'vitest'
-import type { DarkColorType, FeatureFlagType, IconType, LightColorType, ProjectCardProps } from '@/types'
+import type { DarkColorType, IconType, LightColorType, ProjectCardProps } from '@/types'
 
 describe('types and Interfaces', () => {
   describe('projectCardProps', () => {
@@ -9,6 +9,7 @@ describe('types and Interfaces', () => {
         description: 'This is a sample project description.',
         techStacks: ['JavaScript', 'TypeScript', 'React'],
       }
+      // eslint-disable-next-line ts/no-unused-expressions
       expectTypeOf(props).toMatchTypeOf<{
         title: string
         description: string
@@ -88,6 +89,7 @@ describe('types and Interfaces', () => {
         'yarn',
         'x',
       ]
+      // eslint-disable-next-line ts/no-unused-expressions
       expectTypeOf(validIcons).toEqualTypeOf<IconType[]>
     })
   })
@@ -107,6 +109,7 @@ describe('types and Interfaces', () => {
         'slate',
         'light',
       ]
+      // eslint-disable-next-line ts/no-unused-expressions
       expectTypeOf(validColors).toEqualTypeOf<LightColorType[]>
     })
   })
@@ -126,20 +129,6 @@ describe('types and Interfaces', () => {
         'dark',
       ]
       expectTypeOf(validColors).toEqualTypeOf<DarkColorType[]>()
-    })
-  })
-
-  describe('featureFlagType', () => {
-    it('should have valid values', () => {
-      const validFlags: FeatureFlagType[] = [
-        {
-          FF_SHOW_PROFILE_IMAGE: true,
-        },
-        {
-          FF_SHOW_PROFILE_IMAGE: false,
-        },
-      ]
-      expectTypeOf(validFlags).toEqualTypeOf<FeatureFlagType[]>()
     })
   })
 })

@@ -1,9 +1,9 @@
-import * as React from 'react'
 import type { Metadata } from 'next'
-import { isDevelopment, isTest } from 'std-env'
-import { Inter } from 'next/font/google'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
+import { Inter } from 'next/font/google'
+import * as React from 'react'
+import { isDevelopment, isTest } from 'std-env'
 import {
   getDarkThemeColors,
   getLightThemeColors,

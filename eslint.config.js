@@ -6,7 +6,6 @@ module.exports = antfu({
     'public',
     '**/mocks/**',
   ],
-  stylistic: true,
   javascript: true,
   typescript: true,
   json: true,
@@ -14,8 +13,5 @@ module.exports = antfu({
   yaml: true,
   react: true,
 }, {
-  rules: {
-    'ts/method-signature-style': ['off', 'never'],
-    'no-unused-expressions': ['off', 'never'],
-  },
+  rules: {},
 })

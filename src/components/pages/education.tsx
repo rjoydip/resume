@@ -1,10 +1,10 @@
 'use client'
 
-import * as React from 'react'
 import { Label } from '@radix-ui/react-label'
+import * as React from 'react'
 import { uid } from 'uid'
-import { Section } from '../ui/section'
 import { getIcon } from '../../icons/getIcon'
+import { Section } from '../ui/section'
 import type { EducationsType } from '@/types'
 
 export function Educations({ data }: { data: EducationsType }) {

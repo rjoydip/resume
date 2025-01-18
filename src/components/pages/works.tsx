@@ -1,12 +1,13 @@
 'use client'
 
-import * as React from 'react'
 import { Label } from '@radix-ui/react-label'
+import * as React from 'react'
+import titleize from 'titleize'
 import { uid } from 'uid'
 import { getIcon } from '../../icons/getIcon'
 import { Badge } from '../ui/badge'
 import { Section } from '../ui/section'
-import type { IconType, WorksType } from '@/types'
+import type { WorksType } from '@/types'
 
 export function Works({ data }: { data: WorksType }) {
   return (
@@ -56,21 +57,18 @@ export function Works({ data }: { data: WorksType }) {
             </div>
             <div
               data-testid={`work_description_index_${index}`}
-              className="mt-2 text-pretty text-gray-700 dark:text-gray-300"
-            >
-              {work.description}
-            </div>
+              className="mt-2 text-pretty text-gray-900 dark:text-gray-300"
+              dangerouslySetInnerHTML={{ __html: work.description }}
+            />
             <div
               data-testid={`work_skills_index_${index}`}
               className="mt-2 flex items-baseline"
             >
-              <div className="text-sm font-semibold">Skills: </div>
+              <div className="text-sm font-bold text-green-500">Skills: </div>
               {work.techStacks
               && work.techStacks.map(techStack => (
                 <div key={uid(32)} className="mx-0.5">
-                  {getIcon(techStack as IconType, {
-                    className: 'size-4',
-                  })}
+                  <Badge variant="secondary" className="align-middle text-[12px]">{titleize(techStack)}</Badge>
                 </div>
               ))}
             </div>

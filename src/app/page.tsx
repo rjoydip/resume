@@ -1,9 +1,17 @@
 import type { Metadata } from 'next'
 import { list } from '@vercel/blob'
-import { parse } from 'valibot'
 import { env } from 'std-env'
+import { parse } from 'valibot'
+import type {
+  AboutType,
+  EducationsType,
+  KeySkillsType,
+  ProjectsType,
+  ResumeDataType,
+  SkillsType,
+  WorksType,
+} from '@/types'
 import { CommandMenu } from '@/components/command-menu'
-import { metadata as meta } from '@/data'
 import {
   About,
   Educations,
@@ -12,16 +20,9 @@ import {
   Skills,
   Works,
 } from '@/components/pages'
+import { metadata as meta } from '@/data'
 import { fetchData } from '@/lib/utils'
 import schema from '@/schema'
-import type {
-  AboutType,
-  EducationsType,
-  KeySkillsType,
-  ProjectsType,
-  SkillsType,
-  WorksType,
-} from '@/types'
 
 export const metadata: Metadata = {
   title: `${meta.name}`,
@@ -38,7 +39,7 @@ export default async function Page() {
   const skills: SkillsType = await fetchData(blobs, 'skills')
   const keySkills: KeySkillsType = await fetchData(blobs, 'key-skills')
   const projects: ProjectsType = await fetchData(blobs, 'projects')
-  const data = parse(schema, {
+  const output: ResumeDataType = parse(schema, {
     about,
     educations,
     works,
@@ -49,15 +50,12 @@ export default async function Page() {
   return (
     <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 md:p-16 print:p-12">
       <section className="mx-auto w-full max-w-2xl space-y-4 print:space-y-6">
-        <About data={data.about} />
-        <Works data={data.works} />
-        <Educations data={data.educations} />
-        <Skills data={data.skills} />
-        <KeySkills data={data.keySkills} />
-        <Projects data={data.projects} />
-      </section>
-
-      <section>
+        <About data={output.about} />
+        <Works data={output.works} />
+        <Educations data={output.educations} />
+        <Skills data={output.skills} />
+        <KeySkills data={output.keySkills} />
+        <Projects data={output.projects} />
         <CommandMenu />
       </section>
     </main>

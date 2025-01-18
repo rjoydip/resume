@@ -1,12 +1,12 @@
 import process from 'node:process'
-import { consola } from 'consola'
-import { afterAll, afterEach, beforeAll } from 'vitest'
 import type { SetupServerApi } from 'msw/node'
+import { consola } from 'consola'
 import { setupServer } from 'msw/node'
-
-import 'vitest-dom/extend-expect'
+import { afterAll, afterEach, beforeAll } from 'vitest'
 
 import { handlers } from './mocks/handlers'
+
+import 'vitest-dom/extend-expect'
 
 let mockServer: SetupServerApi
 
