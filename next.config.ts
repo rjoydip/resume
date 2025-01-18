@@ -1,7 +1,7 @@
+import type { NextConfig } from 'next'
 import MillionLint from '@million/lint'
 import { env, isDevelopment, isProduction } from 'std-env'
 import { uid } from 'uid'
-import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
