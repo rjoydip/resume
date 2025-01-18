@@ -1,9 +1,9 @@
+import type { ProjectsType } from '@/types'
+import { Projects } from '@/components/pages'
 import { render, screen } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'
 import { projects as projectsFixture } from '../../mocks/fixtures'
-import { Projects } from '@/components/pages'
-import type { ProjectsType } from '@/types'
 
 describe('<Projects />', () => {
   let container: HTMLElement

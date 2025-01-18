@@ -1,7 +1,7 @@
+import useHasMounted from '@/hooks/useHasMounted'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import React from 'react'
 import { describe, expect, it } from 'vitest'
-import useHasMounted from '@/hooks/useHasMounted'
 
 describe('useHasMounted', () => {
   it('useHasMounted does not change after component state update without re-render', async () => {

@@ -1,6 +1,6 @@
+import { companies, getDarkThemeColors, getLightThemeColors, metadata, projectLinkTypes, socialMedia, techStacks, workMode } from '@/data'
 import { keySkills } from 'test/mocks/fixtures'
 import { describe, expect, it } from 'vitest'
-import { companies, getDarkThemeColors, getLightThemeColors, metadata, projectLinkTypes, socialMedia, techStacks, workMode } from '@/data'
 
 describe('data', () => {
   it('should validate metadata', () => {

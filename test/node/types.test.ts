@@ -1,5 +1,5 @@
-import { describe, expectTypeOf, it } from 'vitest'
 import type { DarkColorType, IconType, LightColorType, ProjectCardProps } from '@/types'
+import { describe, expectTypeOf, it } from 'vitest'
 
 describe('types and Interfaces', () => {
   describe('projectCardProps', () => {

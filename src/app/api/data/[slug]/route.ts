@@ -1,7 +1,7 @@
-import { list } from '@vercel/blob'
-import { env } from 'std-env'
 import type { ResumeDataType } from '@/types'
 import { fetchData } from '@/lib/utils'
+import { list } from '@vercel/blob'
+import { env } from 'std-env'
 
 export const runtime = 'edge'
 

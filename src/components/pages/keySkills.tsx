@@ -1,12 +1,12 @@
 'use client'
 
+import type { KeySkillsType } from '@/types'
 import { Label } from '@radix-ui/react-label'
 import * as React from 'react'
 import { uid } from 'uid'
 import { getIcon } from '../../icons/getIcon'
 import { Card } from '../ui/card'
 import { Section } from '../ui/section'
-import type { KeySkillsType } from '@/types'
 
 export function KeySkills({ data }: { data: KeySkillsType }) {
   return (

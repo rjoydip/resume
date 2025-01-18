@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
-import { SpeedInsights } from '@vercel/speed-insights/next'
-import { ThemeProvider as NextThemesProvider } from 'next-themes'
-import { Inter } from 'next/font/google'
-import * as React from 'react'
-import { isDevelopment, isTest } from 'std-env'
+import { Toaster } from '@/components/ui/toaster'
 import {
   getDarkThemeColors,
   getLightThemeColors,
   metadata as meta,
 } from '@/data'
-import { Toaster } from '@/components/ui/toaster'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import { ThemeProvider as NextThemesProvider } from 'next-themes'
+import { Inter } from 'next/font/google'
+import * as React from 'react'
+import { isDevelopment, isTest } from 'std-env'
 
 import '@/styles/globals.css'
 

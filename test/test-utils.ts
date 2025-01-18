@@ -1,7 +1,7 @@
+import type { Client } from 'autocannon'
 import { Buffer } from 'node:buffer'
 import { existsSync } from 'node:fs'
 import { mkdir, writeFile } from 'node:fs/promises'
-import type { Client } from 'autocannon'
 import autocannon from 'autocannon'
 import consola from 'consola'
 

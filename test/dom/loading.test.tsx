@@ -1,6 +1,6 @@
+import Loading from '@/components/loading' // Replace with the actual file path
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
-import Loading from '@/components/loading' // Replace with the actual file path
 
 describe('loading', () => {
   afterEach(() => {

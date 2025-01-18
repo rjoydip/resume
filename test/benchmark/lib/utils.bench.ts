@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest'
 import { filterObject } from '@/lib/utils'
+import { describe, expect, it } from 'vitest'
 
 describe('filterObject', () => {
   it('filter string value', () => {

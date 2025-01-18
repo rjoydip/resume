@@ -1,7 +1,3 @@
-import type { Metadata } from 'next'
-import { list } from '@vercel/blob'
-import { env } from 'std-env'
-import { parse } from 'valibot'
 import type {
   AboutType,
   EducationsType,
@@ -11,6 +7,7 @@ import type {
   SkillsType,
   WorksType,
 } from '@/types'
+import type { Metadata } from 'next'
 import { CommandMenu } from '@/components/command-menu'
 import {
   About,
@@ -23,6 +20,9 @@ import {
 import { metadata as meta } from '@/data'
 import { fetchData } from '@/lib/utils'
 import schema from '@/schema'
+import { list } from '@vercel/blob'
+import { env } from 'std-env'
+import { parse } from 'valibot'
 
 export const metadata: Metadata = {
   title: `${meta.name}`,

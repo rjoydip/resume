@@ -1,9 +1,9 @@
+import type { AboutType } from '@/types'
+import { About } from '@/components/pages'
 import { render, screen } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'
 import { about as aboutFixture } from '../../mocks/fixtures'
-import { About } from '@/components/pages'
-import type { AboutType } from '@/types'
 
 describe('<About />', () => {
   const about: AboutType & { prof_summery_title: string } = aboutFixture

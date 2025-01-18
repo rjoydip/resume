@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest'
 import { aboutSchema, educationsSchema, keySkillsSchema, projectsSchema, skillsSchema, worksSchema } from '@/schema' // Replace with the actual file path
+import { describe, expect, it } from 'vitest'
 
 describe('schema', () => {
   it('aboutSchema validation', () => {

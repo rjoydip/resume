@@ -1,6 +1,6 @@
+import useColorTheme from '@/hooks/useColorTheme'
 import { act, renderHook } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import useColorTheme from '@/hooks/useColorTheme'
 
 describe('useColorTheme', () => {
   afterEach(() => {

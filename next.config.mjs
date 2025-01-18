@@ -1,7 +1,7 @@
-import { uid } from 'uid'
-import { env, isDevelopment, isProduction } from 'std-env'
-import nextPWA from 'next-pwa'
 import MillionCompiler from '@million/lint'
+import nextPWA from 'next-pwa'
+import { env, isDevelopment, isProduction } from 'std-env'
+import { uid } from 'uid'
 
 /** @type {import('next').NextConfig} */
 export const nextConfig = {

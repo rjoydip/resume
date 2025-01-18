@@ -1,5 +1,6 @@
 'use client'
 
+import type { ProjectsType, ProjectType } from '@/types'
 import clsx from 'clsx'
 import * as React from 'react'
 import titleize from 'titleize'
@@ -15,7 +16,6 @@ import {
 } from '../ui/card'
 import { Label } from '../ui/label'
 import { Section } from '../ui/section'
-import type { ProjectType, ProjectsType } from '@/types'
 
 const ProjectsListItem = React.memo(
   ({ project, index }: { project: ProjectType, index: number }) => {

@@ -1,10 +1,10 @@
 'use client'
 
+import useColorTheme from '@/hooks/useColorTheme'
+import useHasMounted from '@/hooks/useHasMounted'
 import { Moon, Sun } from 'lucide-react'
 import * as React from 'react'
 import { Button } from './ui/button'
-import useHasMounted from '@/hooks/useHasMounted'
-import useColorTheme from '@/hooks/useColorTheme'
 
 export function CommandMenu() {
   const hasMounter = useHasMounted()

@@ -1,5 +1,6 @@
 'use client'
 
+import type { AboutType, ContactType, IconType } from '@/types'
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
 import { Label } from '@radix-ui/react-label'
 import * as React from 'react'
@@ -15,7 +16,6 @@ import {
   CardHeader,
 } from '../ui/card'
 import { Section } from '../ui/section'
-import type { AboutType, ContactType, IconType } from '@/types'
 
 function Contact({ data }: { data: ContactType }) {
   return (

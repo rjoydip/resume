@@ -1,9 +1,9 @@
+import type { EducationsType } from '@/types'
+import { Educations } from '@/components/pages'
 import { render, screen } from '@testing-library/react'
 import * as React from 'react'
 import { describe, expect, it } from 'vitest'
 import { educations as educationsFixtures } from '../../mocks/fixtures'
-import { Educations } from '@/components/pages'
-import type { EducationsType } from '@/types'
 
 describe('<Educations />', () => {
   it('should validate education title', async () => {

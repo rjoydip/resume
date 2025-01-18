@@ -1,9 +1,9 @@
+import type { WorksType } from '@/types'
+import { Works } from '@/components/pages'
 import { render, screen } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'
 import { works as workFixture } from '../../mocks/fixtures'
-import { Works } from '@/components/pages'
-import type { WorksType } from '@/types'
 
 describe('<Works />', () => {
   let container: HTMLElement
@@ -70,7 +70,6 @@ describe('<Works />', () => {
         expect(ele?.textContent).toBe('Skills: ')
       })
       it('should validate skills tech stacks', () => {
-        // eslint-disable-next-line ts/no-unused-expressions
         w.techStacks
         && w.techStacks.forEach((_, i) => {
           const ele = container.querySelector(

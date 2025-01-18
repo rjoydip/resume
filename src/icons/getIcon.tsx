@@ -1,3 +1,4 @@
+import type { IconType } from '@/types'
 import {
   BadgeCheck,
   CircleDot,
@@ -15,7 +16,6 @@ import {
 import * as React from 'react'
 import titleize from 'titleize'
 import { Badge } from '../components/ui/badge'
-import type { IconType } from '@/types'
 
 interface IconProps {
   className?: string

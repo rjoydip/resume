@@ -1,5 +1,6 @@
 'use client'
 
+import type { WorksType } from '@/types'
 import { Label } from '@radix-ui/react-label'
 import * as React from 'react'
 import titleize from 'titleize'
@@ -7,7 +8,6 @@ import { uid } from 'uid'
 import { getIcon } from '../../icons/getIcon'
 import { Badge } from '../ui/badge'
 import { Section } from '../ui/section'
-import type { WorksType } from '@/types'
 
 export function Works({ data }: { data: WorksType }) {
   return (

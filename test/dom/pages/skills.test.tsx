@@ -1,10 +1,10 @@
+import type { SkillsType } from '@/types'
+import { Skills } from '@/components/pages'
 import { render, screen } from '@testing-library/react'
 import * as React from 'react'
 import titleize from 'titleize'
 import { beforeAll, describe, expect, it } from 'vitest'
 import { skills as skillsFixture } from '../../mocks/fixtures'
-import { Skills } from '@/components/pages'
-import type { SkillsType } from '@/types'
 
 describe('<Skills />', () => {
   let container: HTMLElement

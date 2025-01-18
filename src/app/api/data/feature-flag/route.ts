@@ -1,6 +1,6 @@
+import type { FeatureFlagType } from '@/types'
 import { createClient } from '@vercel/edge-config'
 import { env } from 'std-env'
-import type { FeatureFlagType } from '@/types'
 
 export const runtime = 'edge'
 
