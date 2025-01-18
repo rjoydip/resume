@@ -6,7 +6,6 @@ import MillionCompiler from '@million/lint'
 /** @type {import('next').NextConfig} */
 export const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   cleanDistDir: true,
   compress: true,
   trailingSlash: false,
