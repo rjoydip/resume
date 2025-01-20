@@ -63,17 +63,17 @@ describe('<Works />', () => {
         )
         expect(ele?.textContent).toBe(w.description)
       })
-      it('should validate skill title', () => {
+      it('should validate technology title', () => {
         const ele = container.querySelector(
-          `[data-testid="work_skills_index_${index}"] > div:nth-child(1)`,
+          `[data-testid="work_technology_index_${index}"] > div:nth-child(1)`,
         )
-        expect(ele?.textContent).toBe('Skills: ')
+        expect(ele?.textContent).toBe('Technology: ')
       })
-      it('should validate skills tech stacks', () => {
+      it('should validate technology items', () => {
         w.techStacks
         && w.techStacks.forEach((_, i) => {
           const ele = container.querySelector(
-            `[data-testid="work_skills_index_${index}"] > div:nth-child(${i + 2})`,
+            `[data-testid="work_technology_index_${index}"] > div:nth-child(${i + 2})`,
           )
           expect(ele?.textContent).toBeDefined()
         })

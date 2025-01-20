@@ -1,5 +1,4 @@
 import type { NextConfig } from 'next'
-import MillionLint from '@million/lint'
 import { env, isDevelopment, isProduction } from 'std-env'
 import { uid } from 'uid'
 
@@ -29,4 +28,4 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default MillionLint.next({ rsc: true })(nextConfig)
+export default nextConfig

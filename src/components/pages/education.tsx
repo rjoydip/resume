@@ -1,10 +1,10 @@
 'use client'
 
 import type { EducationsType } from '@/types'
-import { Label } from '@radix-ui/react-label'
 import * as React from 'react'
 import { uid } from 'uid'
 import { getIcon } from '../../icons/getIcon'
+import { Label } from '../ui/label'
 import { Section } from '../ui/section'
 
 export function Educations({ data }: { data: EducationsType }) {
@@ -30,7 +30,7 @@ export function Educations({ data }: { data: EducationsType }) {
                 </div>
                 <div
                   data-testid={`education_start_end_index_${index}`}
-                  className="tabular-nums text-gray-500"
+                  className="tabular-nums text-gray-700"
                 >
                   {education.start}
                   {' '}

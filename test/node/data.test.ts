@@ -41,6 +41,6 @@ describe('data', () => {
   })
   it('should validate techStacks', () => {
     expect(typeof techStacks).toBe('object')
-    expect(techStacks.length).toBe(51)
+    expect(techStacks.length).toBe(40)
   })
 })

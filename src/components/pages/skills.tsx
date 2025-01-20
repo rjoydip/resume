@@ -1,13 +1,13 @@
 'use client'
 
 import type { SkillsType } from '@/types'
-import { Label } from '@radix-ui/react-label'
 import * as React from 'react'
 import titleize from 'titleize'
 import { uid } from 'uid'
 import { getIcon } from '../../icons/getIcon'
 import { Badge } from '../ui/badge'
 import { Card } from '../ui/card'
+import { Label } from '../ui/label'
 import { Section } from '../ui/section'
 
 export function Skills({ data }: { data: SkillsType }) {

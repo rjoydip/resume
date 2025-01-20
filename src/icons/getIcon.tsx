@@ -56,7 +56,7 @@ export function getIcon(icon: IconType = null, props: IconProps = {}) {
     default:
       return (
         icon && (
-          <Badge className="px-1 py-0 text-[10px]" variant="secondary">
+          <Badge className="px-1 py-0 text-[10px]" variant="secondary" aria-label={`Show ${titleize(icon.toString())} icon`}>
             {titleize(icon.toString())}
           </Badge>
         )

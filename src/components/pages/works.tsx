@@ -1,12 +1,12 @@
 'use client'
 
 import type { WorksType } from '@/types'
-import { Label } from '@radix-ui/react-label'
 import * as React from 'react'
 import titleize from 'titleize'
 import { uid } from 'uid'
 import { getIcon } from '../../icons/getIcon'
 import { Badge } from '../ui/badge'
+import { Label } from '../ui/label'
 import { Section } from '../ui/section'
 
 export function Works({ data }: { data: WorksType }) {
@@ -17,7 +17,7 @@ export function Works({ data }: { data: WorksType }) {
       </Label>
       <div
         data-testid="work_list"
-        className="relative space-y-8 border-l border-gray-200 dark:border-gray-700"
+        className="relative space-y-8 border-l border-gray-200 dark:border-gray-200"
       >
         {data.map((work, index) => (
           <div key={uid(32)} className="relative pl-6">
@@ -41,7 +41,7 @@ export function Works({ data }: { data: WorksType }) {
                   ))}
                 </span>
               </div>
-              <div className="tabular-nums text-gray-500">
+              <div className="tabular-nums text-gray-700">
                 {work.start}
                 {' '}
                 -
@@ -61,15 +61,13 @@ export function Works({ data }: { data: WorksType }) {
               dangerouslySetInnerHTML={{ __html: work.description }}
             />
             <div
-              data-testid={`work_skills_index_${index}`}
-              className="mt-2 flex items-baseline"
+              data-testid={`work_technology_index_${index}`}
+              className="flex flex-wrap mt-2 items-baseline"
             >
-              <div className="text-sm font-bold text-green-500">Skills: </div>
+              <div className="text-sm font-bold">Technology: </div>
               {work.techStacks
               && work.techStacks.map(techStack => (
-                <div key={uid(32)} className="mx-0.5">
-                  <Badge variant="secondary" className="align-middle text-[12px]">{titleize(techStack)}</Badge>
-                </div>
+                <Badge key={uid(32)} variant="secondary" className="mx-0.5 my-0.5 align-middle text-[12px]">{titleize(techStack)}</Badge>
               ))}
             </div>
           </div>
