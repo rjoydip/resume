@@ -18,6 +18,7 @@ export function CommandMenu() {
       onClick={onToggle}
       variant="outline"
       size="icon"
+      aria-label="Theme Toggle"
       className="fixed right-4 flex rounded-full shadow-2xl sm:bottom-5 print:hidden"
     >
       {hasMounter && theme === 'dark'

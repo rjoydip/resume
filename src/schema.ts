@@ -68,14 +68,13 @@ export const workSchema = object({
 export const worksSchema = array(workSchema)
 
 export const skillsSchema = object({
-  'cloud': techStackSchema,
-  'devOps': techStackSchema,
-  'database': techStackSchema,
-  'framework': techStackSchema,
-  'languages': techStackSchema,
-  'operating-system': techStackSchema,
-  'test': techStackSchema,
-  'tools': techStackSchema,
+  cloud: techStackSchema,
+  devOps: techStackSchema,
+  database: techStackSchema,
+  framework: techStackSchema,
+  languages: techStackSchema,
+  test: techStackSchema,
+  tools: techStackSchema,
 })
 
 export const projectSchema = object({

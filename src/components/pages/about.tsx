@@ -1,12 +1,11 @@
 'use client'
 
 import type { AboutType, ContactType, IconType } from '@/types'
-import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
-import { Label } from '@radix-ui/react-label'
 import * as React from 'react'
 import titleize from 'titleize'
 import { uid } from 'uid'
 import { getIcon } from '../../icons/getIcon'
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { Button } from '../ui/button'
 import {
   Card,
@@ -15,6 +14,7 @@ import {
   CardFooter,
   CardHeader,
 } from '../ui/card'
+import { Label } from '../ui/label'
 import { Section } from '../ui/section'
 
 function Contact({ data }: { data: ContactType }) {
@@ -27,6 +27,7 @@ function Contact({ data }: { data: ContactType }) {
                 <a
                   data-testid="about_contact_email"
                   href={`mailto:${data.email}`}
+                  aria-label="Show Email"
                 >
                   {getIcon('mail', {
                     className: 'size-4',
@@ -38,7 +39,11 @@ function Contact({ data }: { data: ContactType }) {
         {data.tel
           ? (
               <Button className="size-8" variant="outline" size="icon" asChild>
-                <a data-testid="about_contact_tel" href={`tel:${data.tel}`}>
+                <a
+                  data-testid="about_contact_tel"
+                  href={`tel:${data.tel}`}
+                  aria-label="Show Mobile Number"
+                >
                   {getIcon('phone', {
                     className: 'size-4',
                   })}
@@ -55,9 +60,13 @@ function Contact({ data }: { data: ContactType }) {
             size="icon"
             asChild
           >
-            <a href={social.url}>
+            <a
+              href={social.url}
+              aria-label="Show Social Media URLs"
+            >
               {getIcon(social.name as IconType, {
                 className: 'size-4',
+                href: social.url,
               })}
             </a>
           </Button>
@@ -71,6 +80,7 @@ function Contact({ data }: { data: ContactType }) {
                 <a
                   data-testid="about_contact_email_hidden"
                   href={`mailto:${data.email}`}
+                  aria-label="Show Email"
                 >
                   {data.email}
                 </a>
@@ -84,6 +94,7 @@ function Contact({ data }: { data: ContactType }) {
                 <a
                   data-testid="about_contact_tel_hidden"
                   href={`tel:${data.tel}`}
+                  aria-label="Show Mobile Number"
                 >
                   {data.tel}
                 </a>
@@ -101,6 +112,7 @@ function Contact({ data }: { data: ContactType }) {
                   data-testid={`about_contact_social_${social.name}_hidden`}
                   href={social.url}
                   target="_blank"
+                  aria-label="Show Social Media URLs"
                   rel="noreferrer noopener"
                 >
                   {social.url}
@@ -119,12 +131,11 @@ export function About({ data }: { data: AboutType }) {
       <Card className="border p-3">
         <CardHeader>
           <div className="block flex flex-col items-center justify-center sm:hidden print:hidden">
-            <Avatar className="size-28">
+            <Avatar className="size-28 rounded-full">
               <AvatarImage
                 data-testid="about_avatar_url"
                 alt={data.name}
                 src={data.avatar_url}
-                className="rounded-full"
                 rel="noreferrer noopener"
               />
               <AvatarFallback>{data.initials}</AvatarFallback>
@@ -151,12 +162,11 @@ export function About({ data }: { data: AboutType }) {
             >
               {data.description}
             </div>
-            <Avatar className="hidden size-28 sm:block">
+            <Avatar className="hidden size-28 rounded-full sm:block">
               <AvatarImage
                 data-testid="about_avatar_url"
                 alt={data.name}
                 src={data.avatar_url}
-                className="rounded-full"
               />
               <AvatarFallback>{data.initials}</AvatarFallback>
             </Avatar>
@@ -169,6 +179,7 @@ export function About({ data }: { data: AboutType }) {
               data-testid="about_location_link"
               className="hover:point inline-flex"
               href={data.location.link}
+              aria-label="Show Location on Map"
               target="_blank"
               rel="noreferrer noopener"
             >

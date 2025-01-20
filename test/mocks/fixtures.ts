@@ -75,7 +75,6 @@ export const skills: SkillsType = {
     'm',
     'n',
   ],
-  'operating-system': ['q', 'r', 's'],
   'test': ['w', 'x', 'y', 'z', 'aa'],
   'tools': [
     'bb',

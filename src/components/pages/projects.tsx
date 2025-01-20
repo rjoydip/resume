@@ -28,8 +28,8 @@ const ProjectsListItem = React.memo(
         key={uid(32)}
       >
         <CardHeader>
-          <CardTitle className="space-y-1">
-            <div className="flex flex-wrap space-x-0.5">
+          <CardTitle>
+            <div className="flex flex-wrap">
               <Label
                 data-testid={`project_title_index_${index}`}
                 className="font-semibold text-primary dark:text-primary"
@@ -45,30 +45,30 @@ const ProjectsListItem = React.memo(
             {project.description}
           </CardDescription>
         </CardHeader>
-        <CardContent className="mt-auto flex">
-          <div className="mt-2">
-            <div
-              data-testid={`project_client_index_${index}`}
-              className="flex items-center gap-1"
-            >
-              <Label className="font-medium">Client: </Label>
-              <div className="text-pretty text-sm">
-                {project.isClient ? 'Yes' : 'No'}
-                {' '}
-                {project.client_country
-                  ? `(${project.client_country})`
-                  : ''}
-              </div>
+        <CardContent className="mt-2">
+          <div
+            data-testid={`project_client_index_${index}`}
+            className="flex flex-wrap items-center"
+          >
+            <div className="font-semibold text-primary dark:text-primary">Client: </div>
+            <div className="mx-2 text-pretty text-sm">
+              {project.isClient ? 'Yes' : 'No'}
+              {' '}
+              {project.client_country
+                ? `(${project.client_country})`
+                : ''}
             </div>
-            <div
-              data-testid={`project_links_index_${index}`}
-              className="flex items-center gap-1 print:hidden"
-            >
-              {project.links && !!project.links.length
-                ? (
-                    <Label className="font-medium">Links: </Label>
-                  )
-                : null}
+          </div>
+          <div
+            data-testid={`project_links_index_${index}`}
+            className="flex items-center print:hidden"
+          >
+            {project.links && !!project.links.length
+              ? (
+                  <div className="font-semibold text-primary dark:text-primary">Links: </div>
+                )
+              : null}
+            <div className="mx-2 flex text-pretty text-sm">
               {project.links
               && !!project.links.length
               && project.links.map(link => (
@@ -77,38 +77,39 @@ const ProjectsListItem = React.memo(
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Project Link"
                 >
                   {getIcon(link.type === 'mobile' ? 'smartphone' : 'web', {
-                    className: 'size-5 text-red-600',
+                    className: 'size-6 text-red-600',
                     href: link.href,
                   })}
                 </a>
               ))}
             </div>
-            <div
-              data-testid={`project_company_index_${index}`}
-              className="flex items-center gap-1"
-            >
-              {project.company
-                ? (
-                    <Label className="font-medium">Company: </Label>
-                  )
-                : null}
-              {titleize(project.company)}
-            </div>
-            <div
-              data-testid={`project_tech_stacks_index_${index}`}
-              className="flex items-center flex-wrap gap-1"
-            >
-              {project.techStacks && !!project.techStacks.length && (
-                <Label className="font-medium">Technology: </Label>
-              )}
-              {project.techStacks
-              && !!project.techStacks.length
-              && project.techStacks.map(techStack => (
-                <Badge key={uid(32)} variant="secondary" className="mx-0.5 my-0.5 align-middle text-[12px]">{titleize(techStack)}</Badge>
-              ))}
-            </div>
+          </div>
+          <div
+            data-testid={`project_company_index_${index}`}
+            className="flex flex-wrap items-center"
+          >
+            {project.company
+              ? (
+                  <div className="font-semibold text-primary dark:text-primary">Company: </div>
+                )
+              : null}
+            <div className="mx-2 text-pretty text-sm">{titleize(project.company)}</div>
+          </div>
+          <div
+            data-testid={`project_tech_stacks_index_${index}`}
+            className="flex flex-wrap items-center"
+          >
+            {project.techStacks && !!project.techStacks.length && (
+              <div className="font-semibold text-primary dark:text-primary">Technology: </div>
+            )}
+            {project.techStacks
+            && !!project.techStacks.length
+            && project.techStacks.map(techStack => (
+              <Badge key={uid(32)} variant="secondary" className="mx-0.5 text-pretty text-sm align-middle text-[11px]">{titleize(techStack)}</Badge>
+            ))}
           </div>
         </CardContent>
       </Card>
