@@ -1,5 +1,5 @@
 import type { WorksType } from '@/types'
-import { Works } from '@/components/pages'
+import { Works } from '@/components/pages/works'
 import { render, screen } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'

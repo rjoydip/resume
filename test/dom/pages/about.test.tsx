@@ -1,5 +1,5 @@
 import type { AboutType } from '@/types'
-import { About } from '@/components/pages'
+import { About } from '@/components/pages/about'
 import { render, screen } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'

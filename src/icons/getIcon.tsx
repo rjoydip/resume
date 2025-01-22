@@ -1,7 +1,6 @@
 import type { IconType } from '@/types'
 import {
   BadgeCheck,
-  CircleDot,
   Dot,
   Github,
   Globe,
@@ -9,7 +8,6 @@ import {
   MailIcon,
   MapPin,
   PhoneIcon,
-  Server,
   Smartphone,
   Twitter,
 } from 'lucide-react'
@@ -27,9 +25,6 @@ export function getIcon(icon: IconType = null, props: IconProps = {}) {
   switch (icon?.toLowerCase()) {
     case 'dot':
       return <Dot {...props} />
-    case 'backend':
-    case 'server':
-      return <Server {...props} />
     case 'email':
     case 'mail':
       return <MailIcon {...props} />
@@ -42,8 +37,6 @@ export function getIcon(icon: IconType = null, props: IconProps = {}) {
       return <Globe {...props} />
     case 'map':
       return <MapPin {...props} />
-    case 'circle-dot':
-      return <CircleDot {...props} />
     case 'badge-check':
       return <BadgeCheck {...props} />
     case 'linkedin':

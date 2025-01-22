@@ -1,12 +1,9 @@
 import type { DarkColorType, LightColorType } from '@/types'
-import { ToastAction } from '@/components/ui/toast'
-import { useToast } from '@/components/ui/use-toast'
 import { getDarkThemeColors, getLightThemeColors } from '@/data'
 
 import { useTheme } from 'next-themes'
 
 function useColorTheme() {
-  const { toast } = useToast()
   const { theme, setTheme } = useTheme()
 
   const setColorTheme = (color: LightColorType | DarkColorType | 'system') => {
@@ -32,12 +29,7 @@ function useColorTheme() {
       setTheme(`${color}-dark`)
     }
     else {
-      toast({
-        variant: 'destructive',
-        title: 'Uh oh!',
-        description: 'Not falling in any case.',
-        action: <ToastAction altText="Try again">Try again</ToastAction>,
-      })
+      setTheme(color)
     }
     window.dispatchEvent(new Event('storageChange'))
   }

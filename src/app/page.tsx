@@ -8,19 +8,17 @@ import type {
   WorksType,
 } from '@/types'
 import type { Metadata } from 'next'
-import { CommandMenu } from '@/components/command-menu'
-import {
-  About,
-  Educations,
-  KeySkills,
-  Projects,
-  Skills,
-  Works,
-} from '@/components/pages'
+import { About } from '@/components/pages/about'
+import { Educations } from '@/components/pages/education'
+import { KeySkills } from '@/components/pages/keySkills'
+import { Projects } from '@/components/pages/projects'
+import { Skills } from '@/components/pages/skills'
+import { Works } from '@/components/pages/works'
 import { metadata as meta } from '@/data'
 import { fetchData } from '@/lib/utils'
 import schema from '@/schema'
 import { list } from '@vercel/blob'
+import * as React from 'react'
 import { env } from 'std-env'
 import { parse } from 'valibot'
 
@@ -56,7 +54,6 @@ export default async function Page() {
         <Skills data={output.skills} />
         <KeySkills data={output.keySkills} />
         <Projects data={output.projects} />
-        <CommandMenu />
       </section>
     </main>
   )

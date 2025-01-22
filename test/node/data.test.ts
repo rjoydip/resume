@@ -10,12 +10,12 @@ describe('data', () => {
   it('should validate getLightThemeColors', () => {
     const lightThemeColors = getLightThemeColors()
     expect(typeof lightThemeColors).toBe('object')
-    expect(lightThemeColors.length).toBe(11)
+    expect(lightThemeColors.length).toBe(2)
   })
   it('should validate getDarkThemeColors', () => {
     const darkThemeColors = getDarkThemeColors()
     expect(typeof darkThemeColors).toBe('object')
-    expect(darkThemeColors.length).toBe(10)
+    expect(darkThemeColors.length).toBe(1)
   })
   it('should validate companies', () => {
     expect(typeof companies).toBe('object')

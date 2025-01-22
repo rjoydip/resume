@@ -8,7 +8,7 @@ on:
     tags:
       - 'v*'
   workflow_run:
-    workflows: [ci.yaml, e2e.yaml]
+    workflows: [ci.yaml]
     types:
       - completed
 

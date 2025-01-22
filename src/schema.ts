@@ -42,7 +42,6 @@ export const workSchema = object({
   description: string(),
   link: string([url()]),
   mode: array(picklist(workMode)),
-  logo: any(),
   techStacks: techStackSchema,
   start: union([
     number([
@@ -66,16 +65,7 @@ export const workSchema = object({
   ])),
 })
 export const worksSchema = array(workSchema)
-
-export const skillsSchema = object({
-  cloud: techStackSchema,
-  devOps: techStackSchema,
-  database: techStackSchema,
-  framework: techStackSchema,
-  languages: techStackSchema,
-  test: techStackSchema,
-  tools: techStackSchema,
-})
+export const skillsSchema = techStackSchema
 
 export const projectSchema = object({
   title: string(),

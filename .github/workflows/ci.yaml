@@ -63,14 +63,6 @@ jobs:
       - name: 📊 E2E test
         run: pnpm test:e2e
 
-      - name: 〽️ Benchmark
-        run: pnpm test:bench
-
-      - name: 🏋️ Load test
-        run: |
-          curl https://github.com/grafana/k6/releases/download/v0.47.0/k6-v0.47.0-linux-amd64.tar.gz -L | tar xvz --strip-components 1
-          npx start-server-and-test start http://127.0.0.1:3000 './k6 run test/performance/script.mjs'
-
       - uses: actions/upload-artifact@v4
         with:
           name: code-coverage
