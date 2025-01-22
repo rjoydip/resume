@@ -47,8 +47,8 @@ export type IconType =
   | 'x'
   | 'twitter'
   | null
-export type LightColorType = 'yellow' | 'blue' | 'green' | 'red' | 'violet' | 'zinc' | 'orange' | 'rose' | 'slate' | 'slate' | 'light' | 'system'
-export type DarkColorType = 'yellow-dark' | 'blue-dark' | 'green-dark' | 'red-dark' | 'violet-dark' | 'zinc-dark' | 'orange-dark' | 'rose-dark' | 'slate-dark' | 'dark'
+export type LightColorType = 'light' | 'system'
+export type DarkColorType = 'dark'
 
 export interface FeatureFlagType {
   FF_SHOW_PROFILE_IMAGE: boolean

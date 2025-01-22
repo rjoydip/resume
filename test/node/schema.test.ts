@@ -65,16 +65,7 @@ describe('schema', () => {
   })
 
   it('skillsSchema validation', () => {
-    const validData = {
-      'cloud': ['aws'],
-      'devOps': ['docker'],
-      'database': ['mysql', 'postgresql', 'mongodb'],
-      'framework': ['express', 'laravel', 'nextjs'],
-      'languages': ['javascript', 'typescript'],
-      'operating-system': ['linux', 'windows', 'mac'],
-      'test': ['jest', 'vitest', 'cypress'],
-      'tools': ['git', 'github', 'bitbucket'],
-    }
+    const validData = ['aws', 'docker', 'mysql', 'postgresql', 'mongodb', 'express', 'laravel', 'nextjs', 'javascript', 'typescript', 'jest', 'vitest', 'cypress', 'git', 'github', 'bitbucket']
 
     expect(skillsSchema._parse(validData).issues).toBeUndefined()
   })

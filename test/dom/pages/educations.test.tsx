@@ -1,5 +1,5 @@
 import type { EducationsType } from '@/types'
-import { Educations } from '@/components/pages'
+import { Educations } from '@/components/pages/education'
 import { render, screen } from '@testing-library/react'
 import * as React from 'react'
 import { describe, expect, it } from 'vitest'

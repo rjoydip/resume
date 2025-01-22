@@ -1,8 +1,7 @@
 import type { SkillsType } from '@/types'
-import { Skills } from '@/components/pages'
+import { Skills } from '@/components/pages/skills'
 import { render, screen } from '@testing-library/react'
 import * as React from 'react'
-import titleize from 'titleize'
 import { beforeAll, describe, expect, it } from 'vitest'
 import { skills as skillsFixture } from '../../mocks/fixtures'
 
@@ -18,21 +17,9 @@ describe('<Skills />', () => {
     const ksTitle = screen.getByTestId('skills_title')
     expect(ksTitle.textContent).toBe('Skills')
   })
-  it('should validate skill list', async () => {
+  it('should validate skill', async () => {
     expect(
-      container.querySelector('[data-testid=\'skills_list\'] > li'),
+      container.querySelector('[data-testid=\'skills_list\'] > div'),
     ).toBeDefined()
-  })
-  describe('should validate projects items', async () => {
-    const skills = skillsFixture
-    Object.keys(skills).forEach((key, index) => {
-      it('should validate skill list', async () => {
-        expect(
-          container.querySelector(
-            `[data-testid='skills_list'] > li:nth-child(${index + 1}) > p`,
-          )?.textContent,
-        ).toContain(titleize(key))
-      })
-    })
   })
 })

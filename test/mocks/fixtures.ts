@@ -63,26 +63,7 @@ export const projects: ProjectsType = generateArray(5).map(() => ({
   links: [],
 }))
 
-export const skills: SkillsType = {
-  'cloud': ['a', 'b'],
-  'devOps': ['e', 'f'],
-  'database': ['g', 'h', 'i'],
-  'framework': [
-    'j',
-    'k',
-  ],
-  'languages': [
-    'm',
-    'n',
-  ],
-  'test': ['w', 'x', 'y', 'z', 'aa'],
-  'tools': [
-    'bb',
-    'cc',
-    'dd',
-    'ee',
-  ],
-}
+export const skills: SkillsType = ['a', 'bbv', 'e', 'f', 'g', 'h-z', 'aa', 'bb', 'cc', 'dd', 'ee']
 
 export const works: WorksType = generateArray(3).map(() => ({
   company: randCompanyName(),

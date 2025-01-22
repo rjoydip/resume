@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'rjoydip',
     short_name: 'rjoydip',
-    description: 'Resume - Joydip Roy',
+    description: 'Joydip Roy',
     start_url: '/',
     display: 'standalone',
     display_override: ['fullscreen', 'standalone', 'browser'],
