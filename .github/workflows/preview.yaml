@@ -1,6 +1,10 @@
 name: Preview
 
 on:
+  workflow_run:
+    workflows: [ci.yaml]
+    types:
+      - completed
   push:
     branches-ignore:
       - main
