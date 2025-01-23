@@ -1,4 +1,4 @@
-import type { FilterObjType } from '@/types'
+import type { FilterObjType } from '@/types.ts'
 import type { ListBlobResultBlob } from '@vercel/blob'
 import axios from 'axios'
 import { type ClassValue, clsx } from 'clsx'
@@ -17,20 +17,25 @@ export function filterObject<T>(obj: FilterObjType<T>, deleteKey: string | strin
     }, {} as FilterObjType<T>)
 }
 
-export async function fetchData(blobs: ListBlobResultBlob[], name: string) {
+export async function fetchData<T>(blobs: ListBlobResultBlob[], name: string): Promise<T> {
+  // TODO: Uncomment this block if want to use data fetching from fixtures
+  /* if (isDevelopment) {
+    const { resumeData } = await import('../../fixtures/data.ts')
+    return (resumeData as Record<string, any>)[name]
+  } */
+
   const blob = blobs
     .filter(i => i.pathname.replace(/\.[^/.]+$/, '') === name)
     .pop()
 
   if (blob) {
     const { data, status } = await axios.get(blob.url)
-
-    if (status !== 200)
+    if (status === 200)
+      return data
+    else
       throw new Error('Failed to fetch data')
-
-    return data
   }
   else {
-    return {}
+    return {} as T
   }
 }

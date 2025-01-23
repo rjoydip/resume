@@ -12,10 +12,10 @@ export default defineConfig(({ mode }) => ({
     environmentMatchGlobs: [
       ['test/{dom,e2e}/**', 'happy-dom'],
       ['test/edge/**', 'edge-runtime'],
-      ['test/{node,benchmark}/**', 'node'],
+      ['test/node/**', 'node'],
     ],
     include: mode === 'unit' ? ['test/{node,dom,edge}/**/*.test.{ts,tsx}'] : mode === 'e2e' ? ['test/e2e/**/*.test.tsx'] : [],
-    setupFiles: 'test/vitest.setup.ts',
+    setupFiles: 'test/_shared/vitest.setup.ts',
     poolOptions: {
       forks: {
         singleFork: false,
@@ -26,10 +26,9 @@ export default defineConfig(({ mode }) => ({
       provider: 'istanbul',
       reporter: ['text', 'html', 'json', 'json-summary'],
       exclude: [
-        '**/{.next,public,test}',
+        '**/{.next,public,test,fixtures}',
         '**/*.{config,setup}.{mjs,js,ts,mts}',
-        'test/mocks/*.js',
-        '**/src/{app,components,icons}/**/*.{ts,tsx}',
+        '**/src/{app,components}/**/*.{ts,tsx}',
       ],
       reportOnFailure: true,
     },

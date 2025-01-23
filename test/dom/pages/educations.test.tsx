@@ -3,7 +3,7 @@ import { Educations } from '@/components/pages/education'
 import { render, screen } from '@testing-library/react'
 import * as React from 'react'
 import { describe, expect, it } from 'vitest'
-import { educations as educationsFixtures } from '../../mocks/fixtures'
+import { educations as educationsFixtures } from '../../../fixtures/data'
 
 describe('<Educations />', () => {
   it('should validate education title', async () => {

@@ -8,6 +8,8 @@ import type {
   WorksType,
 } from '@/types'
 import type { Metadata } from 'next'
+import { env } from 'node:process'
+import { Footer } from '@/components/footer'
 import { About } from '@/components/pages/about'
 import { Educations } from '@/components/pages/education'
 import { KeySkills } from '@/components/pages/keySkills'
@@ -19,7 +21,6 @@ import { fetchData } from '@/lib/utils'
 import schema from '@/schema'
 import { list } from '@vercel/blob'
 import * as React from 'react'
-import { env } from 'std-env'
 import { parse } from 'valibot'
 
 export const metadata: Metadata = {
@@ -27,34 +28,40 @@ export const metadata: Metadata = {
   description: meta.description,
 }
 
-export default async function Page() {
+async function getData(): Promise<ResumeDataType> {
   const { blobs } = await list({
     token: env.BLOB_READ_WRITE_TOKEN,
   })
-  const about: AboutType = await fetchData(blobs, 'about')
-  const works: WorksType = await fetchData(blobs, 'works')
-  const educations: EducationsType = await fetchData(blobs, 'educations')
-  const skills: SkillsType = await fetchData(blobs, 'skills')
-  const keySkills: KeySkillsType = await fetchData(blobs, 'key-skills')
-  const projects: ProjectsType = await fetchData(blobs, 'projects')
-  const output: ResumeDataType = parse(schema, {
-    about,
-    educations,
-    works,
-    skills,
-    keySkills,
-    projects,
-  })
+  const [about, educations, skills, keySkills, projects, works] = await Promise.all([
+    await fetchData<AboutType>(blobs, 'about'),
+    await fetchData<EducationsType>(blobs, 'educations'),
+    await fetchData<SkillsType>(blobs, 'skills'),
+    await fetchData<KeySkillsType>(blobs, 'keySkills'),
+    await fetchData<ProjectsType>(blobs, 'projects'),
+    await fetchData<WorksType>(blobs, 'works'),
+  ])
+  try {
+    const data = parse(schema, { about, educations, skills, keySkills, projects, works })
+    return Promise.resolve(data)
+  }
+  catch (error) {
+    throw new Error(`Error on data parsing: ${error}`)
+  }
+}
+
+export default async function Page() {
+  const { about, works, educations, skills, keySkills, projects } = await getData()
   return (
     <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 md:p-16 print:p-12">
-      <section className="mx-auto w-full max-w-2xl space-y-4 print:space-y-6">
-        <About data={output.about} />
-        <Works data={output.works} />
-        <Educations data={output.educations} />
-        <Skills data={output.skills} />
-        <KeySkills data={output.keySkills} />
-        <Projects data={output.projects} />
-      </section>
+      <div className="mx-auto w-full max-w-2xl space-y-4 print:space-y-6">
+        <About data={about} />
+        <Works data={works} />
+        <Educations data={educations} />
+        <Skills data={skills} />
+        <KeySkills data={keySkills} />
+        <Projects data={projects} />
+      </div>
+      <Footer />
     </main>
   )
 }

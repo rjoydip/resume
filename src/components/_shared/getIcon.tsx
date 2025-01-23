@@ -13,7 +13,7 @@ import {
 } from 'lucide-react'
 import * as React from 'react'
 import titleize from 'titleize'
-import { Badge } from '../components/ui/badge'
+import { Badge } from '../ui/badge'
 
 interface IconProps {
   className?: string

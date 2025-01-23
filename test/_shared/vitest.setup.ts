@@ -1,24 +1,23 @@
+/* eslint-disable no-console */
 import type { SetupServerApi } from 'msw/node'
 import process from 'node:process'
-import { consola } from 'consola'
 import { setupServer } from 'msw/node'
 import { afterAll, afterEach, beforeAll } from 'vitest'
 
 import { handlers } from './mocks/handlers'
-
 import 'vitest-dom/extend-expect'
 
 let mockServer: SetupServerApi
 
 function mockServerEventHandler(mockServer: SetupServerApi) {
   mockServer.events.on('request:start', ({ request }) => {
-    consola.log('MSW intercepted:', request.method, request.url)
+    console.info('MSW intercepted:', request.method, request.url)
   })
   mockServer.events.on('request:match', ({ request }) => {
-    consola.log('MSW match:', request.method, request.url)
+    console.info('MSW match:', request.method, request.url)
   })
   mockServer.events.on('request:unhandled', ({ request }) => {
-    consola.log('MSW error:', request.method, request.url)
+    console.info('MSW error:', request.method, request.url)
   })
 }
 

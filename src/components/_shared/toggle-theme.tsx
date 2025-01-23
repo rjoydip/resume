@@ -12,6 +12,7 @@ export function ToggleTheme() {
   const onToggle = () => {
     setColorTheme(theme === 'dark' ? 'light' : 'dark')
   }
+
   return (
     <Button
       onClick={onToggle}

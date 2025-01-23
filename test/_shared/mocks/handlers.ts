@@ -1,6 +1,6 @@
 import { HttpResponse, http } from 'msw'
-import { apiURL } from '../constant'
-import { about, educations, keySkills, projects, skills, works } from './fixtures'
+import { apiURL } from '../../constant'
+import { about, educations, keySkills, projects, skills, works } from '../../../fixtures/data'
 
 export const handlers = [
   http.get(`${apiURL}/data/about`, () => HttpResponse.json(about, { status: 200 })),
