@@ -1,7 +1,7 @@
-# rjoydip-resume
+# rjoydip.com
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/rjoydip/resume)
-[![Deploy](https://github.com/rjoydip/resume/actions/workflows/deploy.yaml/badge.svg)](https://github.com/rjoydip/resume/actions/workflows/deploy.yaml)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/rjoydip/rjoydip.com)
+[![Deploy](https://github.com/rjoydip/resume/actions/workflows/deploy.yaml/badge.svg)](https://github.com/rjoydip/rjoydip.com/actions/workflows/deploy.yaml)
 
 Simple web app that renders minimalist CV with print-friendly layout. Built with Next.js and shadcn/ui, deployed on Vercel.
 
@@ -18,25 +18,25 @@ Simple web app that renders minimalist CV with print-friendly layout. Built with
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/rjoydip/resume.git
+   git clone https://github.com/rjoydip/rjoydip.com.git
    ```
 
 2. Move to the cloned directory
 
    ```bash
-   cd resume
+   cd rjoydip.com
    ```
 
 3. Install dependencies:
 
    ```bash
-   yarn install
+   pnpm install
    ```
 
 4. Start the local Server:
 
    ```bash
-   yarn dev
+   pnpm dev
    ```
 
 5. Open the [Config file](./src/data.ts) and make changes
@@ -59,6 +59,14 @@ Stop the Container
 
 ```sh
 docker compose down
+```
+
+6. Monitor using `React Scan`.
+
+```bash
+npx react-scan@latest http://127.0.0.1:3000
+// Or
+pnpm scan
 ```
 
 ## License

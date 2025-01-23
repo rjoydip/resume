@@ -1,12 +1,13 @@
 import type { AboutType } from '@/types'
 import { About } from '@/components/pages/about'
 import { render, screen } from '@testing-library/react'
+import removeMarkdown from 'markdown-to-text'
 import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'
-import { about as aboutFixture } from '../../mocks/fixtures'
+import { about as aboutFixture } from '../../../fixtures/data'
 
 describe('<About />', () => {
-  const about: AboutType & { prof_summery_title: string } = aboutFixture
+  const about: AboutType = aboutFixture
 
   beforeAll(async () => {
     await render(<About data={about} />)
@@ -21,7 +22,7 @@ describe('<About />', () => {
   it('should validate description', async () => {
     const aboutDescEle = screen.getByTestId('about_description')
     expect(aboutDescEle.textContent).toBeDefined()
-    expect(aboutDescEle.textContent).toBe(about.description)
+    expect(aboutDescEle.textContent).toBe(removeMarkdown(about.description))
   })
 
   it('should validate location', async () => {
@@ -33,7 +34,7 @@ describe('<About />', () => {
   it('should validate professional summery', async () => {
     const aboutProfSummeryEle = screen.getByTestId('about_prof_summery')
     expect(aboutProfSummeryEle.textContent).toBeDefined()
-    expect(aboutProfSummeryEle.textContent).toBe(about.professional_summary)
+    expect(aboutProfSummeryEle.textContent).toBe(removeMarkdown(about.professional_summary))
   })
 
   it('should validate professional summery title', async () => {

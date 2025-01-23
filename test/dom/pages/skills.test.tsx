@@ -3,7 +3,7 @@ import { Skills } from '@/components/pages/skills'
 import { render, screen } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'
-import { skills as skillsFixture } from '../../mocks/fixtures'
+import { skills as skillsFixture } from '../../../fixtures/data'
 
 describe('<Skills />', () => {
   let container: HTMLElement

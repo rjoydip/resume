@@ -1,5 +1,5 @@
 import type { Output } from 'valibot'
-import type { aboutSchema, contactSchema, educationSchema, educationsSchema, keySkillsSchema, locationSchema, projectSchema, projectsSchema, skillsSchema, workSchema, worksSchema } from './schema'
+import type { aboutSchema, contactSchema, educationSchema, educationsSchema, keySkillsSchema, locationSchema, projectLinkSchema, projectSchema, projectsSchema, skillsSchema, workSchema, worksSchema } from './schema'
 import type schema from './schema'
 
 export type ResumeDataType = Output<typeof schema>
@@ -13,6 +13,7 @@ export type SkillsType = Output<typeof skillsSchema>
 export type KeySkillsType = Output<typeof keySkillsSchema>
 export type ProjectType = Output<typeof projectSchema>
 export type ProjectsType = Output<typeof projectsSchema>
+export type ProjectLinkType = Output<typeof projectLinkSchema>
 export type LocationType = Output<typeof locationSchema>
 
 export interface FilterObjType<T> {
@@ -31,7 +32,6 @@ export interface ProjectCardProps {
 }
 
 export type IconType =
-  | 'api'
   | 'dot'
   | 'web'
   | 'map'
@@ -40,8 +40,6 @@ export type IconType =
   | 'smartphone'
   | 'mobile'
   | 'phone'
-  | 'server'
-  | 'backend'
   | 'circle-dot'
   | 'badge-check'
   | 'x'

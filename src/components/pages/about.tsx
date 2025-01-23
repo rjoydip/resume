@@ -4,7 +4,8 @@ import type { AboutType, ContactType, IconType } from '@/types'
 import * as React from 'react'
 import titleize from 'titleize'
 import { uid } from 'uid'
-import { getIcon } from '../../icons/getIcon'
+import { getIcon } from '../_shared/getIcon'
+import MarkdownRender from '../_shared/markdown-render'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { Button } from '../ui/button'
 import {
@@ -126,6 +127,8 @@ function Contact({ data }: { data: ContactType }) {
 }
 
 export function About({ data }: { data: AboutType }) {
+  if (!data)
+    return null
   return (
     <Section>
       <Card className="border p-3">
@@ -160,7 +163,7 @@ export function About({ data }: { data: AboutType }) {
               data-testid="about_description"
               className="max-w-md text-pretty py-2"
             >
-              {data.description}
+              <MarkdownRender content={data.description} />
             </div>
             <Avatar className="hidden size-28 rounded-full sm:block">
               <AvatarImage
@@ -209,7 +212,7 @@ export function About({ data }: { data: AboutType }) {
             data-testid="about_prof_summery"
             className="text-pretty"
           >
-            {data.professional_summary}
+            <MarkdownRender content={data.professional_summary} />
           </CardDescription>
         </CardHeader>
       </Card>
