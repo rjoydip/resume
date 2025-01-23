@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => ({
       },
     },
     coverage: {
-      enabled: mode === 'unit' || mode === 'e2e',
+      enabled: mode === 'unit',
       provider: 'istanbul',
       reporter: ['text', 'html', 'json', 'json-summary'],
       exclude: [
