@@ -13,10 +13,12 @@ export function Declaration({ location, name, shouldShow = false }: { location: 
           <div className="space-y-2 text-pretty">
             <p data-testid="declaration_location">
               Location:
+              {' '}
               {location}
             </p>
             <p data-testid="declaration_name">
               Name:
+              {' '}
               {name}
             </p>
           </div>
@@ -24,6 +26,7 @@ export function Declaration({ location, name, shouldShow = false }: { location: 
             <p></p>
             <p data-testid="declaration_date">
               Date:
+              {' '}
               {today.getDate()}
               -
               {today.getMonth() + 1}
