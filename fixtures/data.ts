@@ -1,4 +1,4 @@
-import type { AboutType, EducationsType, KeySkillsType, ProjectsType, ResumeDataType, SkillsType, WorksType } from '@/types'
+import type { AboutType, EducationsType, ProjectsType, ResumeDataType, SkillsType, StrengthsType, WorksType } from '@/types'
 import { companies, techStacks, workMode } from '@/data'
 import { randBoolean, randCity, randCountry, randEmail, randFullName, randImg, randNumber, randPhoneNumber, randText } from '@ngneat/falso'
 
@@ -14,7 +14,7 @@ export const about: AboutType = {
     link: 'https://maps.app.goo.gl/random',
   },
   description: 'Quae suum membra, duc venit vel limite tribus digitosque arduus ego ictu iuvenale loqui. Liberioris adclivis sunt secus e [primus monimenta](http://www.eque.com/) saxa, sic Libye moenibus inde? Deae heros est quoque umeris sua restat fert **iuste posuerunt solus**. Et licebit equos est exitium, in tacuit femineae spumantia quaerit fatalia; nudum mihi pudorque. Utque barbarica **suae** gerunt, mentes quae, fatentur numen est vitae etClymene cedere erat.',
-  professional_summary: 'Natum quaerit, alebat diffusum, aera nam decimum tu. *Ab posset contra* amne hastae, et videre, et posuisset prior frequentat proxima: triplici alta quid inculpata. Harundine carpit sed mundi ruricolae utrimque calathis talis sacris. A Milete ille [lucoque](http://ille-quod.io/) sed Aeacus recipit me epulae vilibus officium **parvos numina**, et nec pereat ambo, veri.',
+  summary: 'Natum quaerit, alebat diffusum, aera nam decimum tu. *Ab posset contra* amne hastae, et videre, et posuisset prior frequentat proxima: triplici alta quid inculpata. Harundine carpit sed mundi ruricolae utrimque calathis talis sacris. A Milete ille [lucoque](http://ille-quod.io/) sed Aeacus recipit me epulae vilibus officium **parvos numina**, et nec pereat ambo, veri.',
   avatar_url: randImg(),
   website: 'https://example.com',
   contact: {
@@ -69,12 +69,12 @@ export const works: WorksType = generateArray(3).map(() => ({
 }))
 
 export const skills: SkillsType = generateTechStacks()
-export const keySkills: KeySkillsType = generateArray(5).map(() => randText())
+export const strengths: StrengthsType = generateArray(5).map(() => randText())
 
 export const resumeData: ResumeDataType = {
   about,
   educations,
-  keySkills,
+  strengths,
   projects,
   skills,
   works,

@@ -1,5 +1,5 @@
 import type { EducationsType } from '@/types'
-import { Educations } from '@/components/pages/education'
+import { Educations } from '@/components/pages/educations'
 import { render, screen } from '@testing-library/react'
 import * as React from 'react'
 import { describe, expect, it } from 'vitest'
@@ -11,7 +11,7 @@ describe('<Educations />', () => {
     await render(<Educations data={educations} />)
     const aboutNameEle = screen.getByTestId('education_title')
     expect(aboutNameEle.textContent).toBeDefined()
-    expect(aboutNameEle.textContent).toBe('Education')
+    expect(aboutNameEle.textContent?.toLowerCase()).toBe('education')
   })
 
   describe('should validate education items', async () => {

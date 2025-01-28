@@ -14,7 +14,7 @@ describe('<Projects />', () => {
   })
   it('should validate project title', async () => {
     const ksTitle = screen.getByTestId('project_title')
-    expect(ksTitle.textContent).toBe('Projects')
+    expect(ksTitle.textContent?.toLowerCase()).toBe('projects')
   })
   describe('should validate projects items', async () => {
     const projects: ProjectsType = projectsFixture

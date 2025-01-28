@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => ({
       ['test/edge/**', 'edge-runtime'],
       ['test/node/**', 'node'],
     ],
-    include: mode === 'unit' ? ['test/{node,dom,edge}/**/*.test.{ts,tsx}'] : mode === 'e2e' ? ['test/e2e/**/*.test.tsx'] : [],
+    include: mode === 'unit' ? ['test/{node,dom,edge}/**/*.test.{ts,tsx}'] : mode === 'e2e' ? ['test/e2e/**/*.test.{ts,tsx}'] : [],
     setupFiles: 'test/_shared/vitest.setup.ts',
     poolOptions: {
       forks: {

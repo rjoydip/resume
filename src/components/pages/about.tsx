@@ -1,5 +1,3 @@
-'use client'
-
 import type { AboutType, ContactType, IconType } from '@/types'
 import * as React from 'react'
 import titleize from 'titleize'
@@ -204,7 +202,7 @@ export function About({ data }: { data: AboutType }) {
         data-testid="about_prof_summery_title"
         className="text-xl font-bold"
       >
-        Professional Summary
+        Summary
       </Label>
       <Card className="border p-3">
         <CardHeader>
@@ -212,7 +210,7 @@ export function About({ data }: { data: AboutType }) {
             data-testid="about_prof_summery"
             className="text-pretty"
           >
-            <MarkdownRender content={data.professional_summary} />
+            <MarkdownRender content={data.summary} />
           </CardDescription>
         </CardHeader>
       </Card>
