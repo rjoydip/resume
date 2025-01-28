@@ -1,5 +1,5 @@
 import type { Output } from 'valibot'
-import type { aboutSchema, contactSchema, educationSchema, educationsSchema, keySkillsSchema, locationSchema, projectLinkSchema, projectSchema, projectsSchema, skillsSchema, workSchema, worksSchema } from './schema'
+import type { aboutSchema, contactSchema, educationSchema, educationsSchema, languagesSchema, projectLinkSchema, projectSchema, projectsSchema, skillsSchema, strengthsSchema, workSchema, worksSchema } from './schema'
 import type schema from './schema'
 
 export type ResumeDataType = Output<typeof schema>
@@ -10,25 +10,14 @@ export type ContactType = Output<typeof contactSchema>
 export type WorkType = Output<typeof workSchema>
 export type WorksType = Output<typeof worksSchema>
 export type SkillsType = Output<typeof skillsSchema>
-export type KeySkillsType = Output<typeof keySkillsSchema>
+export type StrengthsType = Output<typeof strengthsSchema>
 export type ProjectType = Output<typeof projectSchema>
 export type ProjectsType = Output<typeof projectsSchema>
 export type ProjectLinkType = Output<typeof projectLinkSchema>
-export type LocationType = Output<typeof locationSchema>
+export type LanguagesType = Output<typeof languagesSchema>
 
 export interface FilterObjType<T> {
   [key: string]: T
-}
-
-export interface ProjectCardProps {
-  title: string
-  description: string
-  techStacks: string[]
-  links?: {
-    type: 'web' | 'mobile'
-    href: string
-    label: string
-  }[] | null
 }
 
 export type IconType =
@@ -47,7 +36,3 @@ export type IconType =
   | null
 export type LightColorType = 'light' | 'system'
 export type DarkColorType = 'dark'
-
-export interface FeatureFlagType {
-  FF_SHOW_PROFILE_IMAGE: boolean
-}

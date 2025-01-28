@@ -1,5 +1,3 @@
-'use client'
-
 import type { EducationsType, EducationType } from '@/types'
 import * as React from 'react'
 import { uid } from 'uid'

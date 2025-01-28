@@ -1,5 +1,3 @@
-'use client'
-
 import type { ProjectLinkType, ProjectsType, ProjectType } from '@/types'
 import clsx from 'clsx'
 import * as React from 'react'

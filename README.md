@@ -1,7 +1,7 @@
-# rjoydip.com
+# rjresume
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/rjoydip/rjoydip.com)
-[![Deploy](https://github.com/rjoydip/resume/actions/workflows/deploy.yaml/badge.svg)](https://github.com/rjoydip/rjoydip.com/actions/workflows/deploy.yaml)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/rjoydip/rjresume)
+[![Deploy](https://github.com/rjoydip/resume/actions/workflows/deploy.yaml/badge.svg)](https://github.com/rjoydip/rjresume/actions/workflows/deploy.yaml)
 
 Simple web app that renders minimalist CV with print-friendly layout. Built with Next.js and shadcn/ui, deployed on Vercel.
 
@@ -18,13 +18,13 @@ Simple web app that renders minimalist CV with print-friendly layout. Built with
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/rjoydip/rjoydip.com.git
+   git clone https://github.com/rjoydip/rjresume.git
    ```
 
 2. Move to the cloned directory
 
    ```bash
-   cd rjoydip.com
+   cd rjresume
    ```
 
 3. Install dependencies:

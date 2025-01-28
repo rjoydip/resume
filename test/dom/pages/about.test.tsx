@@ -34,7 +34,7 @@ describe('<About />', () => {
   it('should validate professional summery', async () => {
     const aboutProfSummeryEle = screen.getByTestId('about_prof_summery')
     expect(aboutProfSummeryEle.textContent).toBeDefined()
-    expect(aboutProfSummeryEle.textContent).toBe(removeMarkdown(about.professional_summary))
+    expect(aboutProfSummeryEle.textContent).toBe(removeMarkdown(about.summary))
   })
 
   it('should validate professional summery title', async () => {

@@ -15,7 +15,7 @@ describe('<Skills />', () => {
   })
   it('should validate skill title', async () => {
     const ksTitle = screen.getByTestId('skills_title')
-    expect(ksTitle.textContent).toBe('Skills')
+    expect(ksTitle.textContent?.toLowerCase()).toBe('skills')
   })
   it('should validate skill', async () => {
     expect(

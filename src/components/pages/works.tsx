@@ -1,5 +1,3 @@
-'use client'
-
 import type { WorkType } from '@/types'
 import * as React from 'react'
 import titleize from 'titleize'

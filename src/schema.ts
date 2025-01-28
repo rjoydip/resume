@@ -1,9 +1,8 @@
 import { array, boolean, email, maxLength, maxValue, minLength, minValue, nullable, nullish, number, object, picklist, regex, startsWith, string, transform, union, url } from 'valibot'
-import { companies, projectLinkTypes, socialMedia, techStacks, workMode } from './data'
+import { companies, projectLinkTypes, socialMedia, techStacks, today, workMode } from './data'
 
-const today = new Date()
 const techStackSchema = array(picklist(techStacks))
-export const keySkillsSchema = array(string([minLength(1)]))
+export const strengthsSchema = array(string([minLength(1)]))
 
 export const educationSchema = object({
   school: string(),
@@ -80,7 +79,10 @@ export const projectSchema = object({
   isClient: nullish(boolean()),
   client_country: nullish(string()),
 })
-
+export const languagesSchema = object({
+  name: string(),
+  isNative: boolean(),
+})
 export const contactSchema = object({
   email: string([email()]),
   tel: string([startsWith('+')]),
@@ -89,19 +91,18 @@ export const contactSchema = object({
     name: picklist(socialMedia),
   })),
 })
-export const locationSchema = object({
-  city: string(),
-  country: string(),
-  link: string([url()]),
-})
 export const aboutSchema = object({
   name: string([minLength(4)]),
   initials: string([minLength(1), maxLength(4)]),
-  location: locationSchema,
+  location: object({
+    city: string(),
+    country: string(),
+    link: string([url()]),
+  }),
   avatar_url: string([url()]),
   website: string([url()]),
   description: string([maxLength(1000)]),
-  professional_summary: string(),
+  summary: string(),
   contact: contactSchema,
 })
 
@@ -112,8 +113,8 @@ export const projectsSchema = array(projectSchema)
 export default object({
   about: aboutSchema,
   educations: educationsSchema,
-  works: worksSchema,
-  skills: skillsSchema,
-  keySkills: keySkillsSchema,
   projects: projectsSchema,
+  skills: skillsSchema,
+  strengths: strengthsSchema,
+  works: worksSchema,
 })

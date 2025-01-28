@@ -1,8 +1,9 @@
-import { aboutSchema, educationsSchema, keySkillsSchema, projectsSchema, skillsSchema, worksSchema } from '@/schema' // Replace with the actual file path
+import { languages } from '@/data'
+import { aboutSchema, educationsSchema, languagesSchema, projectsSchema, skillsSchema, strengthsSchema, worksSchema } from '@/schema' // Replace with the actual file path
 import { describe, expect, it } from 'vitest'
 
-describe('schema', () => {
-  it('aboutSchema validation', () => {
+describe('schema validation', () => {
+  it('about schema', () => {
     const validData = {
       name: 'John Doe',
       initials: 'JD',
@@ -14,7 +15,7 @@ describe('schema', () => {
       avatar_url: 'https://example.com/avatar.jpg',
       website: 'https://www.johndoe.com',
       description: 'Lorem ipsum dolor sit',
-      professional_summary: 'Lorem ipsum dolor sit',
+      summary: 'Lorem ipsum dolor sit',
       contact: {
         email: 'john.doe@example.com',
         tel: '+1234567890',
@@ -30,7 +31,7 @@ describe('schema', () => {
     expect(aboutSchema._parse(validData).issues).toBeUndefined()
   })
 
-  it('educationsSchema validation', () => {
+  it('educations schema', () => {
     const validData = [
       {
         school: 'Harvard University',
@@ -43,10 +44,11 @@ describe('schema', () => {
       },
     ]
 
+    expect(educationsSchema._parse(validData).output).toBeDefined()
     expect(educationsSchema._parse(validData).issues).toBeUndefined()
   })
 
-  it('worksSchema validation', () => {
+  it('works schema', () => {
     const validData = [
       {
         company: 'Webskitters',
@@ -61,16 +63,18 @@ describe('schema', () => {
       },
     ]
 
+    expect(worksSchema._parse(validData).output).toBeDefined()
     expect(worksSchema._parse(validData).issues).toBeUndefined()
   })
 
-  it('skillsSchema validation', () => {
+  it('skills schema', () => {
     const validData = ['aws', 'docker', 'mysql', 'postgresql', 'mongodb', 'express', 'laravel', 'nextjs', 'javascript', 'typescript', 'jest', 'vitest', 'cypress', 'git', 'github', 'bitbucket']
 
+    expect(skillsSchema._parse(validData).output).toBeDefined()
     expect(skillsSchema._parse(validData).issues).toBeUndefined()
   })
 
-  it('projectsSchema validation', () => {
+  it('projects schema', () => {
     const validData = [
       {
         title: 'Project 1',
@@ -89,12 +93,19 @@ describe('schema', () => {
       },
     ]
 
+    expect(projectsSchema._parse(validData).output).toBeDefined()
     expect(projectsSchema._parse(validData).issues).toBeUndefined()
   })
 
-  it('keySkillsSchema validation', () => {
+  it('strengths schema', () => {
     const validData = ['JavaScript', 'TypeScript', 'Node.js']
 
-    expect(keySkillsSchema._parse(validData).issues).toBeUndefined()
+    expect(strengthsSchema._parse(validData).output).toBeDefined()
+    expect(strengthsSchema._parse(validData).issues).toBeUndefined()
+  })
+
+  it('languages schema', () => {
+    expect(languagesSchema._parse(languages[0]).output).toBeDefined()
+    expect(languagesSchema._parse(languages[0]).issues).toBeUndefined()
   })
 })

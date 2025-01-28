@@ -14,8 +14,8 @@ describe('<Works />', () => {
     container = render$.container
   })
   it('should validate work title', async () => {
-    const ksTitle = screen.getByTestId('work_title')
-    expect(ksTitle.textContent).toBe('Work Experience')
+    const title = screen.getByTestId('work_title')
+    expect(title.textContent?.toLowerCase()).toBe('work experience')
   })
   it('should validate work list', async () => {
     expect(
