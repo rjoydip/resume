@@ -11,10 +11,9 @@ export default defineConfig(({ mode }) => ({
     reporters: env.GITHUB_ACTIONS ? ['dot', 'github-actions'] : ['dot'],
     environmentMatchGlobs: [
       ['test/{dom,e2e}/**', 'happy-dom'],
-      ['test/edge/**', 'edge-runtime'],
       ['test/node/**', 'node'],
     ],
-    include: mode === 'unit' ? ['test/{node,dom,edge}/**/*.test.{ts,tsx}'] : mode === 'e2e' ? ['test/e2e/**/*.test.{ts,tsx}'] : [],
+    include: [`test/${mode}/**/*.test.{ts,tsx}`],
     setupFiles: 'test/_shared/vitest.setup.ts',
     poolOptions: {
       forks: {

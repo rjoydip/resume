@@ -17,12 +17,12 @@ describe('<Educations />', () => {
   describe('should validate education items', async () => {
     const education: EducationsType = educationsFixtures
     education.forEach((ed, index: number) => {
-      it('should validate school', () => {
+      it('should validate school or college', () => {
         const aboutNameEle = screen.getByTestId(
-          `education_school_index_${index}`,
+          `education_name_index_${index}`,
         )
         expect(aboutNameEle.textContent).toBeDefined()
-        expect(aboutNameEle.textContent).toBe(ed.school)
+        expect(aboutNameEle.textContent).toBe(ed.name)
       })
       it('should validate tenure', () => {
         const aboutNameEle = screen.getByTestId(

@@ -56,3 +56,4 @@ export function getIcon(icon: IconType = null, props: IconProps = {}) {
       )
   }
 }
+getIcon.displayName = 'getIcon'

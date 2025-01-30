@@ -5,7 +5,7 @@ const techStackSchema = array(picklist(techStacks))
 export const strengthsSchema = array(string([minLength(1)]))
 
 export const educationSchema = object({
-  school: string(),
+  name: string(),
   degree: string(),
   location: string(),
   cgpa: nullable(number([minValue(0.0), maxValue(10.0)])),

@@ -1,17 +1,18 @@
 # rjresume
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/rjoydip/rjresume)
-[![Deploy](https://github.com/rjoydip/resume/actions/workflows/deploy.yaml/badge.svg)](https://github.com/rjoydip/rjresume/actions/workflows/deploy.yaml)
 
-Simple web app that renders minimalist CV with print-friendly layout. Built with Next.js and shadcn/ui, deployed on Vercel.
+Simple web app that renders minimalist `Resume` with print-friendly layout.
 
 ## Features
 
-- Setup only takes a few minutes [single config file](./src/data.ts)
-- Built using Next.js 14, React, Typescript, Shadcn/ui, TailwindCSS
+- Built using Next.js 15, React, Typescript, @radix-ui and TailwindCSS
 - Auto generated Layout
 - Responsive for different devices
-- Optimized for Next.js and Vercel
+- Optimized for [Next.js](http://nextjs.org/) and [Vercel](https://vercel.com/)
+- Identified and fix slow code using [million](https://million.dev/)
+- Unit tested using [vitest](https://vitest.dev/)
+- E2E tested (basic) using [playwright](https://playwright.dev/)
 
 ## Getting Started Locally
 
@@ -61,13 +62,12 @@ Stop the Container
 docker compose down
 ```
 
-6. Monitor using `React Scan`.
+## TODO
 
-```bash
-npx react-scan@latest http://127.0.0.1:3000
-// Or
-pnpm scan
-```
+- [ ] Move data fetching individual page
+- [ ] Better data fetching using [TanStack Query](https://tanstack.com/query)
+- [ ] Resolve vitest warning
+- [ ] E2E test using [Browser Mode](https://vitest.dev/guide/browser/)
 
 ## License
 

@@ -4,14 +4,19 @@ import { Button } from '@/components/ui/button'
 import useColorTheme from '@/hooks/useColorTheme'
 import useHasMounted from '@/hooks/useHasMounted'
 import { Moon, Sun } from 'lucide-react'
+import { useCallback } from 'react'
 
 export function ToggleTheme() {
   const hasMounter = useHasMounted()
   const { theme, setColorTheme } = useColorTheme()
 
-  const onToggle = () => {
+  const onToggle = useCallback(() => {
     setColorTheme(theme === 'dark' ? 'light' : 'dark')
-  }
+  }, [theme, setColorTheme])
+
+  const icon = hasMounter && theme === 'dark'
+    ? <Sun className="h-4 w-4" />
+    : <Moon className="h-4 w-4" />
 
   return (
     <Button
@@ -21,13 +26,8 @@ export function ToggleTheme() {
       aria-label="Theme Toggle"
       className="fixed right-4 flex rounded-full shadow-2xl sm:bottom-5 print:hidden"
     >
-      {hasMounter && theme === 'dark'
-        ? (
-            <Sun className="h-4 w-4" />
-          )
-        : (
-            <Moon className="h-4 w-4" />
-          )}
+      {icon}
     </Button>
   )
 }
+ToggleTheme.displayName = 'ToggleTheme'

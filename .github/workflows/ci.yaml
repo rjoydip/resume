@@ -58,7 +58,7 @@ jobs:
           rm -rf .env.local
 
       - name: 🧪 Unit test
-        run: pnpm test:unit
+        run: pnpm test
 
       - name: 📊 E2E test
         run: pnpm test:e2e

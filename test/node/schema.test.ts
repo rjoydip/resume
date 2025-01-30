@@ -34,7 +34,7 @@ describe('schema validation', () => {
   it('educations schema', () => {
     const validData = [
       {
-        school: 'Harvard University',
+        name: 'Harvard University',
         degree: 'Bachelor of Science',
         location: 'Cambridge, MA',
         cgpa: 3.8,
