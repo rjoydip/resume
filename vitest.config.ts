@@ -11,10 +11,9 @@ export default defineConfig(({ mode }) => ({
     reporters: env.GITHUB_ACTIONS ? ['dot', 'github-actions'] : ['dot'],
     environmentMatchGlobs: [
       ['test/{dom,e2e}/**', 'happy-dom'],
-      ['test/edge/**', 'edge-runtime'],
       ['test/node/**', 'node'],
     ],
-    include: mode === 'unit' ? ['test/{node,dom,edge}/**/*.test.{ts,tsx}'] : mode === 'e2e' ? ['test/e2e/**/*.test.{ts,tsx}'] : [],
+    include: [`test/${mode}/**/*.test.{ts,tsx}`],
     setupFiles: 'test/_shared/vitest.setup.ts',
     poolOptions: {
       forks: {
@@ -22,13 +21,17 @@ export default defineConfig(({ mode }) => ({
       },
     },
     coverage: {
-      enabled: mode === 'unit',
+      enabled: mode === 'dom' || mode === 'node',
       provider: 'istanbul',
+      reportsDirectory: `./coverage/${mode}`,
       reporter: ['text', 'html', 'json', 'json-summary'],
       exclude: [
-        '**/{.next,public,test,fixtures}',
-        '**/*.{config,setup}.{mjs,js,ts,mts}',
-        '**/src/{app,components}/**/*.{ts,tsx}',
+        ...new Set([
+          '**/{.next,public,test,fixtures,mocks,coverage}',
+          '**/*.{config,setup}.{mjs,js,ts,mts,cts}',
+          '**/src/{app,lib}/*.{ts,tsx}',
+          mode === 'dom' ? '**/*.ts' : mode === 'node' ? '**/*.tsx' : ''
+        ])
       ],
       reportOnFailure: true,
     },

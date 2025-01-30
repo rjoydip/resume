@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { ToggleTheme } from '@/components/_shared/toggle-theme'
+import { ToggleTheme } from '@/components/_shared/toggleTheme'
 import {
   getDarkThemeColors,
   getLightThemeColors,

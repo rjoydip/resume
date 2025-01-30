@@ -39,3 +39,4 @@ export function Declaration({ location, name, shouldShow = false }: { location: 
     </Section>
   )
 }
+Declaration.displayName = 'Declaration'

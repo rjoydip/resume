@@ -1,6 +1,6 @@
 import type { NextConfig } from 'next'
+import MillionLint from '@million/lint'
 import { env, isDevelopment, isProduction } from 'std-env'
-import { uid } from 'uid'
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -21,11 +21,14 @@ const nextConfig: NextConfig = {
     appIsrStatus: isDevelopment,
     buildActivityPosition: isDevelopment ? 'top-right' : undefined,
   },
-  generateBuildId: async () => env.GIT_HASH || uid(32),
+  generateBuildId: async () => env.GIT_HASH || Math.random().toString(16).slice(2),
   experimental: {
     webVitalsAttribution: ['CLS', 'LCP'],
     optimizePackageImports: [],
   },
 }
 
-export default nextConfig
+export default MillionLint.next({
+  enabled: isDevelopment,
+  rsc: true,
+})(nextConfig)

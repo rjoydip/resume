@@ -1,7 +1,6 @@
 import type { WorksType } from '@/types'
 import { Works } from '@/components/pages/works'
 import { render, screen } from '@testing-library/react'
-import removeMarkdown from 'markdown-to-text'
 import * as React from 'react'
 import { beforeAll, describe, expect, it } from 'vitest'
 import { works as workFixture } from '../../../fixtures/data'
@@ -62,7 +61,7 @@ describe('<Works />', () => {
         const ele = container.querySelector(
           `[data-testid="work_description_index_${index}"]`,
         )
-        expect(ele?.textContent).toBe(removeMarkdown(`\n${w.description}\n`))
+        expect(ele?.textContent).toBe(w.description.replaceAll('<br/>', ''))
       })
       it('should validate technology title', () => {
         const ele = container.querySelector(

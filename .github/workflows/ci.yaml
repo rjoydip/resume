@@ -58,16 +58,27 @@ jobs:
           rm -rf .env.local
 
       - name: 🧪 Unit test
-        run: pnpm test:unit
+        run: pnpm test
 
       - name: 📊 E2E test
         run: pnpm test:e2e
 
       - uses: actions/upload-artifact@v4
         with:
-          name: code-coverage
+          name: Code Coverage
           path: coverage
           if-no-files-found: ignore
 
-      - name: 📰 Test Coverage
+      - name: 📰 Test Coverage (Mode - DOM)
         uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          name: 'DOM'
+          json-summary-path: './coverage/dom/coverage-summary.json'
+          json-final-path: './coverage/dom/coverage-final.json'
+    
+      - name: 📰 Test Coverage (Mode - NODE)
+        uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          name: 'NODE'
+          json-summary-path: './coverage/node/coverage-summary.json'
+          json-final-path: './coverage/node/coverage-final.json'
