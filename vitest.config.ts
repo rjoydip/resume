@@ -21,13 +21,17 @@ export default defineConfig(({ mode }) => ({
       },
     },
     coverage: {
-      enabled: mode === 'unit',
+      enabled: mode === 'dom' || mode === 'node',
       provider: 'istanbul',
+      reportsDirectory: `./coverage/${mode}`,
       reporter: ['text', 'html', 'json', 'json-summary'],
       exclude: [
-        '**/{.next,public,test,fixtures}',
-        '**/*.{config,setup}.{mjs,js,ts,mts}',
-        '**/src/{app,components}/**/*.{ts,tsx}',
+        ...new Set([
+          '**/{.next,public,test,fixtures,mocks,coverage}',
+          '**/*.{config,setup}.{mjs,js,ts,mts,cts}',
+          '**/src/{app,lib}/*.{ts,tsx}',
+          mode === 'dom' ? '**/*.ts' : mode === 'node' ? '**/*.tsx' : ''
+        ])
       ],
       reportOnFailure: true,
     },

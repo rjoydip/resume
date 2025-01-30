@@ -65,9 +65,20 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: code-coverage
+          name: Code Coverage
           path: coverage
           if-no-files-found: ignore
 
-      - name: 📰 Test Coverage
+      - name: 📰 Test Coverage - DOM
         uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          name: 'DOM'
+          json-summary-path: './coverage/dom/coverage-summary.json'
+          json-final-path: './coverage/dom/coverage-final.json'
+    
+      - name: 📰 Test Coverage - NODE
+        uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          name: 'NODE'
+          json-summary-path: './coverage/node/coverage-summary.json'
+          json-final-path: './coverage/node/coverage-final.json'
