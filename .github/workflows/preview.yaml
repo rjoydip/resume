@@ -10,7 +10,8 @@ on:
       - main
 
 jobs:
-  Deployment:
+  preview:
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.name == 'ci.yaml' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
