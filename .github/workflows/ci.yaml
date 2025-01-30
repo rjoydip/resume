@@ -69,14 +69,14 @@ jobs:
           path: coverage
           if-no-files-found: ignore
 
-      - name: 📰 Test Coverage - DOM
+      - name: 📰 Test Coverage (Mode - DOM)
         uses: davelosert/vitest-coverage-report-action@v2
         with:
           name: 'DOM'
           json-summary-path: './coverage/dom/coverage-summary.json'
           json-final-path: './coverage/dom/coverage-final.json'
     
-      - name: 📰 Test Coverage - NODE
+      - name: 📰 Test Coverage (Mode - NODE)
         uses: davelosert/vitest-coverage-report-action@v2
         with:
           name: 'NODE'
