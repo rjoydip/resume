@@ -8,7 +8,7 @@ on:
     tags:
       - 'v*'
   workflow_run:
-    workflows: [ci.yaml, deploy.yaml]
+    workflows: [ci.yaml, preview.yaml]
     types:
       - completed
 
