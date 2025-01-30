@@ -10,7 +10,7 @@
     "scan": "next dev & npx react-scan@latest localhost:3000",
     "start": "next start",
     "lint": "eslint . --fix",
-    "test": "pnpm run test:unit && pnpm run test:node && pnpm run test:e2e",
+    "test": "pnpm run test:dom && pnpm run test:node && pnpm run test:e2e",
     "test:dom": "vitest run --typecheck --mode dom",
     "test:node": "vitest run --typecheck --mode node",
     "test:e2e": "start-server-and-test start http://localhost:3000 'vitest run --typecheck --mode e2e'",
