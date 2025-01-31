@@ -1,13 +1,14 @@
-import type { StrengthsType } from '@/types'
-import * as React from 'react'
-import { getIcon } from '../_shared/getIcon'
-import { Card } from '../ui/card'
-import { Label } from '../ui/label'
-import { Section } from '../ui/section'
+'use client'
 
-interface StrengthsProps {
-  data: StrengthsType
-}
+import type { StrengthsType } from '@/types'
+import type { UseSuspenseQueryResult } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
+import * as React from 'react'
+import { getIcon } from '../components/_shared/getIcon'
+import { Card } from '../components/ui/card'
+import { Label } from '../components/ui/label'
+import { Section } from '../components/ui/section'
+import { Skeleton } from '../components/ui/skeleton'
 
 function StrengthsList({ skills }: { skills: string[] }) {
   return (
@@ -30,9 +31,15 @@ function StrengthsList({ skills }: { skills: string[] }) {
 }
 StrengthsList.displayName = 'StrengthsList'
 
-export function Strengths({ data }: StrengthsProps) {
-  if (!data?.length)
-    return null
+export function Strengths() {
+  const { isPending, data }: UseSuspenseQueryResult<StrengthsType, unknown> = useSuspenseQuery<StrengthsType, unknown>({
+    queryKey: ['strengths'],
+  })
+
+  if (isPending) {
+    return <Skeleton />
+  }
+
   return (
     <Section>
       <Label data-testid="strengths_title" className="text-xl font-bold">Strengths</Label>

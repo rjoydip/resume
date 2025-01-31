@@ -64,8 +64,8 @@ docker compose down
 
 ## TODO
 
-- [ ] Move data fetching individual page
-- [ ] Better data fetching using [TanStack Query](https://tanstack.com/query)
+- [X] Move data fetching individual page
+- [X] Better data fetching using [TanStack Query](https://tanstack.com/query)
 - [ ] Resolve vitest warning
 - [ ] Enhance code coverage
 - [ ] E2E test using [Browser Mode](https://vitest.dev/guide/browser/)

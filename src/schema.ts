@@ -110,11 +110,9 @@ export const worksSchema = array(workSchema)
 export const skillsSchema = techStackSchema
 export const projectsSchema = array(projectSchema)
 
-export default object({
-  about: aboutSchema,
-  educations: educationsSchema,
-  projects: projectsSchema,
-  skills: skillsSchema,
-  strengths: strengthsSchema,
-  works: worksSchema,
+export const declarationSchema = object({
+  name: string(),
+  country: string(),
+  location: string(),
+  date: string(),
 })

@@ -32,6 +32,6 @@ export interface BadgeProps
 export function Badge({ className, variant, ...props }: BadgeProps) {
   return React.useMemo(() => (
     <div className={cn(badgeVariants({ variant }), className)} {...props} />
-  ), [className, props])
+  ), [className, props, variant])
 }
 Badge.displayName = 'Badge'

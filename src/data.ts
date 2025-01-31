@@ -14,6 +14,11 @@ export const metadata = {
   description: 'JR',
   generator: 'blog, rjoydip, resume',
 }
+export const declarationDetails = {
+  location: 'Kolkata',
+  country: 'India',
+  name: metadata.name,
+}
 export const languages = [{
   name: 'English',
   isNative: false,

@@ -1,29 +1,42 @@
-import type { StrengthsType } from '@/types'
-import { Strengths } from '@/components/pages/strengths'
-import { render, screen, within } from '@testing-library/react'
+import { Strengths } from '@/pages/strengths'
+import { render, screen, waitFor, within } from '@testing-library/react'
 import * as React from 'react'
-import { beforeAll, describe, expect, it } from 'vitest'
+import { beforeAll, describe, expect, it, vi } from 'vitest'
 import { strengths as strengthsFixture } from '../../../fixtures/data'
+import { TQProvider } from '../../_shared/test-provider'
+
+vi.mock('@tanstack/react-query', async () => {
+  const actual = await vi.importActual('@tanstack/react-query')
+  return {
+    ...actual,
+    useSuspenseQuery: vi.fn(() => ({
+      isPending: false,
+      data: strengthsFixture,
+    })),
+  }
+})
 
 describe('<Strengths />', () => {
-  let strengths: StrengthsType
-
   beforeAll(async () => {
-    strengths = strengthsFixture
-    await render(<Strengths data={strengths} />)
+    render(
+      <TQProvider>
+        <Strengths />
+      </TQProvider>,
+    )
   })
 
-  it('should validate strengths title', () => {
-    const title = screen.getByTestId('strengths_title')
-    expect(title.textContent?.toLowerCase()).toBe('strengths')
+  it('should validate strengths title', async () => {
+    await waitFor(() => expect(screen.getByTestId('strengths_title').textContent?.toLowerCase()).toBe('strengths'))
   })
 
-  it('should validate strengths list', () => {
-    const title = screen.getByTestId('strengths_list')
-    const { queryByText } = within(title)
-    expect(title.children).toHaveLength(5)
-    strengths.forEach((t) => {
-      expect(queryByText(t)?.textContent).toBeDefined()
+  it('should validate strengths list', async () => {
+    await waitFor(() => {
+      const title = screen.getByTestId('strengths_list')
+      const { queryByText } = within(title)
+      expect(title.children).toHaveLength(5)
+      strengthsFixture.forEach(async (t) => {
+        await waitFor(() => expect(queryByText(t)?.textContent).toBeDefined())
+      })
     })
   })
 })

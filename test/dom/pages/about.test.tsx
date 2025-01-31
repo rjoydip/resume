@@ -1,77 +1,64 @@
-import type { AboutType } from '@/types'
-import { About } from '@/components/pages/about'
-import { render, screen } from '@testing-library/react'
-import * as React from 'react'
-import { beforeAll, describe, expect, it } from 'vitest'
+import { About } from '@/pages/about'
+import { render, screen, waitFor } from '@testing-library/react'
+import { beforeAll, describe, expect, it, vi } from 'vitest'
 import { about as aboutFixture } from '../../../fixtures/data'
+import { TQProvider } from '../../_shared/test-provider'
+
+vi.mock('@tanstack/react-query', async () => {
+  const actual = await vi.importActual('@tanstack/react-query')
+  return {
+    ...actual,
+    useSuspenseQuery: vi.fn(() => ({
+      isPending: false,
+      data: aboutFixture,
+    })),
+  }
+})
 
 describe('<About />', () => {
-  const about: AboutType = aboutFixture
-
-  beforeAll(async () => {
-    await render(<About data={about} />)
+  beforeAll(() => {
+    render(
+      <TQProvider>
+        <About />
+      </TQProvider>,
+    )
   })
 
   it('should validate name', async () => {
-    const aboutNameEle = screen.getByTestId('about_name')
-    expect(aboutNameEle.textContent).toBeDefined()
-    expect(aboutNameEle.textContent).toBe(about.name)
+    await waitFor(() => expect(screen.getByTestId('about_name')).toHaveTextContent(aboutFixture.name))
   })
 
   it('should validate description', async () => {
-    const aboutDescEle = screen.getByTestId('about_description')
-    expect(aboutDescEle.textContent).toBeDefined()
-    expect(aboutDescEle.textContent).toBe(about.description)
+    await waitFor(() => expect(screen.getByTestId('about_description')).toHaveTextContent(aboutFixture.description))
   })
 
   it('should validate location', async () => {
-    const aboutLocEle = screen.getByTestId('about_location')
-    expect(aboutLocEle.textContent).toBeDefined()
-    expect(aboutLocEle.textContent).toBe(`${about.location.city},${about.location.country}`)
+    await waitFor(() => expect(screen.getByTestId('about_location')).toHaveTextContent(`${aboutFixture.location.city},${aboutFixture.location.country}`))
   })
 
-  it('should validate professional summery', async () => {
-    const aboutProfSummeryEle = screen.getByTestId('about_summery')
-    expect(aboutProfSummeryEle.textContent).toBeDefined()
-    expect(aboutProfSummeryEle.textContent).toBe(about.summary)
+  it('should validate professional summary', async () => {
+    await waitFor(() => expect(screen.getByTestId('about_summery')).toHaveTextContent(aboutFixture.summary))
   })
 
-  it('should validate professional summery title', async () => {
-    const aboutProfSummeryTitleEle = screen.getByTestId(
-      'about_summery_title',
-    )
-    expect(aboutProfSummeryTitleEle.textContent).toBeDefined()
+  it('should validate professional summary title', async () => {
+    await waitFor(() => expect(screen.getByTestId('about_summery_title')).toBeDefined())
   })
-
-  // TODO: Need to check why isn't working
-  /* it("should validate avatar URL", async () => {
-    const aboutAvatarURLEle = screen.getByTestId("about_avatar_url");
-    expect(aboutAvatarURLEle.textContent).toBeDefined();
-  }); */
 
   it('should validate location link', async () => {
-    const aboutLocationLinkEle = screen.getByTestId('about_location_link')
-    expect(aboutLocationLinkEle.textContent).toBeDefined()
-    expect(aboutLocationLinkEle.getAttribute('href')).toBe(about.location.link)
+    await waitFor(() => expect(screen.getByTestId('about_location_link')).toHaveAttribute('href', aboutFixture.location.link))
   })
 
   it('should validate contact email', async () => {
-    const aboutLocationLinkEle = screen.getByTestId('about_contact_email')
-    expect(aboutLocationLinkEle.textContent).toBeDefined()
-    expect(aboutLocationLinkEle.getAttribute('href')).toBe(`mailto:${about.contact.email}`)
+    await waitFor(() => expect(screen.getByTestId('about_contact_email')).toHaveAttribute('href', `mailto:${aboutFixture.contact.email}`))
   })
 
   it('should validate contact tel', async () => {
-    const aboutLocationLinkEle = screen.getByTestId('about_contact_tel')
-    expect(aboutLocationLinkEle.textContent).toBeDefined()
-    expect(aboutLocationLinkEle.getAttribute('href')).toBe(`tel:${about.contact.tel}`)
+    await waitFor(() => expect(screen.getByTestId('about_contact_tel')).toHaveAttribute('href', `tel:${aboutFixture.contact.tel}`))
   })
 
   it('should validate contact social', async () => {
-    about.contact.social.forEach((s) => {
-      const aboutLocationLinkEle = screen.getByTestId(`about_contact_social_${s.name}`)
-      expect(aboutLocationLinkEle.textContent).toBeDefined()
-      expect(aboutLocationLinkEle.getAttribute('href')).toBe(s.url)
+    aboutFixture.contact.social.forEach(async (s) => {
+      await waitFor(() => expect(screen.getByTestId(`about_contact_social_${s.name}`)).toHaveAttribute('href', s.url))
     })
   })
 })

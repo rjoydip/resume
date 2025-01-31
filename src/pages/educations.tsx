@@ -1,8 +1,13 @@
+'use client'
+
 import type { EducationsType, EducationType } from '@/types'
+import type { UseSuspenseQueryResult } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import * as React from 'react'
-import { getIcon } from '../_shared/getIcon'
-import { Label } from '../ui/label'
-import { Section } from '../ui/section'
+import { getIcon } from '../components/_shared/getIcon'
+import { Label } from '../components/ui/label'
+import { Section } from '../components/ui/section'
+import { Skeleton } from '../components/ui/skeleton'
 
 function EducationList({ data }: { data: EducationsType }) {
   return (
@@ -49,9 +54,15 @@ function EducationList({ data }: { data: EducationsType }) {
 }
 EducationList.displayName = 'EducationList'
 
-export function Educations({ data }: { data: EducationsType }) {
-  if (!data?.length)
-    return null
+export function Educations() {
+  const { isPending, data }: UseSuspenseQueryResult<EducationsType, unknown> = useSuspenseQuery<EducationsType, unknown>({
+    queryKey: ['educations'],
+  })
+
+  if (isPending) {
+    return <Skeleton />
+  }
+
   return (
     <Section>
       <Label data-testid="education_title" className="text-xl font-bold">

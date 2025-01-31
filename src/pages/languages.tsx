@@ -1,14 +1,19 @@
-import type { LanguagesType } from '@/types'
-import * as React from 'react'
-import { getIcon } from '../_shared/getIcon'
-import { Card } from '../ui/card'
-import { Label } from '../ui/label'
-import { Section } from '../ui/section'
+'use client'
 
-function LanguagesList({ data }: { data: LanguagesType[] }) {
+import type { LanguagesType } from '@/types'
+import type { UseSuspenseQueryResult } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
+import * as React from 'react'
+import { getIcon } from '../components/_shared/getIcon'
+import { Card } from '../components/ui/card'
+import { Label } from '../components/ui/label'
+import { Section } from '../components/ui/section'
+import { Skeleton } from '../components/ui/skeleton.tsx'
+
+function LanguagesList({ languages }: { languages: LanguagesType[] }) {
   return (
     <ul data-testid="language_list" className="space-y-4 text-left">
-      {data.map((language: LanguagesType) => (
+      {languages.map((language: LanguagesType) => (
         <li
           key={language.name}
           className="flex flex-wrap items-start items-baseline"
@@ -27,12 +32,24 @@ function LanguagesList({ data }: { data: LanguagesType[] }) {
 }
 LanguagesList.displayName = 'LanguagesList'
 
-export function Languages({ data }: { data: LanguagesType[] }) {
+export function Languages() {
+  const { isPending, data }: UseSuspenseQueryResult<LanguagesType[], unknown> = useSuspenseQuery<LanguagesType[], unknown>({
+    queryKey: [],
+    queryFn: async () => {
+      const { languages } = await import('../data.ts')
+      return languages
+    },
+  })
+
+  if (isPending) {
+    return <Skeleton />
+  }
+
   return (
     <Section>
       <Label data-testid="language_title" className="text-xl font-bold">Languages</Label>
       <Card className="border p-3">
-        <LanguagesList data={data} />
+        <LanguagesList languages={data} />
       </Card>
     </Section>
   )

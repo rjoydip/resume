@@ -10,6 +10,7 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { Inter } from 'next/font/google'
 import * as React from 'react'
 import { isDevelopment, isTest } from 'std-env'
+import Providers from './provider'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -43,7 +44,7 @@ function Layout({ children }: { children: React.ReactNode }) {
           disableTransitionOnChange
           themes={[...getLightThemeColors(), ...getDarkThemeColors()]}
         >
-          {children}
+          <Providers>{children}</Providers>
           <ToggleTheme />
           {!isDevelopment && !isTest && <SpeedInsights />}
         </NextThemesProvider>

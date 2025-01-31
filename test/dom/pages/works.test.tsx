@@ -1,81 +1,86 @@
-import type { WorksType } from '@/types'
-import { Works } from '@/components/pages/works'
-import { render, screen } from '@testing-library/react'
+import { Works } from '@/pages/works'
+import { render, screen, waitFor } from '@testing-library/react'
 import * as React from 'react'
-import { beforeAll, describe, expect, it } from 'vitest'
+import { beforeAll, describe, expect, it, vi } from 'vitest'
 import { works as workFixture } from '../../../fixtures/data'
+import { TQProvider } from '../../_shared/test-provider'
+
+vi.mock('@tanstack/react-query', async () => {
+  const actual = await vi.importActual('@tanstack/react-query')
+  return {
+    ...actual,
+    useSuspenseQuery: vi.fn(() => ({
+      isPending: false,
+      data: workFixture,
+    })),
+  }
+})
 
 describe('<Works />', () => {
   let container: HTMLElement
-  const works: WorksType = workFixture
-  beforeAll(async () => {
-    const render$ = await render(<Works data={works} />)
+  beforeAll(() => {
+    const render$ = render(
+      <TQProvider>
+        <Works />
+      </TQProvider>,
+    )
     container = render$.container
   })
   it('should validate work title', async () => {
-    const title = screen.getByTestId('work_title')
-    expect(title.textContent?.toLowerCase()).toBe('work experience')
+    await waitFor(() => expect(screen.getByTestId('work_title').textContent?.toLowerCase()).toBe('work experience'))
   })
   it('should validate work list', async () => {
-    expect(
+    await waitFor(() => expect(
       container.querySelector('[data-testid="work_list"] > div'),
-    ).toBeDefined()
+    ).toBeDefined())
   })
   describe('should validate work details', async () => {
-    const works: WorksType = workFixture
-
-    works.forEach((w, index) => {
-      it('should validate company link', () => {
-        expect(
+    workFixture.forEach((w, index) => {
+      it('should validate company link', async () => {
+        await waitFor(() => expect(
           container.querySelector(
             `[data-testid="work_details_index_${index}"] > a`,
           ),
-        ).toBeDefined()
-        expect(
+        ).toBeDefined())
+        await waitFor(() => expect(
           container
             .querySelector(
               `[data-testid="work_details_index_${index}"] > div > a`,
             )
             ?.getAttribute('href'),
-        ).toBe(w.link)
+        ).toBe(w.link))
       })
-      it('should validate company name', () => {
-        const ele = container.querySelector(
+      it('should validate company name', async () => {
+        await waitFor(() => expect(container.querySelector(
           `[data-testid="work_details_index_${index}"] > div > a`,
-        )
-        expect(ele?.textContent).toBe(w.company)
+        )?.textContent).toBe(w.company))
       })
-      it('should validate working mode', () => {
-        const ele = container.querySelector(
+      it('should validate working mode', async () => {
+        await waitFor(() => expect(container.querySelector(
           `[data-testid="work_details_index_${index}"] > div > span`,
-        )
-        expect(ele?.textContent).toBe(w.mode.join(''))
+        )?.textContent).toBe(w.mode.join('')))
       })
-      it('should validate working tenure', () => {
-        const ele = container.querySelector(
+      it('should validate working tenure', async () => {
+        await waitFor(() => expect(container.querySelector(
           `[data-testid="work_details_index_${index}"] > div:nth-child(2)`,
-        )
-        expect(ele?.textContent).toBe(`${w.start} - ${w.end ?? 'Present'}`)
+        )?.textContent).toBe(`${w.start} - ${w.end ?? 'Present'}`))
       })
-      it('should validate working position', () => {
-        const ele = container.querySelector(
+      it('should validate working position', async () => {
+        await waitFor(() => expect(container.querySelector(
           `[data-testid="work_description_index_${index}"]`,
-        )
-        expect(ele?.textContent).toBe(w.description.replaceAll('<br/>', ''))
+        )?.textContent).toBe(w.description.replaceAll('<br/>', '')))
       })
-      it('should validate technology title', () => {
-        const ele = container.querySelector(
+      it('should validate technology title', async () => {
+        await waitFor(() => expect(container.querySelector(
           `[data-testid="work_technology_index_${index}"] > div:nth-child(1)`,
-        )
-        expect(ele?.textContent).toBe('Technology: ')
+        )?.textContent).toBe('Technology: '))
       })
       it('should validate technology items', () => {
         w.techStacks
-        && w.techStacks.forEach((_, i) => {
-          const ele = container.querySelector(
+        && w.techStacks.forEach(async (_, i) => {
+          await waitFor(() => expect(container.querySelector(
             `[data-testid="work_technology_index_${index}"] > div:nth-child(${i + 2})`,
-          )
-          expect(ele?.textContent).toBeDefined()
+          )?.textContent).toBeDefined())
         })
       })
     })

@@ -26,6 +26,9 @@ const nextConfig: NextConfig = {
     webVitalsAttribution: ['CLS', 'LCP'],
     optimizePackageImports: [],
   },
+  env: {
+    BLOB_READ_WRITE_TOKEN: env.BLOB_READ_WRITE_TOKEN,
+  },
 }
 
 export default MillionLint.next({
