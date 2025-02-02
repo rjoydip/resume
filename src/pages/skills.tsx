@@ -3,7 +3,6 @@
 import type { SkillsType } from '@/types'
 import type { UseSuspenseQueryResult } from '@tanstack/react-query'
 import { useSuspenseQuery } from '@tanstack/react-query'
-import * as React from 'react'
 import titleize from 'titleize'
 import { Badge } from '../components/ui/badge'
 import { Card } from '../components/ui/card'
@@ -24,7 +23,7 @@ function SkillsList({ skills }: { skills: string[] }) {
 }
 SkillsList.displayName = 'SkillsList'
 
-export function Skills() {
+export default function Skills() {
   const { isPending, data }: UseSuspenseQueryResult<SkillsType, unknown> = useSuspenseQuery<SkillsType, unknown>({
     queryKey: ['skills'],
   })

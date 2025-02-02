@@ -1,4 +1,4 @@
-import { About } from '@/pages/about'
+import About from '@/pages/about'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor } from '@testing-library/react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'

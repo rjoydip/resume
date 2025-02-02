@@ -1,5 +1,5 @@
 import type { ProjectsType } from '@/types'
-import { Projects } from '@/pages/projects'
+import Projects from '@/pages/projects'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor } from '@testing-library/react'
 import * as React from 'react'

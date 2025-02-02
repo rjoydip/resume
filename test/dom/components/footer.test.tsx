@@ -1,8 +1,8 @@
-import { Footer } from '@/components/footer'
+import Footer from '@/components/footer'
 import { render, screen, waitFor } from '@testing-library/react'
 import { beforeAll, describe, expect, it } from 'vitest'
-import { declarationDetails } from '../../fixtures/data'
-import { today } from '../_shared/test-utils'
+import { declarationDetails } from '../../../fixtures/data'
+import { today } from '../../_shared/test-utils'
 
 describe('<Footer />', () => {
   beforeAll(async () => {

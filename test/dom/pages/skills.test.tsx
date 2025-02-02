@@ -1,4 +1,4 @@
-import { Skills } from '@/pages/skills'
+import Skills from '@/pages/skills'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor } from '@testing-library/react'
 import * as React from 'react'

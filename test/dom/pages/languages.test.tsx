@@ -1,5 +1,5 @@
 import { languages as languagesFixtures } from '@/data'
-import { Languages } from '@/pages/languages'
+import Languages from '@/pages/languages'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor, within } from '@testing-library/react'
 import * as React from 'react'

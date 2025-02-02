@@ -9,7 +9,7 @@ import { Card } from '../components/ui/card'
 import { Label } from '../components/ui/label'
 import { Section } from '../components/ui/section'
 
-export function Declaration() {
+export default function Declaration() {
   const { isPending, data }: UseSuspenseQueryResult<DeclarationType, unknown> = useSuspenseQuery<DeclarationType, unknown>({
     queryKey: [],
     queryFn: async () => {

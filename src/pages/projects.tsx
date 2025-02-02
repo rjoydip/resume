@@ -117,7 +117,7 @@ const ProjectsList = memo(({ data }: { data: ProjectType[] }) => {
 })
 ProjectsList.displayName = 'ProjectsList'
 
-export function Projects() {
+export default function Projects() {
   const { isPending, data }: UseSuspenseQueryResult<ProjectsType, unknown> = useSuspenseQuery<ProjectsType, unknown>({
     queryKey: ['projects'],
   })

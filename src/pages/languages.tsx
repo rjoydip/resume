@@ -3,7 +3,6 @@
 import type { LanguagesType } from '@/types'
 import type { UseSuspenseQueryResult } from '@tanstack/react-query'
 import { useSuspenseQuery } from '@tanstack/react-query'
-import * as React from 'react'
 import { getIcon } from '../components/_shared/getIcon'
 import { Card } from '../components/ui/card'
 import { Label } from '../components/ui/label'
@@ -32,7 +31,7 @@ function LanguagesList({ languages }: { languages: LanguagesType[] }) {
 }
 LanguagesList.displayName = 'LanguagesList'
 
-export function Languages() {
+export default function Languages() {
   const { isPending, data }: UseSuspenseQueryResult<LanguagesType[], unknown> = useSuspenseQuery<LanguagesType[], unknown>({
     queryKey: [],
     queryFn: async () => {

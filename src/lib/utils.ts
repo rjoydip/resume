@@ -29,7 +29,7 @@ export async function fetchData<T>(blobs: ListBlobResultBlob[], name: string): P
 
   if (blob) {
     const response = await fetch(blob.url)
-    if (response.status === 200)
+    if (response.ok || response.status === 200)
       return response.json()
     else
       throw new Error('Failed to fetch data')

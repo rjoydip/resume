@@ -1,4 +1,4 @@
-import { Strengths } from '@/pages/strengths'
+import Strengths from '@/pages/strengths'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor, within } from '@testing-library/react'
 import * as React from 'react'
