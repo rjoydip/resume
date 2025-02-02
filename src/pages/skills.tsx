@@ -30,7 +30,7 @@ export function Skills() {
   })
 
   if (isPending) {
-    return <Skeleton />
+    return <Skeleton data-testid="skills_skeleton" />
   }
 
   return (

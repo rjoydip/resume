@@ -25,7 +25,7 @@ export function About() {
   })
 
   if (isPending) {
-    return <Skeleton />
+    return <Skeleton data-testid="about_skeleton" />
   }
 
   return (

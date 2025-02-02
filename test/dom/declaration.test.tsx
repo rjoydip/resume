@@ -1,4 +1,5 @@
 import { Declaration } from '@/components/declaration'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
@@ -40,5 +41,22 @@ describe('<Declaration />', () => {
       expect(screen.getByTestId('declaration_date').textContent).toBe(`Date: ${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`)
       expect(screen.getByTestId('declaration_name').textContent).toBe(`Name: ${declarationDetails.name}`)
     })
+  })
+
+  it('should render skeleton when data is pending', () => {
+    vi.mocked(useSuspenseQuery).mockReturnValue({
+      isPending: true,
+      data: undefined,
+      isError: false,
+      error: null,
+    } as any)
+
+    render(
+      <TQProvider>
+        <Declaration />
+      </TQProvider>,
+    )
+
+    expect(screen.getByTestId('declaration_skeleton')).toBeInTheDocument()
   })
 })

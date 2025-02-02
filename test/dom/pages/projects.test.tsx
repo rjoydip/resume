@@ -1,5 +1,6 @@
 import type { ProjectsType } from '@/types'
 import { Projects } from '@/pages/projects'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
@@ -27,11 +28,13 @@ describe('<Projects />', () => {
     )
     container = render$.container
   })
+
   it('should validate project title', async () => {
     await waitFor(() => {
-      expect(screen.getByTestId('project_title').textContent?.toLowerCase()).toBe('projects')
+      expect(screen.getByTestId('projects_title').textContent?.toLowerCase()).toBe('projects')
     })
   })
+
   describe('should validate projects items', async () => {
     const projects: ProjectsType = projectsFixture
     projects.forEach((p, index) => {
@@ -91,5 +94,22 @@ describe('<Projects />', () => {
         })
       }
     })
+  })
+
+  it('should render skeleton when data is pending', () => {
+    vi.mocked(useSuspenseQuery).mockReturnValue({
+      isPending: true,
+      data: undefined,
+      isError: false,
+      error: null,
+    } as any)
+
+    render(
+      <TQProvider>
+        <Projects />
+      </TQProvider>,
+    )
+
+    expect(screen.getByTestId('projects_skeleton')).toBeInTheDocument()
   })
 })

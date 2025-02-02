@@ -73,7 +73,7 @@ export function Works() {
   })
 
   if (isPending) {
-    return <Skeleton />
+    return <Skeleton data-testid="works_skeleton" />
   }
 
   return (

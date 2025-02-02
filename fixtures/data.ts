@@ -1,5 +1,5 @@
 import type { AboutType, EducationsType, ProjectsType, SkillsType, StrengthsType, WorksType } from '@/types'
-import { companies, techStacks, workMode, declarationDetails } from '@/data'
+import { companies, declarationDetails, techStacks, workMode } from '@/data'
 import { randBoolean, randCity, randCountry, randEmail, randFullName, randImg, randNumber, randPhoneNumber, randText } from '@ngneat/falso'
 
 const generateArray = (length = 1) => Array.from({ length }, (_, i) => i)

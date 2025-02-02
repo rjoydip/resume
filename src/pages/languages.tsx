@@ -42,7 +42,7 @@ export function Languages() {
   })
 
   if (isPending) {
-    return <Skeleton />
+    return <Skeleton data-testid="languages_skeleton" />
   }
 
   return (

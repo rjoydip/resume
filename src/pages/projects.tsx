@@ -123,12 +123,12 @@ export function Projects() {
   })
 
   if (isPending) {
-    return <Skeleton />
+    return <Skeleton data-testid="projects_skeleton" />
   }
 
   return (
     <Section>
-      <Label data-testid="project_title" className="text-xl font-bold">
+      <Label data-testid="projects_title" className="text-xl font-bold">
         Projects
       </Label>
       <div className="print-force-new-page scroll-mb-16">

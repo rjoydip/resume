@@ -1,4 +1,5 @@
 import { Strengths } from '@/pages/strengths'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor, within } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
@@ -38,5 +39,22 @@ describe('<Strengths />', () => {
         await waitFor(() => expect(queryByText(t)?.textContent).toBeDefined())
       })
     })
+  })
+
+  it('should render skeleton when data is pending', () => {
+    vi.mocked(useSuspenseQuery).mockReturnValue({
+      isPending: true,
+      data: undefined,
+      isError: false,
+      error: null,
+    } as any)
+
+    render(
+      <TQProvider>
+        <Strengths />
+      </TQProvider>,
+    )
+
+    expect(screen.getByTestId('strengths_skeleton')).toBeInTheDocument()
   })
 })

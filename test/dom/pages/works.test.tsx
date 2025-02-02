@@ -1,4 +1,5 @@
 import { Works } from '@/pages/works'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
@@ -26,14 +27,17 @@ describe('<Works />', () => {
     )
     container = render$.container
   })
+
   it('should validate work title', async () => {
     await waitFor(() => expect(screen.getByTestId('work_title').textContent?.toLowerCase()).toBe('work experience'))
   })
+
   it('should validate work list', async () => {
     await waitFor(() => expect(
       container.querySelector('[data-testid="work_list"] > div'),
     ).toBeDefined())
   })
+
   describe('should validate work details', async () => {
     workFixture.forEach((w, index) => {
       it('should validate company link', async () => {
@@ -84,5 +88,22 @@ describe('<Works />', () => {
         })
       })
     })
+  })
+
+  it('should render skeleton when data is pending', () => {
+    vi.mocked(useSuspenseQuery).mockReturnValue({
+      isPending: true,
+      data: undefined,
+      isError: false,
+      error: null,
+    } as any)
+
+    render(
+      <TQProvider>
+        <Works />
+      </TQProvider>,
+    )
+
+    expect(screen.getByTestId('works_skeleton')).toBeInTheDocument()
   })
 })

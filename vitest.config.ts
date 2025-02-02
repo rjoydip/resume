@@ -30,8 +30,8 @@ export default defineConfig(({ mode }) => ({
           '**/{.next,public,test,fixtures,mocks,coverage}',
           '**/*.{config,setup}.{mjs,js,ts,mts,cts}',
           '**/src/{app,lib}/*.{ts,tsx}',
-          mode === 'dom' ? '**/*.ts' : mode === 'node' ? '**/*.tsx' : ''
-        ])
+          mode === 'dom' ? '**/*.ts' : mode === 'node' ? '**/*.tsx' : '',
+        ]),
       ],
       reportOnFailure: true,
     },

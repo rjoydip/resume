@@ -20,7 +20,7 @@ export function Declaration() {
   })
 
   if (isPending) {
-    return <Skeleton />
+    return <Skeleton data-testid="declaration_skeleton" />
   }
 
   return (

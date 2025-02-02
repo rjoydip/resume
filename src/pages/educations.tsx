@@ -60,7 +60,7 @@ export function Educations() {
   })
 
   if (isPending) {
-    return <Skeleton />
+    return <Skeleton data-testid="educations_skeleton" />
   }
 
   return (

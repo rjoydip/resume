@@ -37,7 +37,7 @@ export function Strengths() {
   })
 
   if (isPending) {
-    return <Skeleton />
+    return <Skeleton data-testid="strengths_skeleton" />
   }
 
   return (

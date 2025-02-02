@@ -1,4 +1,5 @@
 import { Educations } from '@/pages/educations'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
@@ -71,5 +72,22 @@ describe('<Educations />', () => {
         })
       })
     })
+  })
+
+  it('should render skeleton when data is pending', () => {
+    vi.mocked(useSuspenseQuery).mockReturnValue({
+      isPending: true,
+      data: undefined,
+      isError: false,
+      error: null,
+    } as any)
+
+    render(
+      <TQProvider>
+        <Educations />
+      </TQProvider>,
+    )
+
+    expect(screen.getByTestId('educations_skeleton')).toBeInTheDocument()
   })
 })

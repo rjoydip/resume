@@ -1,5 +1,6 @@
 import { languages as languagesFixtures } from '@/data'
 import { Languages } from '@/pages/languages'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor, within } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
@@ -42,5 +43,22 @@ describe('<Languages />', () => {
         })
       })
     })
+  })
+
+  it('should render skeleton when data is pending', () => {
+    vi.mocked(useSuspenseQuery).mockReturnValue({
+      isPending: true,
+      data: undefined,
+      isError: false,
+      error: null,
+    } as any)
+
+    render(
+      <TQProvider>
+        <Languages />
+      </TQProvider>,
+    )
+
+    expect(screen.getByTestId('languages_skeleton')).toBeInTheDocument()
   })
 })

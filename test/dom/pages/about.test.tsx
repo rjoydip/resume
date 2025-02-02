@@ -1,4 +1,5 @@
 import { About } from '@/pages/about'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor } from '@testing-library/react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
 import { about as aboutFixture } from '../../../fixtures/data'
@@ -60,5 +61,22 @@ describe('<About />', () => {
     aboutFixture.contact.social.forEach(async (s) => {
       await waitFor(() => expect(screen.getByTestId(`about_contact_social_${s.name}`)).toHaveAttribute('href', s.url))
     })
+  })
+
+  it('should render skeleton when data is pending', () => {
+    vi.mocked(useSuspenseQuery).mockReturnValue({
+      isPending: true,
+      data: undefined,
+      isError: false,
+      error: null,
+    } as any)
+
+    render(
+      <TQProvider>
+        <About />
+      </TQProvider>,
+    )
+
+    expect(screen.getByTestId('about_skeleton')).toBeInTheDocument()
   })
 })
