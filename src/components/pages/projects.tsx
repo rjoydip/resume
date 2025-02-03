@@ -1,6 +1,10 @@
+'use client'
+
 import type { ProjectLinkType, ProjectsType, ProjectType } from '@/types'
+import type { UseSuspenseQueryResult } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import clsx from 'clsx'
-import * as React from 'react'
+import React, { memo } from 'react'
 import titleize from 'titleize'
 import { getIcon } from '../_shared/getIcon'
 import { TechnologyList } from '../_shared/technologyList'
@@ -13,10 +17,7 @@ import {
 } from '../ui/card'
 import { Label } from '../ui/label'
 import { Section } from '../ui/section'
-
-interface ProjectProps {
-  data: ProjectsType
-}
+import { Skeleton } from '../ui/skeleton'
 
 function ProjectLink({ links }: { links: ProjectLinkType[] }) {
   return links.map((link: ProjectLinkType) => (
@@ -36,7 +37,7 @@ function ProjectLink({ links }: { links: ProjectLinkType[] }) {
 }
 ProjectLink.displayName = 'ProjectLink'
 
-function ProjectsList({ data }: { data: ProjectType[] }) {
+const ProjectsList = memo(({ data }: { data: ProjectType[] }) => {
   return data.map((project: ProjectType, index: number) => (
     <Card
       key={project.title}
@@ -113,15 +114,21 @@ function ProjectsList({ data }: { data: ProjectType[] }) {
       </CardContent>
     </Card>
   ))
-}
+})
 ProjectsList.displayName = 'ProjectsList'
 
-export function Projects({ data }: ProjectProps) {
-  if (!data?.length)
-    return null
+export default function Projects() {
+  const { isPending, data }: UseSuspenseQueryResult<ProjectsType, unknown> = useSuspenseQuery<ProjectsType, unknown>({
+    queryKey: ['projects'],
+  })
+
+  if (isPending) {
+    return <Skeleton data-testid="projects_skeleton" />
+  }
+
   return (
     <Section>
-      <Label data-testid="project_title" className="text-xl font-bold">
+      <Label data-testid="projects_title" className="text-xl font-bold">
         Projects
       </Label>
       <div className="print-force-new-page scroll-mb-16">

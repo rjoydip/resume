@@ -2,6 +2,6 @@
   "github": {
     "silent": true
   },
-  "buildCommand": "pnpm turbo build",
-  "ignoreCommand": "pnpm dlx turbo-ignore"
+  "buildCommand": "bun run turbo build",
+  "ignoreCommand": "bunx turbo-ignore"
 }

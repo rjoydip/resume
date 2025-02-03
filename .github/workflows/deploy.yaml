@@ -22,44 +22,38 @@ jobs:
         with:
           node-version: 20
 
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
+      - name: 📦 Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          version: 8
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+          bun-version: latest
 
       - uses: actions/cache@v4
-        name: Setup pnpm cache
+        name: Setup bun cache
         with:
           path: ${{ vars.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-bun-
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: bun install --no-frozen-lockfile
 
       - name: 🛠️ Build
         run: |
-          pnpm dlx vercel link --yes --token=${{ secrets.VERCEL_TOKEN }}
-          pnpm dlx vercel env pull .env.local --token=${{ secrets.VERCEL_TOKEN }}
+          bunx vercel link --yes --token=${{ secrets.VERCEL_TOKEN }}
+          bunx vercel env pull .env.local --token=${{ secrets.VERCEL_TOKEN }}
           echo 'BLOB_READ_WRITE_TOKEN="${{ secrets.BLOB_READ_WRITE_TOKEN }}"' >> .env.local
-          pnpm build
+          bun build
 
       - name: Pull Vercel Environment Information
-        run: pnpm dlx vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        run: bunx vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project
         run: |
-          pnpm dlx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+          bunx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project to Vercel
-        run: pnpm dlx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: bunx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Clean ENV file
         run: rm -rf .env.local

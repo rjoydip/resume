@@ -21,47 +21,44 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 📦 Install Node
+      - name: 📦 Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - uses: pnpm/action-setup@v3
-        name: 📦 Install pnpm
+      - name: 📦 Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          version: 8
-          run_install: false
+          bun-version: latest
 
       - uses: actions/cache@v4
-        name: ⚙️ Setup pnpm cache
+        name: Setup bun cache
         with:
-          key: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
-            ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          path: |
-            node_modules
-            ${{ runner.os }}/.next/cache
+          path: ${{ vars.STORE_PATH }}
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
 
       - name: 📦 Install deps
         run: |
-          pnpm install --no-frozen-lockfile
+          bun install --no-frozen-lockfile
 
       - name: ⛏️ Lint
-        run: pnpm lint
+        run: bun run lint
 
       - name: 🛠️ Build
         run: |
-          pnpm dlx vercel link --yes --token=${{ secrets.VERCEL_TOKEN }}
-          pnpm dlx vercel env pull .env.local --token=${{ secrets.VERCEL_TOKEN }}
+          bunx vercel link --yes --token=${{ secrets.VERCEL_TOKEN }}
+          bunx vercel env pull .env.local --token=${{ secrets.VERCEL_TOKEN }}
           echo 'BLOB_READ_WRITE_TOKEN="${{ secrets.BLOB_READ_WRITE_TOKEN }}"' >> .env.local
-          pnpm build
+          bun run build
           rm -rf .env.local
 
       - name: 🧪 Unit test
-        run: pnpm test
+        run: bun run test
 
       - name: 📊 E2E test
-        run: pnpm test:e2e
+        run: bun run test:e2e
 
       - uses: actions/upload-artifact@v4
         with:
@@ -72,13 +69,13 @@ jobs:
       - name: 📰 Test Coverage (Mode - DOM)
         uses: davelosert/vitest-coverage-report-action@v2
         with:
-          name: 'DOM'
-          json-summary-path: './coverage/dom/coverage-summary.json'
-          json-final-path: './coverage/dom/coverage-final.json'
-    
+          name: DOM
+          json-summary-path: ./coverage/dom/coverage-summary.json
+          json-final-path: ./coverage/dom/coverage-final.json
+
       - name: 📰 Test Coverage (Mode - NODE)
         uses: davelosert/vitest-coverage-report-action@v2
         with:
-          name: 'NODE'
-          json-summary-path: './coverage/node/coverage-summary.json'
-          json-final-path: './coverage/node/coverage-final.json'
+          name: NODE
+          json-summary-path: ./coverage/node/coverage-summary.json
+          json-final-path: ./coverage/node/coverage-final.json

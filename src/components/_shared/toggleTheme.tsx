@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import useColorTheme from '@/hooks/useColorTheme'
 import useHasMounted from '@/hooks/useHasMounted'
 import { Moon, Sun } from 'lucide-react'
-import { useCallback } from 'react'
+import React, { useCallback } from 'react'
 
 export function ToggleTheme() {
   const hasMounter = useHasMounted()

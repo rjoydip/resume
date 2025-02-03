@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import * as React from 'react'
+import React from 'react'
 
 function Card({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return React.useMemo(() => (

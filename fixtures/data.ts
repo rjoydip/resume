@@ -1,5 +1,5 @@
-import type { AboutType, EducationsType, ProjectsType, ResumeDataType, SkillsType, StrengthsType, WorksType } from '@/types'
-import { companies, techStacks, workMode } from '@/data'
+import type { AboutType, EducationsType, ProjectsType, SkillsType, StrengthsType, WorksType } from '@/types'
+import { companies, declarationDetails, techStacks, workMode } from '@/data'
 import { randBoolean, randCity, randCountry, randEmail, randFullName, randImg, randNumber, randPhoneNumber, randText } from '@ngneat/falso'
 
 const generateArray = (length = 1) => Array.from({ length }, (_, i) => i)
@@ -54,7 +54,15 @@ export const projects: ProjectsType = generateArray(5).map(() => ({
   isClient: randBoolean(),
   company: companies[randNumber({ min: 0, max: companies.length - 1 })],
   client_country: randCountry(),
-  links: [],
+  links: [{
+    type: 'mobile',
+    href: 'https://example.com',
+    label: randText(),
+  }, {
+    type: 'web',
+    href: 'https://example.com',
+    label: randText(),
+  }],
 }))
 
 export const works: WorksType = generateArray(3).map(() => ({
@@ -70,8 +78,8 @@ export const works: WorksType = generateArray(3).map(() => ({
 
 export const skills: SkillsType = generateTechStacks()
 export const strengths: StrengthsType = generateArray(5).map(() => randText())
-
-export const resumeData: ResumeDataType = {
+export { declarationDetails }
+export const resumeData = {
   about,
   educations,
   strengths,

@@ -1,14 +1,15 @@
+'use client'
+
 import type { SkillsType } from '@/types'
-import * as React from 'react'
+import type { UseSuspenseQueryResult } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
+import React from 'react'
 import titleize from 'titleize'
 import { Badge } from '../ui/badge'
 import { Card } from '../ui/card'
 import { Label } from '../ui/label'
 import { Section } from '../ui/section'
-
-interface SkillsProps {
-  data: SkillsType
-}
+import { Skeleton } from '../ui/skeleton'
 
 function SkillsList({ skills }: { skills: string[] }) {
   return (
@@ -23,9 +24,15 @@ function SkillsList({ skills }: { skills: string[] }) {
 }
 SkillsList.displayName = 'SkillsList'
 
-export function Skills({ data }: SkillsProps) {
-  if (!data?.length)
-    return null
+export default function Skills() {
+  const { isPending, data }: UseSuspenseQueryResult<SkillsType> = useSuspenseQuery<SkillsType>({
+    queryKey: ['skills'],
+  })
+
+  if (isPending) {
+    return <Skeleton data-testid="skills_skeleton" />
+  }
+
   return (
     <Section>
       <Label data-testid="skills_title" className="text-xl font-bold">

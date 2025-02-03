@@ -1,14 +1,15 @@
+'use client'
+
 import type { WorkType } from '@/types'
-import * as React from 'react'
+import type { UseSuspenseQueryResult } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
+import React from 'react'
 import { getIcon } from '../_shared/getIcon'
 import { TechnologyList } from '../_shared/technologyList'
 import { Badge } from '../ui/badge'
 import { Label } from '../ui/label'
 import { Section } from '../ui/section'
-
-interface WorksProps {
-  data: WorkType[]
-}
+import { Skeleton } from '../ui/skeleton'
 
 function WorkingMode({ modes }: { modes: string[] }) {
   return modes.map((mode: string) => <Badge key={mode} className="align-middle text-[12px]">{mode}</Badge>)
@@ -66,9 +67,15 @@ function WorksList({ data }: { data: WorkType[] }) {
 }
 WorksList.displayName = 'WorksList'
 
-export function Works({ data }: WorksProps) {
-  if (!data?.length)
-    return null
+export default function Works() {
+  const { isPending, data }: UseSuspenseQueryResult<WorkType[]> = useSuspenseQuery<WorkType[]>({
+    queryKey: ['works'],
+  })
+
+  if (isPending) {
+    return <Skeleton data-testid="works_skeleton" />
+  }
+
   return (
     <Section>
       <Label data-testid="work_title" className="text-xl font-bold">

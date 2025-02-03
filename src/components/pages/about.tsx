@@ -1,5 +1,9 @@
+'use client'
+
 import type { AboutType, IconType } from '@/types'
-import * as React from 'react'
+import type { UseSuspenseQueryResult } from '@tanstack/react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
+import React from 'react'
 import titleize from 'titleize'
 import { getIcon } from '../_shared/getIcon'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
@@ -13,10 +17,17 @@ import {
 } from '../ui/card'
 import { Label } from '../ui/label'
 import { Section } from '../ui/section'
+import { Skeleton } from '../ui/skeleton'
 
-export function About({ data }: { data: AboutType }) {
-  if (!data)
-    return null
+export default function About() {
+  const { isPending, data }: UseSuspenseQueryResult<AboutType> = useSuspenseQuery<AboutType>({
+    queryKey: ['about'],
+  })
+
+  if (isPending) {
+    return <Skeleton data-testid="about_skeleton" />
+  }
+
   return (
     <Section>
       <Card className="border p-3">
@@ -93,7 +104,7 @@ export function About({ data }: { data: AboutType }) {
                 </a>
               </Button>
             )}
-            { data.contact.social && data.contact.social.map(social => (
+            {data.contact.social && data.contact.social.map(social => (
               <Button
                 data-testid={`about_contact_social_${social.name}`}
                 key={social.name}
@@ -168,8 +179,7 @@ export function About({ data }: { data: AboutType }) {
               rel="noreferrer noopener"
             >
               {getIcon('map', {
-                className:
-            'h-6 w-6 rounded-full inline-flex hover:underline text-green-500',
+                className: 'h-6 w-6 rounded-full inline-flex hover:underline text-green-500',
                 href: data.location.link,
               })}
               <span data-testid="about_location" className="text-base">

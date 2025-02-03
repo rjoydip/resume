@@ -31,13 +31,13 @@ Simple web app that renders minimalist `Resume` with print-friendly layout.
 3. Install dependencies:
 
    ```bash
-   pnpm install
+   bun install
    ```
 
 4. Start the local Server:
 
    ```bash
-   pnpm dev
+   bun run dev
    ```
 
 5. Open the [Config file](./src/data.ts) and make changes
@@ -64,8 +64,8 @@ docker compose down
 
 ## TODO
 
-- [ ] Move data fetching individual page
-- [ ] Better data fetching using [TanStack Query](https://tanstack.com/query)
+- [X] Move data fetching individual page
+- [X] Better data fetching using [TanStack Query](https://tanstack.com/query)
 - [ ] Resolve vitest warning
 - [ ] Enhance code coverage
 - [ ] E2E test using [Browser Mode](https://vitest.dev/guide/browser/)

@@ -1,6 +1,5 @@
 import type { FilterObjType } from '@/types.ts'
 import type { ListBlobResultBlob } from '@vercel/blob'
-import axios from 'axios'
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
@@ -29,9 +28,9 @@ export async function fetchData<T>(blobs: ListBlobResultBlob[], name: string): P
     .pop()
 
   if (blob) {
-    const { data, status } = await axios.get(blob.url)
-    if (status === 200)
-      return data
+    const response = await fetch(blob.url)
+    if (response.ok || response.status === 200)
+      return response.json()
     else
       throw new Error('Failed to fetch data')
   }

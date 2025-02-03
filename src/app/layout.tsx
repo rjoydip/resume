@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { ToggleTheme } from '@/components/_shared/toggleTheme'
+import Providers from '@/components/provider'
 import {
   getDarkThemeColors,
   getLightThemeColors,
@@ -8,7 +9,6 @@ import {
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { Inter } from 'next/font/google'
-import * as React from 'react'
 import { isDevelopment, isTest } from 'std-env'
 import '@/styles/globals.css'
 
@@ -43,7 +43,7 @@ function Layout({ children }: { children: React.ReactNode }) {
           disableTransitionOnChange
           themes={[...getLightThemeColors(), ...getDarkThemeColors()]}
         >
-          {children}
+          <Providers>{children}</Providers>
           <ToggleTheme />
           {!isDevelopment && !isTest && <SpeedInsights />}
         </NextThemesProvider>

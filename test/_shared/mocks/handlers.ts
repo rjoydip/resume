@@ -1,5 +1,5 @@
 import { HttpResponse, http } from 'msw'
-import { apiURL } from '../../constant'
+import { apiURL } from '../test-utils'
 import { about, educations, strengths, projects, skills, works } from '../../../fixtures/data'
 
 export const handlers = [
