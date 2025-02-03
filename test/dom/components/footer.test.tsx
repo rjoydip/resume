@@ -1,12 +1,28 @@
 import Footer from '@/components/footer'
 import { render, screen, waitFor } from '@testing-library/react'
-import { beforeAll, describe, expect, it } from 'vitest'
+import { beforeAll, describe, expect, it, vi } from 'vitest'
 import { declarationDetails } from '../../../fixtures/data'
+import { TQProvider } from '../../_shared/test-provider'
 import { today } from '../../_shared/test-utils'
+
+vi.mock('@tanstack/react-query', async () => {
+  const actual = await vi.importActual('@tanstack/react-query')
+  return {
+    ...actual,
+    useSuspenseQuery: vi.fn(() => ({
+      isPending: false,
+      data: { ...declarationDetails, date: `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}` },
+    })),
+  }
+})
 
 describe('<Footer />', () => {
   beforeAll(async () => {
-    render(<Footer />)
+    render(
+      <TQProvider>
+        <Footer />
+      </TQProvider>,
+    )
   })
 
   it('should validate ©', async () => {

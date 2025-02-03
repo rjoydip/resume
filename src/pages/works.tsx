@@ -3,6 +3,7 @@
 import type { WorkType } from '@/types'
 import type { UseSuspenseQueryResult } from '@tanstack/react-query'
 import { useSuspenseQuery } from '@tanstack/react-query'
+import React from 'react'
 import { getIcon } from '../components/_shared/getIcon'
 import { TechnologyList } from '../components/_shared/technologyList'
 import { Badge } from '../components/ui/badge'
@@ -67,7 +68,7 @@ function WorksList({ data }: { data: WorkType[] }) {
 WorksList.displayName = 'WorksList'
 
 export default function Works() {
-  const { isPending, data }: UseSuspenseQueryResult<WorkType[], unknown> = useSuspenseQuery<WorkType[], unknown>({
+  const { isPending, data }: UseSuspenseQueryResult<WorkType[]> = useSuspenseQuery<WorkType[]>({
     queryKey: ['works'],
   })
 

@@ -39,9 +39,9 @@ body:
       description: Select the used package manager
       options:
         - bun
-          - npm
-          - yarn
-          - pnpm
+        - npm
+        - yarn
+        - pnpm
     validations:
       required: true
   - type: checkboxes

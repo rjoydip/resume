@@ -3,6 +3,7 @@
 import type { StrengthsType } from '@/types'
 import type { UseSuspenseQueryResult } from '@tanstack/react-query'
 import { useSuspenseQuery } from '@tanstack/react-query'
+import React from 'react'
 import { getIcon } from '../components/_shared/getIcon'
 import { Card } from '../components/ui/card'
 import { Label } from '../components/ui/label'
@@ -31,7 +32,7 @@ function StrengthsList({ skills }: { skills: string[] }) {
 StrengthsList.displayName = 'StrengthsList'
 
 export default function Strengths() {
-  const { isPending, data }: UseSuspenseQueryResult<StrengthsType, unknown> = useSuspenseQuery<StrengthsType, unknown>({
+  const { isPending, data }: UseSuspenseQueryResult<StrengthsType> = useSuspenseQuery<StrengthsType>({
     queryKey: ['strengths'],
   })
 

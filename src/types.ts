@@ -1,5 +1,5 @@
 import type { Output } from 'valibot'
-import type { aboutSchema, contactSchema, declarationSchema, educationSchema, educationsSchema, languagesSchema, projectLinkSchema, projectSchema, projectsSchema, skillsSchema, strengthsSchema, workSchema, worksSchema } from './schema'
+import type { aboutSchema, contactSchema, declarationSchema, educationSchema, educationsSchema, footerSchema, languagesSchema, projectLinkSchema, projectSchema, projectsSchema, skillsSchema, strengthsSchema, workSchema, worksSchema } from './schema'
 
 export type EducationType = Output<typeof educationSchema>
 export type EducationsType = Output<typeof educationsSchema>
@@ -14,6 +14,7 @@ export type ProjectsType = Output<typeof projectsSchema>
 export type ProjectLinkType = Output<typeof projectLinkSchema>
 export type LanguagesType = Output<typeof languagesSchema>
 export type DeclarationType = Output<typeof declarationSchema>
+export type FooterType = Output<typeof footerSchema>
 
 export interface FilterObjType<T> {
   [key: string]: T

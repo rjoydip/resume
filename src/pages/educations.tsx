@@ -3,6 +3,7 @@
 import type { EducationsType, EducationType } from '@/types'
 import type { UseSuspenseQueryResult } from '@tanstack/react-query'
 import { useSuspenseQuery } from '@tanstack/react-query'
+import React from 'react'
 import { getIcon } from '../components/_shared/getIcon'
 import { Label } from '../components/ui/label'
 import { Section } from '../components/ui/section'
@@ -54,7 +55,7 @@ function EducationList({ data }: { data: EducationsType }) {
 EducationList.displayName = 'EducationList'
 
 export default function Educations() {
-  const { isPending, data }: UseSuspenseQueryResult<EducationsType, unknown> = useSuspenseQuery<EducationsType, unknown>({
+  const { isPending, data }: UseSuspenseQueryResult<EducationsType> = useSuspenseQuery<EducationsType>({
     queryKey: ['educations'],
   })
 

@@ -54,7 +54,15 @@ export const projects: ProjectsType = generateArray(5).map(() => ({
   isClient: randBoolean(),
   company: companies[randNumber({ min: 0, max: companies.length - 1 })],
   client_country: randCountry(),
-  links: [],
+  links: [{
+    type: 'mobile',
+    href: 'https://example.com',
+    label: randText(),
+  }, {
+    type: 'web',
+    href: 'https://example.com',
+    label: randText(),
+  }],
 }))
 
 export const works: WorksType = generateArray(3).map(() => ({

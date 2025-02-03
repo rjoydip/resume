@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { ToggleTheme } from '@/components/_shared/toggleTheme'
+import Providers from '@/components/provider'
 import {
   getDarkThemeColors,
   getLightThemeColors,
@@ -9,7 +10,6 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { Inter } from 'next/font/google'
 import { isDevelopment, isTest } from 'std-env'
-import Providers from './provider'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {

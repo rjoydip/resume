@@ -1,14 +1,12 @@
-import type { DarkColorType, LightColorType } from '@/types'
+import type { DarkColorType, LanguagesType, LightColorType } from '@/types'
 
-export const today = new Date()
+export const today: Date = new Date()
 export function getLightThemeColors(): LightColorType[] {
   return ['light', 'system']
 }
-
 export function getDarkThemeColors(): DarkColorType[] {
   return ['dark']
 }
-
 export const metadata = {
   name: 'Joydip Roy',
   description: 'JR',
@@ -19,20 +17,20 @@ export const declarationDetails = {
   country: 'India',
   name: metadata.name,
 }
-export const languages = [{
+export const languages: LanguagesType[] = [{
   name: 'English',
   isNative: false,
 }, {
   name: 'Bengali',
   isNative: true,
 }]
-export const companies = [
+export const companies: string[] = [
   'Ascentspark',
   'Infosys',
   'Tech Mahindra',
   'Webskitters',
 ]
-export const projectLinkTypes = ['web', 'mobile']
-export const socialMedia = ['gitHub', 'linkedIn', 'x']
-export const workMode = ['Work from Home', 'Hybrid', 'Office']
-export const techStacks = ['angular', 'aws', 'bitbucket', 'bootstrap', 'cucumber', 'cypress', 'deno', 'docker', 'etl', 'express', 'firebase', 'fastify', 'git', 'github', 'gitlab', 'gmc', 'graphql', 'instana', 'javascript', 'jenkins', 'jest', 'kafka', 'laravel', 'mongodb', 'mongoose', 'mysql', 'nextjs', 'nodejs', 'postgresql', 'react', 'reactjs', 'snyk', 'springboot', 'typescript', 'vercel', 'vitest', 'ionic', 'groovy', 'electron', 'php']
+export const projectLinkTypes: string[] = ['web', 'mobile']
+export const socialMedia: string[] = ['gitHub', 'linkedIn', 'x']
+export const workMode: string[] = ['Work from Home', 'Hybrid', 'Office']
+export const techStacks: string[] = ['angular', 'aws', 'bitbucket', 'bootstrap', 'cucumber', 'cypress', 'deno', 'docker', 'etl', 'express', 'firebase', 'fastify', 'git', 'github', 'gitlab', 'gmc', 'graphql', 'instana', 'javascript', 'jenkins', 'jest', 'kafka', 'laravel', 'mongodb', 'mongoose', 'mysql', 'nextjs', 'nodejs', 'postgresql', 'react', 'reactjs', 'snyk', 'springboot', 'typescript', 'vercel', 'vitest', 'ionic', 'groovy', 'electron', 'php']

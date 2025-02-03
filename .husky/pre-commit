@@ -1,5 +1,5 @@
-pnpm deps:update
-pnpm lint
+bun run deps:update
+bun run lint
 npx lint-staged
-pnpm build
+bun run build
 git add . -u

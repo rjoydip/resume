@@ -3,6 +3,7 @@
 import type { AboutType, IconType } from '@/types'
 import type { UseSuspenseQueryResult } from '@tanstack/react-query'
 import { useSuspenseQuery } from '@tanstack/react-query'
+import React from 'react'
 import titleize from 'titleize'
 import { getIcon } from '../components/_shared/getIcon'
 import { Avatar, AvatarFallback, AvatarImage } from '../components/ui/avatar'
@@ -19,7 +20,7 @@ import { Section } from '../components/ui/section'
 import { Skeleton } from '../components/ui/skeleton'
 
 export default function About() {
-  const { isPending, data }: UseSuspenseQueryResult<AboutType, unknown> = useSuspenseQuery<AboutType, unknown>({
+  const { isPending, data }: UseSuspenseQueryResult<AboutType> = useSuspenseQuery<AboutType>({
     queryKey: ['about'],
   })
 

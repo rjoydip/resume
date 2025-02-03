@@ -116,3 +116,7 @@ export const declarationSchema = object({
   location: string(),
   date: string(),
 })
+export const footerSchema = object({
+  name: string(),
+  year: number(),
+})

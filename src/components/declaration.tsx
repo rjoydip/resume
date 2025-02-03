@@ -5,15 +5,16 @@ import type { UseSuspenseQueryResult } from '@tanstack/react-query'
 import { Skeleton } from '@/components/ui/skeleton.tsx'
 import { today } from '@/data'
 import { useSuspenseQuery } from '@tanstack/react-query'
+import React from 'react'
 import { Card } from '../components/ui/card'
 import { Label } from '../components/ui/label'
 import { Section } from '../components/ui/section'
 
 export default function Declaration() {
   const { isPending, data }: UseSuspenseQueryResult<DeclarationType, unknown> = useSuspenseQuery<DeclarationType, unknown>({
-    queryKey: [],
+    queryKey: ['dataFetch'],
     queryFn: async () => {
-      const { declarationDetails: { country, location, name } } = await import('../data.ts')
+      const { declarationDetails: { country, location, name } } = await import('@/data')
       const date = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`
       return { country, location, name, date }
     },

@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 import * as AvatarPrimitive from '@radix-ui/react-avatar'
-import * as React from 'react'
+import React from 'react'
 
 function Avatar({ className, ...props }: React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>) {
   return React.useMemo(() => (

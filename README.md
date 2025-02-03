@@ -31,13 +31,13 @@ Simple web app that renders minimalist `Resume` with print-friendly layout.
 3. Install dependencies:
 
    ```bash
-   pnpm install
+   bun install
    ```
 
 4. Start the local Server:
 
    ```bash
-   pnpm dev
+   bun run dev
    ```
 
 5. Open the [Config file](./src/data.ts) and make changes
