@@ -1,10 +1,10 @@
 import { languages as languagesFixtures } from '@/data'
-import Languages from '@/pages/languages'
+import Languages from '@/components/pages/languages'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor, within } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
-import { TQProvider } from '../../_shared/test-provider'
+import { TQProvider } from '../../../_shared/test-provider'
 
 vi.mock('@tanstack/react-query', async () => {
   const actual = await vi.importActual('@tanstack/react-query')

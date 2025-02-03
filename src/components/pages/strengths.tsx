@@ -4,11 +4,11 @@ import type { StrengthsType } from '@/types'
 import type { UseSuspenseQueryResult } from '@tanstack/react-query'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import React from 'react'
-import { getIcon } from '../components/_shared/getIcon'
-import { Card } from '../components/ui/card'
-import { Label } from '../components/ui/label'
-import { Section } from '../components/ui/section'
-import { Skeleton } from '../components/ui/skeleton'
+import { getIcon } from '../_shared/getIcon'
+import { Card } from '../ui/card'
+import { Label } from '../ui/label'
+import { Section } from '../ui/section'
+import { Skeleton } from '../ui/skeleton'
 
 function StrengthsList({ skills }: { skills: string[] }) {
   return (

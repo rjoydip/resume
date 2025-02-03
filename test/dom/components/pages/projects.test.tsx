@@ -1,11 +1,11 @@
 import type { ProjectsType } from '@/types'
-import Projects from '@/pages/projects'
+import Projects from '@/components/pages/projects'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
-import { projects as projectsFixture } from '../../../fixtures/data'
-import { TQProvider } from '../../_shared/test-provider'
+import { projects as projectsFixture } from '../../../../fixtures/data'
+import { TQProvider } from '../../../_shared/test-provider'
 
 vi.mock('@tanstack/react-query', async () => {
   const actual = await vi.importActual('@tanstack/react-query')

@@ -2,7 +2,7 @@
 
 import type { QueryClient } from '@tanstack/react-query'
 import { getQueryClient } from '@/lib/qclient'
-import { QueryClientProvider } from '@tanstack/react-query'
+import { dehydrate, HydrationBoundary, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { type ReactNode, useEffect, useState } from 'react'
 import { isDevelopment } from 'std-env'
@@ -21,8 +21,10 @@ export default function Providers({ children }: { children: ReactNode }) {
   return (
     queryClient && (
       <QueryClientProvider client={queryClient}>
-        {children}
-        {isDevelopment && <ReactQueryDevtools initialIsOpen />}
+        <HydrationBoundary state={dehydrate(queryClient)}>
+          {children}
+          {isDevelopment && <ReactQueryDevtools initialIsOpen />}
+        </HydrationBoundary>
       </QueryClientProvider>
     )
   )

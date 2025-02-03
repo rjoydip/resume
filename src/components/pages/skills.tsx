@@ -5,11 +5,11 @@ import type { UseSuspenseQueryResult } from '@tanstack/react-query'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import React from 'react'
 import titleize from 'titleize'
-import { Badge } from '../components/ui/badge'
-import { Card } from '../components/ui/card'
-import { Label } from '../components/ui/label'
-import { Section } from '../components/ui/section'
-import { Skeleton } from '../components/ui/skeleton'
+import { Badge } from '../ui/badge'
+import { Card } from '../ui/card'
+import { Label } from '../ui/label'
+import { Section } from '../ui/section'
+import { Skeleton } from '../ui/skeleton'
 
 function SkillsList({ skills }: { skills: string[] }) {
   return (

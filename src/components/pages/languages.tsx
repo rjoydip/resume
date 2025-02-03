@@ -4,11 +4,11 @@ import type { LanguagesType } from '@/types'
 import type { UseSuspenseQueryResult } from '@tanstack/react-query'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import React from 'react'
-import { getIcon } from '../components/_shared/getIcon'
-import { Card } from '../components/ui/card'
-import { Label } from '../components/ui/label'
-import { Section } from '../components/ui/section'
-import { Skeleton } from '../components/ui/skeleton.tsx'
+import { getIcon } from '../_shared/getIcon.tsx'
+import { Card } from '../ui/card.tsx'
+import { Label } from '../ui/label.tsx'
+import { Section } from '../ui/section.tsx'
+import { Skeleton } from '../ui/skeleton.tsx'
 
 function LanguagesList({ languages }: { languages: LanguagesType[] }) {
   return (

@@ -4,12 +4,12 @@ import type { WorkType } from '@/types'
 import type { UseSuspenseQueryResult } from '@tanstack/react-query'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import React from 'react'
-import { getIcon } from '../components/_shared/getIcon'
-import { TechnologyList } from '../components/_shared/technologyList'
-import { Badge } from '../components/ui/badge'
-import { Label } from '../components/ui/label'
-import { Section } from '../components/ui/section'
-import { Skeleton } from '../components/ui/skeleton'
+import { getIcon } from '../_shared/getIcon'
+import { TechnologyList } from '../_shared/technologyList'
+import { Badge } from '../ui/badge'
+import { Label } from '../ui/label'
+import { Section } from '../ui/section'
+import { Skeleton } from '../ui/skeleton'
 
 function WorkingMode({ modes }: { modes: string[] }) {
   return modes.map((mode: string) => <Badge key={mode} className="align-middle text-[12px]">{mode}</Badge>)

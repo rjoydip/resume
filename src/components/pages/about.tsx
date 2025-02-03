@@ -5,19 +5,19 @@ import type { UseSuspenseQueryResult } from '@tanstack/react-query'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import React from 'react'
 import titleize from 'titleize'
-import { getIcon } from '../components/_shared/getIcon'
-import { Avatar, AvatarFallback, AvatarImage } from '../components/ui/avatar'
-import { Button } from '../components/ui/button'
+import { getIcon } from '../_shared/getIcon'
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { Button } from '../ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
-} from '../components/ui/card'
-import { Label } from '../components/ui/label'
-import { Section } from '../components/ui/section'
-import { Skeleton } from '../components/ui/skeleton'
+} from '../ui/card'
+import { Label } from '../ui/label'
+import { Section } from '../ui/section'
+import { Skeleton } from '../ui/skeleton'
 
 export default function About() {
   const { isPending, data }: UseSuspenseQueryResult<AboutType> = useSuspenseQuery<AboutType>({

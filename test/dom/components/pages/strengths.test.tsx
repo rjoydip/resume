@@ -1,10 +1,10 @@
-import Strengths from '@/pages/strengths'
+import Strengths from '@/components/pages/strengths'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor, within } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
-import { strengths as strengthsFixture } from '../../../fixtures/data'
-import { TQProvider } from '../../_shared/test-provider'
+import { strengths as strengthsFixture } from '../../../../fixtures/data'
+import { TQProvider } from '../../../_shared/test-provider'
 
 vi.mock('@tanstack/react-query', async () => {
   const actual = await vi.importActual('@tanstack/react-query')

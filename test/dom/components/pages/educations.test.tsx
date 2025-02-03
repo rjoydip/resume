@@ -1,10 +1,10 @@
-import Educations from '@/pages/educations'
+import Educations from '@/components/pages/educations'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
-import { educations as educationsFixtures } from '../../../fixtures/data'
-import { TQProvider } from '../../_shared/test-provider'
+import { educations as educationsFixtures } from '../../../../fixtures/data'
+import { TQProvider } from '../../../_shared/test-provider'
 
 vi.mock('@tanstack/react-query', async () => {
   const actual = await vi.importActual('@tanstack/react-query')

@@ -6,18 +6,18 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 import clsx from 'clsx'
 import React, { memo } from 'react'
 import titleize from 'titleize'
-import { getIcon } from '../components/_shared/getIcon'
-import { TechnologyList } from '../components/_shared/technologyList'
+import { getIcon } from '../_shared/getIcon'
+import { TechnologyList } from '../_shared/technologyList'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '../components/ui/card'
-import { Label } from '../components/ui/label'
-import { Section } from '../components/ui/section'
-import { Skeleton } from '../components/ui/skeleton'
+} from '../ui/card'
+import { Label } from '../ui/label'
+import { Section } from '../ui/section'
+import { Skeleton } from '../ui/skeleton'
 
 function ProjectLink({ links }: { links: ProjectLinkType[] }) {
   return links.map((link: ProjectLinkType) => (
