@@ -1,4 +1,4 @@
-bun run deps:update
+bun update
 bun run lint
 npx lint-staged
 bun run build
