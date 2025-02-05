@@ -43,7 +43,8 @@
     "test/benchmark/endpoints/api.test.ts",
     "test/benchmark/endpoints/index.ts",
     "test/benchmark/endpoints/health.test.ts",
-    "eslint.config.js"
+    "eslint.config.js",
+    "vitest.config.mts"
   ],
   "exclude": [
     ".next",
