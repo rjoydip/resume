@@ -66,10 +66,12 @@ docker compose down
 
 - [X] Move data fetching individual page
 - [X] Better data fetching using [TanStack Query](https://tanstack.com/query)
-- [ ] Resolve vitest warning
+- [X] Resolve vitest warning
 - [ ] ESLint version upgrade to V9
 - [ ] Enhance code coverage
-- [ ] E2E test using [Browser Mode](https://vitest.dev/guide/browser/)
+- [ ] E2E test
+  - [ ] Enable ARIA snapshot
+  - [ ] Enable snapshot testing
 
 ## License
 

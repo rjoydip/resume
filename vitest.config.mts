@@ -9,9 +9,15 @@ export default defineConfig(({ mode }) => ({
       '@/': new URL('./src/', import.meta.url).pathname,
     },
     reporters: env.GITHUB_ACTIONS ? ['dot', 'github-actions'] : ['dot'],
-    environmentMatchGlobs: [
-      ['test/{dom,e2e}/**', 'happy-dom'],
-      ['test/node/**', 'node'],
+    projects: [
+      {
+        pattern: 'test/{dom,e2e}/**/*.test.ts',
+        config: { environment: 'happy-dom' },
+      },
+      {
+        pattern: 'test/node/**/*.test.ts',
+        config: { environment: 'node' },
+      },
     ],
     include: [`test/${mode}/**/*.test.{ts,tsx}`],
     setupFiles: 'test/_shared/vitest.setup.ts',

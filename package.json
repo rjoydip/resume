@@ -1,6 +1,6 @@
 {
   "name": "rjresume",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "packageManager": "bun@1.2.2",
   "scripts": {
@@ -10,9 +10,9 @@
     "start": "next start",
     "lint": "eslint . --fix",
     "test": "bun run test:dom && bun run test:node && bun run test:e2e",
-    "test:dom": "vitest run --typecheck --mode dom",
-    "test:node": "vitest run --typecheck --mode node",
-    "test:e2e": "start-server-and-test start http://localhost:3000 'vitest run --typecheck --mode e2e'"
+    "test:dom": "vitest run --mode dom --environment=happy-dom",
+    "test:node": "vitest run --mode node --environment=node",
+    "test:e2e": "start-server-and-test start http://localhost:3000 'vitest run --mode e2e --environment=happy-dom'"
   },
   "dependencies": {
     "@antfu/eslint-config": "^3.16.0",
@@ -44,7 +44,7 @@
     "@tanstack/react-query-devtools": "^5.66.0",
     "@testing-library/react": "^16.2.0",
     "@testing-library/react-hooks": "^8.0.1",
-    "@types/node": "^22.13.0",
+    "@types/node": "^22.13.1",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
