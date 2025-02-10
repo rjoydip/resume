@@ -1,7 +1,7 @@
 import Footer from '@/components/footer'
 import { render, screen, waitFor } from '@testing-library/react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
-import { declarationDetails } from '../../../fixtures/data'
+import { declarationDetails } from '../../fixtures/data.fixture'
 import { TQProvider } from '../../_shared/test-provider'
 import { today } from '../../_shared/test-utils'
 

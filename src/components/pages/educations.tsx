@@ -11,7 +11,7 @@ import { Skeleton } from '../ui/skeleton'
 
 function EducationList({ data }: { data: EducationsType }) {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8" data-testid="educations_list">
       {data.map((education: EducationType, index: number) => (
         <div className="relative pl-6" key={`${education.name}-${education.start}-${education.end}`}>
           {getIcon('dot', {

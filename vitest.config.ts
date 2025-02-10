@@ -10,11 +10,11 @@ export default defineConfig(({ mode }) => ({
     },
     reporters: env.GITHUB_ACTIONS ? ['dot', 'github-actions'] : ['dot'],
     environmentMatchGlobs: [
-      ['test/{dom,e2e}/**', 'happy-dom'],
+      ['test/dom/**', 'happy-dom'],
       ['test/node/**', 'node'],
     ],
     include: [`test/${mode}/**/*.test.{ts,tsx}`],
-    setupFiles: 'test/_shared/vitest.setup.ts',
+    setupFiles: 'test/setup/vitest.setup.ts',
     poolOptions: {
       forks: {
         singleFork: false,
@@ -27,7 +27,7 @@ export default defineConfig(({ mode }) => ({
       reporter: ['text', 'html', 'json', 'json-summary'],
       exclude: [
         ...new Set([
-          '**/{.next,public,test,fixtures,mocks,coverage}',
+          '**/{.next,public,test*,fixtures,mocks,coverage,e2e}',
           '**/*.{config,setup}.{mjs,js,ts,mts,cts}',
           '**/src/{app,lib}/*.{ts,tsx}',
           mode === 'dom' ? '**/*.ts' : mode === 'node' ? '**/*.tsx' : '',

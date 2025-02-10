@@ -2,7 +2,7 @@ import About from '@/components/pages/about'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor } from '@testing-library/react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
-import { about as aboutFixture } from '../../../../fixtures/data'
+import { about as aboutFixture } from '../../../fixtures/data.fixture'
 import { TQProvider } from '../../../_shared/test-provider'
 
 vi.mock('@tanstack/react-query', async () => {
