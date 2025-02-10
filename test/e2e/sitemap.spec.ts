@@ -2,12 +2,13 @@ import { expect, test } from '@playwright/test'
 import { XMLParser } from 'fast-xml-parser'
 import { loadPage } from '../_shared/test-utils'
 
-type BrowserName = "firefox" | "chromium" | "webkit"
+type BrowserName = 'firefox' | 'chromium' | 'webkit'
 
 function parseXMLContent(browserName: BrowserName, parser: any, content: string) {
   if (browserName === 'firefox') {
     return parser.parse(content)
-  } else {
+  }
+  else {
     const { html: { body } } = parser.parse(content)
     return body.div.at(0)
   }

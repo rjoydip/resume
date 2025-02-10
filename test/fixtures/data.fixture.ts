@@ -1,6 +1,6 @@
 import type { AboutType, EducationsType, ProjectsType, SkillsType, StrengthsType, WorksType } from '@/types'
 import { companies, declarationDetails, techStacks, workMode } from '@/data'
-import { randBoolean, randCity, randCountry, randEmail, randFullName, randImg, randNumber, randPhoneNumber, randText } from '@ngneat/falso'
+import { randBoolean, randCity, randCountry, randEmail, randFullName, randNumber, randPhoneNumber, randText } from '@ngneat/falso'
 
 const generateArray = (length = 1) => Array.from({ length }, (_, i) => i)
 const generateTechStacks = (divide: number = 3) => generateArray(randNumber({ min: 1, max: techStacks.length / divide })).map(i => techStacks[i])

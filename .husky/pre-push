@@ -1,2 +1,3 @@
-bun run test
+bun run test:dom
+bun run test:node
 bun run test:e2e

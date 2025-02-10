@@ -55,7 +55,9 @@ jobs:
           rm -rf .env.local
 
       - name: 🧪 Unit test
-        run: bun run test
+        run: |
+          bun run test:dom
+          bun run test:node
 
       - name: 📊 E2E test
         run: bun run test:e2e
