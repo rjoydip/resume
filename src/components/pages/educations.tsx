@@ -11,7 +11,7 @@ import { Skeleton } from '../ui/skeleton'
 
 function EducationList({ data }: { data: EducationsType }) {
   return (
-    <div className="space-y-8" data-testid="educations_list">
+    <div className="space-y-8">
       {data.map((education: EducationType, index: number) => (
         <div className="relative pl-6" key={`${education.name}-${education.start}-${education.end}`}>
           {getIcon('dot', {
@@ -45,7 +45,7 @@ function EducationList({ data }: { data: EducationsType }) {
           >
             Aggregate:
             {' '}
-            {education?.aggregate ?? education?.cgpa}
+            {education.aggregate ?? education.cgpa}
           </div>
         </div>
       ))}

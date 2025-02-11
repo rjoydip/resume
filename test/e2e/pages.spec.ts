@@ -1,7 +1,7 @@
-import { metadata } from '@/data'
+import { languages, metadata } from '@/data'
 import { expect } from '@playwright/test'
 import { loadPage } from '../_shared/test-utils'
-import { about } from '../fixtures/data.fixture'
+import { about, educations } from '../fixtures/data.fixture'
 import { test } from '../fixtures/e2e.fixture'
 
 test.describe('<Pages />', () => {
@@ -13,6 +13,19 @@ test.describe('<Pages />', () => {
     test('should validate title and body', async ({ page }) => {
       expect(await page.title()).toBe(metadata.name)
       expect(await page.locator('body')).toBeVisible()
+    })
+
+    test('checks dark mode text colors', async ({ page }) => {
+      // Enable dark mode
+      await page.evaluate(() => {
+        document.documentElement.classList.add('dark')
+      })
+
+      // Check text color in dark mode
+      const languageNames = await page.locator('.text-gray-900.dark\\:text-gray-100').all()
+      for (const name of languageNames) {
+        await expect(name).toHaveClass(/dark:text-gray-100/)
+      }
     })
   })
 
@@ -132,6 +145,81 @@ test.describe('<Pages />', () => {
           - img
           - text: ${about.location.city},${about.location.country}
       `)
+    })
+  })
+
+  test.describe('<Educations />', () => {
+    test('render education tilte correctly', async ({ page }) => {
+      // Check if the title is rendered
+      const title = await page.getByTestId('education_title')
+      await expect(title).toBeVisible()
+      await expect(title).toHaveText('Education')
+    })
+
+    test('renders education list correctly', async ({ page }) => {
+      await Promise.all([
+        ...educations.map(async (education, index) => {
+          await expect(page.getByTestId(`education_name_index_${index}`)).toHaveText(education.name)
+          await expect(page.getByTestId(`education_start_end_index_${index}`)).toHaveText(`${education.start} - ${education.end}`)
+          await expect(page.getByTestId(`education_degree_index_${index}`)).toHaveText(education.degree)
+          await expect(page.getByTestId(`education_aggregate_index_${index}`)).toHaveText(`Aggregate: ${education.aggregate ?? education.cgpa}`)
+        }),
+      ])
+    })
+
+    test('verifies layout and styling', async ({ page }) => {
+      // Check if the border is present
+      await page.locator('section .relative.space-y-8.border-l.border-gray-200').isVisible()
+    })
+  })
+
+  test.describe('<Languages />', () => {
+    test('render language title', async ({ page }) => {
+      // Check if the title is rendered
+      const title = await page.getByTestId('language_title')
+      await expect(title).toBeVisible()
+      await expect(title).toHaveText('Languages')
+    })
+
+    test('renders languages list correctly', async ({ page }) => {
+      // Check if the language list is rendered
+      const languageList = await page.getByTestId('language_list')
+      await expect(languageList).toBeVisible()
+
+      // Check number of languages
+      const languageItems = await languageList.locator('li').all()
+      expect(languageItems.length).toBe(languages.length)
+
+      // Check each language entry
+      for (const [index, language] of languages.entries()) {
+        const languageElement = await languageList.locator('li').nth(index)
+
+        // Check if badge icon exists
+        const icon = await languageElement.locator('svg')
+        await expect(icon).toBeVisible()
+        await expect(icon).toHaveClass(/text-green-500/)
+
+        // Check language name
+        await expect(languageElement).toContainText(language.name)
+
+        // Check native status if applicable
+        if (language.isNative) {
+          await expect(languageElement).toContainText('(Native)')
+        }
+        else {
+          await expect(languageElement).not.toContainText('(Native)')
+        }
+      }
+    })
+
+    test('verifies layout and styling', async ({ page }) => {
+      // Check list spacing
+      const list = await page.getByTestId('language_list')
+      await expect(list).toHaveClass(/space-y-4/)
+
+      // Check language item layout
+      const firstLanguageItem = await list.locator('li').first()
+      await expect(firstLanguageItem).toHaveClass(/flex flex-wrap items-start items-baseline/)
     })
   })
 })
