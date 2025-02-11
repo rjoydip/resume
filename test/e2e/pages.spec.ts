@@ -63,11 +63,14 @@ test.describe('<Pages />', () => {
     })
 
     test('should validate accessibility attributes', async ({ page }) => {
-      // Check for proper ARIA labels
+      // Check ARIA labels
       await expect(page.locator('[aria-label="Show Email"]').first()).toBeVisible()
       await expect(page.locator('[aria-label="Show Mobile Number"]').first()).toBeVisible()
       await expect(page.locator('[aria-label="Show Location on Map"]').first()).toBeVisible()
-      await expect(page.locator('[aria-label="Show Social Media URLs"]').first()).toBeVisible()
+
+      for (const social of about.contact.social) {
+        await expect(page.locator(`[aria-label="Show Social Media ${social.name}"]`).first()).toBeVisible()
+      }
 
       // Verify all links have proper rel attributes
       const links = await page.locator('a[rel="noopener noreferrer"]').all()
