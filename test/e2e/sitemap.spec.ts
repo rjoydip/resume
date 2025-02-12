@@ -1,28 +1,15 @@
 import { expect, test } from '@playwright/test'
 import { XMLParser } from 'fast-xml-parser'
-import { loadPage } from '../_shared/test-utils'
-
-type BrowserName = 'firefox' | 'chromium' | 'webkit'
-
-function parseXMLContent(browserName: BrowserName, parser: any, content: string) {
-  if (browserName === 'firefox') {
-    return parser.parse(content)
-  }
-  else {
-    const { html: { body } } = parser.parse(content)
-    return body.div.at(0)
-  }
-}
+import { loadPage, parseXMLContent } from '../_shared/test-utils'
 
 test.use({ browserName: 'chromium' })
+test.beforeEach(async ({ page }) => {
+  await loadPage({ page, path: '/sitemap.xml' })
+})
 
 test.describe('<Sitemap />', () => {
   const parser = new XMLParser()
   const website_link = 'https://resume.rjoydip.com'
-
-  test.beforeEach(async ({ page }) => {
-    await loadPage({ page, path: '/sitemap.xml' })
-  })
 
   test('should render <Sitemap /> component', async ({ page }) => {
     const pageContent = await page.content()

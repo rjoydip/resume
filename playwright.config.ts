@@ -26,14 +26,14 @@ export default defineConfig({
       name: 'Chrome Desktop',
       use: { ...devices['Desktop Chrome'] },
     },
-    /* {
+    {
       name: 'Firefox Desktop',
       use: devices['Desktop Firefox'],
     },
     {
       name: 'Safari Desktop',
       use: devices['Desktop Safari'],
-    }, */
+    },
     /* {
       name: 'iPad Tablet',
       use: devices['iPhone 15 Pro Max landscape'],

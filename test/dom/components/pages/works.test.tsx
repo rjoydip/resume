@@ -29,7 +29,7 @@ describe('<Works />', () => {
   })
 
   it('should validate work title', async () => {
-    await waitFor(() => expect(screen.getByTestId('work_title').textContent?.toLowerCase()).toBe('work experience'))
+    await waitFor(() => expect(screen.getByTestId('works_title').textContent?.toLowerCase()).toBe('work experience'))
   })
 
   it('should validate work list', async () => {
