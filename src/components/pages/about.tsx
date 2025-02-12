@@ -66,7 +66,7 @@ export default function About() {
             </div>
             <Avatar className="hidden size-28 rounded-full sm:block">
               <AvatarImage
-                data-testid="about_avatar_url"
+                data-testid="about_avatar_small_url"
                 alt={data.name}
                 src={data.avatar_url}
               />
@@ -115,7 +115,7 @@ export default function About() {
               >
                 <a
                   href={social.url}
-                  aria-label="Show Social Media URLs"
+                  aria-label={`Show Social Media ${social.name}`}
                   rel="noopener noreferrer"
                 >
                   {getIcon(social.name as IconType, {
@@ -161,7 +161,7 @@ export default function About() {
                 <a
                   href={social.url}
                   target="_blank"
-                  aria-label="Show Social Media URLs"
+                  aria-label={`Show Social Media ${social.name}`}
                   rel="noreferrer noopener"
                 >
                   {social.url}

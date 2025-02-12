@@ -3,8 +3,8 @@ import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
-import { works as workFixture } from '../../../../fixtures/data'
 import { TQProvider } from '../../../_shared/test-provider'
+import { works as workFixture } from '../../../fixtures/data.fixture'
 
 vi.mock('@tanstack/react-query', async () => {
   const actual = await vi.importActual('@tanstack/react-query')
@@ -29,7 +29,7 @@ describe('<Works />', () => {
   })
 
   it('should validate work title', async () => {
-    await waitFor(() => expect(screen.getByTestId('work_title').textContent?.toLowerCase()).toBe('work experience'))
+    await waitFor(() => expect(screen.getByTestId('works_title').textContent?.toLowerCase()).toBe('work experience'))
   })
 
   it('should validate work list', async () => {

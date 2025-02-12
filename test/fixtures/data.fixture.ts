@@ -1,6 +1,6 @@
 import type { AboutType, EducationsType, ProjectsType, SkillsType, StrengthsType, WorksType } from '@/types'
 import { companies, declarationDetails, techStacks, workMode } from '@/data'
-import { randBoolean, randCity, randCountry, randEmail, randFullName, randImg, randNumber, randPhoneNumber, randText } from '@ngneat/falso'
+import { randBoolean, randCity, randCountry, randEmail, randFullName, randNumber, randPhoneNumber, randText } from '@ngneat/falso'
 
 const generateArray = (length = 1) => Array.from({ length }, (_, i) => i)
 const generateTechStacks = (divide: number = 3) => generateArray(randNumber({ min: 1, max: techStacks.length / divide })).map(i => techStacks[i])
@@ -13,9 +13,9 @@ export const about: AboutType = {
     country: randCountry(),
     link: 'https://maps.app.goo.gl/random',
   },
-  description: 'Quae suum membra, duc venit vel limite tribus digitosque arduus ego ictu iuvenale loqui. Liberioris adclivis sunt secus e [primus monimenta](http://www.eque.com/) saxa, sic Libye moenibus inde? Deae heros est quoque umeris sua restat fert **iuste posuerunt solus**. Et licebit equos est exitium, in tacuit femineae spumantia quaerit fatalia; nudum mihi pudorque. Utque barbarica **suae*gerunt, mentes quae, fatentur numen est vitae etClymene cedere erat.',
+  description: 'Quae suum membra, duc venit vel limite tribus digitosque arduus ego ictu iuvenale loqui. Liberioris adclivis sunt secus e [primus monimenta](http://www.eque.com/) saxa, sic Libye moenibus inde? Deae heros est quoque umeris sua restat fert **iuste posuerunt solus**. Et licebit equos est exitium, in tacuit femineae spumantia quaerit fatalia nudum mihi pudorque. Utque barbarica **suae*gerunt, mentes quae, fatentur numen est vitae etClymene cedere erat.',
   summary: 'Natum quaerit, alebat diffusum, aera nam decimum tu. *Ab posset contraamne hastae, et videre, et posuisset prior frequentat proxima: triplici alta quid inculpata. Harundine carpit sed mundi ruricolae utrimque calathis talis sacris. A Milete ille [lucoque](http://ille-quod.io/) sed Aeacus recipit me epulae vilibus officium **parvos numina**, et nec pereat ambo, veri.',
-  avatar_url: randImg(),
+  avatar_url: 'https://www.shutterstock.com/shutterstock/photos/1290290470/display_1500/stock-vector-isolated-object-of-avatar-and-dummy-symbol-collection-of-avatar-and-image-vector-icon-for-stock-1290290470.jpg',
   website: 'https://example.com',
   contact: {
     email: randEmail(),
@@ -79,6 +79,7 @@ export const works: WorksType = generateArray(3).map(() => ({
 export const skills: SkillsType = generateTechStacks()
 export const strengths: StrengthsType = generateArray(5).map(() => randText())
 export { declarationDetails }
+
 export const resumeData = {
   about,
   educations,
