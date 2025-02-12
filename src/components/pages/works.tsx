@@ -78,7 +78,7 @@ export default function Works() {
 
   return (
     <Section>
-      <Label data-testid="work_title" className="text-xl font-bold">
+      <Label data-testid="works_title" className="text-xl font-bold">
         Work Experience
       </Label>
       <div

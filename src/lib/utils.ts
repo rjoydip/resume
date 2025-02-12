@@ -17,12 +17,6 @@ export function filterObject<T>(obj: FilterObjType<T>, deleteKey: string | strin
 }
 
 export async function fetchData<T>(blobs: ListBlobResultBlob[], name: string): Promise<T> {
-  // TODO: Uncomment this block if want to use data fetching from fixtures
-  /* if (true) {
-    const { resumeData } = await import('../../fixtures/data.ts')
-    return (resumeData as Record<string, any>)[name]
-  } */
-
   const blob = blobs
     .filter(i => i.pathname.replace(/\.[^/.]+$/, '') === name)
     .pop()

@@ -45,7 +45,7 @@ function EducationList({ data }: { data: EducationsType }) {
           >
             Aggregate:
             {' '}
-            {education?.aggregate ?? education?.cgpa}
+            {education.aggregate ?? education.cgpa}
           </div>
         </div>
       ))}

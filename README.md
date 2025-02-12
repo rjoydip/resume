@@ -70,8 +70,11 @@ docker compose down
 - [ ] ESLint version upgrade to V9
 - [ ] Enhance code coverage
 - [ ] E2E test
+  - [X] Enable ARIA labels
   - [ ] Enable ARIA snapshot
   - [ ] Enable snapshot testing
+  - [X] Cover all pages
+  - [ ] Enable test for mobile
 
 ## License
 

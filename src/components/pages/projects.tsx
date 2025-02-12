@@ -106,10 +106,10 @@ const ProjectsList = memo(({ data }: { data: ProjectType[] }) => {
           data-testid={`project_tech_stacks_index_${index}`}
           className="flex flex-wrap items-center"
         >
-          {project.techStacks && !!project.techStacks.length && (
+          {project.techStacks && (
             <div className="font-semibold text-primary dark:text-primary">Technology: </div>
           )}
-          {project.techStacks && !!project.techStacks.length && <TechnologyList techStacks={project.techStacks} />}
+          {project.techStacks && <TechnologyList techStacks={project.techStacks} />}
         </div>
       </CardContent>
     </Card>
