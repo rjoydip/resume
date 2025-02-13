@@ -13,8 +13,7 @@ export default defineConfig({
   workers: env.CI ? 1 : undefined,
   reporter: [
     ['list'],
-    /* env.CI && GITHUB_ACTIONS */
-    false
+    env.CI && GITHUB_ACTIONS
       ? ['@estruyf/github-actions-reporter', {
           showError: true,
           useDetails: true,
@@ -37,11 +36,11 @@ export default defineConfig({
       name: 'Firefox Desktop',
       use: devices['Desktop Firefox'],
     },
-    {
+    /* {
       name: 'Safari Desktop',
       use: devices['Desktop Safari'],
     },
-    /* {
+    {
       name: 'iPad Tablet',
       use: devices['iPhone 15 Pro Max landscape'],
     },
