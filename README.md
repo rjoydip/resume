@@ -67,8 +67,9 @@ docker compose down
 - [X] Move data fetching individual page
 - [X] Better data fetching using [TanStack Query](https://tanstack.com/query)
 - [X] Resolve vitest warning
-- [ ] ESLint version upgrade to V9
-- [ ] Enhance code coverage
+- [X] ESLint version upgrade to V9
+- [ ] Provide fixture data in DEV mode
+- [ ] Enhance code coverage (DOM)
 - [ ] E2E test
   - [X] Enable ARIA labels
   - [X] Enable CI code coverage
