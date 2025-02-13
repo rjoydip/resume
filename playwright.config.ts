@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test'
+import { GITHUB_ACTIONS } from 'ci-info'
 import { env } from 'std-env'
 
 const PORT = env.PORT || 4000
@@ -11,8 +12,13 @@ export default defineConfig({
   retries: env.CI ? 2 : 0,
   workers: env.CI ? 1 : undefined,
   reporter: [
-    ['html', { outputFolder: 'coverage/e2e' }],
     ['list'],
+    env.CI && GITHUB_ACTIONS
+      ? ['@estruyf/github-actions-reporter', {
+          showError: true,
+          useDetails: true,
+        }]
+      : ['html', { outputFolder: 'coverage/e2e' }],
   ],
   use: {
     baseURL,
