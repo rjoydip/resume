@@ -13,7 +13,8 @@ export default defineConfig({
   workers: env.CI ? 1 : undefined,
   reporter: [
     ['list'],
-    env.CI && GITHUB_ACTIONS
+    /* env.CI && GITHUB_ACTIONS */
+    false
       ? ['@estruyf/github-actions-reporter', {
           showError: true,
           useDetails: true,

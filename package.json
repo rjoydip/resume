@@ -9,6 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
     "test": "bun run test:dom && bun run test:node && bun run test:e2e",
     "test:e2e": "playwright test",
     "test:dom": "vitest run --mode dom --environment=happy-dom",
