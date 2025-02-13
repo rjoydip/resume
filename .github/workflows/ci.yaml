@@ -87,6 +87,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
+          name: coverage
           path: coverage
           if-no-files-found: ignore
 
@@ -102,6 +103,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: coverage
+          path: coverage
 
       - name: 📰 Test Coverage (Mode - DOM)
         uses: davelosert/vitest-coverage-report-action@v2
