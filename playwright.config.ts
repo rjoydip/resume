@@ -12,11 +12,7 @@ export default defineConfig({
   workers: env.CI ? 1 : undefined,
   reporter: [
     ['list'],
-    ['html', { outputFolder: 'coverage/e2e' }],
-    ['@estruyf/github-actions-reporter', {
-      showError: true,
-      useDetails: true,
-    }],
+    env.CI ? ['github'] : ['html', { outputFolder: 'coverage/e2e' }],
   ],
   use: {
     baseURL,
