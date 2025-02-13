@@ -105,16 +105,21 @@ jobs:
           name: coverage
           path: coverage
 
-      - name: 📰 Test Coverage (Mode - DOM)
+      - name: 📰 Unit Test Coverage (DOM)
         uses: davelosert/vitest-coverage-report-action@v2
         with:
           name: DOM
           json-summary-path: ./coverage/dom/coverage-summary.json
           json-final-path: ./coverage/dom/coverage-final.json
 
-      - name: 📰 Test Coverage (Mode - NODE)
+      - name: 📰 Unit Test Coverage (NODE)
         uses: davelosert/vitest-coverage-report-action@v2
         with:
           name: NODE
           json-summary-path: ./coverage/node/coverage-summary.json
           json-final-path: ./coverage/node/coverage-final.json
+
+      - name: 📰 E2E Test Coverage
+        uses: daun/playwright-report-summary@v3
+        with:
+          report-file: ./coverage/e2e/coverage-final.json

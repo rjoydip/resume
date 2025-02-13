@@ -1,18 +1,26 @@
+import { join } from 'node:path'
+import { cwd } from 'node:process'
 import { defineConfig, devices } from '@playwright/test'
-import { env } from 'std-env'
+import { env, process } from 'std-env'
 
+const isCI = env.CI
 const PORT = env.PORT || 4000
 const baseURL = `http://localhost:${PORT}`
+
+if (isCI) {
+  process.env.PLAYWRIGHT_JSON_OUTPUT_DIR = join(cwd(), 'coverage', 'e2e')
+  process.env.PLAYWRIGHT_JSON_OUTPUT_NAME = 'coverage-final.json'
+}
 
 export default defineConfig({
   testDir: 'test/e2e',
   fullyParallel: true,
-  forbidOnly: !!env.CI,
-  retries: env.CI ? 2 : 0,
-  workers: env.CI ? 1 : undefined,
+  forbidOnly: !!isCI,
+  retries: isCI ? 2 : 0,
+  workers: isCI ? 1 : undefined,
   reporter: [
     ['list'],
-    env.CI ? ['github'] : ['html', { outputFolder: 'coverage/e2e' }],
+    isCI ? ['json'] : ['html', { outputFolder: 'coverage/e2e' }],
   ],
   use: {
     baseURL,
@@ -51,7 +59,7 @@ export default defineConfig({
     command: `bun run start --port=${PORT}`,
     url: baseURL,
     timeout: 60 * 1000,
-    reuseExistingServer: !env.CI,
+    reuseExistingServer: !isCI,
     stderr: 'pipe',
     stdout: 'pipe',
   },
