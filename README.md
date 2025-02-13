@@ -1,6 +1,7 @@
 # rjresume
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/rjoydip/rjresume)
+[![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
 Simple web app that renders minimalist `Resume` with print-friendly layout.
 
@@ -64,17 +65,17 @@ docker compose down
 
 ## TODO
 
-- [X] Move data fetching individual page
-- [X] Better data fetching using [TanStack Query](https://tanstack.com/query)
-- [X] Resolve vitest warning
-- [X] ESLint version upgrade to V9
+- [x] Move data fetching individual page
+- [x] Better data fetching using [TanStack Query](https://tanstack.com/query)
+- [x] Resolve vitest warning
+- [x] ESLint version upgrade to V9
 - [ ] Provide fixture data in DEV mode
 - [ ] Enhance code coverage (DOM)
 - [ ] E2E test
-  - [X] Enable ARIA labels
+  - [x] Enable ARIA labels
   - [ ] Enable ARIA snapshot
   - [ ] Enable snapshot testing
-  - [X] Cover all pages
+  - [x] Cover all pages
   - [ ] Enable test for mobile
 
 ## License
