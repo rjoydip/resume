@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next'
+import { v4 as uuid } from '@lukeed/uuid/secure'
 import MillionLint from '@million/lint'
 import { env, isDevelopment, isProduction } from 'std-env'
 
@@ -21,7 +22,7 @@ const nextConfig: NextConfig = {
     appIsrStatus: isDevelopment,
     buildActivityPosition: isDevelopment ? 'top-right' : undefined,
   },
-  generateBuildId: async () => env.GIT_HASH || Math.random().toString(16).slice(2),
+  generateBuildId: async () => env.GIT_HASH || uuid(),
   experimental: {
     webVitalsAttribution: ['CLS', 'LCP'],
     optimizePackageImports: [],

@@ -3,17 +3,17 @@
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/rjoydip/rjresume)
 [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
-Simple web app that renders minimalist `Resume` with print-friendly layout.
+`Resume` with print-friendly layout [resume.rjoydip.com](https://resume.rjoydip.com).
 
 ## Features
 
-- Built using Next.js 15, React, Typescript, @radix-ui and TailwindCSS
+- Built using `Next.js 15`, `React`, `Typescript`, `@radix-ui` and `TailwindCSS`
 - Auto generated Layout
 - Responsive for different devices
 - Optimized for [Next.js](http://nextjs.org/) and [Vercel](https://vercel.com/)
 - Identified and fix slow code using [million](https://million.dev/)
 - Unit tested using [vitest](https://vitest.dev/)
-- E2E tested (basic) using [playwright](https://playwright.dev/)
+- E2E tested using [playwright](https://playwright.dev/)
 
 ## Getting Started Locally
 
@@ -41,7 +41,13 @@ Simple web app that renders minimalist `Resume` with print-friendly layout.
    bun run dev
    ```
 
-5. Open the [Config file](./src/data.ts) and make changes
+5. Start the test:
+
+   ```bash
+   bun run test
+   ```
+
+6. Open the [Config file](./src/data.ts) for static data and remaining dynamic data are in `Vercel Blob Storage`
 
 ## Run with Docker
 
@@ -65,15 +71,19 @@ docker compose down
 
 ## TODO
 
-- [x] Move data fetching individual page
+- [x] Data fetching individual page
 - [x] Better data fetching using [TanStack Query](https://tanstack.com/query)
-- [x] Resolve vitest warning
-- [x] ESLint version upgrade to V9
-- [ ] Provide fixture data in DEV mode
+- [x] Resolve `vitest` warning
+- [x] ESLint
+  - [x] Version upgrade to `V9`
+  - [x] Configure `a11y` plugin
+- [ ] Fixture data in DEV mode
 - [ ] Enhance code coverage (DOM)
 - [ ] E2E test
-  - [x] Enable ARIA labels
-  - [ ] Enable ARIA snapshot
+  - [x] Enable `ARIA` labels
+  - [x] Enable `ARIA` labels
+  - [x] Enable CI code coverage
+  - [ ] Enable `ARIA` snapshot
   - [ ] Enable snapshot testing
   - [x] Cover all pages
   - [ ] Enable test for mobile

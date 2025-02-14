@@ -1,31 +1,21 @@
-import type { Browser, BrowserContext, Page } from '@playwright/test'
-import { chromium } from '@playwright/test'
+import type { Page } from '@playwright/test'
+import { v4 as uuid } from '@lukeed/uuid/secure'
+import { test as base, chromium, firefox, webkit } from '@playwright/test'
 import { resumeData } from '../fixtures/data.fixture'
 
-let browser: Browser
-let context: BrowserContext
-let page: Page
-
-function getBlobMocks() {
-  const listOfBlobs = ['about', 'educations', 'projects', 'skills', 'strengths', 'works']
-  const blobs = Array.from({ length: 6 }).map((_, i) => {
-    const name = listOfBlobs[i]
-    const urlHash = Math.random().toString()
-    const hashName = Math.random().toString()
-    return {
-      url: `https://${urlHash}.public.blob.vercel-storage.com/${name}-${hashName}.json`,
-      downloadUrl: `https://${urlHash}.public.blob.vercel-storage.com/${name}-${hashName}.json?download=1`,
-      pathname: `${name}.json`,
-      size: Math.random(),
-      uploadedAt: new Date(),
-    }
-  })
-
+const listOfBlobs = ['about', 'educations', 'projects', 'skills', 'strengths', 'works']
+const mockBlobs = Array.from({ length: listOfBlobs.length }).map((_, i) => {
+  const name = listOfBlobs[i]
+  const urlHash = uuid()
+  const hashName = uuid()
   return {
-    hasMore: false,
-    blobs,
+    url: `https://${urlHash}.public.blob.vercel-storage.com/${name}-${hashName}.json`,
+    downloadUrl: `https://${urlHash}.public.blob.vercel-storage.com/${name}-${hashName}.json?download=1`,
+    pathname: `${name}.json`,
+    size: Math.random(),
+    uploadedAt: new Date(),
   }
-}
+})
 
 async function setupBlobMocks(page: Page) {
   // Mock the main blob listing endpoint
@@ -37,14 +27,16 @@ async function setupBlobMocks(page: Page) {
         'Content-Type': 'application/json',
         'Cache-Control': 'no-store',
       },
-      body: JSON.stringify(getBlobMocks()),
+      body: JSON.stringify({
+        hasMore: false,
+        blobs: mockBlobs,
+      }),
     })
   })
 
   // Mock individual blob content endpoints
   await page.route(/.*\.public\.blob\.vercel-storage\.com.*/, async (route) => {
     const url = route.request().url()
-
     // Extract the key from the URL (e.g., 'about', 'experience', etc.)
     const filename = url.split('/').pop()
     const key = filename ? filename.split('-')[0] : null
@@ -67,35 +59,34 @@ async function setupBlobMocks(page: Page) {
   })
 }
 
-async function globalSetup() {
-  browser = await chromium.launch({
-    args: [
-      '--disable-web-security',
-    ],
-  })
+// Custom fixture to handle setup and teardown
+export const test = base.extend({
+  page: async ({ page, browserName }, use) => {
+    const browserInstance = browserName === 'chromium' ? chromium : browserName === 'firefox' ? firefox : browserName === 'webkit' ? webkit : chromium
+    const browser = await browserInstance.launch({
+      args: [
+        '--disable-web-security',
+      ],
+    })
 
-  context = await browser.newContext({
-    bypassCSP: true,
-    ignoreHTTPSErrors: true,
-    // Handle CORS by setting headers
-    extraHTTPHeaders: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers': '*',
-    },
-  })
+    const context = await browser.newContext({
+      bypassCSP: true,
+      ignoreHTTPSErrors: true,
+      // Handle CORS by setting headers
+      extraHTTPHeaders: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': '*',
+      },
+    })
 
-  page = await context.newPage()
+    // Setup mock responses
+    await setupBlobMocks(page)
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    await use(page)
 
-  // Setup mock responses
-  await setupBlobMocks(page)
-
-  return { page }
-}
-
-async function globalTeardown() {
-  await context?.close()
-  await browser?.close()
-}
-
-export { globalSetup, globalTeardown }
+    // Teardown
+    await context?.close()
+    await browser?.close()
+  },
+})
