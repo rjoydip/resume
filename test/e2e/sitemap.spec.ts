@@ -1,6 +1,7 @@
-import { expect, test } from '@playwright/test'
+import { expect } from '@playwright/test'
 import { XMLParser } from 'fast-xml-parser'
 import { loadPage, parseXMLContent } from '../_shared/test-utils'
+import { test } from '../setup/e2e.setup.ts'
 
 test.use({ browserName: 'chromium' })
 test.beforeEach(async ({ page }) => {

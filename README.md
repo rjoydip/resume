@@ -72,6 +72,7 @@ docker compose down
 - [ ] Enhance code coverage (DOM)
 - [ ] E2E test
   - [X] Enable ARIA labels
+  - [X] Enable CI code coverage
   - [ ] Enable ARIA snapshot
   - [ ] Enable snapshot testing
   - [X] Cover all pages

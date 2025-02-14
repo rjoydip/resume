@@ -28,3 +28,30 @@ export function parseXMLContent(browserName: BrowserName, parser: any, content: 
     return body.div.at(0)
   }
 }
+
+export function memoize<T extends any[], R>(fn: (...args: T) => R | Promise<R>): (...args: T) => R | Promise<R> {
+  const cache: Record<string, R | Promise<R>> = {}
+
+  return (...args: T): R | Promise<R> => {
+    const key = JSON.stringify(args)
+
+    if (key in cache) {
+      console.warn('Fetching from cache')
+      return cache[key]
+    }
+    else {
+      console.warn('Calculating result')
+      const result = fn(...args)
+
+      // For promise-based functions, clear the cache on rejection.
+      if (result instanceof Promise) {
+        result.catch(() => {
+          delete cache[key]
+        })
+      }
+
+      cache[key] = result
+      return result
+    }
+  }
+}
