@@ -64,19 +64,19 @@ docker compose down
 
 ## TODO
 
-- [X] Move data fetching individual page
-- [X] Better data fetching using [TanStack Query](https://tanstack.com/query)
-- [X] Resolve vitest warning
-- [X] ESLint version upgrade to V9
+- [x] Move data fetching individual page
+- [x] Better data fetching using [TanStack Query](https://tanstack.com/query)
+- [x] Resolve vitest warning
+- [x] ESLint version upgrade to V9
 - [ ] Provide fixture data in DEV mode
 - [ ] Enhance code coverage (DOM)
 - [ ] E2E test
-  - [X] Enable ARIA labels
-  - [X] Enable CI code coverage
+  - [x] Enable ARIA labels
+  - [x] Enable CI code coverage
   - [ ] Enable ARIA snapshot
   - [ ] Enable snapshot testing
-  - [X] Cover all pages
-  - [ ] Enable test for mobile
+  - [x] Cover all pages
+  - [x] Fix test on mobile
 
 ## License
 

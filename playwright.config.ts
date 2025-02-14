@@ -38,6 +38,10 @@ export default defineConfig({
       name: 'Firefox Desktop',
       use: devices['Desktop Firefox'],
     },
+    {
+      name: 'Pixel Mobile',
+      use: devices['Pixel 7'],
+    },
     /* {
       name: 'Safari Desktop',
       use: devices['Desktop Safari'],
@@ -49,10 +53,6 @@ export default defineConfig({
     {
       name: 'iPhone Mobile',
       use: { ...devices['iPhone 12'] },
-    },
-    {
-      name: 'Pixel Mobile',
-      use: devices['Pixel 7'],
     }, */
   ],
   webServer: {
