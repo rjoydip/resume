@@ -68,7 +68,7 @@ docker compose down
 - [X] Better data fetching using [TanStack Query](https://tanstack.com/query)
 - [X] Resolve vitest warning
 - [X] ESLint version upgrade to V9
-- [ ] Provide fixture data in DEV mode
+- [x] Fixture data in `DEV` & `TEST` time
 - [ ] Enhance code coverage (DOM)
 - [ ] E2E test
   - [X] Enable ARIA labels
@@ -77,6 +77,7 @@ docker compose down
   - [ ] Enable snapshot testing
   - [X] Cover all pages
   - [ ] Enable test for mobile
+  - [ ] Safari browser test in CI
 
 ## License
 

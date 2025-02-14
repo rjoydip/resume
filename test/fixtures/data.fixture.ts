@@ -1,4 +1,4 @@
-import type { AboutType, EducationsType, ProjectsType, SkillsType, StrengthsType, WorksType } from '@/types'
+import type { AboutType, EducationsType, ProjectsType, ResumeType, SkillsType, StrengthsType, WorksType } from '@/types'
 import { companies, declarationDetails, techStacks, workMode } from '@/data'
 import { randBoolean, randCity, randCountry, randEmail, randFullName, randNumber, randPhoneNumber, randText } from '@ngneat/falso'
 
@@ -80,7 +80,7 @@ export const skills: SkillsType = generateTechStacks()
 export const strengths: StrengthsType = generateArray(5).map(() => randText())
 export { declarationDetails }
 
-export const resumeData = {
+export const resumeData: ResumeType = {
   about,
   educations,
   strengths,

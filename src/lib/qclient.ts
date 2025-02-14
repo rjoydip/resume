@@ -7,6 +7,7 @@ import {
 import { list } from '@vercel/blob'
 import { process } from 'std-env'
 import { fetchData } from './utils'
+import { SectionsType } from '@/types'
 
 function makeQueryClient(blobs: ListBlobResultBlob[]) {
   return new QueryClient({
@@ -15,7 +16,7 @@ function makeQueryClient(blobs: ListBlobResultBlob[]) {
         staleTime: 60 * 1000,
         retry: false,
         queryFn: async ({ queryKey }: { queryKey: any }) => {
-          return await fetchData(blobs, queryKey[0] as string)
+          return await fetchData(blobs, queryKey[0] as SectionsType)
         },
       },
       dehydrate: {
