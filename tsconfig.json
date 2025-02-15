@@ -43,11 +43,15 @@
     "test/benchmark/endpoints/api.test.ts",
     "test/benchmark/endpoints/index.ts",
     "test/benchmark/endpoints/health.test.ts",
-    "eslint.config.js",
+    "eslint.config.mjs",
     "vitest.config.mts"
   ],
   "exclude": [
     ".next",
+    ".husky",
+    ".million",
+    "public",
+    "coverage",
     "node_modules"
   ]
 }

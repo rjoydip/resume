@@ -1,18 +1,19 @@
 # rjresume
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/rjoydip/rjresume)
+[![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
-Simple web app that renders minimalist `Resume` with print-friendly layout.
+`Resume` with print-friendly layout [resume.rjoydip.com](https://resume.rjoydip.com).
 
 ## Features
 
-- Built using Next.js 15, React, Typescript, @radix-ui and TailwindCSS
+- Built using `Next.js 15`, `React`, `Typescript`, `@radix-ui` and `TailwindCSS`
 - Auto generated Layout
 - Responsive for different devices
 - Optimized for [Next.js](http://nextjs.org/) and [Vercel](https://vercel.com/)
 - Identified and fix slow code using [million](https://million.dev/)
 - Unit tested using [vitest](https://vitest.dev/)
-- E2E tested (basic) using [playwright](https://playwright.dev/)
+- E2E tested using [playwright](https://playwright.dev/)
 
 ## Getting Started Locally
 
@@ -40,7 +41,13 @@ Simple web app that renders minimalist `Resume` with print-friendly layout.
    bun run dev
    ```
 
-5. Open the [Config file](./src/data.ts) and make changes
+5. Start the test:
+
+   ```bash
+   bun run test
+   ```
+
+6. Open the [Config file](./src/data.ts) for static data and remaining dynamic data are in `Vercel Blob Storage`
 
 ## Run with Docker
 
@@ -64,20 +71,23 @@ docker compose down
 
 ## TODO
 
-- [X] Move data fetching individual page
-- [X] Better data fetching using [TanStack Query](https://tanstack.com/query)
-- [X] Resolve vitest warning
-- [X] ESLint version upgrade to V9
+- [x] Data fetching individual page
+- [x] Better data fetching using [TanStack Query](https://tanstack.com/query)
 - [x] Fixture data in `DEV` & `TEST` time
-- [ ] Enhance code coverage (DOM)
+- [x] `vitest`
+  - [x] Resolve warning
+  - [ ] Enhance codecov
+- [x] ESLint
+  - [x] Version upgrade to `V9`
+  - [x] Configure `a11y` plugin
 - [ ] E2E test
-  - [X] Enable ARIA labels
-  - [X] Enable CI code coverage
-  - [ ] Enable ARIA snapshot
+  - [x] Enable `ARIA` labels
+  - [x] Show codecov in CI
+  - [ ] Enable `ARIA` snapshot
   - [ ] Enable snapshot testing
-  - [X] Cover all pages
+  - [x] Cover all pages
   - [ ] Enable test for mobile
-  - [ ] Safari browser test in CI
+  - [ ] Safari/Edge test in CI
 
 ## License
 

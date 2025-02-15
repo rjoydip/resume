@@ -1,4 +1,4 @@
-import { languages, metadata } from '@/data'
+import { languages, metadata } from '@/data.ts'
 import { expect } from '@playwright/test'
 import { capitalize, loadPage } from '../_shared/test-utils'
 import { about, educations, projects, skills, strengths, works } from '../fixtures/data.fixture'
