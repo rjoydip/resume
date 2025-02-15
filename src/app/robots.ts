@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://rjoydip.com/sitemap.xml',
+    sitemap: 'https://resume.rjoydip.com/sitemap.xml',
   }
 }
