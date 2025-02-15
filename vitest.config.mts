@@ -1,5 +1,5 @@
 import react from '@vitejs/plugin-react'
-import { env } from 'std-env'
+import { isCI } from 'std-env'
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig(({ mode }) => ({
@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => ({
     alias: {
       '@/': new URL('./src/', import.meta.url).pathname,
     },
-    reporters: env.GITHUB_ACTIONS ? ['dot', 'github-actions'] : ['dot'],
+    reporters: isCI ? ['dot', 'github-actions'] : ['dot'],
     projects: [
       {
         pattern: 'test/{dom,e2e}/**/*.test.ts',
@@ -29,11 +29,11 @@ export default defineConfig(({ mode }) => ({
     coverage: {
       enabled: mode === 'dom' || mode === 'node',
       provider: 'istanbul',
-      reportsDirectory: `./coverage/${mode}`,
-      reporter: ['text', 'html', 'json', 'json-summary'],
+      reportsDirectory: `coverage/unit/${mode}`,
+      reporter: [...(isCI ? ['json', 'json-summary'] : ['text', 'html'])],
       exclude: [
         ...new Set([
-          '**/{.next,public,test*,fixtures,mocks,coverage,e2e}',
+          '**/{.next,public,test*,fixtures,mocks,coverage,e2e,config}',
           '**/*.{config,setup}.{mjs,js,ts,mts,cts}',
           '**/src/{app,lib}/*.{ts,tsx}',
           mode === 'dom' ? '**/*.ts' : mode === 'node' ? '**/*.tsx' : '',

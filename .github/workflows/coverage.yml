@@ -1,0 +1,42 @@
+name: Coverage Reports
+
+on:
+  workflow_call:
+
+jobs:
+  init:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+  
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download Unit test artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage-unit
+          path: coverage
+
+      - name: Download E2E test artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage-e2e-${{ matrix.os }}
+          path: coverage
+
+      - uses: davelosert/vitest-coverage-report-action@v2
+        if: startsWith(matrix.os, 'ubuntu')
+        with:
+          name: DOM
+          json-summary-path: coverage/unit/dom/coverage-summary.json
+          json-final-path: coverage/unit/dom/coverage-final.json
+
+      - uses: davelosert/vitest-coverage-report-action@v2
+        if: startsWith(matrix.os, 'ubuntu')
+        with:
+          name: NODE
+          json-summary-path: coverage/unit/node/coverage-summary.json
+          json-final-path: coverage/unit/node/coverage-final.json
