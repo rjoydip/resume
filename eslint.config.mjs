@@ -1,19 +1,26 @@
 import antfu from '@antfu/eslint-config'
-import stylisticTs from '@stylistic/eslint-plugin-ts'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
+import { a11yRules } from './config/eslint/rules/a11y.mjs'
+import { ignorePatterns } from './config/eslint/rules/ignore.mjs'
 
 export default antfu({
+  ignores: ignorePatterns,
   gitignore: true,
-  ignores: [
-    'public',
-    '**/mocks/**',
-  ],
   typescript: true,
   markdown: true,
   yaml: true,
   react: true,
-}, {
-  rules: {},
+  jsx: true,
+  javascript: true,
+  test: true,
+  stylistic: true,
+  unicorn: true,
+  formatters: true,
+  regexp: true,
   plugins: {
-    '@stylistic/ts': stylisticTs,
+    'jsx-a11y': jsxA11y,
+  },
+  rules: {
+    ...a11yRules,
   },
 })

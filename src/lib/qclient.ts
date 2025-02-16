@@ -1,3 +1,4 @@
+import type { SectionsType } from '@/types'
 import type { ListBlobResultBlob } from '@vercel/blob'
 import {
   defaultShouldDehydrateQuery,
@@ -15,7 +16,7 @@ function makeQueryClient(blobs: ListBlobResultBlob[]) {
         staleTime: 60 * 1000,
         retry: false,
         queryFn: async ({ queryKey }: { queryKey: any }) => {
-          return await fetchData(blobs, queryKey[0] as string)
+          return await fetchData(blobs, queryKey[0] as SectionsType)
         },
       },
       dehydrate: {

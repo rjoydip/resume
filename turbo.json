@@ -3,7 +3,7 @@
   "globalDependencies": [".env"],
   "tasks": {
     "build": {
-      "env": ["EDGE_CONFIG", "BLOB_READ_WRITE_TOKEN"],
+      "env": ["BLOB_READ_WRITE_TOKEN"],
       "inputs": [
         "$TURBO_DEFAULT$",
         ".env.production.local",

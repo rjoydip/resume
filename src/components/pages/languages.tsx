@@ -36,7 +36,7 @@ export default function Languages() {
   const { isPending, data }: UseSuspenseQueryResult<LanguagesType[]> = useSuspenseQuery<LanguagesType[]>({
     queryKey: [],
     queryFn: async () => {
-      const { languages } = await import('@/data')
+      const { languages } = await import('@/data.ts')
       return languages
     },
   })
