@@ -47,15 +47,9 @@ export default defineConfig({
       },
     },
     {
-      name: 'iphone15',
+      name: 'iphone',
       use: {
         ...devices['iPhone 15 Pro Max'],
-      },
-    },
-    {
-      name: 'iPad11',
-      use: {
-        ...devices['iPad Pro 11'],
       },
     },
   ],

@@ -73,20 +73,21 @@ docker compose down
 
 - [x] Data fetching individual page
 - [x] Better data fetching using [TanStack Query](https://tanstack.com/query)
-- [x] Resolve `vitest` warning
+- [x] Fixture data in `DEV` & `TEST` time
+- [x] `vitest`
+  - [x] Resolve warning
+  - [ ] Enhance codecov
 - [x] ESLint
   - [x] Version upgrade to `V9`
   - [x] Configure `a11y` plugin
-- [ ] Fixture data in DEV mode
-- [ ] Enhance code coverage (DOM)
 - [ ] E2E test
   - [x] Enable `ARIA` labels
-  - [x] Enable `ARIA` labels
-  - [x] Enable CI code coverage
+  - [x] Show codecov in CI
   - [ ] Enable `ARIA` snapshot
   - [ ] Enable snapshot testing
   - [x] Cover all pages
-  - [ ] Enable test for mobile
+  - [x] Enable test for mobile
+  - [x] Cross platform test in CI
 
 ## License
 

@@ -12,7 +12,7 @@ test.describe('<Sitemap />', () => {
   const parser = new XMLParser()
   const website_link = 'https://resume.rjoydip.com'
 
-  test('should render <Sitemap /> component', async ({ page }) => {
+  test('should render <Sitemap /> page', async ({ page }) => {
     const pageContent = await page.content()
     expect(pageContent).toBeDefined()
   })

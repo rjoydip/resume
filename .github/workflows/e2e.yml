@@ -15,6 +15,7 @@ jobs:
         include:
           - os: macos-latest
             browsers: [webkit]
+            mobile: [iphone]
           - os: ubuntu-latest
             browsers: [chrome, firefox]
             mobile: [pixel7]
@@ -58,15 +59,15 @@ jobs:
             bun run test:e2e --project=${browser}
           done
 
-      # - name: Run Mobile Device Tests
-      #   if: matrix.mobile
-      #   env:
-      #     PLAYWRIGHT_JSON_OUTPUT_DIR: coverage/e2e/${{ matrix.os }}
-      #   run: |
-      #     for device in ${{ join(matrix.mobile, ' ') }}; do
-      #       export PLAYWRIGHT_JSON_OUTPUT_NAME=coverage-${device}.json
-      #       bun run test:e2e --project=${device}
-      #     done
+      - name: Run Mobile Device Tests
+        if: matrix.mobile
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_DIR: coverage/e2e/${{ matrix.os }}
+        run: |
+          for device in ${{ join(matrix.mobile, ' ') }}; do
+            export PLAYWRIGHT_JSON_OUTPUT_NAME=coverage-${device}.json
+            bun run test:e2e --project=${device}
+          done
   
       - name: Upload E2E test artifact
         uses: actions/upload-artifact@v4
