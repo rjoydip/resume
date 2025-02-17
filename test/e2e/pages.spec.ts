@@ -29,9 +29,13 @@ test.describe('<Root />', () => {
 })
 
 test.describe('<About />', () => {
-  test('should display profile information correctly', async ({ page }) => {
-    await expect(page.getByTestId('about_name')).toBeVisible()
-    await expect(page.getByTestId('about_name_small_screen')).not.toBeVisible()
+  test('should display profile information correctly', async ({ page, isMobile }) => {
+    if (isMobile) {
+      await expect(page.getByTestId('about_name_small_screen')).toBeVisible()
+    }
+    else {
+      await expect(page.getByTestId('about_name')).toBeVisible()
+    }
 
     // Wait for avatar image to load
     await expect(async () => {
@@ -107,10 +111,17 @@ test.describe('<About />', () => {
     await expect(printPhone).toBeTruthy()
   })
 
-  test('should validate about ARIA snapshot', async ({ page }) => {
-    await expect(page.getByTestId('about_name')).toMatchAriaSnapshot(`
-      - text: ${about.name}
-    `)
+  test('should validate about ARIA snapshot', async ({ page, isMobile }) => {
+    if (isMobile) {
+      await expect(page.getByTestId('about_name_small_screen')).toMatchAriaSnapshot(`
+        - text: ${about.name}
+      `)
+    }
+    else {
+      await expect(page.getByTestId('about_name')).toMatchAriaSnapshot(`
+        - text: ${about.name}
+      `)
+    }
     await expect(page.getByTestId('about_description')).toMatchAriaSnapshot(`
       - text: ${about.description}
     `)

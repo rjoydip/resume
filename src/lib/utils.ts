@@ -1,4 +1,4 @@
-import { ResumeType, SectionsType } from '@/types'
+import type { ResumeType } from '@/types'
 import type { ListBlobResultBlob } from '@vercel/blob'
 import type { ClassValue } from 'clsx'
 import { clsx } from 'clsx'
@@ -21,9 +21,11 @@ export async function fetchData<T>(blobs: ListBlobResultBlob[], name: keyof Resu
 
   if (blob) {
     const response = await fetch(blob.url)
-    if (response.ok) return response.json()
+    if (response.ok)
+      return response.json()
     else throw new Error('Failed to fetch data')
-  } else {
+  }
+  else {
     return {} as T
   }
 }

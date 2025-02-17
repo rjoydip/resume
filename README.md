@@ -87,7 +87,7 @@ docker compose down
   - [ ] Enable snapshot testing
   - [x] Cover all pages
   - [ ] Enable test for mobile
-  - [ ] Safari/Edge test in CI
+  - [ ] Cross platform test in CI
 
 ## License
 

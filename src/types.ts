@@ -15,13 +15,13 @@ export type ProjectLinkType = Output<typeof projectLinkSchema>
 export type LanguagesType = Output<typeof languagesSchema>
 export type DeclarationType = Output<typeof declarationSchema>
 export type FooterType = Output<typeof footerSchema>
-export type ResumeType = {
-  about: AboutType,
-  educations: EducationsType,
-  strengths: StrengthsType,
-  projects: ProjectsType,
-  skills: SkillsType,
-  works: WorksType,
+export interface ResumeType {
+  about: AboutType
+  educations: EducationsType
+  strengths: StrengthsType
+  projects: ProjectsType
+  skills: SkillsType
+  works: WorksType
 }
 export type SectionsType = keyof ResumeType
 export type IconType =

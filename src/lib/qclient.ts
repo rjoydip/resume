@@ -1,3 +1,4 @@
+import type { SectionsType } from '@/types'
 import type { ListBlobResultBlob } from '@vercel/blob'
 import {
   defaultShouldDehydrateQuery,
@@ -7,7 +8,6 @@ import {
 import { list } from '@vercel/blob'
 import { process } from 'std-env'
 import { fetchData } from './utils'
-import { SectionsType } from '@/types'
 
 function makeQueryClient(blobs: ListBlobResultBlob[]) {
   return new QueryClient({
