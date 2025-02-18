@@ -1,0 +1,77 @@
+name: E2E Tests
+
+on:
+  workflow_call:
+    secrets:
+      VERCEL_TOKEN:
+        required: true
+      BLOB_READ_WRITE_TOKEN:
+        required: true
+
+jobs:
+  init:
+    strategy:
+      matrix:
+        include:
+          - os: macos-latest
+            browsers: [webkit]
+            mobile: [iphone]
+          - os: ubuntu-latest
+            browsers: [chrome, firefox]
+            mobile: [pixel7]
+    
+    runs-on: ${{ matrix.os }}
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: 📦 Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - uses: actions/cache@v4
+        name: Setup cache
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ matrix.os }}-bun-${{ hashFiles('**/bun.lock') }}
+          restore-keys: |
+            ${{ matrix.os }}-bun-
+
+      - name: 📦 Install deps
+        run: bun install --no-frozen-lockfile
+
+      - name: 🛠️ Build
+        run: |
+          bunx vercel link --yes --token=${{ secrets.VERCEL_TOKEN }}
+          bunx vercel env pull .env.local --token=${{ secrets.VERCEL_TOKEN }}
+          echo 'BLOB_READ_WRITE_TOKEN="${{ secrets.BLOB_READ_WRITE_TOKEN }}"' >> .env.local
+          bunx turbo build
+          rm -rf .env.local
+
+      - name: Run Desktop Browser Tests
+        if: matrix.browsers
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_DIR: coverage/e2e/${{ matrix.os }}
+        run: |
+          for browser in ${{ join(matrix.browsers, ' ') }}; do
+            export PLAYWRIGHT_JSON_OUTPUT_NAME=coverage-${browser}.json
+            bun run test:e2e --project=${browser}
+          done
+
+      - name: Run Mobile Device Tests
+        if: matrix.mobile
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_DIR: coverage/e2e/${{ matrix.os }}
+        run: |
+          for device in ${{ join(matrix.mobile, ' ') }}; do
+            export PLAYWRIGHT_JSON_OUTPUT_NAME=coverage-${device}.json
+            bun run test:e2e --project=${device}
+          done
+  
+      - name: Upload E2E test artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-e2e-${{ matrix.os }}
+          path: coverage
+          if-no-files-found: ignore

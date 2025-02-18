@@ -86,8 +86,8 @@ docker compose down
   - [ ] Enable `ARIA` snapshot
   - [ ] Enable snapshot testing
   - [x] Cover all pages
-  - [ ] Enable test for mobile
-  - [ ] Cross platform test in CI
+  - [x] Enable test for mobile
+  - [x] Cross platform test in CI
 
 ## License
 
