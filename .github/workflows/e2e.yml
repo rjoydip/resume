@@ -19,12 +19,12 @@ jobs:
           - os: ubuntu-latest
             browsers: [chrome, firefox]
             mobile: [pixel7]
-    
+
     runs-on: ${{ matrix.os }}
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: 📦 Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
@@ -68,7 +68,7 @@ jobs:
             export PLAYWRIGHT_JSON_OUTPUT_NAME=coverage-${device}.json
             bun run test:e2e --project=${device}
           done
-  
+
       - name: Upload E2E test artifact
         uses: actions/upload-artifact@v4
         with:
