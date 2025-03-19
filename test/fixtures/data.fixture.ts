@@ -3,7 +3,13 @@ import { companies, declarationDetails, techStacks, workMode } from '@/data'
 import { randBoolean, randCity, randCountry, randEmail, randFullName, randNumber, randPhoneNumber, randText } from '@ngneat/falso'
 
 const generateArray = (length = 1) => Array.from({ length }, (_, i) => i)
-const generateTechStacks = (divide: number = 3) => generateArray(randNumber({ min: 1, max: techStacks.length / divide })).map(i => techStacks[i])
+function generateTechStacks(divide: number = 3) {
+  return [
+    ...new Set(
+      generateArray(randNumber({ min: 1, max: techStacks.length / divide })).map(i => techStacks[i]),
+    ),
+  ]
+}
 
 export const about: AboutType = {
   name: randFullName(),
@@ -37,47 +43,63 @@ export const about: AboutType = {
   },
 }
 
-export const educations: EducationsType = generateArray(3).map(i => ({
-  name: randText({ charCount: 10 }),
-  degree: randText({ charCount: 10 }),
-  aggregate: i === 2 ? `${randNumber({ min: 0, max: 100 })}%` : null,
-  cgpa: randNumber({ min: 0, max: 10, fraction: 2 }),
-  location: `${randCity()}, ${randCountry()}`,
-  start: randNumber({ min: 2005, max: 2012 }),
-  end: randNumber({ min: 2012, max: 2016 }),
-}))
+export const educations: EducationsType = [
+  ...new Set(
+    generateArray(3).map(i => ({
+      name: randText({ charCount: 10 }),
+      degree: randText({ charCount: 10 }),
+      aggregate: i === 2 ? `${randNumber({ min: 0, max: 100 })}%` : null,
+      cgpa: randNumber({ min: 0, max: 10, fraction: 2 }),
+      location: `${randCity()}, ${randCountry()}`,
+      start: randNumber({ min: 2005, max: 2012 }),
+      end: randNumber({ min: 2012, max: 2016 }),
+    })),
+  ),
+]
 
-export const projects: ProjectsType = generateArray(5).map(() => ({
-  title: randText({ charCount: 8 }),
-  description: randText(),
-  techStacks: generateTechStacks(),
-  isClient: randBoolean(),
-  company: companies[randNumber({ min: 0, max: companies.length - 1 })],
-  client_country: randCountry(),
-  links: [{
-    type: 'mobile',
-    href: 'https://example.com',
-    label: randText(),
-  }, {
-    type: 'web',
-    href: 'https://example.com',
-    label: randText(),
-  }],
-}))
+export const projects: ProjectsType = [
+  ...new Set(
+    generateArray(5).map(() => ({
+      title: randText({ charCount: 8 }),
+      description: randText(),
+      techStacks: generateTechStacks(),
+      isClient: randBoolean(),
+      company: companies[randNumber({ min: 0, max: companies.length - 1 })],
+      client_country: randCountry(),
+      links: [{
+        type: 'mobile',
+        href: 'https://example.com',
+        label: randText(),
+      }, {
+        type: 'web',
+        href: 'https://example.com',
+        label: randText(),
+      }],
+    })),
+  ),
+]
 
-export const works: WorksType = generateArray(3).map(() => ({
-  company: companies[randNumber({ min: 0, max: companies.length - 1 })],
-  link: `https://example.com`,
-  mode: [workMode[randNumber({ min: 0, max: workMode.length - 1 })]],
-  position: randText({ charCount: 5 }),
-  start: randNumber({ min: 2016, max: new Date().getFullYear() }),
-  end: null,
-  description: '● Analyzed, designed, and developed applications effectively.<br/>● Built a batch processing application leveraging `Spring Boot` Batch.<br/>● Created and executed automation tests for batch processing applications using an internal `Node.js` testing framework.<br/>● Developed and maintained `Node.js` microservices.<br/>● Provided **technical guidance*and **mentorship*to junior team members.<br/>● Lead the development of a content-based factory designed using `Node.js` and `AWS` infrastructure.',
-  techStacks: generateTechStacks(),
-}))
+export const works: WorksType = [
+  ...new Set(
+    generateArray(3).map(() => ({
+      company: companies[randNumber({ min: 0, max: companies.length - 1 })],
+      link: `https://example.com`,
+      mode: [workMode[randNumber({ min: 0, max: workMode.length - 1 })]],
+      position: randText({ charCount: 5 }),
+      start: randNumber({ min: 2016, max: new Date().getFullYear() }),
+      end: null,
+      description: '● Analyzed, designed, and developed applications effectively.<br/>● Built a batch processing application leveraging `Spring Boot` Batch.<br/>● Created and executed automation tests for batch processing applications using an internal `Node.js` testing framework.<br/>● Developed and maintained `Node.js` microservices.<br/>● Provided **technical guidance*and **mentorship*to junior team members.<br/>● Lead the development of a content-based factory designed using `Node.js` and `AWS` infrastructure.',
+      techStacks: generateTechStacks(),
+    })),
+  ),
+]
 
 export const skills: SkillsType = generateTechStacks()
-export const strengths: StrengthsType = generateArray(5).map(() => randText())
+export const strengths: StrengthsType = [
+  ...new Set(
+    generateArray(5).map(() => randText()),
+  ),
+]
 export { declarationDetails }
 
 export const resumeData: ResumeType = {
