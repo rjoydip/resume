@@ -1,6 +1,6 @@
-# rjresume
+# resume
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/rjoydip/rjresume)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/rjoydip/resume)
 [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
 `Resume` with print-friendly layout [resume.rjoydip.com](https://resume.rjoydip.com).
@@ -20,13 +20,13 @@
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/rjoydip/rjresume.git
+   git clone https://github.com/rjoydip/resume.git
    ```
 
 2. Move to the cloned directory
 
    ```bash
-   cd rjresume
+   cd resume
    ```
 
 3. Install dependencies:
