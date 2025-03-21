@@ -9,7 +9,7 @@ import Projects from '@/components/pages/projects'
 import Skills from '@/components/pages/skills'
 import Strengths from '@/components/pages/strengths'
 import Works from '@/components/pages/works'
-import { metadata as meta } from '@/data'
+import { meta } from '@/data/index'
 
 export const metadata: Metadata = {
   title: `${meta.name}`,

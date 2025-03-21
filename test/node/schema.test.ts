@@ -1,5 +1,5 @@
-import { languages } from '@/data'
-import { aboutSchema, educationsSchema, languagesSchema, projectsSchema, skillsSchema, strengthsSchema, worksSchema } from '@/schema' // Replace with the actual file path
+import { languages } from '@/data/index'
+import { aboutSchema, educationsSchema, languagesSchema, projectsSchema, skillsSchema, strengthsSchema, worksSchema } from '@/schema'
 import { describe, expect, it } from 'vitest'
 
 describe('schema validation', () => {

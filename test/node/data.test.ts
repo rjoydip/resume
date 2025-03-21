@@ -1,11 +1,11 @@
-import { companies, getDarkThemeColors, getLightThemeColors, metadata, projectLinkTypes, socialMedia, techStacks, workMode } from '@/data'
+import { companies, getDarkThemeColors, getLightThemeColors, meta, projectLinkTypes, socialMedia, techStacks, workMode } from '@/data/index'
 import { describe, expect, it } from 'vitest'
 import { strengths } from '../fixtures/data.fixture'
 
 describe('data', () => {
-  it('should validate metadata', () => {
-    expect(typeof metadata).toBe('object')
-    expect(Object.keys(metadata)).toStrictEqual(['name', 'description', 'generator'])
+  it('should validate meta', () => {
+    expect(typeof meta).toBe('object')
+    expect(Object.keys(meta)).toStrictEqual(['name', 'description', 'generator'])
   })
   it('should validate getLightThemeColors', () => {
     const lightThemeColors = getLightThemeColors()

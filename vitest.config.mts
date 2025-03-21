@@ -1,9 +1,10 @@
+import type { ViteUserConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import { isCI } from 'std-env'
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig(({ mode }) => ({
-  plugins: [react()],
+  plugins: [react()] as ViteUserConfig['plugins'],
   test: {
     alias: {
       '@/': new URL('./src/', import.meta.url).pathname,

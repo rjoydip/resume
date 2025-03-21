@@ -4,6 +4,21 @@ import { env, isCI } from 'std-env'
 const PORT = env.PORT || 4000
 const baseURL = `http://localhost:${PORT}`
 
+const commonProjects = [
+  {
+    name: 'chrome',
+    use: {
+      ...devices['Desktop Chrome'],
+    },
+  },
+  {
+    name: 'iphone',
+    use: {
+      ...devices['iPhone 15 Pro Max'],
+    },
+  },
+]
+
 export default defineConfig({
   testDir: 'test/e2e',
   fullyParallel: true,
@@ -21,38 +36,29 @@ export default defineConfig({
     video: 'retain-on-failure',
     testIdAttribute: 'data-testid',
   },
-  projects: [
-    {
-      name: 'chrome',
-      use: {
-        ...devices['Desktop Chrome'],
-      },
-    },
-    {
-      name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox'],
-      },
-    },
-    {
-      name: 'webkit',
-      use: {
-        ...devices['Desktop Safari'],
-      },
-    },
-    {
-      name: 'pixel7',
-      use: {
-        ...devices['Pixel 7'],
-      },
-    },
-    {
-      name: 'iphone',
-      use: {
-        ...devices['iPhone 15 Pro Max'],
-      },
-    },
-  ],
+  projects: !isCI
+    ? commonProjects
+    : [
+        ...commonProjects,
+        {
+          name: 'firefox',
+          use: {
+            ...devices['Desktop Firefox'],
+          },
+        },
+        {
+          name: 'webkit',
+          use: {
+            ...devices['Desktop Safari'],
+          },
+        },
+        {
+          name: 'pixel7',
+          use: {
+            ...devices['Pixel 7'],
+          },
+        },
+      ],
   webServer: {
     command: `bun run start --port=${PORT}`,
     url: baseURL,
