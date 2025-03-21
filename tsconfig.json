@@ -36,20 +36,15 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "test/node/*.test.ts",
-    "test/benchmark/*.test.ts",
-    "test/{edge,e2e,jsdom}/*.test.tsx",
-    ".next/types/**/*.ts",
-    "test/benchmark/endpoints/api.test.ts",
-    "test/benchmark/endpoints/index.ts",
-    "test/benchmark/endpoints/health.test.ts",
     "eslint.config.mjs",
-    "vitest.config.mts"
+    "test/node/*.test.ts",
+    "test/{edge,e2e,jsdom}/*.test.tsx",
+    "vitest.config.mts",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     ".next",
     ".husky",
-    ".million",
     "public",
     "coverage",
     "node_modules"

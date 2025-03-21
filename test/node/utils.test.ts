@@ -1,5 +1,4 @@
 import type { LightColorType } from '@/types'
-import type { ListBlobResultBlob } from '@vercel/blob'
 import { cn, fetchData } from '@/lib/utils'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
@@ -28,31 +27,19 @@ describe('utils', () => {
   })
 
   describe('fetchData', () => {
-    const blobs: ListBlobResultBlob[] = [
-      {
-        pathname: 'about.json',
-        url: 'https://example.com/about.json',
-        downloadUrl: 'https://example.com/about.json/downloadUrl',
-        size: 1000,
-        uploadedAt: new Date(),
-      },
-    ]
-    const mockBlobs: ListBlobResultBlob[] = blobs
-
     it('should fetch data from a blob', async () => {
       globalThis.fetch = vi.fn().mockResolvedValueOnce({
         ok: true,
         json: () => Promise.resolve({}),
       } as Response)
 
-      const result = await fetchData(blobs, 'about')
+      const result = await fetchData('about')
       expect(typeof result).toBe('object')
       expect(result).toEqual(expect.objectContaining({}))
     })
 
     it('should return an empty object if no blob is found', async () => {
-      const blobs: ListBlobResultBlob[] = []
-      const result = await fetchData(blobs, 'about')
+      const result = await fetchData('about')
       expect(typeof result).toBe('object')
       expect(result).toEqual(expect.objectContaining({}))
     })
@@ -65,7 +52,7 @@ describe('utils', () => {
       } as Response)
 
       try {
-        await fetchData(mockBlobs, 'invalid' as any)
+        await fetchData('invalid' as any)
       }
       catch (error: any) {
         expect(error.message).toEqual('Failed to fetch data')
@@ -78,7 +65,7 @@ describe('utils', () => {
         json: () => Promise.resolve('Invalid data'),
       } as Response)
 
-      const data = await fetchData(mockBlobs, 'invalid' as any)
+      const data = await fetchData('invalid' as any)
       expect(data).toEqual({})
     })
   })

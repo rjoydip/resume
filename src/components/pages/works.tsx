@@ -18,7 +18,7 @@ WorkingMode.displayName = 'WorksList'
 
 function WorksList({ data }: { data: WorkType[] }) {
   return data.map((work: WorkType, index: number) => (
-    <div className="relative pl-6" key={`${work.company}-${work.start}`}>
+    <div className="relative pl-6" key={`${work.company}-${work.start}-${work.end}`}>
       {getIcon('dot', {
         className: 'absolute -left-[12px] top-0',
         strokeWidth: 8,

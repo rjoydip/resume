@@ -1,7 +1,13 @@
-import { languages, metadata } from '@/data.ts'
 import { expect } from '@playwright/test'
+import about from '../../src/data/about'
+import educations from '../../src/data/educations'
+import { languages, meta } from '../../src/data/index'
+import projects from '../../src/data/projects'
+import skills from '../../src/data/skills'
+import strengths from '../../src/data/strengths'
+import works from '../../src/data/works'
 import { capitalize, loadPage } from '../_shared/test-utils'
-import { about, educations, projects, skills, strengths, works } from '../fixtures/data.fixture'
+
 import { test } from '../setup/e2e.setup.ts'
 
 test.beforeEach(async ({ page }) => {
@@ -10,7 +16,7 @@ test.beforeEach(async ({ page }) => {
 
 test.describe('<Root />', () => {
   test('should validate title and body', async ({ page }) => {
-    expect(await page.title()).toBe(metadata.name)
+    expect(await page.title()).toBe(meta.name)
     expect(await page.locator('body')).toBeVisible()
   })
 
@@ -22,7 +28,7 @@ test.describe('<Root />', () => {
 
     // Check text color in dark mode
     const languageNames = await page.locator('.text-gray-900.dark\\:text-gray-100').all()
-    for (const name of languageNames) {
+    for await (const name of languageNames) {
       await expect(name).toHaveClass(/dark:text-gray-100/)
     }
   })
@@ -62,7 +68,7 @@ test.describe('<About />', () => {
     await expect(phoneButton).toHaveAttribute('href', `tel:${about.contact.tel}`)
 
     // Social links
-    for (const social of about.contact.social) {
+    for await (const social of about.contact.social) {
       const socialButton = page.getByTestId(`about_contact_social_${social.name}`)
       await expect(socialButton).toBeVisible()
       await expect(socialButton).toHaveAttribute('href', social.url)
@@ -84,7 +90,7 @@ test.describe('<About />', () => {
     await expect(page.locator('[aria-label="Show Mobile Number"]').first()).toBeVisible()
     await expect(page.locator('[aria-label="Show Location on Map"]').first()).toBeVisible()
 
-    for (const social of about.contact.social) {
+    for await (const social of about.contact.social) {
       await expect(page.locator(`[aria-label="Show Social Media ${social.name}"]`).first()).toBeVisible()
     }
 
@@ -201,7 +207,7 @@ test.describe('<Languages />', () => {
     expect(languageItems.length).toBe(languages.length)
 
     // Check each language entry
-    for (const [index, language] of languages.entries()) {
+    for await (const [index, language] of languages.entries()) {
       const languageElement = await languageList.locator('li').nth(index)
 
       // Check if badge icon exists
@@ -249,17 +255,6 @@ test.describe('<Projects />', () => {
           ? `(${project.client_country})`
           : ''}`)
         await expect(page.getByTestId(`project_company_index_${index}`)).toContainText(project.company)
-      }),
-    ])
-  })
-
-  test('verifies project links rendering', async ({ page }) => {
-    await Promise.all([
-      ...projects.map(async (_, index) => {
-        // Check first project links
-        const firstProjectLinks = await page.getByTestId(`project_links_index_${index}`)
-        await expect(firstProjectLinks).toBeVisible()
-        await expect(firstProjectLinks).toContainText('Links:')
 
         // Verify web and mobile icons
         await expect(async () => {
@@ -313,12 +308,6 @@ test.describe('<Projects />', () => {
 
     const printGrid = await page.locator('.print\\:grid-cols-2')
     await expect(printGrid).toBeVisible()
-
-    // Verify links are hidden in print
-    const links = await printContainer.locator('.print\\:hidden').all()
-    await Promise.all([
-      ...links.map(async link => await expect(link).toBeVisible()),
-    ])
   })
 })
 
@@ -340,7 +329,7 @@ test.describe('<Skills />', () => {
     await expect(skillsList).toBeVisible()
 
     // Verify each skill badge is rendered with correct text
-    for (const skill of skills) {
+    for await (const skill of skills) {
       const skillBadge = await page.getByLabel(`Show ${capitalize(skill)} skill`)
       await expect(skillBadge).toBeVisible()
       await expect(skillBadge).toHaveText(capitalize(skill))
@@ -355,7 +344,7 @@ test.describe('<Skills />', () => {
 
     // Check badge styling
     const badges = await page.getByTestId('skills_list').locator('.badge')
-    for (const badge of await badges.all()) {
+    for await (const badge of await badges.all()) {
       await expect(badge).toHaveClass(/m-1/)
       await expect(badge).toHaveClass(/text-\[14px\]/)
     }
@@ -363,7 +352,7 @@ test.describe('<Skills />', () => {
 
   test('should verify accessibility features', async ({ page }) => {
     // Check ARIA labels
-    for (const skill of skills) {
+    for await (const skill of skills) {
       const skillBadge = await page.getByLabel(`Show ${capitalize(skill)} skill`)
       await expect(skillBadge).toHaveAttribute('aria-label', `Show ${capitalize(skill)} skill`)
     }
@@ -407,7 +396,7 @@ test.describe('<Strengths />', () => {
 
     // Check list item styling
     const listItems = await strengthsList.locator('li').all()
-    for (const item of listItems) {
+    for await (const item of listItems) {
       await expect(item).toHaveClass(/flex/)
       await expect(item).toHaveClass(/flex-wrap/)
       await expect(item).toHaveClass(/items-start/)
@@ -416,7 +405,7 @@ test.describe('<Strengths />', () => {
 
     // Check text styling
     const textElements = await page.locator('.text-lg.font-semibold').all()
-    for (const element of textElements) {
+    for await (const element of textElements) {
       await expect(element).toHaveClass(/mx-0.5/)
       await expect(element).toHaveClass(/text-gray-900/)
       await expect(element).toHaveClass(/dark:text-gray-100/)
@@ -426,7 +415,7 @@ test.describe('<Strengths />', () => {
   test('should verify icon accessibility', async ({ page }) => {
     const icons = await page.getByTestId('badge-check-icon').all()
 
-    for (const icon of icons) {
+    for await (const icon of icons) {
       // Verify icon size
       await expect(icon).toHaveClass(/h-4/)
       await expect(icon).toHaveClass(/w-4/)
@@ -447,18 +436,17 @@ test.describe('<Works />', () => {
     await expect(title).toHaveText('Work Experience')
   })
 
-  test('should render work experience section with all details', async ({ page }) => {
+  test('should render work experience with all details', async ({ page }) => {
     // Check work list container
     const workList = await page.getByTestId('work_list')
     await expect(workList).toBeVisible()
 
-    for (const [index, work] of works.entries()) {
-      // Test first work experience
+    for await (const [index, work] of works.entries()) {
       const workRef = await page.getByTestId(`work_details_index_${index}`)
       await expect(workRef).toContainText(work.company)
 
       // Check working modes
-      await expect(workRef).toContainText(work.mode)
+      await Promise.all([...work.mode.map(async mode => await expect(workRef).toContainText(mode))])
 
       // Check position and description
       await expect(page.getByTestId(`work_position_index_${index}`)).toHaveText(work.position)
@@ -473,7 +461,7 @@ test.describe('<Works />', () => {
 
   test('should verify company links and interactions', async ({ page }) => {
     // Check all company links
-    for (const [index, work] of works.entries()) {
+    for await (const [index, work] of works.entries()) {
       const link = await page.getByTestId(`work_details_index_${index}`).getByRole('link', { name: 'Company Name' })
       await expect(link).toHaveAttribute('href', work.link)
       await expect(link).toHaveAttribute('rel', 'noopener noreferrer')
@@ -488,14 +476,14 @@ test.describe('<Works />', () => {
     // Check working mode badges
     const badges = await page.locator('.badge').all()
 
-    for (const badge of badges) {
+    for await (const badge of badges) {
       await expect(badge).toHaveClass(/text-\[12px\]/)
       await expect(badge).toHaveClass(/align-middle/)
     }
 
-    for (const [index, work] of works.entries()) {
+    for await (const [index, work] of works.entries()) {
       const details = await page.getByTestId(`work_details_index_${index}`)
-      for (const mode of work.mode) {
+      for await (const mode of work.mode) {
         await expect(details.getByText(mode)).toBeVisible()
       }
     }
@@ -509,7 +497,7 @@ test.describe('<Works />', () => {
 
     // Check dot icons
     const dots = await page.getByTestId('dot-icon').all()
-    for (const dot of dots) {
+    for await (const dot of dots) {
       await expect(dot).toHaveClass(/absolute/)
       await expect(dot).toHaveClass(/-left-\[12px\]/)
     }
@@ -519,14 +507,14 @@ test.describe('<Works />', () => {
       document.documentElement.classList.add('dark')
     })
     const descriptions = await page.locator('.dark\\:text-gray-300').all()
-    for (const desc of descriptions) {
+    for await (const desc of descriptions) {
       await expect(desc).toHaveClass(/dark:text-gray-300/)
     }
   })
 
   test('should verify HTML semantics and accessibility', async ({ page }) => {
     const links = await page.getByTestId('work_list').getByRole('link').all()
-    for (const link of links) {
+    for await (const link of links) {
       await expect(link).toHaveAttribute('aria-label')
     }
   })

@@ -7,7 +7,7 @@ export function getLightThemeColors(): LightColorType[] {
 export function getDarkThemeColors(): DarkColorType[] {
   return ['dark']
 }
-export const metadata = {
+export const meta = {
   name: 'Joydip Roy',
   description: 'JR',
   generator: 'blog, rjoydip, resume',
@@ -15,7 +15,7 @@ export const metadata = {
 export const declarationDetails = {
   location: 'Kolkata',
   country: 'India',
-  name: metadata.name,
+  name: meta.name,
 }
 export const languages: LanguagesType[] = [{
   name: 'English',

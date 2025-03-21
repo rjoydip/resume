@@ -10,7 +10,7 @@ export default function Footer() {
   const { isPending, data }: UseSuspenseQueryResult<FooterType> = useSuspenseQuery({
     queryKey: ['dataFetch'],
     queryFn: async () => {
-      const { metadata: { name }, today } = await import('@/data.ts')
+      const { meta: { name }, today } = await import('@/data/index.ts')
       const year = today.getFullYear()
       return { name, year }
     },

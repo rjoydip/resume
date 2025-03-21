@@ -1,5 +1,5 @@
+import { companies, projectLinkTypes, socialMedia, techStacks, today, workMode } from '@/data/index'
 import { array, boolean, email, maxLength, maxValue, minLength, minValue, nullable, nullish, number, object, picklist, regex, startsWith, string, transform, union, url } from 'valibot'
-import { companies, projectLinkTypes, socialMedia, techStacks, today, workMode } from './data'
 
 const techStackSchema = array(picklist(techStacks))
 export const strengthsSchema = array(string([minLength(1)]))
