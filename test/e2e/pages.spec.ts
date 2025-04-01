@@ -1,13 +1,14 @@
 import { expect } from '@playwright/test'
 import about from '../../src/data/about'
+import domains from '../../src/data/domains.ts'
 import educations from '../../src/data/educations'
-import { languages, meta } from '../../src/data/index'
+import { meta } from '../../src/data/index'
+import languages from '../../src/data/languages.ts'
 import projects from '../../src/data/projects'
 import skills from '../../src/data/skills'
 import strengths from '../../src/data/strengths'
 import works from '../../src/data/works'
 import { capitalize, loadPage } from '../_shared/test-utils'
-
 import { test } from '../setup/e2e.setup.ts'
 
 test.beforeEach(async ({ page }) => {
@@ -396,6 +397,72 @@ test.describe('<Strengths />', () => {
 
     // Check list item styling
     const listItems = await strengthsList.locator('li').all()
+    for await (const item of listItems) {
+      await expect(item).toHaveClass(/flex/)
+      await expect(item).toHaveClass(/flex-wrap/)
+      await expect(item).toHaveClass(/items-start/)
+      await expect(item).toHaveClass(/items-baseline/)
+    }
+
+    // Check text styling
+    const textElements = await page.locator('.text-lg.font-semibold').all()
+    for await (const element of textElements) {
+      await expect(element).toHaveClass(/mx-0.5/)
+      await expect(element).toHaveClass(/text-gray-900/)
+      await expect(element).toHaveClass(/dark:text-gray-100/)
+    }
+  })
+
+  test('should verify icon accessibility', async ({ page }) => {
+    const icons = await page.getByTestId('badge-check-icon').all()
+
+    for await (const icon of icons) {
+      // Verify icon size
+      await expect(icon).toHaveClass(/h-4/)
+      await expect(icon).toHaveClass(/w-4/)
+
+      // Verify icon color
+      await expect(icon).toHaveClass(/text-green-500/)
+
+      // Verify icon margin
+      await expect(icon).toHaveClass(/mr-1/)
+    }
+  })
+})
+
+test.describe('<Domains />', () => {
+  test('render domains title', async ({ page }) => {
+    const title = await page.getByTestId('domains_title')
+    await expect(title).toBeVisible()
+    await expect(title).toHaveText('Domains')
+  })
+
+  test('should render domains section with title and list', async ({ page }) => {
+    // Check domains list container
+    const domainsList = await page.getByTestId('domains_list')
+    await expect(domainsList).toBeVisible()
+
+    // Verify each strength item
+    const listItems = await domainsList.locator('li').all()
+    expect(listItems.length).toBe(domains.length)
+
+    for (let i = 0; i < listItems.length; i++) {
+      const item = listItems[i]
+      await expect(item).toBeVisible()
+      // Check strength text
+      const text = await item.locator('div').textContent()
+      expect(text).toBe(domains[i])
+    }
+  })
+
+  test('should verify layout and styling', async ({ page }) => {
+    // Check list spacing
+    const domainsList = await page.getByTestId('domains_list')
+    await expect(domainsList).toHaveClass(/space-y-4/)
+    await expect(domainsList).toHaveClass(/text-left/)
+
+    // Check list item styling
+    const listItems = await domainsList.locator('li').all()
     for await (const item of listItems) {
       await expect(item).toHaveClass(/flex/)
       await expect(item).toHaveClass(/flex-wrap/)

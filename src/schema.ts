@@ -1,5 +1,5 @@
 import { companies, projectLinkTypes, socialMedia, techStacks, today, workMode } from '@/data/index'
-import { array, boolean, email, maxLength, maxValue, minLength, minValue, nullable, nullish, number, object, picklist, regex, startsWith, string, transform, union, url } from 'valibot'
+import { array, boolean, date, email, maxLength, maxValue, minLength, minValue, nullable, nullish, number, object, picklist, regex, startsWith, string, transform, union, url } from 'valibot'
 
 const techStackSchema = array(picklist(techStacks))
 export const strengthsSchema = array(string([minLength(1)]))
@@ -34,7 +34,11 @@ export const educationSchema = object({
   ]),
 })
 export const educationsSchema = array(educationSchema)
-
+export const metaSchema = object({
+  name: string(),
+  description: string(),
+  generator: string(),
+})
 export const workSchema = object({
   company: picklist(companies),
   position: string(),
@@ -83,13 +87,14 @@ export const languagesSchema = object({
   name: string(),
   isNative: boolean(),
 })
+export const socialMediaSchema = array(object({
+  url: string([url()]),
+  name: picklist(socialMedia),
+}))
 export const contactSchema = object({
   email: string([email()]),
   tel: string([startsWith('+')]),
-  social: array(object({
-    url: string([url()]),
-    name: picklist(socialMedia),
-  })),
+  social: socialMediaSchema,
 })
 export const aboutSchema = object({
   name: string([minLength(4)]),
@@ -114,9 +119,9 @@ export const declarationSchema = object({
   name: string(),
   country: string(),
   location: string(),
-  date: string(),
+  today: date(),
 })
 export const footerSchema = object({
-  name: string(),
-  year: number(),
+  meta: metaSchema,
+  today: date(),
 })

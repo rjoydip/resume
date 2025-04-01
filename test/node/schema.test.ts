@@ -1,5 +1,6 @@
-import { languages } from '@/data/index'
+import languages from '@/data/languages'
 import { aboutSchema, educationsSchema, languagesSchema, projectsSchema, skillsSchema, strengthsSchema, worksSchema } from '@/schema'
+import { parse } from 'valibot'
 import { describe, expect, it } from 'vitest'
 
 describe('schema validation', () => {
@@ -28,7 +29,7 @@ describe('schema validation', () => {
       },
     }
 
-    expect(aboutSchema._parse(validData).issues).toBeUndefined()
+    expect(() => parse(aboutSchema, validData)).toBeDefined()
   })
 
   it('educations schema', () => {
@@ -44,8 +45,7 @@ describe('schema validation', () => {
       },
     ]
 
-    expect(educationsSchema._parse(validData).output).toBeDefined()
-    expect(educationsSchema._parse(validData).issues).toBeUndefined()
+    expect(() => parse(educationsSchema, validData)).toBeDefined()
   })
 
   it('works schema', () => {
@@ -63,15 +63,13 @@ describe('schema validation', () => {
       },
     ]
 
-    expect(worksSchema._parse(validData).output).toBeDefined()
-    expect(worksSchema._parse(validData).issues).toBeUndefined()
+    expect(() => parse(worksSchema, validData)).toBeDefined()
   })
 
   it('skills schema', () => {
     const validData = ['aws', 'docker', 'mysql', 'postgresql', 'mongodb', 'express', 'laravel', 'nextjs', 'javascript', 'typescript', 'jest', 'vitest', 'cypress', 'git', 'github', 'bitbucket']
 
-    expect(skillsSchema._parse(validData).output).toBeDefined()
-    expect(skillsSchema._parse(validData).issues).toBeUndefined()
+    expect(() => parse(skillsSchema, validData)).toBeDefined()
   })
 
   it('projects schema', () => {
@@ -93,19 +91,16 @@ describe('schema validation', () => {
       },
     ]
 
-    expect(projectsSchema._parse(validData).output).toBeDefined()
-    expect(projectsSchema._parse(validData).issues).toBeUndefined()
+    expect(() => parse(projectsSchema, validData)).toBeDefined()
   })
 
   it('strengths schema', () => {
     const validData = ['JavaScript', 'TypeScript', 'Node.js']
 
-    expect(strengthsSchema._parse(validData).output).toBeDefined()
-    expect(strengthsSchema._parse(validData).issues).toBeUndefined()
+    expect(() => parse(strengthsSchema, validData)).toBeDefined()
   })
 
   it('languages schema', () => {
-    expect(languagesSchema._parse(languages[0]).output).toBeDefined()
-    expect(languagesSchema._parse(languages[0]).issues).toBeUndefined()
+    expect(() => parse(languagesSchema, languages[0])).toBeDefined()
   })
 })

@@ -3,7 +3,6 @@
 import type { DeclarationType } from '@/types.ts'
 import type { UseSuspenseQueryResult } from '@tanstack/react-query'
 import { Skeleton } from '@/components/ui/skeleton.tsx'
-import { today } from '@/data/index'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import React from 'react'
 import { Card } from '../components/ui/card'
@@ -12,12 +11,7 @@ import { Section } from '../components/ui/section'
 
 export default function Declaration() {
   const { isPending, data }: UseSuspenseQueryResult<DeclarationType, unknown> = useSuspenseQuery<DeclarationType, unknown>({
-    queryKey: ['dataFetch'],
-    queryFn: async () => {
-      const { declarationDetails: { country, location, name } } = await import('@/data/index')
-      const date = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`
-      return { country, location, name, date }
-    },
+    queryKey: ['declaration'],
   })
 
   if (isPending) {
@@ -49,7 +43,7 @@ export default function Declaration() {
             <p data-testid="declaration_date">
               Date:
               {' '}
-              {data.date}
+              {`${data.today.getDate()}-${data.today.getMonth() + 1}-${data.today.getFullYear()}`}
             </p>
           </div>
         </div>

@@ -1,10 +1,10 @@
-import Educations from '@/components/pages/educations'
+import Educations from '@/components/modules/educations'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
 import { TQProvider } from '../../../_shared/test-provider'
-import { educations as educationsFixtures } from '../../../fixtures/data.fixture'
+import { educations } from '../../../fixtures/data.fixture'
 
 vi.mock('@tanstack/react-query', async () => {
   const actual = await vi.importActual('@tanstack/react-query')
@@ -12,7 +12,7 @@ vi.mock('@tanstack/react-query', async () => {
     ...actual,
     useSuspenseQuery: vi.fn(() => ({
       isPending: false,
-      data: educationsFixtures,
+      data: educations,
     })),
   }
 })
@@ -32,7 +32,7 @@ describe('<Educations />', () => {
   })
 
   describe('should validate education items', async () => {
-    educationsFixtures.forEach((ed, index: number) => {
+    educations.forEach((ed, index: number) => {
       it('should validate school or college', async () => {
         await waitFor(() => {
           const ele = screen.getByTestId(

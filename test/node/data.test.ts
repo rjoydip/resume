@@ -28,8 +28,8 @@ describe('data', () => {
   })
   it('should validate socialMedia', () => {
     expect(typeof socialMedia).toBe('object')
-    expect(socialMedia.length).toBe(3)
-    expect(socialMedia).toStrictEqual(['gitHub', 'linkedIn', 'x'])
+    expect(socialMedia.length).toBe(4)
+    expect(socialMedia).toStrictEqual(['gitHub', 'linkedIn', 'x', 'web'])
   })
   it('should validate strengths', () => {
     expect(strengths.length).toBe(5)

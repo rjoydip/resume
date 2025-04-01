@@ -30,15 +30,20 @@ export default defineConfig(({ mode }) => ({
     coverage: {
       enabled: mode === 'dom' || mode === 'node',
       provider: 'istanbul',
-      reportsDirectory: `coverage/unit/${mode}`,
+      reportsDirectory: `./coverage/unit/${mode}`,
       reporter: [...(isCI ? ['json', 'json-summary'] : ['text', 'html'])],
+      include: mode === 'node'
+        ? [
+            '**/{lib,data}',
+            '**/src/{schema,types}.ts',
+          ]
+        : mode === 'dom'
+          ? [
+              '**/**/{components,hooks}',
+            ]
+          : [],
       exclude: [
-        ...new Set([
-          '**/{.next,public,test*,fixtures,mocks,coverage,e2e,config}',
-          '**/*.{config,setup}.{mjs,js,ts,mts,cts}',
-          '**/src/{app,lib}/*.{ts,tsx}',
-          mode === 'dom' ? '**/*.ts' : mode === 'node' ? '**/*.tsx' : '',
-        ]),
+        '**/src/**/{ui,_shared}',
       ],
       reportOnFailure: true,
     },

@@ -28,6 +28,10 @@ export default {
         name: 'x',
         url: 'https://x.com/rjoydip11',
       },
+      {
+        name: 'web',
+        url: 'https://rjoydip.com',
+      },
     ],
   },
 }
