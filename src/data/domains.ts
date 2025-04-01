@@ -1,1 +1,6 @@
-export default ['Insurance', 'Health Insurance', 'Educational', 'Corss Platform']
+export default [
+    'Insurance', 
+    'Health', 
+    'Education',
+    'Cross-Platform'
+]

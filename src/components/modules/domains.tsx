@@ -7,6 +7,7 @@ import { Card } from '../ui/card.tsx'
 import { Label } from '../ui/label.tsx'
 import { Section } from '../ui/section.tsx'
 import { Skeleton } from '../ui/skeleton.tsx'
+import { getIcon } from '../_shared/getIcon.tsx'
 
 function DomainsList({ domains }: { domains: string[] }) {
   return (
@@ -16,6 +17,9 @@ function DomainsList({ domains }: { domains: string[] }) {
           key={domain}
           className="flex flex-wrap items-start items-baseline"
         >
+          {getIcon('badge-check', {
+            className: 'mr-1 h-4 w-4 text-green-500',
+          })}
           <div className="mx-0.5 text-lg font-semibold text-gray-900 dark:text-gray-100">
             {domain}
           </div>
