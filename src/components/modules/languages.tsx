@@ -15,13 +15,13 @@ function LanguagesList({ languages }: { languages: LanguagesType[] }) {
     <ul data-testid="language_list" className="space-y-4 text-left">
       {languages.map((language: LanguagesType) => (
         <li
-          key={language.name}
+          key={`${language.name}-${language.isNative ?? false}`}
           className="flex flex-wrap items-start items-baseline"
         >
           {getIcon('badge-check', {
             className: 'mr-1 h-4 w-4 text-green-500',
           })}
-          <div className="mx-0.5 text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <div className="mx-0.5 font-semibold text-gray-900 dark:text-gray-100">
             {language.name}
             {language.isNative && <span className="px-2 text-xs text-gray-500">(Native)</span>}
           </div>
@@ -34,11 +34,7 @@ LanguagesList.displayName = 'LanguagesList'
 
 export default function Languages() {
   const { isPending, data }: UseSuspenseQueryResult<LanguagesType[]> = useSuspenseQuery<LanguagesType[]>({
-    queryKey: [],
-    queryFn: async () => {
-      const { languages } = await import('@/data/index.ts')
-      return languages
-    },
+    queryKey: ['languages'],
   })
 
   if (isPending) {

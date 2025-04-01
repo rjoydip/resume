@@ -1,9 +1,9 @@
-import About from '@/components/pages/about'
+import About from '@/components/modules/about'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor } from '@testing-library/react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
 import { TQProvider } from '../../../_shared/test-provider'
-import { about as aboutFixture } from '../../../fixtures/data.fixture'
+import { about } from '../../../fixtures/data.fixture'
 
 vi.mock('@tanstack/react-query', async () => {
   const actual = await vi.importActual('@tanstack/react-query')
@@ -11,7 +11,7 @@ vi.mock('@tanstack/react-query', async () => {
     ...actual,
     useSuspenseQuery: vi.fn(() => ({
       isPending: false,
-      data: aboutFixture,
+      data: about,
     })),
   }
 })
@@ -26,19 +26,19 @@ describe('<About />', () => {
   })
 
   it('should validate name', async () => {
-    await waitFor(() => expect(screen.getByTestId('about_name')).toHaveTextContent(aboutFixture.name))
+    await waitFor(() => expect(screen.getByTestId('about_name')).toHaveTextContent(about.name))
   })
 
   it('should validate description', async () => {
-    await waitFor(() => expect(screen.getByTestId('about_description')).toHaveTextContent(aboutFixture.description))
+    await waitFor(() => expect(screen.getByTestId('about_description')).toHaveTextContent(about.description))
   })
 
   it('should validate location', async () => {
-    await waitFor(() => expect(screen.getByTestId('about_location')).toHaveTextContent(`${aboutFixture.location.city},${aboutFixture.location.country}`))
+    await waitFor(() => expect(screen.getByTestId('about_location')).toHaveTextContent(`${about.location.city},${about.location.country}`))
   })
 
   it('should validate professional summary', async () => {
-    await waitFor(() => expect(screen.getByTestId('about_summery')).toHaveTextContent(aboutFixture.summary))
+    await waitFor(() => expect(screen.getByTestId('about_summery')).toHaveTextContent(about.summary))
   })
 
   it('should validate professional summary title', async () => {
@@ -46,19 +46,19 @@ describe('<About />', () => {
   })
 
   it('should validate location link', async () => {
-    await waitFor(() => expect(screen.getByTestId('about_location_link')).toHaveAttribute('href', aboutFixture.location.link))
+    await waitFor(() => expect(screen.getByTestId('about_location_link')).toHaveAttribute('href', about.location.link))
   })
 
   it('should validate contact email', async () => {
-    await waitFor(() => expect(screen.getByTestId('about_contact_email')).toHaveAttribute('href', `mailto:${aboutFixture.contact.email}`))
+    await waitFor(() => expect(screen.getByTestId('about_contact_email')).toHaveAttribute('href', `mailto:${about.contact.email}`))
   })
 
   it('should validate contact tel', async () => {
-    await waitFor(() => expect(screen.getByTestId('about_contact_tel')).toHaveAttribute('href', `tel:${aboutFixture.contact.tel}`))
+    await waitFor(() => expect(screen.getByTestId('about_contact_tel')).toHaveAttribute('href', `tel:${about.contact.tel}`))
   })
 
   it('should validate contact social', async () => {
-    aboutFixture.contact.social.forEach(async (s) => {
+    about.contact.social.forEach(async (s) => {
       await waitFor(() => expect(screen.getByTestId(`about_contact_social_${s.name}`)).toHaveAttribute('href', s.url))
     })
   })

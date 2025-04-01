@@ -1,6 +1,8 @@
 export default [
   'Software Development',
   'Project Leadership',
-  'Team Building and Mentoring',
-  'Experiment Open Source Technologies',
+  'Team Mentoring',
+  'Exploring Open Source Technologies',
+  'Tech Panelist',
+  'Adapting to the Modern JavaScript Ecosystem',
 ]

@@ -1,10 +1,10 @@
-import Works from '@/components/pages/works'
+import Works from '@/components/modules/works'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
 import { TQProvider } from '../../../_shared/test-provider'
-import { works as workFixture } from '../../../fixtures/data.fixture'
+import { works } from '../../../fixtures/data.fixture'
 
 vi.mock('@tanstack/react-query', async () => {
   const actual = await vi.importActual('@tanstack/react-query')
@@ -12,7 +12,7 @@ vi.mock('@tanstack/react-query', async () => {
     ...actual,
     useSuspenseQuery: vi.fn(() => ({
       isPending: false,
-      data: workFixture,
+      data: works,
     })),
   }
 })
@@ -39,7 +39,7 @@ describe('<Works />', () => {
   })
 
   describe('should validate work details', async () => {
-    workFixture.forEach((w, index) => {
+    works.forEach((w, index) => {
       it('should validate company link', async () => {
         await waitFor(() => expect(
           container.querySelector(

@@ -1,10 +1,10 @@
-import Strengths from '@/components/pages/strengths'
+import Languages from '@/components/modules/languages'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor, within } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
 import { TQProvider } from '../../../_shared/test-provider'
-import { strengths as strengthsFixture } from '../../../fixtures/data.fixture'
+import { languages } from '../../../fixtures/data.fixture'
 
 vi.mock('@tanstack/react-query', async () => {
   const actual = await vi.importActual('@tanstack/react-query')
@@ -12,31 +12,35 @@ vi.mock('@tanstack/react-query', async () => {
     ...actual,
     useSuspenseQuery: vi.fn(() => ({
       isPending: false,
-      data: strengthsFixture,
+      data: languages,
     })),
   }
 })
 
-describe('<Strengths />', () => {
+describe('<Languages />', () => {
   beforeAll(async () => {
     render(
       <TQProvider>
-        <Strengths />
+        <Languages />
       </TQProvider>,
     )
   })
 
-  it('should validate strengths title', async () => {
-    await waitFor(() => expect(screen.getByTestId('strengths_title').textContent?.toLowerCase()).toBe('strengths'))
+  it('should validate language_title', async () => {
+    await waitFor(() => {
+      expect(screen.getByTestId('language_title').textContent?.toLowerCase()).toBe('languages')
+    })
   })
 
-  it('should validate strengths list', async () => {
+  it('should validate language list', async () => {
     await waitFor(() => {
-      const title = screen.getByTestId('strengths_list')
+      const title = screen.getByTestId('language_list')
       const { queryByText } = within(title)
-      expect(title.children).toHaveLength(5)
-      strengthsFixture.forEach(async (t) => {
-        await waitFor(() => expect(queryByText(t)?.textContent).toBeDefined())
+      expect(title.children).toHaveLength(2)
+      languages.forEach(async (t) => {
+        await waitFor(() => {
+          expect(queryByText(t.name)?.textContent).toBeDefined()
+        })
       })
     })
   })
@@ -51,10 +55,10 @@ describe('<Strengths />', () => {
 
     render(
       <TQProvider>
-        <Strengths />
+        <Languages />
       </TQProvider>,
     )
 
-    expect(screen.getByTestId('strengths_skeleton')).toBeInTheDocument()
+    expect(screen.getByTestId('languages_skeleton')).toBeInTheDocument()
   })
 })

@@ -1,11 +1,10 @@
-import type { ProjectsType } from '@/types'
-import Projects from '@/components/pages/projects'
+import Projects from '@/components/modules/projects'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { render, screen, waitFor } from '@testing-library/react'
 import * as React from 'react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
 import { TQProvider } from '../../../_shared/test-provider'
-import { projects as projectsFixture } from '../../../fixtures/data.fixture'
+import { projects } from '../../../fixtures/data.fixture'
 
 vi.mock('@tanstack/react-query', async () => {
   const actual = await vi.importActual('@tanstack/react-query')
@@ -13,7 +12,7 @@ vi.mock('@tanstack/react-query', async () => {
     ...actual,
     useSuspenseQuery: vi.fn(() => ({
       isPending: false,
-      data: projectsFixture,
+      data: projects,
     })),
   }
 })
@@ -36,7 +35,6 @@ describe('<Projects />', () => {
   })
 
   describe('should validate projects items', async () => {
-    const projects: ProjectsType = projectsFixture
     projects.forEach((p, index) => {
       it('should validate title', async () => {
         await waitFor(() => {

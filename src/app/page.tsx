@@ -2,13 +2,14 @@ import type { Metadata } from 'next'
 import { ErrorBoundary } from '@/components/_shared/error-boundary'
 import Declaration from '@/components/declaration'
 import Footer from '@/components/footer'
-import About from '@/components/pages/about'
-import Educations from '@/components/pages/educations'
-import Languages from '@/components/pages/languages'
-import Projects from '@/components/pages/projects'
-import Skills from '@/components/pages/skills'
-import Strengths from '@/components/pages/strengths'
-import Works from '@/components/pages/works'
+import About from '@/components/modules/about'
+import Domains from '@/components/modules/domains'
+import Educations from '@/components/modules/educations'
+import Languages from '@/components/modules/languages'
+import Projects from '@/components/modules/projects'
+import Skills from '@/components/modules/skills'
+import Strengths from '@/components/modules/strengths'
+import Works from '@/components/modules/works'
 import { meta } from '@/data/index'
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default async function Page() {
           <Educations />
           <Skills />
           <Strengths />
+          <Domains />
           <Projects />
           <Languages />
           <Declaration />

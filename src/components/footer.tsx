@@ -8,12 +8,7 @@ import { Skeleton } from './ui/skeleton.tsx'
 
 export default function Footer() {
   const { isPending, data }: UseSuspenseQueryResult<FooterType> = useSuspenseQuery({
-    queryKey: ['dataFetch'],
-    queryFn: async () => {
-      const { meta: { name }, today } = await import('@/data/index.ts')
-      const year = today.getFullYear()
-      return { name, year }
-    },
+    queryKey: ['footer'],
   })
 
   if (isPending) {
@@ -23,9 +18,9 @@ export default function Footer() {
   return (
     <div className="flex mx-auto justify-center p-4 print:hidden">
       ©
-      {data.year}
+      {data.today.getFullYear()}
       {' '}
-      {data.name}
+      {data.meta.name}
       {' '}
       ❤️
     </div>

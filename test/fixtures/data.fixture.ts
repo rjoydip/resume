@@ -1,6 +1,10 @@
-import type { AboutType, EducationsType, ProjectsType, ResumeType, SkillsType, StrengthsType, WorksType } from '@/types'
-import { companies, declarationDetails, techStacks, workMode } from '@/data/index'
+import type { AboutType, DeclarationType, EducationsType, FooterType, LanguagesType, ProjectsType, ResumeType, SkillsType, StrengthsType, WorksType } from '@/types'
+import { companies, techStacks, workMode } from '@/data/index'
 import { randBoolean, randCity, randCountry, randEmail, randFullName, randNumber, randPhoneNumber, randText } from '@ngneat/falso'
+
+export const location = `${randCity()}, ${randCountry()}`
+export const country = randCountry()
+export const name = randFullName()
 
 const generateArray = (length = 1) => Array.from({ length }, (_, i) => i)
 function generateTechStacks(divide: number = 3) {
@@ -39,6 +43,10 @@ export const about: AboutType = {
         name: 'x',
         url: 'https://x.com/foo_bar',
       },
+      {
+        name: 'web',
+        url: 'https://rjoydip.com',
+      },
     ],
   },
 }
@@ -48,7 +56,7 @@ export const educations: EducationsType = generateArray(3).map(i => ({
   degree: randText({ charCount: 10 }),
   aggregate: i === 2 ? `${randNumber({ min: 0, max: 100 })}%` : null,
   cgpa: randNumber({ min: 0, max: 10, fraction: 2 }),
-  location: `${randCity()}, ${randCountry()}`,
+  location,
   start: randNumber({ min: 2005, max: 2012 }),
   end: randNumber({ min: 2012, max: 2016 }),
 }))
@@ -83,9 +91,27 @@ export const works: WorksType = generateArray(3).map(() => ({
 }))
 
 export const skills: SkillsType = generateTechStacks()
+export const domains: string[] = generateArray(3).map(() => randText())
 export const strengths: StrengthsType = generateArray(5).map(() => randText())
-export { declarationDetails }
-
+export const meta = {
+  name,
+  description: '00',
+  generator: randText(),
+}
+export const languages: LanguagesType[] = generateArray(2).map(() => ({
+  name: randFullName(),
+  isNative: randBoolean(),
+}))
+export const footer: FooterType = {
+  meta,
+  today: new Date(),
+}
+export const declarations: DeclarationType = {
+  country,
+  today: new Date(),
+  location,
+  name,
+}
 export const resumeData: ResumeType = {
   about,
   educations,
@@ -93,4 +119,8 @@ export const resumeData: ResumeType = {
   projects,
   skills,
   works,
+  footer,
+  languages,
+  declarations,
+  domains,
 }
