@@ -21,7 +21,7 @@ function StrengthsList({ skills }: { skills: string[] }) {
           {getIcon('badge-check', {
             className: 'mr-1 h-4 w-4 text-green-500',
           })}
-          <div className="mx-0.5 text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <div className="mx-0.5 font-semibold text-gray-900 dark:text-gray-100">
             {skill}
           </div>
         </li>

@@ -74,7 +74,7 @@ export default function About() {
             </Avatar>
           </div>
         </CardContent>
-        <CardFooter className="flex items-center justify-between mt-2">
+        <CardFooter className="flex items-center justify-between">
           <div className="show print:hidden">
             {data.contact.email && (
               <Button className="size-8" variant="outline" size="icon" asChild>
@@ -91,7 +91,7 @@ export default function About() {
               </Button>
             )}
             {data.contact.tel && (
-              <Button className="size-8" variant="outline" size="icon" asChild>
+              <Button className="mx-0.5 size-8" variant="outline" size="icon" asChild>
                 <a
                   data-testid="about_contact_tel"
                   href={`tel:${data.contact.tel}`}
@@ -108,7 +108,7 @@ export default function About() {
               <Button
                 data-testid={`about_contact_social_${social.name}`}
                 key={social.name}
-                className="size-8"
+                className="mx-0.5 size-8"
                 variant="outline"
                 size="icon"
                 asChild

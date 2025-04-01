@@ -21,7 +21,7 @@ function LanguagesList({ languages }: { languages: LanguagesType[] }) {
           {getIcon('badge-check', {
             className: 'mr-1 h-4 w-4 text-green-500',
           })}
-          <div className="mx-0.5 text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <div className="mx-0.5 font-semibold text-gray-900 dark:text-gray-100">
             {language.name}
             {language.isNative && <span className="px-2 text-xs text-gray-500">(Native)</span>}
           </div>
