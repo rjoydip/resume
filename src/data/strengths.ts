@@ -4,5 +4,5 @@ export default [
   'Team Mentoring',
   'Exploring Open Source Technologies',
   'Tech Panelist',
-  'Adapting to the Modern JavaScript Ecosystem',
+  'Adapting Modern JavaScript Ecosystem',
 ]

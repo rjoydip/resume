@@ -37,8 +37,6 @@
     "**/*.ts",
     "**/*.tsx",
     "eslint.config.mjs",
-    "test/node/*.test.ts",
-    "test/{edge,e2e,jsdom}/*.test.tsx",
     "vitest.config.mts",
     ".next/types/**/*.ts"
   ],

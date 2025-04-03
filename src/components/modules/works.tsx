@@ -1,3 +1,4 @@
+/* eslint-disable react-dom/no-dangerously-set-innerhtml */
 'use client'
 
 import type { WorkType } from '@/types'
@@ -12,7 +13,7 @@ import { Section } from '../ui/section'
 import { Skeleton } from '../ui/skeleton'
 
 function WorkingMode({ modes }: { modes: string[] }) {
-  return modes.map((mode: string) => <Badge key={mode} className="align-middle text-[12px]">{mode}</Badge>)
+  return modes.map((mode: string) => <Badge key={mode} variant="secondary" className="text-xs">{mode}</Badge>)
 }
 WorkingMode.displayName = 'WorksList'
 
@@ -31,11 +32,11 @@ function WorksList({ data }: { data: WorkType[] }) {
           <a className="hover:underline" href={work.link} aria-label="Company Name" rel="noopener noreferrer">
             {work.company}
           </a>
-          <span className="inline-flex gap-x-1">
+          <span className="flex py-2">
             <WorkingMode modes={work.mode} />
           </span>
         </div>
-        <div className="tabular-nums text-gray-700">
+        <div className="tabular-nums text-gray-500">
           {work.start}
           {' '}
           -
@@ -51,15 +52,14 @@ function WorksList({ data }: { data: WorkType[] }) {
       </div>
       <div
         data-testid={`work_description_index_${index}`}
-        className="flex flex-wrap mt-2 text-pretty text-gray-900 dark:text-gray-300"
+        className="flex flex-wrap mt-2 text-pretty"
       >
         <div dangerouslySetInnerHTML={{ __html: work.description }}></div>
       </div>
       <div
         data-testid={`work_technology_index_${index}`}
-        className="flex flex-wrap mt-2 items-baseline"
+        className="flex flex-wrap items-baseline py-2"
       >
-        <div className="text-sm font-bold">Technology: </div>
         {work.techStacks && <TechnologyList techStacks={work.techStacks} />}
       </div>
     </div>
@@ -83,7 +83,7 @@ export default function Works() {
       </Label>
       <div
         data-testid="work_list"
-        className="relative space-y-8 border-l border-gray-200 dark:border-gray-200"
+        className="relative space-y-8 border-l border-gray-500 dark:border-gray-200"
       >
         <WorksList data={data} />
       </div>

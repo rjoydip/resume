@@ -5,7 +5,7 @@ import * as React from 'react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
 import { TQProvider } from '../../_shared/test-provider'
 import { today } from '../../_shared/test-utils'
-import { country, location, name } from '../../fixtures/data.fixture'
+import { country, declarations, location, name } from '../../fixtures/data.fixture'
 
 vi.mock('@tanstack/react-query', async () => {
   const actual = await vi.importActual('@tanstack/react-query')
@@ -13,7 +13,7 @@ vi.mock('@tanstack/react-query', async () => {
     ...actual,
     useSuspenseQuery: vi.fn(() => ({
       isPending: false,
-      data: { name, country, location, today: new Date() },
+      data: declarations,
     })),
   }
 })
