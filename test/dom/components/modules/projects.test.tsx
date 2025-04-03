@@ -79,7 +79,6 @@ describe('<Projects />', () => {
       if (p.techStacks && p.techStacks.length) {
         it('should validate tech stacks', async () => {
           await waitFor(() => {
-            expect(screen.getByTestId(`project_tech_stacks_index_${index}`).textContent).toContain('Technology:')
             expect(
               container.querySelector(
                 `[data-testid="project_tech_stacks_index_${index}"] > div`,

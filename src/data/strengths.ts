@@ -2,7 +2,7 @@ export default [
   'Software Development',
   'Project Leadership',
   'Team Mentoring',
-  'Exploring Open Source Technologies',
+  'Exploring OSS',
   'Tech Panelist',
-  'Adapting to the Modern JavaScript Ecosystem',
+  'Adapting Modern JavaScript',
 ]

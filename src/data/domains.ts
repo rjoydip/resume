@@ -1,6 +1,6 @@
 export default [
-    'Insurance', 
-    'Health', 
-    'Education',
-    'Cross-Platform'
+  'Insurance',
+  'Health',
+  'Education',
+  'Cross-Platform',
 ]

@@ -1,7 +1,17 @@
 import { companies, projectLinkTypes, socialMedia, techStacks, today, workMode } from '@/data/index'
 import { array, boolean, date, email, maxLength, maxValue, minLength, minValue, nullable, nullish, number, object, picklist, regex, startsWith, string, transform, union, url } from 'valibot'
 
-const techStackSchema = array(picklist(techStacks))
+const socialMediaSchema = array(object({
+  url: string([url()]),
+  name: picklist(socialMedia),
+}))
+const contactSchema = object({
+  email: string([email()]),
+  tel: string([startsWith('+')]),
+  social: socialMediaSchema,
+})
+
+export const techStackSchema = array(picklist(techStacks))
 export const strengthsSchema = array(string([minLength(1)]))
 
 export const educationSchema = object({
@@ -87,15 +97,6 @@ export const languagesSchema = object({
   name: string(),
   isNative: boolean(),
 })
-export const socialMediaSchema = array(object({
-  url: string([url()]),
-  name: picklist(socialMedia),
-}))
-export const contactSchema = object({
-  email: string([email()]),
-  tel: string([startsWith('+')]),
-  social: socialMediaSchema,
-})
 export const aboutSchema = object({
   name: string([minLength(4)]),
   initials: string([minLength(1), maxLength(4)]),
@@ -112,7 +113,12 @@ export const aboutSchema = object({
 })
 
 export const worksSchema = array(workSchema)
-export const skillsSchema = techStackSchema
+export const skillsSchema = array(
+  object({
+    category: picklist(['Frontend', 'Backend', 'Database', 'DevOps', 'SVN', 'Tools', 'Testing']),
+    techs: techStackSchema,
+  }),
+)
 export const projectsSchema = array(projectSchema)
 
 export const declarationSchema = object({

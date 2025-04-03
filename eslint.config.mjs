@@ -23,4 +23,11 @@ export default antfu({
   rules: {
     ...a11yRules,
   },
+}, {
+  ignores: [
+    'test-results',
+    'coverage',
+    '.next',
+    'node_modules',
+  ],
 })

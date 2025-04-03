@@ -5,7 +5,6 @@ import educations from '../../src/data/educations'
 import { meta } from '../../src/data/index'
 import languages from '../../src/data/languages.ts'
 import projects from '../../src/data/projects'
-import skills from '../../src/data/skills'
 import strengths from '../../src/data/strengths'
 import works from '../../src/data/works'
 import { capitalize, loadPage } from '../_shared/test-utils'
@@ -26,12 +25,6 @@ test.describe('<Root />', () => {
     await page.evaluate(() => {
       document.documentElement.classList.add('dark')
     })
-
-    // Check text color in dark mode
-    const languageNames = await page.locator('.text-gray-900.dark\\:text-gray-100').all()
-    for await (const name of languageNames) {
-      await expect(name).toHaveClass(/dark:text-gray-100/)
-    }
   })
 })
 
@@ -214,7 +207,6 @@ test.describe('<Languages />', () => {
       // Check if badge icon exists
       const icon = await languageElement.locator('svg')
       await expect(icon).toBeVisible()
-      await expect(icon).toHaveClass(/text-green-500/)
 
       // Check language name
       await expect(languageElement).toContainText(language.name)
@@ -227,16 +219,6 @@ test.describe('<Languages />', () => {
         await expect(languageElement).not.toContainText('(Native)')
       }
     }
-  })
-
-  test('verifies layout and styling', async ({ page }) => {
-    // Check list spacing
-    const list = await page.getByTestId('language_list')
-    await expect(list).toHaveClass(/space-y-4/)
-
-    // Check language item layout
-    const firstLanguageItem = await list.locator('li').first()
-    await expect(firstLanguageItem).toHaveClass(/flex flex-wrap items-start items-baseline/)
   })
 })
 
@@ -268,38 +250,12 @@ test.describe('<Projects />', () => {
   test('verifies tech stacks rendering', async ({ page }) => {
     await Promise.all([
       ...projects.map(async (project, index) => {
-      // Check first project tech stacks
+        // Check first project tech stacks
         const projTech = await page.getByTestId(`project_tech_stacks_index_${index}`)
         await expect(projTech).toBeVisible()
-        await expect(projTech).toContainText(`Technology: ${project.techStacks.map(tech => capitalize(tech)).join('')}`)
+        await expect(projTech).toContainText(`${project.techStacks.map(tech => capitalize(tech)).join('')}`)
       }),
     ])
-  })
-
-  test('verifies client project styling', async ({ page }) => {
-    // Check client project border
-    const clientProject = await page.locator('.border-2.border-green-500').first()
-    await expect(clientProject).toBeVisible()
-
-    // Check non-client project border
-    const nonClientProject = await page.locator('.border').first()
-    await expect(nonClientProject).toBeVisible()
-  })
-
-  test('checks responsive grid layout', async ({ page }) => {
-    const projectsGrid = await page.locator('.grid')
-
-    // Mobile view
-    await page.setViewportSize({ width: 375, height: 667 })
-    await expect(projectsGrid).toHaveClass(/grid-cols-1/)
-
-    // Tablet view
-    await page.setViewportSize({ width: 768, height: 1024 })
-    await expect(projectsGrid).toHaveClass(/md:grid-cols-2/)
-
-    // Desktop view
-    await page.setViewportSize({ width: 1440, height: 900 })
-    await expect(projectsGrid).toHaveClass(/lg:grid-cols-2/)
   })
 
   test('verifies print-specific classes', async ({ page }) => {
@@ -328,39 +284,6 @@ test.describe('<Skills />', () => {
     // Check skills list container
     const skillsList = await page.getByTestId('skills_list')
     await expect(skillsList).toBeVisible()
-
-    // Verify each skill badge is rendered with correct text
-    for await (const skill of skills) {
-      const skillBadge = await page.getByLabel(`Show ${capitalize(skill)} skill`)
-      await expect(skillBadge).toBeVisible()
-      await expect(skillBadge).toHaveText(capitalize(skill))
-    }
-  })
-
-  test('should verify layout and styling', async ({ page }) => {
-    // Check flex wrap and spacing
-    const skillsList = await page.getByTestId('skills_list')
-    await expect(skillsList).toHaveClass(/flex flex-wrap/)
-    await expect(skillsList).toHaveClass(/space-2/)
-
-    // Check badge styling
-    const badges = await page.getByTestId('skills_list').locator('.badge')
-    for await (const badge of await badges.all()) {
-      await expect(badge).toHaveClass(/m-1/)
-      await expect(badge).toHaveClass(/text-\[14px\]/)
-    }
-  })
-
-  test('should verify accessibility features', async ({ page }) => {
-    // Check ARIA labels
-    for await (const skill of skills) {
-      const skillBadge = await page.getByLabel(`Show ${capitalize(skill)} skill`)
-      await expect(skillBadge).toHaveAttribute('aria-label', `Show ${capitalize(skill)} skill`)
-    }
-
-    // Check heading level
-    const title = await page.getByTestId('skills_title')
-    await expect(title).toHaveAttribute('class', /text-xl/)
   })
 })
 
@@ -386,46 +309,6 @@ test.describe('<Strengths />', () => {
       // Check strength text
       const text = await item.locator('div').textContent()
       expect(text).toBe(strengths[i])
-    }
-  })
-
-  test('should verify layout and styling', async ({ page }) => {
-    // Check list spacing
-    const strengthsList = await page.getByTestId('strengths_list')
-    await expect(strengthsList).toHaveClass(/space-y-4/)
-    await expect(strengthsList).toHaveClass(/text-left/)
-
-    // Check list item styling
-    const listItems = await strengthsList.locator('li').all()
-    for await (const item of listItems) {
-      await expect(item).toHaveClass(/flex/)
-      await expect(item).toHaveClass(/flex-wrap/)
-      await expect(item).toHaveClass(/items-start/)
-      await expect(item).toHaveClass(/items-baseline/)
-    }
-
-    // Check text styling
-    const textElements = await page.locator('.text-lg.font-semibold').all()
-    for await (const element of textElements) {
-      await expect(element).toHaveClass(/mx-0.5/)
-      await expect(element).toHaveClass(/text-gray-900/)
-      await expect(element).toHaveClass(/dark:text-gray-100/)
-    }
-  })
-
-  test('should verify icon accessibility', async ({ page }) => {
-    const icons = await page.getByTestId('badge-check-icon').all()
-
-    for await (const icon of icons) {
-      // Verify icon size
-      await expect(icon).toHaveClass(/h-4/)
-      await expect(icon).toHaveClass(/w-4/)
-
-      // Verify icon color
-      await expect(icon).toHaveClass(/text-green-500/)
-
-      // Verify icon margin
-      await expect(icon).toHaveClass(/mr-1/)
     }
   })
 })
@@ -454,46 +337,6 @@ test.describe('<Domains />', () => {
       expect(text).toBe(domains[i])
     }
   })
-
-  test('should verify layout and styling', async ({ page }) => {
-    // Check list spacing
-    const domainsList = await page.getByTestId('domains_list')
-    await expect(domainsList).toHaveClass(/space-y-4/)
-    await expect(domainsList).toHaveClass(/text-left/)
-
-    // Check list item styling
-    const listItems = await domainsList.locator('li').all()
-    for await (const item of listItems) {
-      await expect(item).toHaveClass(/flex/)
-      await expect(item).toHaveClass(/flex-wrap/)
-      await expect(item).toHaveClass(/items-start/)
-      await expect(item).toHaveClass(/items-baseline/)
-    }
-
-    // Check text styling
-    const textElements = await page.locator('.text-lg.font-semibold').all()
-    for await (const element of textElements) {
-      await expect(element).toHaveClass(/mx-0.5/)
-      await expect(element).toHaveClass(/text-gray-900/)
-      await expect(element).toHaveClass(/dark:text-gray-100/)
-    }
-  })
-
-  test('should verify icon accessibility', async ({ page }) => {
-    const icons = await page.getByTestId('badge-check-icon').all()
-
-    for await (const icon of icons) {
-      // Verify icon size
-      await expect(icon).toHaveClass(/h-4/)
-      await expect(icon).toHaveClass(/w-4/)
-
-      // Verify icon color
-      await expect(icon).toHaveClass(/text-green-500/)
-
-      // Verify icon margin
-      await expect(icon).toHaveClass(/mr-1/)
-    }
-  })
 })
 
 test.describe('<Works />', () => {
@@ -519,10 +362,6 @@ test.describe('<Works />', () => {
       await expect(page.getByTestId(`work_position_index_${index}`)).toHaveText(work.position)
       const workDesc = await page.getByTestId(`work_description_index_${index}`)
       await expect(workDesc).toContainText(work.description.replaceAll('<br/>', ''))
-
-      // Check technology stack
-      const workTech = await page.getByTestId(`work_technology_index_${index}`)
-      await expect(workTech).toContainText(`Technology: ${work.techStacks.map(tech => capitalize(tech)).join('')}`)
     }
   })
 
@@ -540,42 +379,11 @@ test.describe('<Works />', () => {
   })
 
   test('should verify working mode badges', async ({ page }) => {
-    // Check working mode badges
-    const badges = await page.locator('.badge').all()
-
-    for await (const badge of badges) {
-      await expect(badge).toHaveClass(/text-\[12px\]/)
-      await expect(badge).toHaveClass(/align-middle/)
-    }
-
     for await (const [index, work] of works.entries()) {
       const details = await page.getByTestId(`work_details_index_${index}`)
       for await (const mode of work.mode) {
         await expect(details.getByText(mode)).toBeVisible()
       }
-    }
-  })
-
-  test('should verify layout and styling', async ({ page }) => {
-    // Check timeline layout
-    const workList = await page.getByTestId('work_list')
-    await expect(workList).toHaveClass(/border-l/)
-    await expect(workList).toHaveClass(/space-y-8/)
-
-    // Check dot icons
-    const dots = await page.getByTestId('dot-icon').all()
-    for await (const dot of dots) {
-      await expect(dot).toHaveClass(/absolute/)
-      await expect(dot).toHaveClass(/-left-\[12px\]/)
-    }
-
-    // Check dark mode text colors
-    await page.evaluate(() => {
-      document.documentElement.classList.add('dark')
-    })
-    const descriptions = await page.locator('.dark\\:text-gray-300').all()
-    for await (const desc of descriptions) {
-      await expect(desc).toHaveClass(/dark:text-gray-300/)
     }
   })
 

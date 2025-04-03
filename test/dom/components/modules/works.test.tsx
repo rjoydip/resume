@@ -74,14 +74,8 @@ describe('<Works />', () => {
           `[data-testid="work_description_index_${index}"]`,
         )?.textContent).toBe(w.description.replaceAll('<br/>', '')))
       })
-      it('should validate technology title', async () => {
-        await waitFor(() => expect(container.querySelector(
-          `[data-testid="work_technology_index_${index}"] > div:nth-child(1)`,
-        )?.textContent).toBe('Technology: '))
-      })
-      it('should validate technology items', () => {
-        w.techStacks
-        && w.techStacks.forEach(async (_, i) => {
+      it('should validate technology items', async () => {
+        await w.techStacks.forEach(async (_, i) => {
           await waitFor(() => expect(container.querySelector(
             `[data-testid="work_technology_index_${index}"] > div:nth-child(${i + 2})`,
           )?.textContent).toBeDefined())

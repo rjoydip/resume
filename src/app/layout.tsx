@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { ToggleTheme } from '@/components/_shared/toggleTheme'
 import Providers from '@/components/provider'
 import { getDarkThemeColors, getLightThemeColors, meta } from '@/data/index'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
@@ -38,7 +37,6 @@ function Layout({ children }: { children: React.ReactNode }) {
           themes={[...getLightThemeColors(), ...getDarkThemeColors()]}
         >
           <Providers>{children}</Providers>
-          <ToggleTheme />
         </NextThemesProvider>
       </body>
     </html>

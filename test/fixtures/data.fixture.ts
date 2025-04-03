@@ -8,11 +8,7 @@ export const name = randFullName()
 
 const generateArray = (length = 1) => Array.from({ length }, (_, i) => i)
 function generateTechStacks(divide: number = 3) {
-  return [
-    ...new Set(
-      generateArray(randNumber({ min: 1, max: techStacks.length / divide })).map(i => techStacks[i]),
-    ),
-  ]
+  return generateArray(randNumber({ min: 1, max: techStacks.length / divide })).map(i => techStacks[i])
 }
 
 export const about: AboutType = {
@@ -90,7 +86,16 @@ export const works: WorksType = generateArray(3).map(() => ({
   techStacks: generateTechStacks(),
 }))
 
-export const skills: SkillsType = generateTechStacks()
+export const skills: SkillsType = [
+  {
+    category: 'Frontend',
+    techs: generateTechStacks(2),
+  },
+  {
+    category: 'Backend',
+    techs: generateTechStacks(2),
+  },
+]
 export const domains: string[] = generateArray(3).map(() => randText())
 export const strengths: StrengthsType = generateArray(5).map(() => randText())
 export const meta = {

@@ -12,16 +12,16 @@ import { Skeleton } from '../ui/skeleton'
 
 function StrengthsList({ skills }: { skills: string[] }) {
   return (
-    <ul data-testid="strengths_list" className="space-y-4 text-left">
+    <ul data-testid="strengths_list">
       {skills.map(skill => (
         <li
           key={skill}
-          className="flex flex-wrap items-start items-baseline"
+          className="flex flex-wrap gap-2 items-center"
         >
           {getIcon('badge-check', {
-            className: 'mr-1 h-4 w-4 text-green-500',
+            className: 'h-4 w-4 text-green-500',
           })}
-          <div className="mx-0.5 font-semibold text-gray-900 dark:text-gray-100">
+          <div className="font-semibold item-baseline">
             {skill}
           </div>
         </li>

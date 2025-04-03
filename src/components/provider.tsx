@@ -24,7 +24,7 @@ export default function Providers({ children }: { children: ReactNode }) {
       <QueryClientProvider client={queryClient}>
         <HydrationBoundary state={dehydrate(queryClient)}>
           {children}
-          {isDevelopment && <ReactQueryDevtools initialIsOpen />}
+          {isDevelopment && <ReactQueryDevtools initialIsOpen position="top" />}
         </HydrationBoundary>
       </QueryClientProvider>
     )

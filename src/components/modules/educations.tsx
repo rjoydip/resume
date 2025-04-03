@@ -27,7 +27,7 @@ function EducationList({ data }: { data: EducationsType }) {
             </div>
             <div
               data-testid={`education_start_end_index_${index}`}
-              className="tabular-nums text-gray-700"
+              className="tabular-nums text-gray-500"
             >
               {education.start}
               {' '}
@@ -68,7 +68,7 @@ export default function Educations() {
       <Label data-testid="education_title" className="text-xl font-bold">
         Education
       </Label>
-      <div className="relative border-l border-gray-200 dark:border-gray-700">
+      <div className="relative border-l border-gray-500 dark:border-gray-700">
         <EducationList data={data} />
       </div>
     </Section>

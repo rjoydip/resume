@@ -1,10 +1,9 @@
 import type { Output } from 'valibot'
-import type { aboutSchema, contactSchema, declarationSchema, educationSchema, educationsSchema, footerSchema, languagesSchema, metaSchema, projectLinkSchema, projectSchema, projectsSchema, skillsSchema, socialMediaSchema, strengthsSchema, workSchema, worksSchema } from './schema'
+import type { aboutSchema, declarationSchema, educationSchema, educationsSchema, footerSchema, languagesSchema, metaSchema, projectLinkSchema, projectSchema, projectsSchema, skillsSchema, strengthsSchema, techStackSchema, workSchema, worksSchema } from './schema'
 
 export type EducationType = Output<typeof educationSchema>
 export type EducationsType = Output<typeof educationsSchema>
 export type AboutType = Output<typeof aboutSchema>
-export type ContactType = Output<typeof contactSchema>
 export type WorkType = Output<typeof workSchema>
 export type WorksType = Output<typeof worksSchema>
 export type SkillsType = Output<typeof skillsSchema>
@@ -16,7 +15,7 @@ export type LanguagesType = Output<typeof languagesSchema>
 export type DeclarationType = Output<typeof declarationSchema>
 export type FooterType = Output<typeof footerSchema>
 export type MetaType = Output<typeof metaSchema>
-export type SocialMediaType = Output<typeof socialMediaSchema>
+export type TechStackType = Output<typeof techStackSchema>
 export interface ResumeType {
   about: AboutType
   educations: EducationsType

@@ -24,6 +24,7 @@ const nextConfig: NextConfig = {
   env: {
     BLOB_READ_WRITE_TOKEN: env.BLOB_READ_WRITE_TOKEN,
   },
+  allowedDevOrigins: [],
 }
 
 export default nextConfig

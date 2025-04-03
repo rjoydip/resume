@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { ErrorBoundary } from '@/components/_shared/error-boundary'
+import { ToggleTheme } from '@/components/_shared/toggleTheme'
+import Container from '@/components/container'
 import Declaration from '@/components/declaration'
 import Footer from '@/components/footer'
 import About from '@/components/modules/about'
@@ -21,7 +23,7 @@ export default async function Page() {
   return (
     <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 md:p-16 print:p-12">
       <ErrorBoundary>
-        <div className="mx-auto w-full max-w-2xl space-y-4 print:space-y-6">
+        <Container>
           <About />
           <Works />
           <Educations />
@@ -31,8 +33,9 @@ export default async function Page() {
           <Projects />
           <Languages />
           <Declaration />
-        </div>
+        </Container>
         <Footer />
+        <ToggleTheme />
       </ErrorBoundary>
     </main>
   )

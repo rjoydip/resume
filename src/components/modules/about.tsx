@@ -32,7 +32,7 @@ export default function About() {
     <Section>
       <Card className="border p-3">
         <CardHeader>
-          <div className="block flex flex-col items-center justify-center sm:hidden print:hidden">
+          <div className="flex flex-col items-center justify-center sm:hidden print:hidden">
             <Avatar className="size-28 rounded-full">
               <AvatarImage
                 data-testid="about_avatar_url"
@@ -60,7 +60,7 @@ export default function About() {
           <div className="flex items-center justify-between">
             <div
               data-testid="about_description"
-              className="max-w-md text-pretty py-2"
+              className="text-pretty py-2"
             >
               {data.description}
             </div>
@@ -169,7 +169,7 @@ export default function About() {
               </div>
             ))}
           </div>
-          <div className="max-w-md items-center text-pretty text-base">
+          <div className="items-start text-pretty text-base xs:hidden">
             <a
               data-testid="about_location_link"
               className="hover:point inline-flex"

@@ -3,24 +3,24 @@
 import type { UseSuspenseQueryResult } from '@tanstack/react-query'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import React from 'react'
+import { getIcon } from '../_shared/getIcon.tsx'
 import { Card } from '../ui/card.tsx'
 import { Label } from '../ui/label.tsx'
 import { Section } from '../ui/section.tsx'
 import { Skeleton } from '../ui/skeleton.tsx'
-import { getIcon } from '../_shared/getIcon.tsx'
 
 function DomainsList({ domains }: { domains: string[] }) {
   return (
-    <ul data-testid="domains_list" className="space-y-4 text-left">
+    <ul data-testid="domains_list">
       {domains.map((domain: string) => (
         <li
           key={domain}
-          className="flex flex-wrap items-start items-baseline"
+          className="flex flex-wrap gap-2 items-center"
         >
           {getIcon('badge-check', {
-            className: 'mr-1 h-4 w-4 text-green-500',
+            className: 'h-4 w-4 text-green-500',
           })}
-          <div className="mx-0.5 font-semibold text-gray-900 dark:text-gray-100">
+          <div className="font-semibold item-baseline">
             {domain}
           </div>
         </li>

@@ -29,7 +29,7 @@ function ProjectLink({ links }: { links: ProjectLinkType[] }) {
       aria-label="Project Link"
     >
       {getIcon(link.type === 'mobile' ? 'smartphone' : 'web', {
-        className: 'size-6 text-red-600',
+        className: `size-4 text-green-600`,
         href: link.href,
       })}
     </a>
@@ -104,11 +104,8 @@ const ProjectsList = memo(({ data }: { data: ProjectType[] }) => {
         </div>
         <div
           data-testid={`project_tech_stacks_index_${index}`}
-          className="flex flex-wrap items-center"
+          className="flex flex-wrap items-center py-2"
         >
-          {project.techStacks && (
-            <div className="font-semibold text-primary dark:text-primary">Technology: </div>
-          )}
           {project.techStacks && <TechnologyList techStacks={project.techStacks} />}
         </div>
       </CardContent>
