@@ -19,7 +19,7 @@ export default function Declaration() {
   }
 
   return (
-    <Section className="hidden print:block">
+    <Section>
       <Label data-testid="declaration_title" className="text-xl font-bold">Declaration</Label>
       <Card className="border p-3">
         <p className="text-pretty mb-8" data-testid="declaration_text">I hereby declare that the above-mentioned information is correct up to my knowledge and I bear the responsibility for the correctness of the above-mentioned particulars.</p>

@@ -19,8 +19,6 @@ module.exports = {
     extend: {
       colors: {
         border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
@@ -43,10 +41,6 @@ module.exports = {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
         },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
-        },
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
@@ -56,25 +50,6 @@ module.exports = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
-      },
-      typography: {
-        DEFAULT: {
-          css: {
-            'code::before': {
-              content: '&nbsp;&nbsp;',
-            },
-            'code::after': {
-              content: '&nbsp;&nbsp;',
-            },
-            'code': {
-              background: '#ffeff0',
-              wordWrap: 'break-word',
-              boxDecorationBreak: 'clone',
-              padding: '.1rem .3rem .2rem',
-              borderRadius: '.2rem',
-            },
-          },
-        },
       },
     },
   },

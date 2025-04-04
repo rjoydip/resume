@@ -11,12 +11,12 @@ const commonProjects = [
       ...devices['Desktop Chrome'],
     },
   },
-  {
+  /* {
     name: 'iphone',
     use: {
       ...devices['iPhone 15 Pro Max'],
     },
-  },
+  }, */
 ]
 
 export default defineConfig({
