@@ -75,7 +75,7 @@ export default function About() {
           </div>
         </CardContent>
         <CardFooter className="flex items-center justify-between">
-          <div className="show print:hidden">
+          <div className="flex show print:hidden">
             {data.contact.email && (
               <Button className="size-8" variant="outline" size="icon" asChild>
                 <a

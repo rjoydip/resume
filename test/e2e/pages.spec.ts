@@ -7,7 +7,7 @@ import languages from '../../src/data/languages.ts'
 import projects from '../../src/data/projects'
 import strengths from '../../src/data/strengths'
 import works from '../../src/data/works'
-import { capitalize, loadPage } from '../_shared/test-utils'
+import { loadPage } from '../_shared/test-utils'
 import { test } from '../setup/e2e.setup.ts'
 
 test.beforeEach(async ({ page }) => {
@@ -253,7 +253,7 @@ test.describe('<Projects />', () => {
         // Check first project tech stacks
         const projTech = await page.getByTestId(`project_tech_stacks_index_${index}`)
         await expect(projTech).toBeVisible()
-        await expect(projTech).toContainText(`${project.techStacks.map(tech => capitalize(tech)).join('')}`)
+        await expect(projTech).toContainText(`${project.techStacks.map(tech => tech).join('')}`)
       }),
     ])
   })

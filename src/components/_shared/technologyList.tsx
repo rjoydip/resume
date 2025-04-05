@@ -1,6 +1,5 @@
 import type { TechStackType } from '@/types'
 import React from 'react'
-import titleize from 'titleize'
 import { Badge } from '../ui/badge'
 
 export const TechnologyList = React.memo(({ techStacks }: { techStacks: TechStackType }) => {
@@ -10,10 +9,10 @@ export const TechnologyList = React.memo(({ techStacks }: { techStacks: TechStac
         <Badge
           key={tech}
           variant="outline"
-          aria-label={`Show ${titleize(tech)}`}
+          aria-label={`Show ${tech}`}
           className="text-xs"
         >
-          {titleize(tech)}
+          {tech}
         </Badge>
       ))}
     </div>

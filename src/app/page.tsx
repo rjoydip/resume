@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { ErrorBoundary } from '@/components/_shared/error-boundary'
-import { ToggleTheme } from '@/components/_shared/toggleTheme'
 import Container from '@/components/container'
 import Declaration from '@/components/declaration'
+import { DownloadResume } from '@/components/downloadResume'
+import { ErrorBoundary } from '@/components/errorBoundary'
 import Footer from '@/components/footer'
 import About from '@/components/modules/about'
 import Domains from '@/components/modules/domains'
@@ -12,6 +12,8 @@ import Projects from '@/components/modules/projects'
 import Skills from '@/components/modules/skills'
 import Strengths from '@/components/modules/strengths'
 import Works from '@/components/modules/works'
+import { ToggleTheme } from '@/components/toggleTheme'
+import { Toaster } from '@/components/ui/toaster'
 import { meta } from '@/data/index'
 
 export const metadata: Metadata = {
@@ -36,6 +38,8 @@ export default async function Page() {
         </Container>
         <Footer />
         <ToggleTheme />
+        <DownloadResume />
+        <Toaster />
       </ErrorBoundary>
     </main>
   )

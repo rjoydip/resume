@@ -3,8 +3,8 @@ export default [
     title: 'CVS',
     description: 'CVS Health, established in 1963, is a leading American healthcare \'company\' with over 9,900 retail locations nationwide. Offering a wide range of services including pharmacies, clinics, and digital health solutions, CVS aims to provide accessible and affordable healthcare for all.',
     techStacks: [
-      'gmc',
-      'groovy',
+      'GMC',
+      'Groovy',
     ],
     links: [
       {
@@ -21,12 +21,12 @@ export default [
     title: 'Northwestern Mutual',
     description: 'Northwestern Mutual, founded in 1857, is a leading U.S.-based financial services \'company\'. Specializing in life insurance, it offers a range of services including investment management and retirement planning, prioritizing personalized financial guidance for its clients\' long-term security',
     techStacks: [
-      'etl',
-      'gitlab',
-      'kafka',
-      'jenkins',
-      'nodejs',
-      'springboot',
+      'ETL',
+      'Gitlab',
+      'Kafka',
+      'Jenkins',
+      'Nodejs',
+      'Springboot',
     ],
     links: [
       {
@@ -43,10 +43,10 @@ export default [
     title: 'Macmillan',
     description: 'Macmillan Learning is a leading educational publisher, offering textbooks and digital tools for higher education. Committed to innovation, it provides resources to empower educators and students alike',
     techStacks: [
-      'nodejs',
-      'typescript',
-      'jenkins',
-      'bitbucket',
+      'Nodejs',
+      'TypeScript',
+      'Jenkins',
+      'Bitbucket',
     ],
     links: [
       {
@@ -63,7 +63,7 @@ export default [
     title: 'Inagrab',
     description:
         'Inagrab is the best deal search engine that allows you to make the best possible decision in the shortest possible time.',
-    techStacks: ['angular', 'gitlab', 'ionic', 'nodejs', 'typescript'],
+    techStacks: ['Angular', 'Gitlab', 'Ionic', 'Nodejs', 'TypeScript'],
     links: [
       {
         type: 'mobile',
@@ -77,7 +77,7 @@ export default [
     title: 'Tapp - Drinking App',
     description:
         'The drinking game played by superheroes. Open Tapp App and your drinking destiny will be in the palm of your hands',
-    techStacks: ['angular', 'gitlab', 'ionic', 'nodejs', 'typescript'],
+    techStacks: ['Angular', 'Gitlab', 'Ionic', 'Nodejs', 'TypeScript'],
     links: [
       {
         type: 'mobile',
@@ -91,12 +91,12 @@ export default [
     title: 'Classified',
     description: 'With our state-of-the-art open source classified script, made for iOS and Android mobile apps, you can easily start your own readymade classified website.',
     techStacks: [
-      'angular',
-      'firebase',
-      'gitlab',
-      'ionic',
-      'nodejs',
-      'typescript',
+      'Angular',
+      'Firebase',
+      'Gitlab',
+      'Ionic',
+      'Nodejs',
+      'TypeScript',
     ],
     links: [
       {
@@ -112,11 +112,11 @@ export default [
     description:
         'The Scope offers the week\'s best in evidence-based medicine, written in plain language for a nationwide audience of young physicians.',
     techStacks: [
-      'express',
-      'gitlab',
-      'mongodb',
-      'nodejs',
-      'typescript',
+      'Express',
+      'Gitlab',
+      'Mongodb',
+      'Nodejs',
+      'TypeScript',
     ],
     links: [
       {
@@ -132,12 +132,12 @@ export default [
     description:
         'The Mizizi will allow users to locate and find a stylist, barbers, nail technician, eyebrow and eyelash technicians all over the world.',
     techStacks: [
-      'angular',
-      'express',
-      'gitlab',
-      'mongodb',
-      'nodejs',
-      'typescript',
+      'Angular',
+      'Express',
+      'Gitlab',
+      'Mongodb',
+      'Nodejs',
+      'TypeScript',
     ],
     links: [],
     company: 'Webskitters',
@@ -147,11 +147,11 @@ export default [
     description:
         'The "Let\'s Eat" application is the perfect solution for companies that want to offer a high-quality and convenient dining service for their employees. Our intuitive and easy-to-use platform allows users to access a varied daily menu, place custom orders, and have their meals delivered directly to their workplace.',
     techStacks: [
-      'express',
-      'gitlab',
-      'mongodb',
-      'nodejs',
-      'typescript',
+      'Express',
+      'Gitlab',
+      'Mongodb',
+      'Nodejs',
+      'TypeScript',
     ],
     links: [
       {
@@ -167,19 +167,19 @@ export default [
     description:
         'Realtime data analytics application by collecting users activity data and admin manageable.',
     techStacks: [
-      'angular',
-      'electron',
-      'firebase',
-      'gitlab',
-      'nodejs',
-      'typescript',
+      'Angular',
+      'Electron',
+      'Firebase',
+      'Gitlab',
+      'Nodejs',
+      'TypeScript',
     ],
     company: 'Webskitters',
   },
   {
     title: 'Bridge Boffin',
     description: 'Bridgeboffin.com is a unique, easy to use web-based application to improve your Bridge.',
-    techStacks: ['bootstrap', 'gitlab', 'javascript', 'laravel', 'php'],
+    techStacks: ['Bootstrap', 'Gitlab', 'JavaScript', 'Laravel', 'PHP'],
     links: [
       {
         type: 'web',
@@ -194,12 +194,12 @@ export default [
     description:
         'The Restaurant-Based Social Network & Menu Wiki. Menu Pulse is a web and smartphone application-based platform for restaurants, menus, pictures, and reviews launching.',
     techStacks: [
-      'angular',
-      'bootstrap',
-      'gitlab',
-      'ionic',
-      'javascript',
-      'laravel',
+      'Angular',
+      'Bootstrap',
+      'Gitlab',
+      'Ionic',
+      'JavaScript',
+      'Laravel',
     ],
     links: [
       {
